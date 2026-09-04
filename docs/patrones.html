@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor de Patrones &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+    <style>
+        /* Piezas de colores que imitan los bloques de la herramienta */
+        .blk {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            font-weight: 500;
+            border-radius: 6px;
+            padding: 3px 9px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .blk.g { color: #00ff88; border-color: rgba(0,255,136,.35);   background: rgba(0,255,136,.1); }
+        .blk.c { color: #4d9fff; border-color: rgba(77,159,255,.35);  background: rgba(77,159,255,.1); }
+        .blk.k { color: #ffd000; border-color: rgba(255,208,0,.35);   background: rgba(255,208,0,.1); }
+        .blk.w { color: #e0e0f0; border-color: rgba(255,255,255,.3);  background: rgba(255,255,255,.07); }
+        .recipe {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 7px;
+            background: rgba(0,0,0,.28);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 10px;
+            padding: 13px 15px;
+            margin: 10px 0 16px;
+        }
+        .recipe .sep { color: var(--text-muted); font-size: 11px; }
+        .fname {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12.5px;
+            color: #d8d8e8;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 6px;
+            padding: 4px 10px;
+            display: inline-block;
+        }
+        .extract {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            color: #00ff88;
+            background: rgba(0,255,136,.05);
+            border-left: 2px solid rgba(0,255,136,.35);
+            border-radius: 0 8px 8px 0;
+            padding: 10px 14px;
+            margin: 6px 0 0;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .ex-card {
+            background: rgba(255,255,255,.022);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+        }
+        .ex-card > h5 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ex-card > h5 .n {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            color: var(--accent);
+            border: 1px solid rgba(var(--accent-rgb),.3);
+            background: rgba(var(--accent-rgb),.09);
+            border-radius: 20px;
+            padding: 2px 9px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body data-accent="patrones">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" class="active" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb">
+                <a href="index.html">Inicio</a><span>&rsaquo;</span><a href="copier.html">Copier</a><span>&rsaquo;</span>Constructor de Patrones
+            </div>
+            <div class="doc-title-row">
+                <img src="assets/img/logos/patterns.png" alt="">
+                <span class="doc-badge">Herramienta</span>
+                <h1>Constructor de Patrones</h1>
+            </div>
+            <p class="doc-lead">
+                Le ense&ntilde;a al Copier a <strong>leer los nombres de tus archivos</strong>. Con esta
+                herramienta armas, como un rompecabezas de piezas de colores, la regla que permite al
+                programa saber qu&eacute; parte del nombre es el t&iacute;tulo, cu&aacute;l el n&uacute;mero
+                de cap&iacute;tulo y cu&aacute;l la temporada &mdash; y as&iacute; poder
+                <a href="copier.html#continuar">continuar entregas</a> solo. No hace falta saber nada de
+                programaci&oacute;n: se arrastra, se prueba y se exporta.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#por-que">Por qu&eacute; existe</a></li>
+                        <li><a href="#abrir">Abrir la herramienta</a></li>
+                        <li><a href="#pantalla">La pantalla</a></li>
+                        <li><a href="#receta">C&oacute;mo se arma una receta</a></li>
+                        <li><a href="#grupos">Piezas verdes: los datos</a></li>
+                        <li><a href="#conectores">Piezas azules: las uniones</a></li>
+                        <li><a href="#combinados">Piezas amarillas: frases completas</a></li>
+                        <li><a href="#probar">Probar antes de guardar</a></li>
+                        <li><a href="#ejemplos">Ejemplos paso a paso</a></li>
+                        <li><a href="#presets">Los 26 formatos ya hechos</a></li>
+                        <li><a href="#orden">El orden es la prioridad</a></li>
+                        <li><a href="#exportar">Exportar e instalar</a></li>
+                        <li><a href="#importar">Importar y editar</a></li>
+                        <li><a href="#problemas">Problemas frecuentes</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ POR QUÉ ══════════ -->
+                <section id="por-que" class="doc-section reveal">
+                    <h2>Por qu&eacute; existe</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Un cliente vuelve con su memoria y quiere <b>los cap&iacute;tulos siguientes</b> de
+                        la novela que se llev&oacute;. El Copier tiene que mirar el &uacute;ltimo archivo
+                        que le copiaste &mdash; por ejemplo <span class="fname">NV 001 La Novela.mp4</span>
+                        &mdash; y deducir solo que hay que buscar el 002, el 003, el 004&hellip;
+                    </p>
+                    <p>
+                        Para eso necesita <b>entender el nombre del archivo</b>: saber que
+                        <code>NV</code> es el c&oacute;digo del proveedor, que <code>001</code> es el
+                        n&uacute;mero de cap&iacute;tulo y que <code>La Novela</code> es el t&iacute;tulo
+                        que hay que buscar.
+                    </p>
+                    <p>
+                        El problema es que cada proveedor nombra los archivos a su manera:
+                    </p>
+                    <div class="recipe" style="gap:10px">
+                        <span class="fname">XX 001 Titulo.mp4</span>
+                        <span class="fname">XX=001 Titulo.mp4</span>
+                        <span class="fname">XX 1x02 Serie.mp4</span>
+                        <span class="fname">Title-001-Negocio.mp4</span>
+                        <span class="fname">S01E01 Titulo.mp4</span>
+                        <span class="fname">Serie temporada 3 capitulo 5.mp4</span>
+                    </div>
+                    <p>
+                        El Copier ya trae de f&aacute;brica reglas para los formatos m&aacute;s comunes.
+                        Pero si tu proveedor usa uno distinto, la funci&oacute;n de continuar no encontrar&aacute;
+                        nada. <strong>Esta herramienta sirve para ense&ntilde;arle ese formato nuevo.</strong>
+                    </p>
+                    <div class="callout tip">
+                        <h4>No hace falta saber programar</h4>
+                        <p>
+                            La herramienta trabaja con <b>piezas de colores que se arrastran</b>. T&uacute;
+                            describes el nombre del archivo pieza a pieza, lo pruebas con un nombre real y
+                            exportas el resultado. En ning&uacute;n momento hay que escribir c&oacute;digo.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>No solo series</h4>
+                        <p>
+                            Sirve igual para novelas, concursos, programas de televisi&oacute;n o cualquier
+                            contenido que vaya por cap&iacute;tulos o entregas numeradas.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ABRIR ══════════ -->
+                <section id="abrir" class="doc-section reveal">
+                    <h2>Abrir la herramienta</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        La forma normal es desde el <b>Lanzador</b>: en la barra inferior, junto a
+                        <span class="ui">Cambios</span> y <span class="ui">Configuraci&oacute;n</span>,
+                        est&aacute; el bot&oacute;n <span class="ui">Crear Patrones</span>.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Pulsa &laquo;Crear Patrones&raquo;</strong>
+                            La herramienta arranca en segundo plano y se abre sola en tu navegador.
+                        </li>
+                        <li>
+                            <strong>Se abre en el navegador</strong>
+                            En la direcci&oacute;n <span class="path">http://localhost:8080</span>. Es una
+                            p&aacute;gina que corre <b>en tu propia computadora</b>: no necesita internet y
+                            nada sale de tu equipo.
+                        </li>
+                        <li>
+                            <strong>Cuando termines, cierra la pesta&ntilde;a</strong>
+                            Tu trabajo queda guardado. Puedes volver a entrar en cualquier momento a esa
+                            misma direcci&oacute;n mientras la herramienta siga arrancada.
+                        </li>
+                    </ol>
+                    <div class="callout warn">
+                        <h4>Esta herramienta necesita Node.js</h4>
+                        <p>
+                            Es lo &uacute;nico de toda la suite que lo pide. Es un componente
+                            <b>gratuito</b> que se instala una sola vez desde su p&aacute;gina oficial.
+                            Si no lo tienes, el bot&oacute;n <span class="ui">Crear Patrones</span> no
+                            abrir&aacute; nada &mdash; pero el resto de la suite funciona con normalidad.
+                            Ver <a href="primeros-pasos.html#requisitos">Requisitos</a>.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Si el bot&oacute;n no hace nada</h4>
+                        <p>
+                            O falta Node.js, o falta el complemento en tu instalaci&oacute;n. Ver
+                            <a href="#problemas">Problemas frecuentes</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PANTALLA ══════════ -->
+                <section id="pantalla" class="doc-section reveal">
+                    <h2>La pantalla</h2>
+                    <div class="doc-rule"></div>
+                    <p>La ventana tiene tres columnas y, debajo, la tabla con lo que llevas hecho.</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Izquierda &mdash; Piezas</h5>
+                            <p>El almac&eacute;n de piezas, agrupadas por color. De aqu&iacute; se
+                            arrastran al centro.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Centro &mdash; Receta</h5>
+                            <p>Donde armas el patr&oacute;n colocando las piezas en orden. Abajo, el
+                            desplegable de formatos ya hechos.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Derecha &mdash; Resultado y prueba</h5>
+                            <p>La regla que se va generando, el t&iacute;tulo que le pones y el campo para
+                            probarla con un nombre real.</p>
+                        </div>
+                    </div>
+
+                    <h3>Los botones</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Bot&oacute;n</th><th>Qu&eacute; hace</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Gu&iacute;a</td><td>Abre la ayuda incluida en la propia herramienta.</td></tr>
+                                <tr><td class="nm">Importar JSON</td><td>Carga un archivo de patrones que ya tengas. Ver <a href="#importar">Importar</a>.</td></tr>
+                                <tr><td class="nm">&#8634; Deshacer<small>Ctrl + Z</small></td><td>Deshace el &uacute;ltimo cambio de la receta. Guarda hasta 30 pasos hacia atr&aacute;s.</td></tr>
+                                <tr><td class="nm">Limpiar</td><td>Vac&iacute;a la receta que est&aacute;s armando. <b>No pide confirmaci&oacute;n</b>, pero se puede deshacer con <span class="kbd">Ctrl</span>+<span class="kbd">Z</span>.</td></tr>
+                                <tr><td class="nm">Presets</td><td>Desplegable con 26 formatos ya hechos. Ver <a href="#presets">Los 26 formatos</a>.</td></tr>
+                                <tr><td class="nm">Agregar a Tabla</td><td>Guarda el patr&oacute;n terminado en la lista de abajo.</td></tr>
+                                <tr><td class="nm">Copiar Regex</td><td>Copia solo la regla generada. Casi nunca hace falta.</td></tr>
+                                <tr><td class="nm">Exportar JSON</td><td>Descarga el archivo <span class="path">priority_patterns.json</span>, que es el que hay que instalar.</td></tr>
+                                <tr><td class="nm">Copiar JSON</td><td>Lo mismo pero al portapapeles, sin descargar archivo.</td></tr>
+                                <tr><td class="nm">Copiar C#</td><td>Solo para el desarrollador. <b>No lo necesitas.</b></td></tr>
+                                <tr><td class="nm">Limpiar Todo</td><td>Borra todos los patrones de la tabla. Pide confirmaci&oacute;n.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>La tabla de patrones</h3>
+                    <p>
+                        Cada fila guardada muestra su n&uacute;mero, t&iacute;tulo, la regla (recortada),
+                        el ejemplo y un puntito verde si est&aacute; <span class="ui">Activo</span>.
+                        A la derecha tiene tres acciones:
+                    </p>
+                    <div class="term-list">
+                        <dt>&#9998; Editar</dt><dd>Devuelve ese patr&oacute;n a la receta para retocarlo.</dd>
+                        <dt>&#128203; Duplicar</dt><dd>Crea una copia justo debajo, con <code>(copy)</code> a&ntilde;adido al t&iacute;tulo. Ideal para hacer una variante sin empezar de cero.</dd>
+                        <dt>&#128465; Eliminar</dt><dd>Borra la fila. <b>No pide confirmaci&oacute;n y no se puede deshacer</b>: fíjate bien antes de pulsar.</dd>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Tu trabajo se guarda en el navegador, no en un archivo</h4>
+                        <p>
+                            Si cierras la pesta&ntilde;a y vuelves a entrar, todo sigue ah&iacute;. Pero
+                            eso vive dentro del navegador de <b>esa</b> computadora: si cambias de
+                            navegador, de equipo, o limpias los datos de navegaci&oacute;n, lo pierdes.
+                            <b>Exporta siempre el archivo cuando termines.</b>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ RECETA ══════════ -->
+                <section id="receta" class="doc-section reveal">
+                    <h2>C&oacute;mo se arma una receta</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Una <b>receta</b> es la descripci&oacute;n del nombre del archivo, pieza a pieza,
+                        <strong>en el mismo orden en que aparecen</strong>. La idea es sencilla: mirar el
+                        nombre real e ir traduciendo cada trozo a una pieza.
+                    </p>
+                    <p>Tomemos <span class="fname">XX 001 Titulo.mp4</span> y le&aacute;moslo de izquierda a derecha:</p>
+                    <ul>
+                        <li><code>XX</code> &rarr; es un c&oacute;digo corto &rarr; pieza <span class="blk g">abreviatura</span></li>
+                        <li>hay un espacio &rarr; pieza <span class="blk c">espacio</span></li>
+                        <li><code>001</code> &rarr; es el n&uacute;mero de cap&iacute;tulo &rarr; pieza <span class="blk g">capitulo</span></li>
+                        <li>otro espacio &rarr; pieza <span class="blk c">espacio</span></li>
+                        <li><code>Titulo</code> &rarr; es el nombre &rarr; pieza <span class="blk g">titulo</span></li>
+                    </ul>
+                    <p>Y la receta queda as&iacute;:</p>
+                    <div class="recipe">
+                        <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                        <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                        <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                        <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                        <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                        <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                        <span class="blk w">fin</span>
+                    </div>
+
+                    <h3>Las cuatro familias de piezas</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Familia</th><th>Para qu&eacute; sirven</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="blk w">blancas</span></td><td><b>Inicio y fin.</b> Marcan d&oacute;nde empieza y d&oacute;nde acaba la lectura. Siempre van una al principio y otra al final.</td></tr>
+                                <tr><td class="nm"><span class="blk g">verdes</span></td><td><b>Los datos.</b> Cada una guarda un trozo del nombre: el t&iacute;tulo, el cap&iacute;tulo, la temporada&hellip; Son las importantes.</td></tr>
+                                <tr><td class="nm"><span class="blk c">azules</span></td><td><b>Las uniones.</b> Describen qu&eacute; hay <i>entre</i> dos datos: un espacio, un guion, una x&hellip;</td></tr>
+                                <tr><td class="nm"><span class="blk k">amarillas</span></td><td><b>Frases completas.</b> Piezas grandes ya armadas que reconocen cosas como &laquo;temporada 3&raquo; o &laquo;S01E01&raquo; de un solo golpe.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Las reglas del juego</h3>
+                    <p>La herramienta no te deja armar recetas imposibles. Estas son las reglas:</p>
+                    <ul>
+                        <li><span class="blk w">inicio</span> es <b>siempre la primera</b> pieza, y solo puede haber una.</li>
+                        <li><span class="blk w">fin</span> es <b>siempre la &uacute;ltima</b>, y solo puede haber una. Es la que hace que el t&iacute;tulo no se trague la extensi&oacute;n <code>.mp4</code>.</li>
+                        <li><b>No se puede repetir</b> una pieza verde de datos. Solo un <span class="blk g">titulo</span>, un <span class="blk g">capitulo</span>, una <span class="blk g">temporada</span>&hellip;</li>
+                        <li><b>No van dos uniones seguidas.</b> Entre dos datos va una sola pieza azul.</li>
+                    </ul>
+                    <div class="callout tip">
+                        <h4>Da igual may&uacute;sculas o min&uacute;sculas</h4>
+                        <p>
+                            <code>TEMPORADA</code>, <code>Temporada</code> y <code>temporada</code> se
+                            reconocen igual, tanto en la prueba como despu&eacute;s en el Copier. No hay que
+                            hacer una regla para cada variante.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ GRUPOS ══════════ -->
+                <section id="grupos" class="doc-section reveal">
+                    <h2>Piezas verdes: los datos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Son las piezas que <strong>guardan</strong> un trozo del nombre para que el Copier
+                        lo use. Sin ellas el patr&oacute;n no sirve de nada.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Pieza</th><th>Qu&eacute; guarda</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="blk g">abreviatura</span></td><td>Un c&oacute;digo corto de 2 o 3 letras o n&uacute;meros, normalmente al principio. Identifica al proveedor o al canal. Ejemplos: <code>XX</code>, <code>NV</code>, <code>SR</code>.</td></tr>
+                                <tr><td class="nm"><span class="blk g">titulo</span></td><td>El nombre de la serie, novela o programa. Es <b>lo que el Copier buscar&aacute;</b> para encontrar los siguientes cap&iacute;tulos.</td></tr>
+                                <tr><td class="nm"><span class="blk g">capitulo</span></td><td>El n&uacute;mero de cap&iacute;tulo, cuando aparece como n&uacute;mero suelto. Ejemplos: <code>001</code>, <code>5</code>, <code>12</code>.</td></tr>
+                                <tr><td class="nm"><span class="blk g">temporada</span></td><td>El n&uacute;mero de temporada, cuando aparece como n&uacute;mero suelto. T&iacute;pico del formato <code>1x02</code>.</td></tr>
+                                <tr><td class="nm"><span class="blk g">negocio</span></td><td>El nombre del negocio o la sucursal, cuando va dentro del nombre del archivo.</td></tr>
+                                <tr><td class="nm"><span class="blk g">tags</span></td><td>Las etiquetas entre corchetes o par&eacute;ntesis: calidad, idioma, etc. Reconoce varias seguidas. Ejemplos: <code>[1080p] [ES]</code>, <code>(720p)</code>, <code>[DA]</code>. Se coloca en el sitio donde aparecen.</td></tr>
+                                <tr><td class="nm"><span class="blk g">texto</span></td><td>Texto de relleno que quieres que quede guardado pero que el Copier no usa.</td></tr>
+                                <tr><td class="nm"><span class="blk g">cualquiera</span></td><td>Texto de relleno que <b>no</b> se guarda. Sirve para decir &laquo;aqu&iacute; hay algo que no me importa&raquo;.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Captura la abreviatura y el negocio, no solo el t&iacute;tulo</h4>
+                        <p>
+                            Para buscar los cap&iacute;tulos siguientes, el Copier une
+                            <b>abreviatura + t&iacute;tulo + negocio</b> y busca esa combinaci&oacute;n. Si
+                            solo capturas el t&iacute;tulo, la b&uacute;squeda ser&aacute; menos precisa y
+                            puede traerte la misma serie de otro proveedor. Merece la pena capturar las tres
+                            cuando el nombre las tiene.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONECTORES ══════════ -->
+                <section id="conectores" class="doc-section reveal">
+                    <h2>Piezas azules: las uniones</h2>
+                    <div class="doc-rule"></div>
+                    <p>Describen qu&eacute; hay <b>entre</b> dos datos. Elegir mal la uni&oacute;n es la causa
+                    n&uacute;mero uno de que un patr&oacute;n no funcione.</p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Pieza</th><th>Qu&eacute; representa</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="blk c">espacio</span></td><td>Uno o m&aacute;s espacios en blanco. <code>XX<b>&nbsp;</b>001</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">separador</span></td><td>Un guion, igual, guion bajo o m&aacute;s (<code>-</code> <code>=</code> <code>_</code> <code>+</code>), con o sin espacios alrededor. <code>XX<b>=</b>001</code>, <code>XX<b> - </b>001</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">esp-sep-esp</span></td><td>Espacio + separador + espacio, los tres obligatorios. <code>XX 002<b> - </b>Titulo</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">sep simple</span></td><td>Solo el car&aacute;cter separador, pegado, sin espacios. <code>Title<b>-</b>001<b>-</b>Neg</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">x</span></td><td>La letra x entre temporada y cap&iacute;tulo. <code>1<b>x</b>01</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">s</span></td><td>La letra S del formato SxxExx. <code><b>S</b>01E01</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">e</span></td><td>La letra E del formato SxxExx. <code>S01<b>E</b>01</code></td></tr>
+                                <tr><td class="nm"><span class="blk c">ord-temp</span></td><td>La terminaci&oacute;n femenina de un ordinal: <code>ra</code>, <code>da</code>, <code>ta</code>, <code>ma</code>, <code>va</code>, <code>na</code>. Como en <code>1<b>ra</b></code>.</td></tr>
+                                <tr><td class="nm"><span class="blk c">ord-cap</span></td><td>La terminaci&oacute;n masculina: <code>ro</code>, <code>er</code>, <code>do</code>, <code>to</code>, <code>mo</code>, <code>vo</code>, <code>no</code>. Como en <code>1<b>ro</b></code>, <code>2<b>do</b></code>.</td></tr>
+                                <tr><td class="nm"><span class="blk c">ord-temp-num</span></td><td>El n&uacute;mero <b>y</b> su terminaci&oacute;n femenina de una vez, guardando el n&uacute;mero como temporada. <code>1ra</code> &rarr; temporada&nbsp;1</td></tr>
+                                <tr><td class="nm"><span class="blk c">ord-cap-num</span></td><td>Igual pero masculino, guardando el n&uacute;mero como cap&iacute;tulo. <code>1ro</code> &rarr; cap&iacute;tulo&nbsp;1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout warn">
+                        <h4>El error m&aacute;s com&uacute;n</h4>
+                        <p>
+                            Usar <span class="blk c">espacio</span> cuando el archivo en realidad lleva un
+                            <code>=</code> o un <code>-</code>. Mira el nombre real car&aacute;cter a
+                            car&aacute;cter: si hay un s&iacute;mbolo, la pieza correcta es
+                            <span class="blk c">separador</span>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ COMBINADOS ══════════ -->
+                <section id="combinados" class="doc-section reveal">
+                    <h2>Piezas amarillas: frases completas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Son atajos: reconocen una frase entera <b>y adem&aacute;s guardan el n&uacute;mero</b>.
+                        Ahorran colocar tres o cuatro piezas sueltas.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Pieza</th><th>Reconoce</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="blk k">kw-temporada</span></td><td>Palabra de temporada + n&uacute;mero: <code>temporada 1</code>, <code>temp 3</code>, <code>season 2</code>, <code>s01</code>. Guarda la temporada.</td></tr>
+                                <tr><td class="nm"><span class="blk k">kw-capitulo</span></td><td>Palabra de cap&iacute;tulo + n&uacute;mero: <code>capitulo 5</code>, <code>chapter 1</code>, <code>ep03</code>, <code>episode 12</code>. Guarda el cap&iacute;tulo.</td></tr>
+                                <tr><td class="nm"><span class="blk k">ord-temporada</span></td><td>Ordinal + palabra: <code>1ra Temporada</code>, <code>2da Temp</code>, <code>8va Season</code>. Guarda la temporada.</td></tr>
+                                <tr><td class="nm"><span class="blk k">ord-capitulo</span></td><td>Ordinal + palabra: <code>1ro Capitulo</code>, <code>1er cap</code>, <code>2do episode</code>. Guarda el cap&iacute;tulo.</td></tr>
+                                <tr><td class="nm"><span class="blk k">SxxExx</span></td><td>El formato est&aacute;ndar de series de una sola pieza: <code>S01E01</code>, <code>s2e5</code>, <code>S12E03</code>. Guarda temporada <b>y</b> cap&iacute;tulo.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Palabras que reconoce</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Para temporada</h5>
+                            <p><code>temporadas</code> <code>temporada</code> <code>temp</code> <code>t</code>
+                            <code>season</code> <code>s</code> <code>sec</code> <code>series</code></p>
+                        </div>
+                        <div class="card">
+                            <h5>Para cap&iacute;tulo</h5>
+                            <p><code>capitulos</code> <code>capitulo</code> <code>cap</code> <code>capt</code>
+                            <code>c</code> <code>chapter</code> <code>ch</code> <code>chp</code>
+                            <code>episodios</code> <code>episodio</code> <code>episode</code> <code>ep</code>
+                            <code>e</code> <code>parte</code> <code>part</code> <code>pt</code></p>
+                        </div>
+                    </div>
+                    <p>
+                        Entre la palabra y el n&uacute;mero puede haber espacios, un punto, un guion o un
+                        guion bajo: <code>temporada 1</code>, <code>temp.3</code> y <code>s01</code> valen
+                        todos.
+                    </p>
+
+                    <div class="callout">
+                        <h4>La duda m&aacute;s frecuente: verde o amarilla</h4>
+                        <ul>
+                            <li><span class="blk g">temporada</span> es solo un <b>n&uacute;mero suelto</b> &rarr; para <code>1x01</code>.</li>
+                            <li><span class="blk k">kw-temporada</span> es <b>palabra + n&uacute;mero</b> &rarr; para <code>temporada 1</code> o <code>season 2</code>.</li>
+                            <li>Lo mismo entre <span class="blk g">capitulo</span> y <span class="blk k">kw-capitulo</span>.</li>
+                        </ul>
+                        <p>
+                            Regla pr&aacute;ctica: <b>si en el nombre aparece la palabra escrita, usa la
+                            amarilla</b>. Si solo hay un n&uacute;mero, usa la verde.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PROBAR ══════════ -->
+                <section id="probar" class="doc-section reveal">
+                    <h2>Probar antes de guardar</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Nunca guardes un patr&oacute;n sin probarlo. La herramienta lo comprueba de dos
+                        formas, las dos en vivo.
+                    </p>
+
+                    <h3>1. &iquest;La receta tiene sentido?</h3>
+                    <p>Debajo de la regla generada aparece un aviso:</p>
+                    <div class="term-list">
+                        <dt style="color:#00ff88">Regex valida</dt>
+                        <dd>La combinaci&oacute;n de piezas es correcta. Puedes seguir.</dd>
+                        <dt style="color:#ff6b6b">Error: &hellip;</dt>
+                        <dd>Hay algo mal armado. Normalmente por haber repetido una pieza verde o haber
+                        dejado algo a medias.</dd>
+                    </div>
+
+                    <h3>2. &iquest;Reconoce un nombre real?</h3>
+                    <p>
+                        En el campo <span class="ui">Test</span> pegas un nombre de archivo de verdad. El
+                        resultado se actualiza <b>mientras escribes</b>. Tres respuestas posibles:
+                    </p>
+                    <div class="ex-card">
+                        <h5><span class="n" style="color:#00ff88;border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.09)">Coincidencia</span> Lo reconoci&oacute;</h5>
+                        <p style="margin-bottom:6px">Te muestra qu&eacute; trozo del nombre reconoci&oacute; y, debajo, los datos que extrajo:</p>
+<pre class="extract">abbr    = "XX"
+chapter = "001"
+search  = "Titulo"</pre>
+                        <p style="margin-top:10px;margin-bottom:0"><b>Revisa esa lista.</b> No basta con que diga
+                        &laquo;Coincidencia&raquo;: los valores tienen que ser los correctos. Un cap&iacute;tulo
+                        vac&iacute;o o un t&iacute;tulo que se comi&oacute; los corchetes significa que hay
+                        que ajustar la receta.</p>
+                    </div>
+                    <div class="ex-card">
+                        <h5><span class="n" style="color:#ff6b6b;border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.09)">Sin coincidencia</span> No lo reconoci&oacute;</h5>
+                        <p style="margin:0">La receta no encaja con ese nombre. Casi siempre es una uni&oacute;n
+                        equivocada: revisa si entre dos datos hay un espacio o un s&iacute;mbolo.</p>
+                    </div>
+
+                    <div class="callout tip">
+                        <h4>Prueba con dos o tres nombres, no con uno</h4>
+                        <p>
+                            Un patr&oacute;n que funciona con el cap&iacute;tulo 001 puede fallar con el
+                            100, o con uno que lleve tildes o par&eacute;ntesis. Prueba varios nombres del
+                            mismo proveedor antes de darlo por bueno.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ EJEMPLOS ══════════ -->
+                <section id="ejemplos" class="doc-section reveal">
+                    <h2>Ejemplos paso a paso</h2>
+                    <div class="doc-rule"></div>
+                    <p>De lo m&aacute;s simple a lo m&aacute;s completo. Si encuentras aqu&iacute; tu formato,
+                    c&oacute;pialo tal cual.</p>
+
+                    <div class="ex-card">
+                        <h5><span class="n">1</span> Formato b&aacute;sico</h5>
+                        <p style="margin-bottom:8px"><span class="fname">XX 001 Titulo.mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+<pre class="extract">abbr = "XX"   chapter = "001"   search = "Titulo"</pre>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">2</span> Con s&iacute;mbolo y etiquetas</h5>
+                        <p style="margin-bottom:8px"><span class="fname">XX=001 Titulo [1080p] [ES].mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">separador</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+                        <p style="margin:0;font-size:13.5px;color:var(--text-muted)">
+                            Cambia <span class="blk c">espacio</span> por <span class="blk c">separador</span>
+                            porque hay un <code>=</code>. Las etiquetas del final las corta sola la pieza
+                            <span class="blk w">fin</span>; solo hace falta poner
+                            <span class="blk g">tags</span> si quieres <b>guardarlas</b>.
+                        </p>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">3</span> Temporada y cap&iacute;tulo</h5>
+                        <p style="margin-bottom:8px"><span class="fname">XX 1x02 Serie [DA].mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">temporada</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">x</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+<pre class="extract">abbr = "XX"   season = "1"   chapter = "02"   search = "Serie"</pre>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">4</span> Con nombre de negocio</h5>
+                        <p style="margin-bottom:8px"><span class="fname">Title-001-Negocio [1080p] [DA].mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">separador</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">separador</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">negocio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+                        <p style="margin:0;font-size:13.5px;color:var(--text-muted)">
+                            Aqu&iacute; el <span class="blk g">titulo</span> va <b>primero</b>, porque el
+                            nombre del archivo empieza por &eacute;l. No hay abreviatura.
+                        </p>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">5</span> Formato SxxExx</h5>
+                        <p style="margin-bottom:8px"><span class="fname">XX S01E01 Titulo [1080p].mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">s</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">temporada</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">e</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+                        <p style="margin:0;font-size:13.5px;color:var(--text-muted)">
+                            Si el nombre <b>no</b> lleva abreviatura (<span class="fname">S01E01 Titulo.mp4</span>),
+                            quita la pieza <span class="blk g">abreviatura</span> y el
+                            <span class="blk c">espacio</span> que la sigue. Tambi&eacute;n puedes resolverlo
+                            de un golpe con la pieza <span class="blk k">SxxExx</span>.
+                        </p>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">6</span> Con palabras escritas</h5>
+                        <p style="margin-bottom:8px"><span class="fname">Serie temporada 3 capitulo 5 Titulo.mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk k">kw-temporada</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk k">kw-capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">cualquiera</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+                        <p style="margin:0;font-size:13.5px;color:var(--text-muted)">
+                            Como <span class="blk g">titulo</span> no se puede repetir, al final se usa
+                            <span class="blk g">cualquiera</span> para el texto sobrante.
+                        </p>
+                    </div>
+
+                    <div class="ex-card">
+                        <h5><span class="n">7</span> Con ordinal</h5>
+                        <p style="margin-bottom:8px"><span class="fname">XX 1ra temporada 1 Titulo [1080p].mp4</span></p>
+                        <div class="recipe">
+                            <span class="blk w">inicio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">abreviatura</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk k">ord-temporada</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk k">kw-capitulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk c">espacio</span><span class="sep">&rsaquo;</span>
+                            <span class="blk g">titulo</span><span class="sep">&rsaquo;</span>
+                            <span class="blk w">fin</span>
+                        </div>
+                        <p style="margin:0;font-size:13.5px;color:var(--text-muted)">
+                            <span class="blk k">ord-temporada</span> se traga
+                            &laquo;1ra temporada&raquo; entera de una sola pieza.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PRESETS ══════════ -->
+                <section id="presets" class="doc-section reveal">
+                    <h2>Los 26 formatos ya hechos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Antes de armar nada desde cero, mira el desplegable <span class="ui">Presets</span>:
+                        trae 26 formatos preparados. Al elegir uno se rellenan solos la receta, el
+                        t&iacute;tulo, el ejemplo y el campo de prueba. Aunque no encaje exactamente,
+                        <strong>es mucho m&aacute;s r&aacute;pido partir del m&aacute;s parecido y retocar
+                        una pieza</strong> que empezar de cero.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Grupo</th><th>Para qu&eacute; formatos</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">N<small>10 variantes</small></td>
+                                    <td>Abreviatura + cap&iacute;tulo + t&iacute;tulo. Cubre todas las combinaciones de espacios y separadores: <code>XX 001 Titulo</code>, <code>XX=001 Titulo</code>, <code>XX=002=Titulo</code>, <code>XX 003=Titulo</code>, <code>XX 002 - Titulo</code> &mdash; cada uno con y sin etiquetas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">NxN<small>10 variantes</small></td>
+                                    <td>Igual pero con temporada y cap&iacute;tulo: <code>XX 1x02 Serie</code>, <code>XX=1x01 Serie</code>, <code>XX 1x01 - Serie</code>&hellip;</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Nombre<small>4 variantes</small></td>
+                                    <td>T&iacute;tulo + cap&iacute;tulo + negocio: <code>Title-001-Negocio</code> y <code>Title-1x01-Negocio</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">General<small>2 variantes</small></td>
+                                    <td>Comodines muy flexibles para formatos raros. <b>Vienen desactivados a prop&oacute;sito</b> &mdash; ver el aviso de abajo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>C&oacute;mo elegir el preset</h3>
+                    <ol class="step-list">
+                        <li><strong>&iquest;Hay un c&oacute;digo corto al principio?</strong> Si el nombre empieza por algo tipo <code>XX</code> o <code>NV</code>, tu grupo es <b>N</b> o <b>NxN</b>.</li>
+                        <li><strong>&iquest;Hay temporada y cap&iacute;tulo?</strong> Si ves algo como <code>1x02</code>, es <b>NxN</b>. Si solo hay un n&uacute;mero, es <b>N</b>.</li>
+                        <li><strong>&iquest;Aparece el nombre del negocio?</strong> Entonces es el grupo <b>Nombre</b>.</li>
+                        <li><strong>&iquest;No lo tienes claro?</strong> Empieza por <b>General</b> y ajusta las piezas hasta que la prueba d&eacute; los valores correctos.</li>
+                    </ol>
+
+                    <div class="callout warn">
+                        <h4>Por qu&eacute; los &laquo;General&raquo; vienen desactivados</h4>
+                        <p>
+                            Son tan flexibles que reconocen casi cualquier cosa &mdash; y ah&iacute;
+                            est&aacute; el peligro: si est&aacute;n activos y colocados arriba, se
+                            &laquo;tragan&raquo; nombres que otro patr&oacute;n habr&iacute;a le&iacute;do
+                            mucho mejor. &Uacute;salos como punto de partida, o d&eacute;jalos activos pero
+                            <b>siempre los &uacute;ltimos</b> de la lista.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ORDEN ══════════ -->
+                <section id="orden" class="doc-section reveal">
+                    <h2>El orden es la prioridad</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Este es el concepto <strong>m&aacute;s importante</strong> de toda la herramienta, y
+                        el que m&aacute;s problemas causa cuando no se conoce.
+                    </p>
+                    <p>
+                        Cuando el Copier tiene que leer el nombre de un archivo, recorre tu lista de
+                        patrones <b>de arriba hacia abajo</b>, se salta los desactivados, y
+                        <strong>se queda con el primero que encaje</strong>. Los dem&aacute;s ni los prueba.
+                        De ah&iacute; el nombre: patrones de <b>prioridad</b>.
+                    </p>
+                    <div class="callout danger">
+                        <h4>La consecuencia pr&aacute;ctica</h4>
+                        <ul>
+                            <li>Los patrones <b>m&aacute;s espec&iacute;ficos van arriba</b>.</li>
+                            <li>Los <b>comodines van abajo</b>, siempre.</li>
+                            <li>Si un patr&oacute;n muy general est&aacute; el primero, anular&aacute; a todos los que vengan detr&aacute;s aunque sean mejores.</li>
+                        </ul>
+                    </div>
+                    <p>
+                        En la tabla de la herramienta, el orden es el orden en que fuiste agregando: el
+                        primero de arriba es el de m&aacute;s prioridad. Para cambiarlo, elimina y vuelve a
+                        agregar en el orden que quieras.
+                    </p>
+
+                    <h3>Activo y desactivado</h3>
+                    <p>
+                        La casilla <span class="ui">Activo</span> decide si el Copier usa ese patr&oacute;n o
+                        lo ignora. Un patr&oacute;n desactivado sigue guardado, pero es como si no
+                        existiera. Sirve para:
+                    </p>
+                    <ul>
+                        <li>Probar cosas sin tener que borrar nada.</li>
+                        <li>Guardar plantillas de reserva para proveedores que solo usas de vez en cuando.</li>
+                        <li>Apagar un patr&oacute;n demasiado &laquo;goloso&raquo; que te est&aacute; leyendo mal otros nombres.</li>
+                    </ul>
+                </section>
+
+                <!-- ══════════ EXPORTAR ══════════ -->
+                <section id="exportar" class="doc-section reveal">
+                    <h2>Exportar e instalar</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Terminar el patr&oacute;n en la herramienta no basta: hay que <b>llevarlo al
+                        Copier</b>. Son tres pasos.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Pulsa Exportar JSON</strong>
+                            Se descarga un archivo llamado exactamente
+                            <span class="path">priority_patterns.json</span>, normalmente a tu carpeta de
+                            <b>Descargas</b>.
+                        </li>
+                        <li>
+                            <strong>C&oacute;pialo a la carpeta Data</strong>
+                            P&eacute;galo dentro de la carpeta <span class="path">Data</span> de la
+                            instalaci&oacute;n de la Suite, reemplazando el que hubiera. Es la misma carpeta
+                            donde va la <a href="primeros-pasos.html#licencia">licencia</a>.
+                        </li>
+                        <li>
+                            <strong>Cierra y vuelve a abrir la Suite</strong>
+                            Los patrones se leen <b>una sola vez, al arrancar</b>. Si no reinicias, los
+                            cambios no tienen efecto.
+                        </li>
+                    </ol>
+
+                    <div class="callout danger">
+                        <h4>Nunca edites ese archivo a mano</h4>
+                        <p>
+                            No lo abras con el Bloc de notas para &laquo;arreglar&raquo; algo. Tiene un
+                            formato muy estricto y basta un car&aacute;cter mal puesto para romperlo. Y
+                            cuando el archivo est&aacute; roto o vac&iacute;o, el Copier lo
+                            <b>sobrescribe con los patrones de f&aacute;brica</b>: perder&iacute;as todo tu
+                            trabajo. Haz siempre los cambios desde la herramienta y vuelve a exportar.
+                        </p>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Truco: parte de los patrones de f&aacute;brica</h4>
+                        <p>
+                            Si arrancas la Suite y ese archivo no existe, el programa lo crea solo con los
+                            patrones que trae de f&aacute;brica. Puedes abrir ese archivo,
+                            <a href="#importar">importarlo</a> en la herramienta y as&iacute; empezar con
+                            todos los patrones existentes en la tabla, en vez de partir de cero.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Tus patrones sustituyen a los de f&aacute;brica</h4>
+                        <p>
+                            Cuando instalas tu archivo, el Copier usa <b>&uacute;nicamente</b> los patrones
+                            que hay en &eacute;l. Los de f&aacute;brica dejan de aplicarse. Por eso conviene
+                            importar primero los existentes y a&ntilde;adir los tuyos, en vez de exportar
+                            solo el nuevo.
+                        </p>
+                    </div>
+                    <p>
+                        El bot&oacute;n <span class="ui">Copiar JSON</span> hace lo mismo pero al
+                        portapapeles, sin descargar archivo. El bot&oacute;n
+                        <span class="ui">Copiar C#</span> es solo para el desarrollador; como cliente no lo
+                        necesitas nunca.
+                    </p>
+                </section>
+
+                <!-- ══════════ IMPORTAR ══════════ -->
+                <section id="importar" class="doc-section reveal">
+                    <h2>Importar y editar</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Pulsa Importar JSON</strong>
+                            Arriba a la derecha.
+                        </li>
+                        <li>
+                            <strong>Carga el archivo o pega su contenido</strong>
+                            Con <span class="ui">Cargar Archivo</span> lo eliges del disco; tambi&eacute;n
+                            puedes pegar el texto directamente en el recuadro.
+                        </li>
+                        <li>
+                            <strong>Pulsa Importar</strong>
+                            Te dir&aacute; cu&aacute;ntos patrones se cargaron.
+                        </li>
+                    </ol>
+                    <div class="callout warn">
+                        <h4>Importar reemplaza la tabla</h4>
+                        <p>
+                            Los patrones importados <b>sustituyen</b> a los que tuvieras en la tabla, no se
+                            suman. Si llevabas trabajo hecho, exp&oacute;rtalo antes.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Los patrones importados no se pueden desarmar</h4>
+                        <p>
+                            Al importar, se recupera el t&iacute;tulo, el ejemplo y si est&aacute; activo,
+                            pero <b>no las piezas de colores</b>. Si pulsas
+                            <span class="ui">Editar</span> sobre un patr&oacute;n importado, la receta
+                            aparecer&aacute; vac&iacute;a. Para modificarlo hay que rehacerlo con las
+                            piezas &mdash; por eso conviene que la herramienta sea siempre tu punto de
+                            partida.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PROBLEMAS ══════════ -->
+                <section id="problemas" class="doc-section reveal">
+                    <h2>Problemas frecuentes</h2>
+                    <div class="doc-rule"></div>
+
+                    <h3>Al armar el patr&oacute;n</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Lo que pasa</th><th>Soluci&oacute;n</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Dice &laquo;Sin coincidencia&raquo;</td><td>Casi siempre es la uni&oacute;n equivocada. Si el archivo lleva <code>=</code> o <code>-</code>, usa <span class="blk c">separador</span>, no <span class="blk c">espacio</span>.</td></tr>
+                                <tr><td class="nm">El t&iacute;tulo se come los corchetes o el <code>.mp4</code></td><td>Falta la pieza <span class="blk w">fin</span> al final de la receta.</td></tr>
+                                <tr><td class="nm">El cap&iacute;tulo o la temporada salen vac&iacute;os</td><td>Est&aacute;s usando la pieza verde cuando el nombre lleva la palabra escrita. Cambia a <span class="blk k">kw-capitulo</span> o <span class="blk k">kw-temporada</span>.</td></tr>
+                                <tr><td class="nm">No reconoce &laquo;1ra Temporada&raquo;</td><td>Usa <span class="blk k">ord-temporada</span>, que junta el ordinal y la palabra.</td></tr>
+                                <tr><td class="nm">No reconoce &laquo;S01E01&raquo;</td><td>Faltan las uniones <span class="blk c">s</span> y <span class="blk c">e</span>, o usa directamente la pieza <span class="blk k">SxxExx</span>.</td></tr>
+                                <tr><td class="nm">&laquo;Ya existe un bloque&hellip;&raquo;</td><td>Est&aacute;s repitiendo una pieza verde. Si necesitas otra captura, usa <span class="blk g">cualquiera</span> o una pieza amarilla.</td></tr>
+                                <tr><td class="nm">&laquo;No puede haber dos conectores seguidos&raquo;</td><td>Entre dos datos va una sola uni&oacute;n. Quita la que sobra.</td></tr>
+                                <tr><td class="nm">&laquo;Escribe un titulo&raquo; al agregar</td><td>El campo <span class="ui">Titulo</span> es obligatorio. Ponle un nombre que reconozcas, como &laquo;Proveedor NV con etiquetas&raquo;.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Al abrir o instalar</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Lo que pasa</th><th>Soluci&oacute;n</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">El bot&oacute;n &laquo;Crear Patrones&raquo; no hace nada</td><td>Falta el complemento en tu instalaci&oacute;n. Reinstala o actualiza la Suite.</td></tr>
+                                <tr><td class="nm">El navegador dice que no puede conectar</td><td>La herramienta no est&aacute; arrancada, o falta el programa que necesita para funcionar, o hay otro programa ocupando la misma direcci&oacute;n. Cierra y vuelve a pulsar <span class="ui">Crear Patrones</span>.</td></tr>
+                                <tr><td class="nm">Cerr&eacute; una ventana negra y la p&aacute;gina dej&oacute; de cargar</td><td>Esa ventana era la herramienta. Vuelve a abrirla desde el Lanzador.</td></tr>
+                                <tr><td class="nm">Instal&eacute; el archivo y el Copier sigue igual</td><td>Hay que <b>cerrar y volver a abrir</b> la Suite: los patrones se leen solo al arrancar.</td></tr>
+                                <tr><td class="nm">Puse mi archivo y volvieron los patrones de f&aacute;brica</td><td>El archivo estaba da&ntilde;ado y el programa lo reemplaz&oacute;. Vuelve a exportarlo desde la herramienta y no lo edites a mano.</td></tr>
+                                <tr><td class="nm">Import&eacute; un archivo y las filas salen vac&iacute;as</td><td>Ese archivo no tiene el formato correcto. Usa siempre uno exportado por esta herramienta o generado por la propia Suite.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>El Constructor de Patrones en funcionamiento, paso a paso.</p>
+                    <div data-videos="copier"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="copier.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Manual del Copier</span>
+                    </a>
+                    <a href="converter.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual del Converter</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

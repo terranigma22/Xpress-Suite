@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ControlStats &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body data-accent="controlstats">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" class="active" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb"><a href="index.html">Inicio</a><span>&rsaquo;</span>ControlStats</div>
+            <div class="doc-title-row">
+                <img src="assets/img/logos/controlstats.png" alt="">
+                <span class="doc-badge">Manual de usuario</span>
+                <h1>ControlStats</h1>
+            </div>
+            <p class="doc-lead">
+                Las cuentas del negocio. Aqu&iacute; ves <strong>cu&aacute;nto se trabaj&oacute; y
+                cu&aacute;nto se cobr&oacute;</strong>: por d&iacute;a, por periodo, por dispositivo y por
+                trabajador. Cada empleado entra con su usuario y marca su turno, y t&uacute; sacas
+                reportes en HTML listos para imprimir o enviar.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#dos-fuentes">Estad&iacute;sticas y Monitoreo</a></li>
+                        <li><a href="#entrar">Entrar por primera vez</a></li>
+                        <li><a href="#login">Iniciar sesi&oacute;n cada d&iacute;a</a></li>
+                        <li><a href="#roles">Administrador y trabajador</a></li>
+                        <li><a href="#turnos">Los turnos</a></li>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#dia">D&iacute;a</a></li>
+                        <li><a href="#dispositivos">Dispositivos</a></li>
+                        <li><a href="#sesiones">Sesiones y detalle</a></li>
+                        <li><a href="#comparador">Comparador</a></li>
+                        <li><a href="#reportes">Reportes</a></li>
+                        <li><a href="#cobros">Corregir un cobro</a></li>
+                        <li><a href="#trabajadores">Trabajadores</a></li>
+                        <li><a href="#config">Configuraci&oacute;n</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ DOS FUENTES ══════════ -->
+                <section id="dos-fuentes" class="doc-section reveal">
+                    <h2>Estad&iacute;sticas y Monitoreo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Lo primero que hay que entender de ControlStats: el men&uacute; tiene
+                        <strong>dos secciones parecidas pero distintas</strong>, porque los datos vienen de
+                        dos sitios diferentes.
+                    </p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><img src="assets/img/logos/copier.png" alt=""> Estad&iacute;sticas</h5>
+                            <p>Lo que registra el <b>Copier</b> cuando alguien copia y cobra. Es el trabajo
+                            hecho a prop&oacute;sito por un trabajador. Aqu&iacute; est&aacute;n los cobros.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Monitoreo</h5>
+                            <p>Lo que detecta solo el servicio <a href="observer.html"><b>Observer</b></a>
+                            en segundo plano: todo lo que entra y sale de los dispositivos, aunque nadie
+                            haya usado el Copier.</p>
+                        </div>
+                    </div>
+                    <p>
+                        Las pantallas de ambas secciones son pr&aacute;cticamente iguales, as&iacute; que este
+                        manual las explica una sola vez. Lo que cambia es de d&oacute;nde salen los
+                        n&uacute;meros.
+                    </p>
+                    <div class="callout tip">
+                        <h4>Para qu&eacute; sirve comparar las dos</h4>
+                        <p>
+                            Si <b>Monitoreo</b> muestra bastante m&aacute;s movimiento que
+                            <b>Estad&iacute;sticas</b>, significa que se copiaron cosas fuera del Copier
+                            &mdash; arrastrando archivos directamente en Windows, por ejemplo &mdash; y por
+                            tanto sin cobrar. Es la mejor herramienta de control que tienes.
+                        </p>
+                    </div>
+                    <div class="callout warn">
+                        <h4>La secci&oacute;n Monitoreo puede estar vac&iacute;a</h4>
+                        <p>
+                            Solo tiene datos si el servicio Observer est&aacute; instalado y tu licencia lo
+                            cubre. Ver <a href="observer.html">manual del Observer</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ENTRAR ══════════ -->
+                <section id="entrar" class="doc-section reveal">
+                    <h2>Entrar por primera vez</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Crea el administrador inicial</strong>
+                            La primera vez, en la pantalla <span class="ui">Iniciar Sesi&oacute;n</span>,
+                            pulsa el enlace <span class="ui">Crear administrador inicial</span>.
+                        </li>
+                        <li>
+                            <strong>Rellena los datos</strong>
+                            <span class="ui">Usuario</span>,
+                            <span class="ui">Nombre a mostrar</span> (el que ver&aacute;n los dem&aacute;s),
+                            <span class="ui">Contrase&ntilde;a</span> y
+                            <span class="ui">Confirmar contrase&ntilde;a</span>. Pulsa
+                            <span class="ui">Crear Administrador</span>.
+                        </li>
+                        <li>
+                            <strong>Entra con ese usuario</strong>
+                            Ya tienes acceso a todo. Esta cuenta es la due&ntilde;a del sistema.
+                        </li>
+                        <li>
+                            <strong>Crea las cuentas de tus trabajadores</strong>
+                            Desde <span class="path">Administraci&oacute;n &rsaquo; Trabajadores</span>.
+                            Ver <a href="#trabajadores">Trabajadores</a>.
+                        </li>
+                    </ol>
+                    <div class="callout danger">
+                        <h4>La contrase&ntilde;a de administrador no se puede recuperar</h4>
+                        <p>
+                            Las contrase&ntilde;as se guardan cifradas: ni el propio programa puede leerlas.
+                            Ap&uacute;ntala en un lugar seguro.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ LOGIN DIARIO ══════════ -->
+                <section id="login" class="doc-section reveal">
+                    <h2>Iniciar sesi&oacute;n cada d&iacute;a</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Una vez creadas las cuentas, entrar es muy r&aacute;pido. La pantalla de
+                        <span class="ui">Iniciar Sesi&oacute;n</span> ya <b>no te pide escribir el
+                        usuario</b>: muestra la <b>lista de todos los usuarios activos</b> para que elijas
+                        el tuyo.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Elige tu usuario en la lista</strong>
+                            Pulsa tu nombre. Si en el sistema hay <b>un solo usuario</b>, ya queda
+                            seleccionado y solo tienes que poner la contrase&ntilde;a.
+                        </li>
+                        <li>
+                            <strong>Escribe tu contrase&ntilde;a y entra</strong>
+                            Nada m&aacute;s. Entras directo a la pantalla de <a href="#inicio">Inicio</a>
+                            (siempre se abre ah&iacute;, sin importar en qu&eacute; pantalla te quedaste la
+                            &uacute;ltima vez).
+                        </li>
+                    </ol>
+                    <div class="callout tip">
+                        <h4>Se ve qui&eacute;n est&aacute; en turno desde el login</h4>
+                        <p>
+                            En la lista de usuarios, quien tenga un <b>turno abierto</b> aparece con un
+                            <b>indicador verde</b> y la <b>hora en que lo inici&oacute;</b>. As&iacute; sabes,
+                            antes de entrar, si alguien dej&oacute; su turno sin cerrar.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Te pregunta por el turno al entrar</h4>
+                        <p>
+                            Si entras como <b>trabajador</b> y no tienes turno activo, el programa te
+                            <b>ofrece iniciarlo</b> en el momento. Y si otro trabajador tiene un turno
+                            abierto, te ofrece <b>cerrar el suyo e iniciar el tuyo</b>, para que las
+                            estad&iacute;sticas queden bien asignadas. M&aacute;s sobre esto en
+                            <a href="#turnos">Los turnos</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ROLES ══════════ -->
+                <section id="roles" class="doc-section reveal">
+                    <h2>Administrador y trabajador</h2>
+                    <div class="doc-rule"></div>
+                    <p>Hay dos tipos de cuenta, y cada una ve un men&uacute; distinto:</p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Pantalla</th><th>Qui&eacute;n la ve</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Inicio</td><td>Administrador y trabajador</td></tr>
+                                <tr><td class="nm">Estad&iacute;sticas &rsaquo; D&iacute;a</td><td>Administrador y trabajador</td></tr>
+                                <tr><td class="nm">Estad&iacute;sticas &rsaquo; Dispositivos, Comparador, Reportes</td><td>Solo administrador</td></tr>
+                                <tr><td class="nm">Monitoreo (todas sus pantallas)</td><td>Solo administrador</td></tr>
+                                <tr><td class="nm">Administraci&oacute;n &rsaquo; Trabajadores</td><td>Solo administrador</td></tr>
+                                <tr><td class="nm">Configuraci&oacute;n</td><td>Solo administrador</td></tr>
+                                <tr><td class="nm">Iniciar / Finalizar turno</td><td>Trabajadores</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Es decir: el trabajador puede ver c&oacute;mo va el d&iacute;a y marcar su turno,
+                        pero no puede consultar comparativas, sacar reportes ni crear usuarios.
+                    </p>
+                    <p>
+                        En el panel lateral est&aacute; siempre tu ficha, con tu nombre, tu rol y el
+                        bot&oacute;n rojo de <span class="ui">Cerrar sesi&oacute;n</span> (pide
+                        confirmaci&oacute;n). El t&iacute;tulo de la ventana muestra el <b>nombre del
+                        equipo</b>, &uacute;til cuando tienes varias computadoras trabajando.
+                    </p>
+                </section>
+
+                <!-- ══════════ TURNOS ══════════ -->
+                <section id="turnos" class="doc-section reveal">
+                    <h2>Los turnos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El turno es lo que permite saber <b>qui&eacute;n hizo qu&eacute;</b>. Cada trabajador,
+                        al llegar, pulsa <span class="ui">Iniciar turno</span> en el pie del men&uacute;;
+                        al irse, <span class="ui">Finalizar turno</span>. Ambos piden confirmaci&oacute;n
+                        con <span class="ui">S&iacute;</span> / <span class="ui">No</span>.
+                    </p>
+                    <p>
+                        Adem&aacute;s, ya no hace falta acordarse: al <a href="#login">iniciar sesi&oacute;n</a>
+                        el programa <b>te pregunta solo</b> si quieres abrir tu turno. Y si otro trabajador
+                        se dej&oacute; el suyo abierto, te ofrece <b>cerrar el de esa persona</b> y abrir el
+                        tuyo en el mismo paso &mdash; as&iacute; el trabajo nunca queda asignado a quien no
+                        toca.
+                    </p>
+                    <p>
+                        Todo lo que se copie y se cobre mientras el turno est&aacute; abierto queda asociado
+                        a esa persona. Eso es lo que despu&eacute;s permite filtrar los
+                        <a href="#reportes">reportes</a> por trabajador.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Si nadie marca el turno</h4>
+                        <p>
+                            El trabajo se registra igual, pero no se puede saber qui&eacute;n lo hizo, y el
+                            desglose por trabajador quedar&aacute; vac&iacute;o. Conviene convertirlo en
+                            rutina: lo primero al llegar y lo &uacute;ltimo al irse.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ INICIO ══════════ -->
+                <section id="inicio" class="doc-section reveal">
+                    <h2>Inicio</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Es la pantalla de bienvenida: un saludo, la informaci&oacute;n de tu turno y
+                        <b>dos tarjetas resumen</b> &mdash; una de <span class="ui">Estad&iacute;sticas</span>
+                        y otra de <span class="ui">Monitoreo</span> &mdash; con lo m&aacute;s importante del
+                        d&iacute;a:
+                    </p>
+                    <ul>
+                        <li><b>Dispositivos atendidos</b> &mdash; cu&aacute;ntas memorias, discos o celulares pasaron por el negocio.</li>
+                        <li><b>Gigas copiados</b> &mdash; el volumen total de trabajo.</li>
+                        <li><b>Total</b> &mdash; el dinero acumulado.</li>
+                        <li><b>Top archivos copiados</b> &mdash; qu&eacute; es lo que m&aacute;s se lleva la gente. Muy &uacute;til para saber qu&eacute; conviene tener siempre a mano.</li>
+                        <li><b>Horas pico</b> &mdash; a qu&eacute; hora hay m&aacute;s movimiento. Sirve para organizar el personal.</li>
+                    </ul>
+                    <p>
+                        Mientras carga aparece <span class="ui">Actualizando&hellip;</span>, y si todav&iacute;a
+                        no hay movimiento, <span class="ui">Sin datos</span>.
+                    </p>
+                </section>
+
+                <!-- ══════════ DÍA ══════════ -->
+                <section id="dia" class="doc-section reveal">
+                    <h2>D&iacute;a</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El detalle de una jornada concreta. Es la pantalla del cierre de caja.
+                    </p>
+                    <ul>
+                        <li>Un <b>selector de fecha</b> arriba: por defecto hoy, pero puedes consultar cualquier d&iacute;a pasado.</li>
+                        <li>Un <b>buscador</b> para localizar un dispositivo por su nombre.</li>
+                        <li>Cinco tarjetas de resumen: <span class="ui">Sesiones</span>, <span class="ui">Dispositivos</span>, <span class="ui">Archivos</span>, <span class="ui">Copiado</span> y <span class="ui">Total</span>.</li>
+                        <li>Un <b>&aacute;rbol de dispositivos</b> que se despliega para ver el detalle de cada uno, con paginaci&oacute;n (<span class="ui">Primero</span>, <span class="ui">Anterior</span>, <span class="ui">Siguiente</span>, <span class="ui">&Uacute;ltimo</span>).</li>
+                        <li>Los botones <span class="ui">Actualizar</span> y <span class="ui">Exportar HTML</span>.</li>
+                    </ul>
+                    <div class="callout tip">
+                        <h4>Rutina de cierre</h4>
+                        <p>
+                            Al terminar la jornada, entra en <b>D&iacute;a</b>, comprueba que el
+                            <span class="ui">Total</span> coincide con lo que hay en caja y pulsa
+                            <span class="ui">Exportar HTML</span>. Te queda el respaldo del d&iacute;a
+                            guardado como archivo.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ DISPOSITIVOS ══════════ -->
+                <section id="dispositivos" class="doc-section reveal">
+                    <h2>Dispositivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El ranking de todos los dispositivos que han pasado por el negocio. Sirve para
+                        identificar a tus clientes habituales.
+                    </p>
+
+                    <h4>Filtro de per&iacute;odo</h4>
+                    <p>
+                        Hoy &middot; Esta semana &middot; Semana pasada &middot; Este mes &middot; Mes pasado
+                        &middot; &Uacute;ltimos 7, 15 o 30 d&iacute;as &middot; Todo.
+                    </p>
+
+                    <h4>Ordenaci&oacute;n</h4>
+                    <p>
+                        Nombre A-Z o Z-A &middot; M&aacute;s o menos archivos &middot; M&aacute;s o menos
+                        sesiones &middot; Mayor o menor tama&ntilde;o &middot; Mayor o menor pago.
+                    </p>
+                    <p>
+                        Ordenando por <b>mayor pago</b> descubres de un vistazo qui&eacute;nes son tus
+                        mejores clientes.
+                    </p>
+
+                    <h4>Men&uacute; del clic derecho</h4>
+                    <div class="term-list">
+                        <dt>Ver Sesiones</dt><dd>Abre el historial completo de ese dispositivo.</dd>
+                        <dt>Exportar Dispositivo</dt><dd>Genera un informe HTML solo de ese dispositivo.</dd>
+                    </div>
+
+                    <h4>Los iconos</h4>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead><tr><th></th><th>Tipo de dispositivo</th><th></th><th>Forma de cobro</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/usb_memory.png" alt=""></td><td class="nm">Memoria USB</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/gb.png" alt=""></td><td class="nm">Por GB</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/external_disk.png" alt=""></td><td class="nm">Disco externo</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/file.png" alt=""></td><td class="nm">Por fichero</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/hard_disk.png" alt=""></td><td class="nm">Disco interno</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/device.png" alt=""></td><td class="nm">Por dispositivo</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/boot_disk.png" alt=""></td><td class="nm">Disco de arranque</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/directories.png" alt=""></td><td class="nm">Por directorios</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/network_disk.png" alt=""></td><td class="nm">Unidad de red</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/file_duration.png" alt=""></td><td class="nm">Por duraci&oacute;n</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/controlstats/devices/cell.png" alt=""></td><td class="nm">Celular o tablet</td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/duration.png" alt=""></td><td class="nm">Por duraci&oacute;n total</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"></td><td class="nm"></td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/hand.png" alt=""></td><td class="nm">Manual</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"></td><td class="nm"></td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/no_pay.png" alt=""></td><td class="nm">Sin cobro</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"></td><td class="nm"></td>
+                                    <td class="ic"><img src="assets/img/controlstats/payments/cashed.png" alt=""></td><td class="nm">Ya cobrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ SESIONES ══════════ -->
+                <section id="sesiones" class="doc-section reveal">
+                    <h2>Sesiones y detalle</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Una <b>sesi&oacute;n</b> es cada vez que un dispositivo se conect&oacute; y se
+                        trabaj&oacute; con &eacute;l. Esta pantalla tiene dos columnas:
+                    </p>
+                    <ul>
+                        <li>A la <b>izquierda</b>, la lista de sesiones de ese dispositivo, con su buscador (<span class="ui">Buscar en sesiones&hellip;</span>).</li>
+                        <li>A la <b>derecha</b>, el <span class="ui">Detalle de la Sesi&oacute;n</span>: los archivos copiados y los eliminados, con su propio buscador (<span class="ui">Buscar en esta sesi&oacute;n&hellip;</span>).</li>
+                    </ul>
+                    <p>
+                        Arriba se ven los totales de esa sesi&oacute;n: <span class="ui">Archivos</span>,
+                        <span class="ui">Copiado</span> y <span class="ui">Pago</span>. El bot&oacute;n
+                        <span class="ui">Volver</span> regresa a la lista de dispositivos.
+                    </p>
+                    <div class="callout tip">
+                        <h4>La herramienta para resolver reclamaciones</h4>
+                        <p>
+                            Cuando un cliente dice que le falta algo o que le cobraron de m&aacute;s, aqu&iacute;
+                            tienes la prueba: qu&eacute; archivos exactos se copiaron, cu&aacute;ndo y por
+                            cu&aacute;nto.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ COMPARADOR ══════════ -->
+                <section id="comparador" class="doc-section reveal">
+                    <h2>Comparador</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Pone dos periodos uno al lado del otro para ver si el negocio sube o baja. Se
+                        definen el <span class="ui">Periodo Base</span> y el
+                        <span class="ui">Periodo Comparaci&oacute;n</span>, cada uno con su
+                        <span class="ui">Desde</span> y <span class="ui">Hasta</span>, o con los atajos
+                        (Hoy, Ayer, Esta semana&hellip;).
+                    </p>
+                    <p>Se comparan las cifras totales &mdash; sesiones, dispositivos, archivos, copiado,
+                    total y d&iacute;as &mdash; y adem&aacute;s tres grupos de promedios, que son lo
+                    verdaderamente interesante:</p>
+                    <div class="term-list">
+                        <dt>Por D&iacute;a</dt>
+                        <dd>Sesiones, archivos y pago por d&iacute;a. Permite comparar periodos de
+                        distinta duraci&oacute;n de forma justa: no es lo mismo un mes de 30 d&iacute;as
+                        que una semana.</dd>
+                        <dt>Por Sesi&oacute;n</dt>
+                        <dd>Archivos, copiado y pago por sesi&oacute;n. Responde a
+                        &laquo;&iquest;cu&aacute;nto me deja cada cliente?&raquo;. Si baja, quiz&aacute;
+                        vino m&aacute;s gente pero gast&oacute; menos cada uno.</dd>
+                        <dt>Por Archivo</dt>
+                        <dd>Cu&aacute;nto ocupa de media cada archivo. Sube cuando se copian
+                        pel&iacute;culas en alta calidad y baja cuando se copia m&uacute;sica o
+                        documentos.</dd>
+                    </div>
+                    <p>El resultado se puede guardar con <span class="ui">Exportar HTML</span>.</p>
+                </section>
+
+                <!-- ══════════ REPORTES ══════════ -->
+                <section id="reportes" class="doc-section reveal">
+                    <h2>Reportes</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Genera informes completos y exportables, con estad&iacute;sticas agregadas, ranking
+                        de dispositivos, top de archivos y actividad por hora.
+                    </p>
+                    <p>En la tarjeta <span class="ui">Configuraci&oacute;n del Reporte</span> eliges:</p>
+                    <div class="term-list">
+                        <dt>Per&iacute;odo</dt>
+                        <dd>
+                            Agrupado para encontrarlo r&aacute;pido:
+                            <b>D&iacute;as</b> (hoy, ayer, 7, 15, 30 o 60 d&iacute;as),
+                            <b>Semanas</b> (esta semana, semana pasada),
+                            <b>Meses</b> (este mes, mes pasado),
+                            <b>Trimestres</b>, <b>Semestres</b>, <b>Anual</b> (este a&ntilde;o, a&ntilde;o
+                            pasado) y <b>Personalizado</b> para un rango libre.
+                        </dd>
+                        <dt>Trabajador</dt>
+                        <dd>Por defecto <span class="ui">Todos los trabajadores</span>, o uno concreto
+                        para ver solo su rendimiento.</dd>
+                        <dt>Rango de fechas</dt>
+                        <dd>Se ajusta solo seg&uacute;n el periodo elegido. Solo hay que tocarlo si usas
+                        <b>Personalizado</b>.</dd>
+                    </div>
+                    <p>Se genera con <span class="ui">Exportar Reporte</span>.</p>
+                    <div class="callout tip">
+                        <h4>Reportes que conviene sacar</h4>
+                        <ul>
+                            <li><b>Cada d&iacute;a</b>, el del d&iacute;a: es tu respaldo del cierre.</li>
+                            <li><b>Cada mes</b>, el del mes: para las cuentas del negocio.</li>
+                            <li><b>Por trabajador</b>, cuando quieras revisar el rendimiento de alguien.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ══════════ COBROS ══════════ -->
+                <section id="cobros" class="doc-section reveal">
+                    <h2>Corregir un cobro</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Si un importe qued&oacute; mal registrado, se corrige con el di&aacute;logo
+                        <span class="ui">Cambiar Pago</span>:
+                    </p>
+                    <div class="term-list">
+                        <dt>Monto</dt><dd>El importe correcto.</dd>
+                        <dt>Pagado (Cashed)</dt><dd>Marca si el cliente ya pag&oacute; o queda pendiente.</dd>
+                        <dt>Nota / Observaci&oacute;n</dt><dd>Hasta 500 caracteres para explicar por qu&eacute; se corrigi&oacute;. <b>Escr&iacute;bela siempre</b>: dentro de un mes no te acordar&aacute;s.</dd>
+                    </div>
+                    <p>Se confirma con <span class="ui">Guardar</span> o se descarta con
+                    <span class="ui">Cancelar</span>.</p>
+                </section>
+
+                <!-- ══════════ TRABAJADORES ══════════ -->
+                <section id="trabajadores" class="doc-section reveal">
+                    <h2>Trabajadores</h2>
+                    <div class="doc-rule"></div>
+                    <p>Solo la ve el administrador. Muestra la lista de usuarios con su fecha de
+                    <span class="ui">Creado</span>.</p>
+                    <div class="term-list">
+                        <dt>Crear trabajador</dt>
+                        <dd>Abre <span class="ui">Nuevo Trabajador</span>: usuario, nombre a mostrar,
+                        contrase&ntilde;a y confirmaci&oacute;n. Cada empleado debe tener el suyo, nunca
+                        uno compartido: si no, no se puede saber qui&eacute;n hizo qu&eacute;.</dd>
+                        <dt>Deshabilitar usuario</dt>
+                        <dd>Le quita el acceso <b>sin borrar su historial</b>. Es lo que hay que hacer
+                        cuando alguien deja de trabajar contigo: sus datos siguen contando en los
+                        reportes hist&oacute;ricos, pero ya no puede entrar.</dd>
+                        <dt>Habilitar usuario</dt>
+                        <dd>Le devuelve el acceso.</dd>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONFIGURACIÓN ══════════ -->
+                <section id="config" class="doc-section reveal">
+                    <h2>Configuraci&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <p>Solo accesible para el administrador.</p>
+
+                    <h4>Estilo de exportaci&oacute;n HTML</h4>
+                    <p>C&oacute;mo se ven los reportes que generas. Cuatro dise&ntilde;os:</p>
+                    <div class="term-list">
+                        <dt>Cl&aacute;sico</dt><dd>Sobrio y directo, sin adornos.</dd>
+                        <dt>Moderno</dt><dd>Dise&ntilde;o actual, con m&aacute;s color y contraste.</dd>
+                        <dt>Corporativo</dt><dd>Formal, pensado para presentar a terceros.</dd>
+                        <dt>M&iacute;nimo</dt><dd>Lo justo. El que mejor sale al imprimir en blanco y negro.</dd>
+                    </div>
+
+                    <h4>Paleta de colores</h4>
+                    <p>
+                        Diez combinaciones para los reportes: Est&aacute;ndar, Oce&aacute;nico, Solar,
+                        Berrima, Bosque, Coral, Noche, Lavanda, Menta y Vino. Es puramente est&eacute;tico:
+                        elige la que mejor combine con la imagen de tu negocio.
+                    </p>
+
+                    <h4>Tema de la aplicaci&oacute;n</h4>
+                    <p>
+                        El bot&oacute;n <span class="ui">Cambiar tema</span> de la barra de t&iacute;tulo
+                        alterna entre claro y oscuro, y la elecci&oacute;n queda guardada.
+                    </p>
+                    <div class="callout">
+                        <h4>Los reportes son archivos independientes</h4>
+                        <p>
+                            Un reporte exportado es un archivo <b>.html</b> que se abre en cualquier
+                            navegador, en cualquier computadora o tel&eacute;fono, sin necesidad de tener
+                            instalada la suite. Se puede enviar por correo o por WhatsApp sin problema.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>ControlStats en funcionamiento, explicado paso a paso.</p>
+                    <div data-videos="controlstats"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="converter.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Manual del Converter</span>
+                    </a>
+                    <a href="observer.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual del Observer</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

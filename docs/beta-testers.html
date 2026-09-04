@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Testers &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #07070c;
+            --panel: #0d0d16;
+            --text-primary: #e0e0f0;
+            --text-soft: #b0b0c8;
+            --text-muted: #6b6b80;
+            --neon-blue: #00b4ff;
+            --neon-violet: #a064ff;
+            --neon-orange: #ff8800;
+            --neon-green: #00ff88;
+            --neon-cyan: #00c8c8;
+            --neon-pink: #ff2d95;
+            --neon-gold: #ffd700;
+            --neon-red: #ff4444;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap { max-width: 940px; margin: 0 auto; padding: 0 24px; }
+
+        code, .mono {
+            font-family: 'JetBrains Mono', ui-monospace, monospace;
+        }
+
+        /* ─────────── HERO ─────────── */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 96px 24px 56px;
+            overflow: hidden;
+        }
+        .hero-glow {
+            position: absolute; top: 40%; left: 50%;
+            width: 640px; height: 640px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0,200,200,.10), rgba(160,100,255,.06), rgba(255,45,149,.04), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 5s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity: .7; } 50% { opacity: 1; } }
+        .hero-grid {
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 26px 26px;
+            pointer-events: none;
+        }
+        .hero-inner { position: relative; z-index: 1; }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 9px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; font-weight: 500;
+            letter-spacing: .14em; text-transform: uppercase;
+            padding: 8px 18px; border-radius: 20px;
+            border: 1px solid rgba(0,200,200,.25);
+            background: rgba(0,200,200,.06);
+            color: var(--neon-cyan);
+            margin-bottom: 30px;
+        }
+        .badge-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0,255,136,.6);
+            animation: blink 2s ease-in-out infinite;
+        }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+
+        .hero h1 {
+            font-size: 60px; font-weight: 800;
+            letter-spacing: .01em; line-height: 1.08;
+            margin-bottom: 20px;
+        }
+        .hero h1 .grad {
+            background: linear-gradient(120deg, var(--neon-cyan), var(--neon-blue), var(--neon-violet));
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(0,200,200,.25);
+        }
+        .hero-sub {
+            font-size: 18px; color: var(--text-soft);
+            max-width: 640px; margin: 0 auto 36px; line-height: 1.7;
+        }
+        .hero-sub strong { color: #d8d8ec; font-weight: 600; }
+
+        .cta-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 15px; font-weight: 600;
+            padding: 14px 28px; border-radius: 12px;
+            text-decoration: none; cursor: pointer;
+            border: 1px solid transparent;
+            transition: transform .25s, box-shadow .25s, background .25s;
+        }
+        .btn .arrow { transition: transform .25s; }
+        .btn:hover .arrow { transform: translateX(4px); }
+        .btn-primary {
+            background: linear-gradient(120deg, rgba(0,200,200,.9), rgba(0,180,255,.9));
+            color: #04141a;
+            box-shadow: 0 8px 30px -10px rgba(0,200,200,.5);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px -8px rgba(0,200,200,.6); }
+        .btn-ghost {
+            border-color: rgba(255,255,255,.14);
+            color: var(--text-soft);
+            background: rgba(255,255,255,.03);
+        }
+        .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.28); color: #fff; }
+
+        /* ─────────── SECTIONS ─────────── */
+        section.block { padding: 46px 0; }
+        .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; flex-wrap: wrap; }
+        .sec-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+            padding: 5px 12px; border-radius: 16px;
+        }
+        .k-cyan   { color: var(--neon-cyan);   border: 1px solid rgba(0,200,200,.25);  background: rgba(0,200,200,.07); }
+        .k-green  { color: var(--neon-green);  border: 1px solid rgba(0,255,136,.25);  background: rgba(0,255,136,.07); }
+        .k-gold   { color: var(--neon-gold);   border: 1px solid rgba(255,215,0,.25);  background: rgba(255,215,0,.07); }
+        .k-violet { color: var(--neon-violet); border: 1px solid rgba(160,100,255,.25); background: rgba(160,100,255,.07); }
+        .k-pink   { color: var(--neon-pink);   border: 1px solid rgba(255,45,149,.25); background: rgba(255,45,149,.07); }
+
+        h2 { font-size: 30px; font-weight: 700; letter-spacing: -.01em; }
+        .rule { height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.14), transparent); margin: 16px 0 26px; }
+        p.lead { color: var(--text-soft); font-size: 16px; max-width: 760px; }
+        p.lead + p.lead { margin-top: 14px; }
+
+        /* Benefit cards */
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+        .card {
+            background: var(--panel);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px; padding: 26px;
+            position: relative; overflow: hidden;
+            transition: transform .25s, border-color .25s;
+        }
+        .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,.16); }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+        }
+        .card.c-cyan::before  { background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); }
+        .card.c-green::before { background: linear-gradient(90deg, transparent, var(--neon-green), transparent); }
+        .card-ic { font-size: 26px; margin-bottom: 14px; display: block; }
+        .card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        .card.c-cyan h3  { color: var(--neon-cyan); }
+        .card.c-green h3 { color: var(--neon-green); }
+        .card p { color: var(--text-soft); font-size: 14.5px; }
+
+        /* Requirements list */
+        .req-list { list-style: none; display: grid; gap: 14px; margin-top: 6px; }
+        .req {
+            display: flex; gap: 16px; align-items: flex-start;
+            background: var(--panel);
+            border: 1px solid rgba(255,255,255,.08);
+            border-left: 3px solid var(--neon-cyan);
+            border-radius: 12px; padding: 18px 20px;
+        }
+        .req.key { border-left-color: var(--neon-gold); background: rgba(255,215,0,.04); }
+        .req-check {
+            flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: rgba(0,200,200,.12); color: var(--neon-cyan);
+            font-size: 14px; font-weight: 700; margin-top: 1px;
+        }
+        .req.key .req-check { background: rgba(255,215,0,.14); color: var(--neon-gold); }
+        .req-body h4 { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
+        .req-body p { color: var(--text-soft); font-size: 14px; }
+
+        /* Steps */
+        .steps { list-style: none; counter-reset: s; display: grid; gap: 16px; margin-top: 6px; }
+        .steps li {
+            counter-increment: s;
+            display: flex; gap: 18px; align-items: flex-start;
+            padding-left: 4px;
+        }
+        .steps li::before {
+            content: counter(s);
+            flex-shrink: 0;
+            width: 34px; height: 34px; border-radius: 10px;
+            display: grid; place-items: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px;
+            color: var(--neon-cyan);
+            background: rgba(0,200,200,.1);
+            border: 1px solid rgba(0,200,200,.25);
+        }
+        .steps .st-body strong { display: block; color: #fff; font-size: 16px; margin-bottom: 2px; }
+        .steps .st-body span { color: var(--text-soft); font-size: 14.5px; }
+
+        /* Callout */
+        .callout {
+            border-radius: 14px; padding: 20px 22px; margin-top: 26px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-left: 3px solid var(--text-muted);
+            background: rgba(255,255,255,.02);
+        }
+        .callout h4 { font-size: 15px; margin-bottom: 6px; }
+        .callout p { color: var(--text-soft); font-size: 14.5px; }
+        .callout.warn   { border-left-color: var(--neon-gold);  background: rgba(255,215,0,.05); }
+        .callout.warn h4 { color: var(--neon-gold); }
+        .callout.danger { border-left-color: var(--neon-red);   background: rgba(255,68,68,.05); }
+        .callout.danger h4 { color: #ff6b6b; }
+        .callout.tip    { border-left-color: var(--neon-green); background: rgba(0,255,136,.04); }
+        .callout.tip h4 { color: var(--neon-green); }
+
+        /* Apply / contact panel */
+        .apply-panel {
+            margin-top: 20px;
+            background: linear-gradient(150deg, rgba(0,200,200,.10), rgba(160,100,255,.06) 60%, transparent);
+            border: 1px solid rgba(0,200,200,.18);
+            border-radius: 20px; padding: 34px;
+            text-align: center;
+        }
+        .apply-panel h3 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+        .apply-panel p { color: var(--text-soft); max-width: 560px; margin: 0 auto 22px; }
+        .contact-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px; font-weight: 600; color: var(--neon-cyan);
+            letter-spacing: .02em;
+        }
+        .contact-chan { color: var(--text-muted); font-size: 13px; margin-top: 8px; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,.06);
+            margin-top: 40px; padding: 34px 24px;
+            text-align: center; color: var(--text-muted); font-size: 13px;
+        }
+        footer .brand {
+            font-weight: 700; font-size: 16px; color: var(--text-soft);
+            letter-spacing: .04em; margin-bottom: 10px;
+        }
+        footer .frow { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 12px; }
+        footer .frow span b { color: var(--text-soft); font-weight: 500; }
+
+        /* Barra superior para volver a la doc */
+        .topbar {
+            position: relative; z-index: 3;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 940px; margin: 0 auto;
+        }
+        .topbar a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; color: var(--text-muted); text-decoration: none;
+            transition: color .25s;
+        }
+        .topbar a:hover { color: var(--text-soft); }
+        .topbar .tb-brand {
+            font-family: 'JetBrains Mono', monospace; font-weight: 600;
+            letter-spacing: .1em; color: var(--text-soft); font-size: 13px;
+        }
+
+        @media (max-width: 720px) {
+            .hero { padding: 64px 20px 40px; }
+            .hero h1 { font-size: 38px; }
+            .hero-sub { font-size: 15px; }
+            .cards { grid-template-columns: 1fr; }
+            h2 { font-size: 24px; }
+            .apply-panel { padding: 26px 20px; }
+            footer .frow { gap: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <a href="index.html">&larr; Documentaci&oacute;n</a>
+        <span class="tb-brand">XPRESS SUITE</span>
+    </div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-inner wrap">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Programa de Testers &middot; Xpress Suite
+            </div>
+            <h1>Prueba las versiones<br><span class="grad">antes que nadie</span></h1>
+            <p class="hero-sub">
+                Busco <strong>personas serias</strong> que quieran ayudar a probar las nuevas
+                versiones de <strong>Xpress Suite</strong> <strong>antes de publicarse</strong>:
+                encontrar los fallos, decir qu&eacute; se puede mejorar y hacer que cada
+                actualizaci&oacute;n salga pulida. A cambio, acceso anticipado y un
+                <strong>descuento en tu licencia</strong>.
+            </p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="#aplicar">Quiero participar <span class="arrow">&rarr;</span></a>
+                <a class="btn btn-ghost" href="#requisitos">Ver requisitos</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap">
+
+        <!-- ═══════════ QUÉ ES ═══════════ -->
+        <section class="block">
+            <div class="sec-head">
+                <span class="sec-kicker k-cyan">De qu&eacute; va</span>
+            </div>
+            <h2>Qu&eacute; es ser tester</h2>
+            <div class="rule"></div>
+            <p class="lead">
+                Antes de que una versi&oacute;n llegue a todos los clientes, se entrega a un
+                grupo peque&ntilde;o de testers de confianza. Ellos la usan en su trabajo real,
+                avisan de cualquier fallo y proponen mejoras. Con eso, cuando la versi&oacute;n
+                se publica, ya viene probada en la calle &mdash; no en un laboratorio.
+            </p>
+            <p class="lead">
+                No es un trabajo ni tiene horario: sigues copiando como siempre, pero con la
+                versi&oacute;n de prueba, y cuando algo falla o se te ocurre una mejora, lo
+                reportas en el grupo de testers. Nada m&aacute;s.
+            </p>
+        </section>
+
+        <!-- ═══════════ QUÉ GANAS ═══════════ -->
+        <section class="block">
+            <div class="sec-head">
+                <span class="sec-kicker k-green">Lo que ganas</span>
+            </div>
+            <h2>Por qu&eacute; participar</h2>
+            <div class="rule"></div>
+            <div class="cards">
+                <div class="card c-cyan">
+                    <span class="card-ic">&#9889;</span>
+                    <h3>Acceso anticipado</h3>
+                    <p>
+                        Tienes las novedades <b>antes que nadie</b> y trabajas con las mejoras
+                        antes de que se publiquen. Tu opini&oacute;n influye de verdad en lo que
+                        se arregla y lo que se a&ntilde;ade.
+                    </p>
+                </div>
+                <div class="card c-green">
+                    <span class="card-ic">&#127991;</span>
+                    <h3>Descuento en tu licencia</h3>
+                    <p>
+                        Por colaborar de forma seria y constante, obtienes un <b>descuento en la
+                        licencia</b>. Ayudar a mejorar la suite tiene premio.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ REQUISITOS ═══════════ -->
+        <section class="block" id="requisitos">
+            <div class="sec-head">
+                <span class="sec-kicker k-gold">Se comprueba</span>
+            </div>
+            <h2>Requisitos para entrar</h2>
+            <div class="rule"></div>
+            <p class="lead" style="margin-bottom:24px">
+                Para que el grupo sea serio, hay unos puntos que <b>se deben cumplir</b> y que
+                <b>se verifican</b>. No es por ponerlo dif&iacute;cil: es para que quien entre de
+                verdad trabaje con la suite y sus reportes sirvan.
+            </p>
+            <ul class="req-list">
+                <li class="req">
+                    <span class="req-check">&#10003;</span>
+                    <div class="req-body">
+                        <h4>Licencia anual vigente</h4>
+                        <p>Tienes que ser cliente activo con <b>licencia anual</b> en vigor &mdash; no mensual ni de prueba.</p>
+                    </div>
+                </li>
+                <li class="req">
+                    <span class="req-check">&#10003;</span>
+                    <div class="req-body">
+                        <h4>Negocio de copia real</h4>
+                        <p>Que trabajes copiando <b>a diario y con volumen</b>. El uso ocasional no sirve para probar de verdad.</p>
+                    </div>
+                </li>
+                <li class="req">
+                    <span class="req-check">&#10003;</span>
+                    <div class="req-body">
+                        <h4>Variedad de dispositivos</h4>
+                        <p>Que uses <b>memorias, discos y celulares</b>, para que las pruebas cubran escenarios reales.</p>
+                    </div>
+                </li>
+                <li class="req">
+                    <span class="req-check">&#10003;</span>
+                    <div class="req-body">
+                        <h4>Compromiso y reporte</h4>
+                        <p>Probar <b>cada versi&oacute;n</b> que se entregue y reportar los fallos con detalle: qu&eacute; pas&oacute;, los pasos y, si puedes, una captura.</p>
+                    </div>
+                </li>
+                <li class="req key">
+                    <span class="req-check">&#9733;</span>
+                    <div class="req-body">
+                        <h4>Reporte de ControlStats del &uacute;ltimo mes</h4>
+                        <p>
+                            Para comprobar que cumples todo lo anterior, env&iacute;a un
+                            <b>reporte de ControlStats del &uacute;ltimo mes</b>. En ese reporte
+                            ya se ve cu&aacute;nto y qu&eacute; copias, as&iacute; que con eso me
+                            basta para revisar si encajas en el programa.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <div class="callout tip">
+                <h4>&iquest;No sabes sacar el reporte?</h4>
+                <p>
+                    En ControlStats, entra en <b>Reportes</b>, elige el &uacute;ltimo mes y
+                    exporta el <b>HTML</b>. Ese archivo es el que tienes que enviar.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════ CÓMO APLICAR ═══════════ -->
+        <section class="block" id="aplicar">
+            <div class="sec-head">
+                <span class="sec-kicker k-violet">Paso a paso</span>
+            </div>
+            <h2>C&oacute;mo apuntarte</h2>
+            <div class="rule"></div>
+            <ol class="steps">
+                <li>
+                    <div class="st-body">
+                        <strong>Comprueba que cumples</strong>
+                        <span>Licencia anual vigente, negocio de copia activo y variedad de dispositivos. Repasa la lista de <a href="#requisitos" style="color:var(--neon-cyan);text-decoration:none">Requisitos</a>.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="st-body">
+                        <strong>Saca tu reporte del &uacute;ltimo mes</strong>
+                        <span>En ControlStats &rsaquo; Reportes, genera el reporte HTML del &uacute;ltimo mes.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="st-body">
+                        <strong>Env&iacute;alo por WhatsApp o Telegram</strong>
+                        <span>Al <b>+53 58201391</b>, junto con tu nombre y tu identificador, diciendo que quieres entrar al programa de testers.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="st-body">
+                        <strong>Espera la confirmaci&oacute;n</strong>
+                        <span>Reviso el reporte. Si cumples, entras al <b>grupo de testers</b> y empiezas a recibir las versiones antes de publicarse.</span>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="apply-panel">
+                <h3>Escr&iacute;beme para participar</h3>
+                <p>Por WhatsApp o Telegram, con tu reporte del &uacute;ltimo mes de ControlStats y tu identificador.</p>
+                <div class="contact-num">+53 58201391</div>
+                <div class="contact-chan">Canal oficial &middot; t.me/XpresSuite_Updates</div>
+            </div>
+
+            <div class="callout danger">
+                <h4>Compromiso de discreci&oacute;n</h4>
+                <p>
+                    Las versiones de prueba son <b>solo para el grupo de testers</b>. Al entrar,
+                    te comprometes a <b>no compartirlas ni filtrarlas</b> fuera del grupo &mdash;
+                    ni el instalador, ni los archivos, ni las novedades &mdash; hasta que se
+                    publiquen oficialmente. Quien lo incumpla queda fuera del programa.
+                </p>
+            </div>
+            <div class="callout">
+                <h4>Plazas limitadas</h4>
+                <p>
+                    El grupo se mantiene peque&ntilde;o a prop&oacute;sito, para que el trabajo
+                    de cada tester cuente. Si en este momento est&aacute; completo, tu solicitud
+                    queda en lista para la siguiente ronda.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="brand">Xpress Suite</div>
+        <div class="frow">
+            <span>Autor &nbsp;<b>Ing. Alexis Amaro Placeres</b></span>
+            <span>Contacto &nbsp;<b>+53 58201391</b></span>
+            <span>Canal &nbsp;<b>t.me/XpresSuite_Updates</b></span>
+        </div>
+        <div>Programa de Testers &mdash; Todos los derechos reservados &copy; Xpress Suite</div>
+    </footer>
+
+</body>
+</html>

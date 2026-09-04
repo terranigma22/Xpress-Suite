@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalaci&oacute;n y primeros pasos &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body data-accent="inicio">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" class="active" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb">
+                <a href="index.html">Inicio</a><span>&rsaquo;</span>Instalaci&oacute;n y primeros pasos
+            </div>
+            <div class="doc-title-row">
+                <img src="assets/img/logos/launcher.png" alt="">
+                <span class="doc-badge">Empieza aqu&iacute;</span>
+                <h1>Instalaci&oacute;n y primeros pasos</h1>
+            </div>
+            <p class="doc-lead">
+                Todo lo que hay que hacer <strong>una sola vez</strong>, el d&iacute;a que instalas
+                Xpress Suite: colocar la licencia, dejar Windows preparado, instalar el servicio de
+                monitoreo y aprender a abrir las aplicaciones. Si sigues esta gu&iacute;a de arriba
+                abajo, el resto de los manuales solo te hablar&aacute;n del trabajo del d&iacute;a a d&iacute;a.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice de la gu&iacute;a</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#requisitos">Qu&eacute; necesita tu computadora</a></li>
+                        <li><a href="#instalar">Instalar la suite</a></li>
+                        <li><a href="#que-es">Qu&eacute; es el Lanzador</a></li>
+                        <li><a href="#primera-vez">La primera vez que la abres</a></li>
+                        <li><a href="#licencia">Pedir y activar la licencia</a></li>
+                        <li><a href="#estado-licencia">Saber si la licencia est&aacute; bien</a></li>
+                        <li><a href="#abrir">Abrir las aplicaciones</a></li>
+                        <li><a href="#registros">Ajustes de Windows necesarios</a></li>
+                        <li><a href="#password">Contrase&ntilde;a maestra</a></li>
+                        <li><a href="#servicio">Instalar el servicio de monitoreo</a></li>
+                        <li><a href="#actualizar">Actualizar la suite</a></li>
+                        <li><a href="#migracion">Traer datos de versiones anteriores</a></li>
+                        <li><a href="#extras">Documentaci&oacute;n, Cambios y Patrones</a></li>
+                        <li><a href="#problemas">Problemas frecuentes</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ REQUISITOS ══════════ -->
+                <section id="requisitos" class="doc-section reveal">
+                    <h2>Qu&eacute; necesita tu computadora</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Casi nada, porque el <strong>instalador se encarga</strong>: trae dentro
+                        .NET&nbsp;10 y Node.js y los coloca solo si a tu equipo le faltan. Lo &uacute;nico
+                        que t&uacute; tienes que tener es un <strong>Windows compatible</strong>. Esto es
+                        lo que hace falta, y qui&eacute;n lo pone:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Requisito</th><th>Para qu&eacute; hace falta</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Windows 10 o Windows 11<small>64 bits &middot; lo pones t&uacute;</small></td>
+                                    <td>Toda la suite est&aacute; hecha para Windows. No funciona en otros sistemas. Hace falta Windows&nbsp;10 versi&oacute;n 1809 (compilaci&oacute;n 17763) o m&aacute;s nuevo &mdash; cualquier equipo actual lo cumple.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">.NET 10<small>lo pone el instalador</small></td>
+                                    <td>
+                                        Es el componente de Microsoft sobre el que corren <b>todas</b> las
+                                        aplicaciones: Copier, Converter, ControlStats, el Lanzador y el
+                                        servicio de monitoreo. <b>No tienes que descargarlo:</b> el
+                                        instalador comprueba si ya lo tienes y, si falta, lo instala solo
+                                        (viene incluido dentro del propio instalador).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Node.js<small>lo pone el instalador</small></td>
+                                    <td>
+                                        Solo hace falta para el
+                                        <a href="patrones.html">Constructor de Patrones</a> (el bot&oacute;n
+                                        <span class="ui">Crear Patrones</span>). Igual que .NET, el
+                                        instalador lo detecta y lo coloca solo si falta. No hay que buscar
+                                        ni descargar nada.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Espacio y memoria</td>
+                                    <td>
+                                        Cuanta m&aacute;s memoria RAM tenga el equipo, a m&aacute;s
+                                        dispositivos podr&aacute;s copiar a la vez sin que se ralentice.
+                                        Ver los ajustes de <a href="copier.html#configuracion">RAM</a>.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout tip">
+                        <h4>No tienes que preparar nada antes</h4>
+                        <p>
+                            Con versiones anteriores hab&iacute;a que descargar .NET y Node por separado
+                            desde la p&aacute;gina de Microsoft. <b>Ya no.</b> Basta con ejecutar el
+                            instalador de Xpress Suite: &eacute;l pone lo que falte. El siguiente apartado
+                            explica ese proceso paso a paso.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ INSTALAR ══════════ -->
+                <section id="instalar" class="doc-section reveal">
+                    <h2>Instalar la suite</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Xpress Suite se instala con un <strong>&uacute;nico instalador</strong>
+                        (<span class="path">XpressSuiteSetup.exe</span>). Es el punto de partida: hace
+                        todo el trabajo &mdash; coloca los programas, pone .NET y Node si faltan, crea los
+                        accesos directos y deja la suite lista para abrir.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Ejecuta el instalador como administrador</strong>
+                            Haz doble clic en <span class="path">XpressSuiteSetup.exe</span>. Windows
+                            pedir&aacute; permisos de administrador: son necesarios para instalar los
+                            componentes del sistema. Acepta.
+                        </li>
+                        <li>
+                            <strong>Sigue el asistente</strong>
+                            Est&aacute; en espa&ntilde;ol. Por defecto instala en
+                            <span class="path">C:\Program Files\Xpress Suite</span>. Puedes dejarlo as&iacute;.
+                        </li>
+                        <li>
+                            <strong>Elige los extras que quieras</strong>
+                            El asistente ofrece unas casillas (ver la tabla de abajo): acceso directo en
+                            el escritorio, la extensi&oacute;n de <b>clic derecho</b> de Xpress Copier y
+                            m&aacute;s. Deja marcadas las que te interesen.
+                        </li>
+                        <li>
+                            <strong>Espera a que instale .NET y Node si hacen falta</strong>
+                            Si tu equipo no los tiene, el instalador los coloca en este momento. Puede
+                            <b>tardar varios minutos</b> &mdash; es normal, no lo interrumpas.
+                        </li>
+                        <li>
+                            <strong>Termina y abre la suite</strong>
+                            Al final, el instalador ofrece <span class="ui">Ejecutar Xpress Suite ahora</span>.
+                            D&eacute;jalo marcado para que abra el Lanzador enseguida.
+                        </li>
+                    </ol>
+
+                    <h3>Las casillas del instalador</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Casilla</th><th>Qu&eacute; hace</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Accesos directos en el escritorio<small>cuatro casillas</small></td>
+                                    <td>Hay una por aplicaci&oacute;n: <b>Xpress Suite</b> (el Lanzador), <b>Copier</b>, <b>Converter</b> y <b>Control Stats</b>. Puedes marcar las que quieras. <b>Todas vienen desmarcadas</b>: si no tocas nada, no se crea ning&uacute;n icono en el escritorio &mdash; los tendr&aacute;s igualmente en el Men&uacute; Inicio.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Registrar extensi&oacute;n de shell<small>clic derecho</small></td>
+                                    <td>Activa la opci&oacute;n <b>&laquo;Copiar aqu&iacute; con Xpress Copier&raquo;</b> al arrastrar con el <b>bot&oacute;n derecho</b> en el Explorador. Reinicia el Explorador al terminar. <b>Viene desmarcada</b>. Da igual si la dejas sin marcar: se puede encender y apagar despu&eacute;s desde el propio Copier (pesta&ntilde;a <a href="copier.html#shell">Shell</a>).</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Men&uacute;&nbsp;contextual SendTo<small>enviar a</small></td>
+                                    <td>A&ntilde;ade Xpress Copier al men&uacute; <span class="ui">Enviar a</span> de Windows, para mandarle archivos desde el clic derecho. <b>Viene desmarcada</b>; requiere reiniciar el Explorador.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Integrar con Total Commander</td>
+                                    <td>Solo aparece <b>si tienes Total Commander instalado</b>. Deja lista la integraci&oacute;n: asigna <span class="kbd">Ctrl+V</span> y a&ntilde;ade el bot&oacute;n <span class="ui">&laquo;Copiar con Xpress&raquo;</span> a la barra. Si ya ten&iacute;as <span class="kbd">Ctrl+V</span> asignado a otra cosa, no se cambia. Ver <a href="copier.html#total-commander">Total Commander</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Total Commander: usar Xpress Copier tambi&eacute;n con F5<small>desmarcada</small></td>
+                                    <td>Hace que la tecla <span class="kbd">F5</span> de Total Commander &mdash; la de copiar de toda la vida &mdash; pase por el Copier. Va <b>aparte y desmarcada</b> a prop&oacute;sito: es una tecla demasiado central como para cambiarla sin que la pidas. Si el Copier no est&aacute; abierto, <span class="kbd">F5</span> copia con Total Commander como siempre, as&iacute; que <b>nunca se queda sin hacer nada</b>. Es reversible: desmarcarla en una reinstalaci&oacute;n la devuelve a su comportamiento normal.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>
+                        Adem&aacute;s, el instalador crea un grupo <b>Xpress Suite</b> en el Men&uacute;
+                        Inicio con accesos a cada aplicaci&oacute;n (Copier, Converter, Control Stats), a
+                        esta <b>documentaci&oacute;n</b> (entrada <span class="ui">Readme</span>) y al
+                        desinstalador.
+                    </p>
+
+                    <div class="callout tip">
+                        <h4>Desinstalar es igual de limpio</h4>
+                        <p>
+                            Si alg&uacute;n d&iacute;a quitas la suite (desde <span class="path">Panel de
+                            control &rsaquo; Programas</span> o el acceso <span class="ui">Desinstalar</span>
+                            del Men&uacute; Inicio), el desinstalador <b>quita solo la extensi&oacute;n de
+                            clic derecho</b>. Si la ten&iacute;as activada, reinicia el Explorador para dejarlo
+                            como estaba; si no, ni lo toca.
+                        </p>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Tus datos no se tocan al reinstalar</h4>
+                        <p>
+                            La carpeta <span class="path">Data</span> (licencia, tarifas, perfiles,
+                            patrones, historial) es independiente de los programas. Reinstalar o actualizar
+                            no la borra.
+                        </p>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Si una aplicaci&oacute;n no abre y no da ning&uacute;n mensaje</h4>
+                        <p>
+                            Lo primero que hay que revisar es <b>.NET 10</b>. El instalador lo pone solo,
+                            pero si la instalaci&oacute;n de ese componente se interrumpi&oacute; (o se cort&oacute;
+                            la corriente), una app puede no abrir sin dar mensaje. Vuelve a pasar el
+                            instalador: detectar&aacute; lo que falte y lo completar&aacute;.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ QUÉ ES ══════════ -->
+                <section id="que-es" class="doc-section reveal">
+                    <h2>Qu&eacute; es el Lanzador</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El <span class="ui">Lanzador</span> es la ventana desde la que se abre todo.
+                        No copia ni convierte nada por s&iacute; mismo: es el <strong>centro de mando</strong>
+                        de la suite. Desde ah&iacute; abres las aplicaciones, ves si tu licencia est&aacute;
+                        vigente, copias los datos que necesitas para renovarla e instalas todo lo que la
+                        suite necesita de Windows.
+                    </p>
+                    <p>La ventana tiene tres zonas:</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Arriba &mdash; tus aplicaciones</h5>
+                            <p>Una tarjeta por cada app instalada, con su nombre, su descripci&oacute;n,
+                            su versi&oacute;n y el bot&oacute;n <span class="ui">Iniciar</span>.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Al centro &mdash; tus datos</h5>
+                            <p>Autor, celular, canal oficial, tarjetas bancarias y tu
+                            <span class="ui">IDENTIFICADOR</span>. Cada dato tiene su bot&oacute;n para
+                            copiarlo de un clic.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Abajo &mdash; estado y ajustes</h5>
+                            <p>El sem&aacute;foro de la licencia y los botones
+                            <span class="ui">Documentaci&oacute;n</span>,
+                            <span class="ui">Cambios</span>, <span class="ui">Crear Patrones</span> y
+                            <span class="ui">Configuraci&oacute;n</span>.</p>
+                        </div>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Atajo &uacute;til</h4>
+                        <p>
+                            Pulsando el <b>logo</b> de la barra de t&iacute;tulo se abre directamente la
+                            carpeta donde est&aacute; instalada la suite. Es la forma m&aacute;s r&aacute;pida
+                            de llegar a la carpeta <span class="path">Data</span>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PRIMERA VEZ ══════════ -->
+                <section id="primera-vez" class="doc-section reveal">
+                    <h2>La primera vez que la abres</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Abre el Lanzador</strong>
+                            Al arrancar por primera vez, la suite crea sola una carpeta llamada
+                            <span class="path">Data</span> dentro de la carpeta de instalaci&oacute;n.
+                            Ah&iacute; se guardan la licencia, las configuraciones y las bases de datos.
+                            No la borres ni la muevas.
+                        </li>
+                        <li>
+                            <strong>Windows puede pedirte permiso</strong>
+                            Si aparece el aviso de los registros del sistema, acepta. Se explica en
+                            <a href="#registros">Ajustes de Windows necesarios</a>.
+                        </li>
+                        <li>
+                            <strong>Todav&iacute;a no tienes licencia</strong>
+                            Es normal. El sem&aacute;foro de abajo aparecer&aacute; en rojo y las
+                            aplicaciones funcionar&aacute;n limitadas hasta que coloques el archivo.
+                            Sigue con el paso siguiente.
+                        </li>
+                    </ol>
+                    <div class="callout danger">
+                        <h4>Nunca borres la carpeta Data</h4>
+                        <p>
+                            Dentro est&aacute;n tu licencia, tus tarifas de cobro, tus perfiles de
+                            conversi&oacute;n y todo el historial de trabajo. Si haces copias de
+                            seguridad del equipo, incluye siempre esa carpeta.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ LICENCIA ══════════ -->
+                <section id="licencia" class="doc-section reveal">
+                    <h2>Pedir y activar la licencia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        La licencia es un archivo que se genera <strong>para tu equipo en concreto</strong>.
+                        Por eso lo primero que hay que enviar es el identificador de tu computadora.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Copia tu identificador</strong>
+                            En el bloque informativo del Lanzador, busca la l&iacute;nea
+                            <span class="ui">IDENTIFICADOR</span> y pulsa su bot&oacute;n de copiar.
+                            Ya lo tienes en el portapapeles: p&eacute;galo directamente en el mensaje.
+                        </li>
+                        <li>
+                            <strong>Env&iacute;a tus datos</strong>
+                            Por <b>WhatsApp o Telegram</b> al <b class="nowrap">+53 58201391</b>, con:
+                            nombre y apellidos, celular, el identificador que acabas de copiar y el
+                            comprobante de la transferencia bancaria.
+                        </li>
+                        <li>
+                            <strong>Recibir&aacute;s un archivo de licencia</strong>
+                            Es un archivo peque&ntilde;o llamado <span class="path">xs.data.lic</span>.
+                        </li>
+                        <li>
+                            <strong>C&aacute;rgalo desde el Lanzador</strong>
+                            En el Lanzador hay un <span class="ui">bot&oacute;n de licencia</span> para
+                            <b>buscar y cargar</b> el archivo: pulsa, elige el <span class="path">xs.data.lic</span>
+                            que recibiste y el Lanzador lo copia solo a su sitio. No hay que renombrarlo ni
+                            descomprimirlo.
+                            <br><small>Tambi&eacute;n puedes hacerlo a mano: pegar el archivo dentro de la
+                            carpeta <span class="path">Data</span> de la suite (la que se cre&oacute; sola al
+                            abrirla por primera vez). Es la v&iacute;a de siempre y sigue funcionando.</small>
+                        </li>
+                        <li>
+                            <strong>Comprueba el sem&aacute;foro</strong>
+                            El sem&aacute;foro de abajo debe pasar a verde con el texto
+                            <span class="ui">Licencia v&aacute;lida - Expira: &hellip;</span>. Si lo pegaste
+                            a mano, cierra y vuelve a abrir el Lanzador para que lo relea.
+                        </li>
+                    </ol>
+
+                    <div class="callout">
+                        <h4>Precios y planes</h4>
+                        <p>
+                            Las tarifas, qu&eacute; incluye cada plan y las cuentas bancarias est&aacute;n
+                            en la <a href="licencias.html">p&aacute;gina de Licencias</a>.
+                        </p>
+                    </div>
+
+                    <div class="callout danger">
+                        <h4>Antes de escribir, ten en cuenta</h4>
+                        <ul>
+                            <li>Solo se atienden <b>peticiones de compra de licencias</b>. Las dudas sobre el uso de las apps se responden en el grupo, no por este medio.</li>
+                            <li>No se atienden solicitudes despu&eacute;s de las <b>5:00 pm</b> ni los fines de semana.</li>
+                            <li>Escribe por <b>un solo medio</b>: WhatsApp o Telegram, no por los dos.</li>
+                            <li>No timbres. No se responden llamadas.</li>
+                            <li>Si <b>cambias el disco duro del sistema</b>, la licencia deja de ser v&aacute;lida y hay que ponerse en contacto para regenerarla.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ══════════ ESTADO LICENCIA ══════════ -->
+                <section id="estado-licencia" class="doc-section reveal">
+                    <h2>Saber si la licencia est&aacute; bien</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        En la barra inferior del Lanzador hay un sem&aacute;foro con un texto al lado.
+                        Esto es lo que significa cada estado:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Lo que dice</th><th>Qu&eacute; significa y qu&eacute; hacer</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Verificando&hellip;</td>
+                                    <td>Est&aacute; comprobando el archivo. Dura un instante; espera a que cambie.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Licencia v&aacute;lida &mdash; Expira: &hellip;</td>
+                                    <td>Todo correcto. La fecha que aparece es hasta cu&aacute;ndo puedes usar la suite.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Licencia inv&aacute;lida</td>
+                                    <td>Falta el archivo, est&aacute; en la carpeta equivocada, venci&oacute;, o fue generado para otro equipo. Comprueba que est&eacute; dentro de <span class="path">Data</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Error de hardware</td>
+                                    <td>El equipo cambi&oacute; respecto a cuando se cre&oacute; la licencia &mdash; normalmente por un cambio de disco duro del sistema. Hay que pedir que la regeneren.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Pulsando sobre el sem&aacute;foro se abre la ventana
+                        <span class="ui">Informaci&oacute;n de Licencia</span>, con el propietario, el
+                        identificador y la fecha de vencimiento.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Aviso de vencimiento</h4>
+                        <p>
+                            Cuando quedan pocos d&iacute;as, al abrir el Lanzador aparece un aviso
+                            record&aacute;ndotelo. <b>No esperes al &uacute;ltimo d&iacute;a</b> para
+                            renovar: si vence un viernes por la tarde, no habr&aacute; atenci&oacute;n
+                            hasta el lunes.
+                        </p>
+                    </div>
+                    <p>
+                        En la pesta&ntilde;a <span class="ui">Acerca de</span> de la Configuraci&oacute;n
+                        hay una lista llamada <span class="ui">Cobertura de Licencia</span>: ah&iacute; ves,
+                        aplicaci&oacute;n por aplicaci&oacute;n, cu&aacute;les cubre tu plan.
+                    </p>
+                </section>
+
+                <!-- ══════════ ABRIR APPS ══════════ -->
+                <section id="abrir" class="doc-section reveal">
+                    <h2>Abrir las aplicaciones</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Cada tarjeta del Lanzador tiene su bot&oacute;n <span class="ui">Iniciar</span>.
+                        Estas son las aplicaciones que ver&aacute;s:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead><tr><th></th><th>Aplicaci&oacute;n</th><th>Para qu&eacute; sirve</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/logos/copier.png" alt=""></td>
+                                    <td class="nm">Copier<small>Transferencia de archivos</small></td>
+                                    <td>Copiar archivos a memorias, discos y celulares, y cobrar el trabajo. <a href="copier.html">Ver manual</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/logos/converter.png" alt=""></td>
+                                    <td class="nm">Converter<small>Conversi&oacute;n multimedia</small></td>
+                                    <td>Convertir videos y audios a otros formatos. <a href="converter.html">Ver manual</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/logos/controlstats.png" alt=""></td>
+                                    <td class="nm">Control Stats<small>Estad&iacute;sticas y monitoreo</small></td>
+                                    <td>Ver cu&aacute;nto se trabaj&oacute; y cu&aacute;nto se cobr&oacute;, y sacar reportes. <a href="controlstats.html">Ver manual</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout">
+                        <h4>Cada aplicaci&oacute;n se abre una sola vez</h4>
+                        <p>
+                            Si pulsas <span class="ui">Iniciar</span> y no pasa nada, casi seguro esa
+                            aplicaci&oacute;n ya est&aacute; abierta. B&uacute;scala en la barra de tareas.
+                            La suite lo impide a prop&oacute;sito, para que dos ventanas no se peleen por
+                            los mismos dispositivos y los mismos datos.
+                        </p>
+                    </div>
+                    <p>
+                        El <b>Observer</b> no aparece como tarjeta porque no es una aplicaci&oacute;n con
+                        ventana, sino un servicio que corre solo. Se instala y se controla desde
+                        <span class="path">Configuraci&oacute;n &rsaquo; Sistema</span>, como se explica
+                        <a href="#servicio">m&aacute;s abajo</a>.
+                    </p>
+                </section>
+
+                <!-- ══════════ REGISTROS ══════════ -->
+                <section id="registros" class="doc-section reveal">
+                    <h2>Ajustes de Windows necesarios</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Hay dos ajustes de Windows que la suite necesita para trabajar c&oacute;moda.
+                        El Lanzador los detecta y los instala por ti: si al arrancar falta alguno,
+                        aparece el aviso <span class="ui">Los siguientes registros del sistema no
+                        est&aacute;n instalados&hellip; &iquest;Desea instalarlos ahora?</span> &mdash;
+                        responde que s&iacute;.
+                    </p>
+                    <p>
+                        Tambi&eacute;n puedes hacerlo cuando quieras desde
+                        <span class="path">Configuraci&oacute;n &rsaquo; Sistema &rsaquo; Registros del
+                        Sistema</span>, donde cada entrada tiene su sem&aacute;foro y hay un bot&oacute;n
+                        <span class="ui">Instalar registros pendientes</span>.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Ajuste</th><th>Para qu&eacute; sirve</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Habilitar formateo y expulsi&oacute;n en el copiador</td>
+                                    <td>
+                                        Permite <b>formatear y expulsar dispositivos desde el Copier</b>.
+                                        <br><b>Requiere reiniciar el equipo</b> para que tenga efecto.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Habilitar rutas largas</td>
+                                    <td>
+                                        Permite trabajar con carpetas muy anidadas y con nombres de archivo
+                                        muy largos (t&iacute;tulos de pel&iacute;culas y series completos).
+                                        Sin este ajuste, Windows corta las rutas largas y esos archivos dan
+                                        error al copiarse.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Se pedir&aacute;n permisos de administrador</h4>
+                        <p>
+                            Estos ajustes tocan la configuraci&oacute;n de Windows, as&iacute; que el
+                            sistema pedir&aacute; confirmaci&oacute;n. Es normal y hay que aceptarlo.
+                            Se hace una sola vez.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PASSWORD ══════════ -->
+                <section id="password" class="doc-section reveal">
+                    <h2>Contrase&ntilde;a maestra</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        En <span class="path">Configuraci&oacute;n &rsaquo; Seguridad</span> puedes crear
+                        una <span class="ui">contrase&ntilde;a maestra</span>. Sirve para que solo el
+                        due&ntilde;o del negocio pueda tocar las operaciones delicadas &mdash;
+                        principalmente instalar o quitar el servicio de monitoreo.
+                    </p>
+                    <p>
+                        En el <b>Copier</b> esa misma contrase&ntilde;a protege la entrada a la
+                        Configuraci&oacute;n: si est&aacute; puesta, al pulsar el engranaje se pide antes
+                        el password. As&iacute; un trabajador no puede cambiarte las tarifas de cobro.
+                    </p>
+                    <div class="term-list">
+                        <dt>Crear o cambiar la contrase&ntilde;a</dt>
+                        <dd>Se escribe dos veces (<span class="ui">Password</span> y
+                        <span class="ui">Confirmar password</span>) y se pulsa
+                        <span class="ui">Aceptar</span>.</dd>
+                        <dt>Eliminar la contrase&ntilde;a</dt>
+                        <dd>Deja las operaciones sin protecci&oacute;n. &Uacute;til solo si trabajas
+                        completamente solo.</dd>
+                    </div>
+                    <div class="callout danger">
+                        <h4>Ap&uacute;ntala en un lugar seguro</h4>
+                        <p>
+                            Si olvidas la contrase&ntilde;a maestra no hay forma de recuperarla desde la
+                            aplicaci&oacute;n. Tendr&aacute;s que ponerte en contacto con el creador.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ SERVICIO ══════════ -->
+                <section id="servicio" class="doc-section reveal">
+                    <h2>Instalar el servicio de monitoreo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El <b>Observer</b> es un vigilante que corre solo en segundo plano y anota todo
+                        lo que entra y sale de las memorias, discos externos y celulares conectados al
+                        equipo, aunque nadie est&eacute; usando el Copier. Esos datos son los que luego
+                        ves en la secci&oacute;n <span class="ui">Monitoreo</span> de ControlStats.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Entra en Configuraci&oacute;n &rsaquo; Sistema</strong>
+                            Bot&oacute;n <span class="ui">Configuraci&oacute;n</span> en la barra inferior
+                            del Lanzador. Si pusiste contrase&ntilde;a maestra, te la pedir&aacute; aqu&iacute;.
+                        </li>
+                        <li>
+                            <strong>Pulsa Instalar en la tarjeta &laquo;Servicio Observer&raquo;</strong>
+                            Windows pedir&aacute; permisos de administrador. Acepta.
+                        </li>
+                        <li>
+                            <strong>Comprueba el sem&aacute;foro</strong>
+                            <span class="ui">Estado del servicio</span> debe quedar en
+                            <b>En ejecuci&oacute;n</b>, y <span class="ui">Tarea programada</span> tambi&eacute;n
+                            en verde.
+                        </li>
+                    </ol>
+                    <div class="callout warn">
+                        <h4>El bot&oacute;n Instalar est&aacute; apagado</h4>
+                        <p>
+                            Solo se habilita si tu <b>licencia cubre el Observer</b>. Si tu plan no lo
+                            incluye, el bot&oacute;n queda deshabilitado a prop&oacute;sito. Consulta la
+                            lista <span class="ui">Cobertura de Licencia</span> en la pesta&ntilde;a
+                            <span class="ui">Acerca de</span>.
+                        </p>
+                    </div>
+                    <p>
+                        Una vez instalado, el servicio <b>arranca solo con Windows</b> y se reinicia solo
+                        si algo lo interrumpe. Est&aacute; protegido para que no se pueda detener por
+                        accidente. Todo el detalle est&aacute; en el
+                        <a href="observer.html">manual del Observer</a>.
+                    </p>
+                </section>
+
+                <!-- ══════════ ACTUALIZAR ══════════ -->
+                <section id="actualizar" class="doc-section reveal">
+                    <h2>Actualizar la suite</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Las actualizaciones se entregan como un <strong>instalador de actualizaci&oacute;n</strong>
+                        (<span class="path">XpressSuiteUpdate.exe</span>) que recibes del creador. Es la forma
+                        m&aacute;s <b>simple</b>: lo ejecutas y hace todo solo. No hay que reinstalar la suite,
+                        ni volver a poner la licencia, ni descomprimir nada.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Ejecuta el archivo que recibiste</strong>
+                            Haz doble clic en <span class="path">XpressSuiteUpdate.exe</span>. Windows
+                            pedir&aacute; permisos de administrador: acepta. <b>No tienes que cerrar nada a
+                            mano</b> &mdash; el propio instalador cierra las aplicaciones que est&eacute;n
+                            abiertas.
+                        </li>
+                        <li>
+                            <strong>Deja que trabaje</strong>
+                            Va casi sin preguntar: detecta solo d&oacute;nde est&aacute; instalada la suite,
+                            muestra una barra de progreso y <b>solo reemplaza los archivos que cambian</b>
+                            (las actualizaciones son peque&ntilde;as). No borra nada de lo tuyo.
+                        </li>
+                        <li>
+                            <strong>Al terminar, abre la suite</strong>
+                            Cuando acaba, ofrece <span class="ui">Abrir Xpress Suite</span>. Comprueba en las
+                            tarjetas del Lanzador que las versiones son las nuevas.
+                        </li>
+                    </ol>
+
+                    <h3>Qu&eacute; hace por ti mientras actualiza</h3>
+                    <p>
+                        No tienes que acordarte del servicio de monitoreo ni de nada. El instalador de
+                        actualizaci&oacute;n, por su cuenta:
+                    </p>
+                    <ul>
+                        <li><b>Cierra las aplicaciones</b> abiertas (Copier, Converter, ControlStats, Lanzador).</li>
+                        <li><b>Detiene el servicio de monitoreo</b> para poder reemplazar sus archivos, y lo <b>deja igual</b> al terminar (si lo ten&iacute;as, sigue corriendo).</li>
+                        <li><b>Sobreescribe solo los archivos nuevos</b>, sin desinstalar la suite ni borrar tus datos.</li>
+                        <li><b>Restaura la integraci&oacute;n con Windows</b> (men&uacute; de clic derecho) tal como estaba, solo si esta actualizaci&oacute;n la cambia.</li>
+                    </ul>
+
+                    <div class="callout danger">
+                        <h4>No interrumpas el proceso</h4>
+                        <p>
+                            Mientras est&eacute; actualizando, <b>no cierres la ventana ni apagues el
+                            equipo</b>. Si se corta a mitad, pueden quedar archivos a medias. Aseg&uacute;rate
+                            tambi&eacute;n de que no haya <b>copias en marcha</b> en el Copier antes de empezar.
+                        </p>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Tus datos no se tocan</h4>
+                        <p>
+                            La carpeta <span class="path">Data</span> queda intacta: la licencia, las
+                            tarifas de cobro, los perfiles de conversi&oacute;n, los patrones y todo el
+                            historial de trabajo siguen igual despu&eacute;s de actualizar.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Qu&eacute; cambi&oacute; en esta versi&oacute;n</h4>
+                        <p>
+                            Despu&eacute;s de actualizar, pulsa <span class="ui">Cambios</span> en el
+                            Lanzador para ver la lista de arreglos y novedades. Y en el canal oficial
+                            <b>t.me/XpresSuite_Updates</b> se avisa cada vez que hay una versi&oacute;n nueva.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ MIGRACIÓN ══════════ -->
+                <section id="migracion" class="doc-section reveal">
+                    <h2>Traer datos de versiones anteriores</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Si ven&iacute;as usando una versi&oacute;n antigua de la suite, no pierdes tu
+                        historial. En <span class="path">Configuraci&oacute;n &rsaquo; Migraci&oacute;n</span>
+                        hay dos herramientas:
+                    </p>
+                    <div class="term-list">
+                        <dt>Seleccionar y migrar</dt>
+                        <dd>
+                            Abre un cuadro para elegir las bases de datos antiguas. El sistema detecta
+                            solo de qu&eacute; tipo es cada una y las convierte al formato nuevo, que va
+                            <b>cifrado</b>. Se ve el avance en una ventana con bot&oacute;n de
+                            <span class="ui">Cancelar</span>.
+                        </dd>
+                        <dt>Normalizar nombres de dispositivos</dt>
+                        <dd>
+                            Unifica los nombres de las memorias y discos que aparec&iacute;an escritos de
+                            formas distintas, para que las estad&iacute;sticas no los cuenten como
+                            dispositivos diferentes. Conviene ejecutarlo una vez despu&eacute;s de migrar.
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Antes de migrar, haz una copia</h4>
+                        <p>
+                            Guarda en otra carpeta los archivos antiguos antes de convertirlos. Si algo
+                            sale mal siempre podr&aacute;s repetir el proceso.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ EXTRAS ══════════ -->
+                <section id="extras" class="doc-section reveal">
+                    <h2>Documentaci&oacute;n, Cambios y Patrones</h2>
+                    <div class="doc-rule"></div>
+                    <div class="term-list">
+                        <dt>Documentaci&oacute;n</dt>
+                        <dd>
+                            Abre en el navegador <b>esta misma documentaci&oacute;n</b> que est&aacute;s
+                            leyendo. No hace falta buscarla ni guardar el enlace: la tienes siempre a mano
+                            desde el Lanzador &mdash; adem&aacute;s del bot&oacute;n de abajo, hay un
+                            <b>icono de libro</b> en la barra de t&iacute;tulo que la abre directamente.
+                            Trae los manuales de todas las aplicaciones, los videos y los precios.
+                        </dd>
+                        <dt>Cambios</dt>
+                        <dd>
+                            Abre el historial de novedades: qu&eacute; se arregl&oacute; y qu&eacute; se
+                            a&ntilde;adi&oacute; en cada actualizaci&oacute;n, ordenado por fecha. &Uacute;til
+                            despu&eacute;s de <a href="#actualizar">actualizar</a>, para saber qu&eacute;
+                            cambi&oacute;.
+                        </dd>
+                        <dt>Crear Patrones</dt>
+                        <dd>
+                            Abre en el navegador la herramienta para preparar los <b>patrones de
+                            continuaci&oacute;n</b>: las reglas que usa el Copier para reconocer el nombre
+                            de una serie, novela o concurso y encontrar solo los cap&iacute;tulos
+                            siguientes. Tiene su propio manual en
+                            <a href="patrones.html">Constructor de Patrones</a>.
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>La documentaci&oacute;n funciona sin internet</h4>
+                        <p>
+                            Se abre desde tu propia computadora, as&iacute; que puedes consultarla
+                            aunque no tengas conexi&oacute;n. Tambi&eacute;n puedes copiar la carpeta a una
+                            memoria y abrirla en cualquier otro equipo.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PROBLEMAS ══════════ -->
+                <section id="problemas" class="doc-section reveal">
+                    <h2>Problemas frecuentes</h2>
+                    <div class="doc-rule"></div>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Lo que pasa</th><th>Soluci&oacute;n</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Pulso Iniciar y no abre nada</td>
+                                    <td>Esa aplicaci&oacute;n ya est&aacute; abierta. B&uacute;scala en la barra de tareas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Dice &laquo;Licencia inv&aacute;lida&raquo; y s&iacute; la pegu&eacute;</td>
+                                    <td>Comprueba que el archivo est&eacute; dentro de la carpeta <span class="path">Data</span> y no en una subcarpeta, y que no haya quedado comprimido en un .zip o .rar. Despu&eacute;s cierra y vuelve a abrir el Lanzador.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Dice &laquo;Error de hardware&raquo;</td>
+                                    <td>Cambi&oacute; el disco duro del sistema. Hay que pedir que regeneren la licencia con el nuevo identificador.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Windows pide permisos constantemente al formatear</td>
+                                    <td>Falta instalar el registro <span class="ui">Habilitar formateo y expulsi&oacute;n en el copiador</span>. Inst&aacute;lalo y <b>reinicia el equipo</b>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Archivos con nombres largos dan error al copiar</td>
+                                    <td>Falta el registro <span class="ui">Habilitar rutas largas</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">El bot&oacute;n Instalar del servicio est&aacute; apagado</td>
+                                    <td>Tu plan de licencia no cubre el Observer.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>Instalaci&oacute;n y puesta en marcha, explicadas en video.</p>
+                    <div data-videos="inicio"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="index.html" class="prev">
+                        <span class="lbl">&larr; Volver</span>
+                        <span class="ttl">Inicio</span>
+                    </a>
+                    <a href="copier.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual del Copier</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

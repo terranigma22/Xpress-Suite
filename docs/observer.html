@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observer &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body data-accent="observer">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" class="active" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb"><a href="index.html">Inicio</a><span>&rsaquo;</span>Observer</div>
+            <div class="doc-title-row">
+                <img src="assets/img/logos/observer.png" alt="">
+                <span class="doc-badge">Servicio</span>
+                <h1>Observer</h1>
+            </div>
+            <p class="doc-lead">
+                El vigilante silencioso. Corre solo en segundo plano y anota <strong>todo lo que entra y
+                sale</strong> de las memorias, discos externos y celulares conectados al equipo &mdash;
+                aunque nadie haya abierto el Copier. No tiene ventana propia: lo que registra se consulta
+                en la secci&oacute;n <strong>Monitoreo</strong> de ControlStats.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#que-es">Qu&eacute; es y para qu&eacute; sirve</a></li>
+                        <li><a href="#vigila">Qu&eacute; vigila exactamente</a></li>
+                        <li><a href="#instalar">Instalarlo</a></li>
+                        <li><a href="#comprobar">Comprobar que est&aacute; activo</a></li>
+                        <li><a href="#autonomo">Funciona solo</a></li>
+                        <li><a href="#ajustes">Ajustes</a></li>
+                        <li><a href="#ver-datos">D&oacute;nde ver los datos</a></li>
+                        <li><a href="#problemas">Problemas frecuentes</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ QUÉ ES ══════════ -->
+                <section id="que-es" class="doc-section reveal">
+                    <h2>Qu&eacute; es y para qu&eacute; sirve</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier solo sabe de lo que se copia <b>a trav&eacute;s de &eacute;l</b>. Si alguien
+                        conecta una memoria y arrastra archivos directamente desde Windows, el Copier no se
+                        entera, y por tanto no se registra ni se cobra.
+                    </p>
+                    <p>
+                        El Observer cubre justamente ese hueco: <strong>vigila los dispositivos por su
+                        cuenta</strong>, sin depender de que alguien use el Copier.
+                    </p>
+                    <div class="callout tip">
+                        <h4>Su verdadera utilidad</h4>
+                        <p>
+                            Comparando la secci&oacute;n <b>Estad&iacute;sticas</b> (lo que se cobr&oacute;)
+                            con la secci&oacute;n <b>Monitoreo</b> (lo que realmente se movi&oacute;) sabes
+                            si se est&aacute; copiando algo por fuera. Es la herramienta de control del
+                            due&ntilde;o del negocio.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>No tiene ventana</h4>
+                        <p>
+                            No busques un icono que abrir: el Observer no es una aplicaci&oacute;n con
+                            pantalla, es un <b>servicio de Windows</b>. Se instala una vez desde el Lanzador
+                            y a partir de ah&iacute; trabaja solo, arrancando con el sistema.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ QUÉ VIGILA ══════════ -->
+                <section id="vigila" class="doc-section reveal">
+                    <h2>Qu&eacute; vigila exactamente</h2>
+                    <div class="doc-rule"></div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/usb_memory.png" alt=""> Memorias USB</h5>
+                            <p>Memorias y pendrives conectados al equipo.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/external_disk.png" alt=""> Discos externos</h5>
+                            <p>Discos duros port&aacute;tiles conectados por USB.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/cell.png" alt=""> Celulares y tablets</h5>
+                            <p>Tel&eacute;fonos conectados por cable.</p>
+                        </div>
+                    </div>
+                    <p>
+                        Por cada dispositivo que se conecta abre una <b>sesi&oacute;n</b> y anota, en el
+                        momento en que ocurren, los archivos que se <b>crean</b>, se <b>eliminan</b>, se
+                        <b>modifican</b> y se <b>renombran</b>, incluyendo los que est&aacute;n dentro de
+                        subcarpetas. Cuando el dispositivo se retira, la sesi&oacute;n se cierra.
+                    </p>
+                    <p>
+                        Con esos datos, ControlStats calcula sesiones, dispositivos atendidos, archivos y
+                        gigas movidos por d&iacute;a, por periodo y por trabajador.
+                    </p>
+                    <div class="callout">
+                        <h4>Lo que no registra</h4>
+                        <p>
+                            Ignora a prop&oacute;sito los archivos ocultos y las carpetas internas de
+                            Windows &mdash; la papelera de reciclaje y la informaci&oacute;n de volumen del
+                            sistema &mdash; porque no son trabajo real y solo ensuciar&iacute;an las
+                            estad&iacute;sticas.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ INSTALAR ══════════ -->
+                <section id="instalar" class="doc-section reveal">
+                    <h2>Instalarlo</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Abre el Lanzador</strong>
+                            Y pulsa <span class="ui">Configuraci&oacute;n</span> en la barra inferior. Si
+                            tienes <a href="primeros-pasos.html#password">contrase&ntilde;a maestra</a>, te
+                            la pedir&aacute; aqu&iacute;.
+                        </li>
+                        <li>
+                            <strong>Ve a la pesta&ntilde;a Sistema</strong>
+                            All&iacute; est&aacute; la tarjeta <span class="ui">Servicio Observer</span>.
+                        </li>
+                        <li>
+                            <strong>Pulsa Instalar</strong>
+                            Windows pedir&aacute; permisos de administrador. Acepta.
+                        </li>
+                        <li>
+                            <strong>Comprueba los dos sem&aacute;foros</strong>
+                            <span class="ui">Estado del servicio</span> debe quedar en
+                            <b>En ejecuci&oacute;n</b> y <span class="ui">Tarea programada</span> tambi&eacute;n
+                            en verde. Ya est&aacute; funcionando.
+                        </li>
+                    </ol>
+                    <div class="callout warn">
+                        <h4>El bot&oacute;n Instalar est&aacute; apagado</h4>
+                        <p>
+                            Solo se habilita si tu <b>licencia cubre el Observer</b>. Comprueba la lista
+                            <span class="ui">Cobertura de Licencia</span> en
+                            <span class="path">Configuraci&oacute;n &rsaquo; Acerca de</span>.
+                        </p>
+                    </div>
+                    <p>
+                        Para quitarlo, el mismo sitio tiene el bot&oacute;n
+                        <span class="ui">Desinstalar</span>. Los datos que ya recogi&oacute; no se borran:
+                        siguen consult&aacute;ndose en ControlStats.
+                    </p>
+                </section>
+
+                <!-- ══════════ COMPROBAR ══════════ -->
+                <section id="comprobar" class="doc-section reveal">
+                    <h2>Comprobar que est&aacute; activo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        En <span class="path">Lanzador &rsaquo; Configuraci&oacute;n &rsaquo; Sistema</span>
+                        hay dos indicadores:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Indicador</th><th>Qu&eacute; significa</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Estado del servicio: En ejecuci&oacute;n</td>
+                                    <td>Todo correcto: est&aacute; vigilando ahora mismo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Estado del servicio: Detenido</td>
+                                    <td>No est&aacute; funcionando y <b>no se est&aacute; registrando nada</b>. Vuelve a pulsar <span class="ui">Instalar</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Tarea programada</td>
+                                    <td>Es el respaldo: comprueba cada minuto que el servicio siga en marcha y lo vuelve a arrancar si alguien lo detuvo. Debe estar en verde.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        La otra forma de comprobarlo es directa: conecta una memoria, copia un archivo
+                        cualquiera en ella, y mira si aparece en
+                        <span class="path">ControlStats &rsaquo; Monitoreo &rsaquo; D&iacute;a</span>.
+                    </p>
+                </section>
+
+                <!-- ══════════ AUTÓNOMO ══════════ -->
+                <section id="autonomo" class="doc-section reveal">
+                    <h2>Funciona solo</h2>
+                    <div class="doc-rule"></div>
+                    <p>Una vez instalado, no hay que hacer nada m&aacute;s. El Observer:</p>
+                    <ul>
+                        <li><b>Arranca con Windows</b>, antes incluso de que alguien inicie sesi&oacute;n.</li>
+                        <li><b>Se reinicia solo</b> si algo lo interrumpe, reintentando a los pocos segundos.</li>
+                        <li><b>Est&aacute; protegido</b>: no se puede detener ni pausar desde Windows, para que nadie lo apague &laquo;sin querer&raquo; antes de copiar algo por fuera.</li>
+                        <li><b>Se revisa a s&iacute; mismo</b> cada poco tiempo y vuelve a enganchar los dispositivos si perdi&oacute; el hilo.</li>
+                    </ul>
+                    <div class="callout tip">
+                        <h4>No consume casi nada</h4>
+                        <p>
+                            Est&aacute; dormido la mayor parte del tiempo y solo despierta cuando se conecta
+                            un dispositivo o cambia un archivo. No ralentiza el equipo ni interfiere con el
+                            Copier.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ AJUSTES ══════════ -->
+                <section id="ajustes" class="doc-section reveal">
+                    <h2>Ajustes</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Vienen configurados para el uso normal y rara vez hay que cambiarlos. Puedes decidir
+                        qu&eacute; se vigila:
+                    </p>
+                    <div class="term-list">
+                        <dt>Vigilar memorias USB</dt>
+                        <dd>Activado de f&aacute;brica. Es lo m&aacute;s importante en un negocio de copia.</dd>
+                        <dt>Vigilar discos externos</dt>
+                        <dd>Activado de f&aacute;brica.</dd>
+                        <dt>Vigilar celulares</dt>
+                        <dd>Activado de f&aacute;brica.</dd>
+                        <dt>Tope de eventos por disco externo</dt>
+                        <dd>
+                            De f&aacute;brica, <b>1000</b>. Un disco externo puede tener cientos de miles de
+                            archivos; sin este tope, copiar uno entero llenar&iacute;a la base de datos de
+                            registros y las estad&iacute;sticas se volver&iacute;an lentas. Con el l&iacute;mite
+                            se anota lo suficiente para saber qu&eacute; pas&oacute; sin ahogar el sistema.
+                        </dd>
+                    </div>
+                    <p>Los cambios se aplican solos en menos de un minuto: no hay que reiniciar nada.</p>
+                </section>
+
+                <!-- ══════════ VER DATOS ══════════ -->
+                <section id="ver-datos" class="doc-section reveal">
+                    <h2>D&oacute;nde ver los datos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Todo lo que registra el Observer se consulta en
+                        <a href="controlstats.html">ControlStats</a>, en la secci&oacute;n
+                        <span class="ui">Monitoreo</span> del men&uacute; &mdash; solo visible para el
+                        administrador.
+                    </p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Monitoreo &rsaquo; D&iacute;a</h5>
+                            <p>Lo que se movi&oacute; en una jornada concreta.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Monitoreo &rsaquo; Dispositivos</h5>
+                            <p>Ranking de los dispositivos que m&aacute;s pasaron por el equipo.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Monitoreo &rsaquo; Comparador</h5>
+                            <p>Dos periodos enfrentados para ver la tendencia.</p>
+                        </div>
+                        <div class="card">
+                            <h5>Monitoreo &rsaquo; Reportes</h5>
+                            <p>Informes HTML exportables, con filtro por trabajador.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ══════════ PROBLEMAS ══════════ -->
+                <section id="problemas" class="doc-section reveal">
+                    <h2>Problemas frecuentes</h2>
+                    <div class="doc-rule"></div>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Lo que pasa</th><th>Soluci&oacute;n</th></tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">La secci&oacute;n Monitoreo est&aacute; vac&iacute;a</td>
+                                    <td>El servicio no est&aacute; instalado, est&aacute; detenido, o la licencia no lo cubre. Revisa los <a href="#comprobar">sem&aacute;foros</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">El bot&oacute;n Instalar est&aacute; apagado</td>
+                                    <td>Tu plan de licencia no incluye el Observer.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Instal&eacute; el servicio pero no registra nada</td>
+                                    <td>El servicio solo empieza a vigilar con una licencia v&aacute;lida que lo cubra. Si la licencia venci&oacute;, queda esperando hasta que se renueve.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">No aparecen todos los archivos de un disco externo</td>
+                                    <td>Es el <a href="#ajustes">tope de eventos</a> por disco externo, puesto a prop&oacute;sito. Es normal.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">No se registra un celular</td>
+                                    <td>Comprueba que el tel&eacute;fono est&eacute; desbloqueado y con el permiso de transferencia de archivos aceptado. Si est&aacute; solo cargando, Windows no lo ve.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Windows pide permisos al instalar</td>
+                                    <td>Es normal: instalar un servicio requiere permisos de administrador. Hay que aceptar.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout danger">
+                        <h4>Si nada de esto lo resuelve</h4>
+                        <p>
+                            El servicio guarda un registro de todo lo que hace dentro de la carpeta
+                            <span class="path">Data</span>. Si tienes que reportar un problema, ten a mano
+                            esa carpeta: ah&iacute; est&aacute; la informaci&oacute;n que hace falta para
+                            diagnosticarlo.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>Instalaci&oacute;n y comprobaci&oacute;n del servicio, en video.</p>
+                    <div data-videos="observer"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="controlstats.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Manual de ControlStats</span>
+                    </a>
+                    <a href="index.html" class="next">
+                        <span class="lbl">Volver &rarr;</span>
+                        <span class="ttl">Inicio</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

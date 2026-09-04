@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body data-accent="videos">
+
+    <nav id="main-nav">
+        <div class="container">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" class="active" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb">
+                <a href="index.html">Inicio</a><span>&rsaquo;</span>Videos
+            </div>
+            <div class="doc-title-row">
+                <span class="doc-badge">Aprende viendo</span>
+                <h1>Videos</h1>
+            </div>
+            <p class="doc-lead">
+                Las aplicaciones funcionando de verdad, grabadas paso a paso. Pulsa cualquier
+                video para reproducirlo aqu&iacute; mismo. Usa los botones de arriba para ver
+                solo los de una aplicaci&oacute;n.
+            </p>
+        </header>
+
+        <section class="doc-section reveal" style="padding-top:8px">
+            <div data-videos="all" data-video-filters></div>
+        </section>
+
+        <section class="doc-section reveal">
+            <h2>C&oacute;mo se publican los videos</h2>
+            <div class="doc-rule"></div>
+            <p>
+                Esta secci&oacute;n se llena sola. No hay que tocar el dise&ntilde;o de la p&aacute;gina:
+                basta con dejar el archivo de video en su carpeta y anotarlo en la lista.
+            </p>
+            <ol class="step-list">
+                <li>
+                    <strong>Copia el video a su carpeta</strong>
+                    Colócalo dentro de <span class="path">assets/videos/</span>, junto a los dem&aacute;s.
+                    Usa <b>.mp4</b> o <b>.webm</b>: son los formatos que reproducen todos los navegadores.
+                </li>
+                <li>
+                    <strong>Ap&uacute;ntalo en la lista</strong>
+                    Abre <span class="path">assets/videos/catalog.js</span> con el Bloc de notas y a&ntilde;ade
+                    una entrada con el nombre del archivo, el t&iacute;tulo, a qu&eacute; aplicaci&oacute;n
+                    pertenece y una frase de descripci&oacute;n. Ese archivo trae dentro las instrucciones
+                    y un ejemplo listo para copiar.
+                </li>
+                <li>
+                    <strong>Recarga la p&aacute;gina</strong>
+                    El video aparece autom&aacute;ticamente aqu&iacute; <em>y</em> en la secci&oacute;n de
+                    videos del manual de esa aplicaci&oacute;n, con su portada y su duraci&oacute;n.
+                </li>
+            </ol>
+            <div class="callout tip">
+                <h4>Portadas</h4>
+                <p>
+                    Si no indicas una imagen de portada, la web toma sola el primer fotograma del
+                    propio video. Solo hace falta especificarla si quieres una imagen distinta.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

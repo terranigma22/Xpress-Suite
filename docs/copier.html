@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copier &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+
+<body data-accent="copier">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" class="active" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb"><a href="index.html">Inicio</a><span>&rsaquo;</span>Copier</div>
+            <div class="doc-title-row">
+                <img src="assets/img/logos/copier.png" alt="">
+                <span class="doc-badge">Manual de usuario</span>
+                <h1>Copier</h1>
+            </div>
+            <p class="doc-lead">
+                El coraz&oacute;n de la suite. Copia archivos a <strong>muchos dispositivos a la vez</strong>
+                &mdash; memorias, discos, celulares, tarjetas &mdash; los cobra seg&uacute;n la tarifa que
+                elijas y lleva el historial de todo lo que pas&oacute; por tu negocio. Este manual recorre la
+                aplicaci&oacute;n de principio a fin: desde tu primera copia hasta las tarifas y la
+                configuraci&oacute;n avanzada.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#que-hace">Tu primera copia</a></li>
+                        <li><a href="#pantalla">La pantalla principal</a></li>
+                        <li><a href="#panel-doble">El modo doble</a></li>
+                        <li><a href="#dispositivos">Los dispositivos</a></li>
+                        <li><a href="#buscador">El Buscador</a></li>
+                        <li><a href="#arrastrar">Pasar archivos a los dispositivos</a></li>
+                        <li><a href="#explorador">El explorador del dispositivo</a></li>
+                        <li><a href="#modos">Modos de copia</a></li>
+                        <li><a href="#estructuras">Estructura de carpetas</a></li>
+                        <li><a href="#cobros">Cobros y tarifas</a></li>
+                        <li><a href="#acciones">Acciones sobre los dispositivos</a></li>
+                        <li><a href="#orden">Orden y prioridad</a></li>
+                        <li><a href="#cola">La cola de archivos</a></li>
+                        <li><a href="#matrices">Matrices</a></li>
+                        <li><a href="#continuar">Continuar entregas</a></li>
+                        <li><a href="#historial">Historial del dispositivo</a></li>
+                        <li><a href="#al-terminar">Al terminar el trabajo</a></li>
+                        <li><a href="#configuracion">Configuraci&oacute;n</a></li>
+                        <li><a href="#total-commander">Total Commander</a></li>
+                        <li><a href="#avisos">Avisos y sonidos</a></li>
+                        <li><a href="#atajos">Atajos de teclado</a></li>
+                        <li><a href="#licencia">Licencia</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ TU PRIMERA COPIA ══════════ -->
+                <section id="que-hace" class="doc-section reveal">
+                    <h2>Tu primera copia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier funciona siempre igual, sin importar cu&aacute;ntos dispositivos tengas
+                        conectados: <strong>buscas los archivos, los sueltas encima de los dispositivos y
+                            se copian todos a la vez</strong>. Mientras uno termina, los otros siguen. Cuando
+                        acaban, cobras.
+                    </p>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Conecta los dispositivos</strong>
+                            Memorias, discos, celulares&hellip; aparecen solos en el panel de la derecha
+                            en cuanto Windows los reconoce.
+                        </li>
+                        <li>
+                            <strong>Busca lo que vas a copiar</strong>
+                            Escribe en el <a href="#buscador">Buscador</a> de la izquierda y selecciona
+                            los archivos, o arr&aacute;stralos directamente desde una ventana de Windows.
+                        </li>
+                        <li>
+                            <strong>Elige c&oacute;mo se van a guardar</strong>
+                            El <a href="#modos">modo de copia</a> decide qu&eacute; pasa con lo que ya
+                            hay en el dispositivo, y la <a href="#estructuras">estructura</a> decide en
+                            qu&eacute; carpetas se van a guardar. Los valores de f&aacute;brica sirven
+                            para el 90&nbsp;% del trabajo diario.
+                        </li>
+                        <li>
+                            <strong>Suelta los archivos sobre los dispositivos</strong>
+                            Puedes soltarlos sobre uno solo o sobre varios seleccionados. La copia
+                            arranca sola.
+                        </li>
+                        <li>
+                            <strong>Cobra y expulsa</strong>
+                            Cada tarjeta muestra su <span class="ui">Total a pagar</span>. Con la
+                            <b>rueda central del mouse</b> sobre la tarjeta lo marcas como
+                            <span class="ui">Cobrado</span>. Luego expulsas el dispositivo con seguridad.
+                        </li>
+                    </ol>
+                    <div class="callout tip">
+                        <h4>Por qu&eacute; es tan r&aacute;pido</h4>
+                        <p>
+                            Cuando copias lo mismo a varias memorias, el Copier lee el archivo del disco
+                            <b>una sola vez</b>, lo guarda un momento en la memoria RAM y lo escribe en
+                            todas a la vez. Por eso copiar a diez memorias no tarda diez veces m&aacute;s
+                            que copiar a una.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PANTALLA ══════════ -->
+                <section id="pantalla" class="doc-section reveal">
+                    <h2>La pantalla principal</h2>
+                    <div class="doc-rule"></div>
+                    <p>La ventana se divide en dos paneles separados por una l&iacute;nea que puedes arrastrar
+                        para dar m&aacute;s espacio a uno o a otro:</p>
+                    <p>Adem&aacute;s, existe un <a href="#panel-doble">modo doble</a> para ver y manejar dos
+                        dispositivos a la vez, cada uno en su propio panel.</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><img src="assets/img/copier/mainmenu/finder.png" alt=""> Panel izquierdo</h5>
+                            <p>El <a href="#buscador">Buscador</a>: desde aqu&iacute; encuentras los
+                                archivos y los arrastras hacia los dispositivos.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/usb_memory.png" alt=""> Panel derecho</h5>
+                            <p>Los <a href="#dispositivos">dispositivos</a> conectados, cada uno con su
+                                barra de progreso y su total a pagar.</p>
+                        </div>
+                    </div>
+
+                    <h3>La barra de t&iacute;tulo</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Bot&oacute;n</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/windows/pin.png" alt=""></td>
+                                    <td class="nm">Siempre Encima</td>
+                                    <td>Mantiene la ventana del Copier por delante de las dem&aacute;s. C&oacute;modo
+                                        cuando trabajas arrastrando archivos desde el explorador de Windows.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/windows/camera.png" alt=""></td>
+                                    <td class="nm">Capturar ventana</td>
+                                    <td>Toma una foto de la ventana tal cual est&aacute;. &Uacute;til para dejar
+                                        constancia de un trabajo o para reclamar un problema.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/others/summary.png" alt=""></td>
+                                    <td class="nm">Modo Compacto<small>Ctrl + M</small></td>
+                                    <td>Reduce la ventana a solo la lista de dispositivos, sin el Buscador. Ideal para
+                                        pantallas peque&ntilde;as o para dejarla en una esquina vigilando. El Buscador
+                                        sigue disponible en ventana aparte con <span class="kbd">Ctrl</span>+<span
+                                            class="kbd">F</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/payments.png" alt=""></td>
+                                    <td class="nm">Total diario<small>Ctrl + S</small></td>
+                                    <td>Muestra u oculta el dinero acumulado del d&iacute;a. Se puede ocultar cuando hay
+                                        clientes delante.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/windows/minimize_window.png" alt=""></td>
+                                    <td class="nm">Minimizar, Maximizar y Cerrar</td>
+                                    <td>Los de siempre. Al cerrar, si hay copias en marcha, la aplicaci&oacute;n te pide
+                                        confirmaci&oacute;n.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>La barra de acciones</h3>
+                    <p>
+                        Debajo de los dispositivos est&aacute; la barra con todas las herramientas. Se divide
+                        en <a href="#acciones">acciones principales</a> (lo que le haces a los dispositivos)
+                        y acciones secundarias (configuraci&oacute;n, sesiones, modo y estructura), m&aacute;s
+                        los indicadores de <span class="ui">Fecha y hora</span>,
+                        <span class="ui">Tiempo de Trabajo</span> y <span class="ui">Total diario</span>.
+                    </p>
+
+                    <h3>Los contadores</h3>
+                    <p>
+                        Arriba se ven cu&aacute;ntos dispositivos hay y en qu&eacute; estado:
+                        <span class="ui">Dispositivos</span>, <span class="ui">Seleccionados</span>,
+                        <span class="ui">Trabajando</span> y <span class="ui">Red</span>; y aparte el
+                        conteo del trabajo realizado: <span class="ui">Memorias copiadas</span>,
+                        <span class="ui">Discos copiados</span> y
+                        <span class="ui">Celulares/Tablets copiados</span>.
+                    </p>
+                    <p>
+                        A la derecha hay tambi&eacute;n un indicador de <span class="ui">Memoria RAM</span>
+                        con lo usado y lo total. Si lo ves siempre al tope, revisa los ajustes de
+                        <a href="#configuracion">RAM</a>.
+                    </p>
+                </section>
+
+                <!-- ══════════ MODO DOBLE ══════════ -->
+                <section id="panel-doble" class="doc-section reveal">
+                    <h2>El modo doble</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El <b>modo doble</b> divide la ventana en dos paneles exactamente iguales, cada
+                        uno con su propio dispositivo y su propio explorador. La idea es simple: tienes
+                        un dispositivo en cada panel y copias de uno a otro sin cambiar de pantalla. Es
+                        muy &uacute;til cuando trabajas con dos memorias a la vez, por ejemplo para que un
+                        cliente deje una copia de seguridad en su memoria mientras t&uacute; llenas otra.
+                    </p>
+                    <p>
+                        Lo enciendes y apagas con el bot&oacute;n <span class="ui">Dos paneles</span> de
+                        la barra de acciones (<span class="kbd">Ctrl</span> + <span class="kbd">D</span>),
+                        o con <b>clic derecho</b> sobre el mismo bot&oacute;n intercambias los paneles de
+                        lugar. El panel que tiene el foco se resalta con un borde de color, para que
+                        siempre sepas con cu&aacute;l est&aacute;s trabajando.
+                    </p>
+
+                    <h3>C&oacute;mo se maneja</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><span class="kbd">Tab</span> y <span class="kbd">&larr;</span>/<span
+                                    class="kbd">&rarr;</span></h5>
+                            <p>Cambian cu&aacute;l de los dos paneles tiene el foco. Con <span
+                                    class="kbd">&larr;</span>/<span class="kbd">&rarr;</span> eliges seg&uacute;n
+                                la posici&oacute;n en pantalla.</p>
+                        </div>
+                        <div class="card">
+                            <h5><span class="kbd">Ctrl</span> + <span class="kbd">Tab</span></h5>
+                            <p>Intercambia los dos paneles de lugar, sin perder el dispositivo de cada uno.</p>
+                        </div>
+                        <div class="card">
+                            <h5><span class="kbd">Alt</span> + letra de unidad</h5>
+                            <p>Abre ese disco en el panel contrario, &uacute;til para dejar listo el destino sin
+                                soltar el origen. Estas teclas no se roban mientras escribes texto.</p>
+                        </div>
+                        <div class="card">
+                            <h5><span class="kbd">Esc</span></h5>
+                            <p>Cierra el explorador del panel enfocado.</p>
+                        </div>
+                    </div>
+
+                    <h3>Copiar y mover entre paneles</h3>
+                    <p>Puedes pasar ficheros o carpetas de un panel al otro de varias formas:</p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>C&oacute;mo</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F5</span></td>
+                                    <td>Env&iacute;a la selecci&oacute;n del panel enfocado al otro, copiando y
+                                        manteniendo la estructura de carpetas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">F5</span></td>
+                                    <td>Como arrastrar con el bot&oacute;n <b>derecho</b>: env&iacute;a al otro
+                                        panel solo los ficheros sueltos, sin la estructura de carpetas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Arrastrar con el bot&oacute;n <b>izquierdo</b></td>
+                                    <td>Igual que <span class="kbd">F5</span>: copia manteniendo la estructura de
+                                        carpetas.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Arrastrar con el bot&oacute;n <b>derecho</b></td>
+                                    <td>Copia solo los ficheros sueltos, sin la estructura de carpetas. Igual que <span
+                                            class="kbd">Ctrl</span> + <span class="kbd">F5</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Mismo disco en los dos paneles</td>
+                                    <td>Si los dos paneles tienen abierto el mismo disco, tanto <span
+                                            class="kbd">F5</span>, <span class="kbd">Ctrl</span> + <span
+                                            class="kbd">F5</span> como el arrastre <b>mueven</b> el elemento en vez de
+                                        copiarlo, para no duplicarlo sobre s&iacute; mismo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Acciones sobre cada panel</h3>
+                    <p>
+                        Las acciones de la barra (Prioridad, Pausar/Continuar, Cancelar, Clonar, Formatear y
+                        Expulsar) act&uacute;an sobre el panel que elijas con el rat&oacute;n:
+                        <b>clic izquierdo</b> sobre el panel izquierdo y <b>clic derecho</b> sobre el derecho.
+                    </p>
+
+                    <h3>Se recuerda lo que hac&iacute;as</h3>
+                    <p>
+                        Al cerrar la aplicaci&oacute;n se guarda el dispositivo y la carpeta abierta en cada
+                        panel; al volver a abrir, cada panel vuelve justo donde lo dejaste.
+                    </p>
+                </section>
+
+                <!-- ══════════ DISPOSITIVOS ══════════ -->
+                <section id="dispositivos" class="doc-section reveal">
+                    <h2>Los dispositivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>Cada dispositivo conectado tiene su propio icono seg&uacute;n lo que sea:</p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Tipo</th>
+                                    <th>Qu&eacute; es</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/usb_memory.png" alt=""></td>
+                                    <td class="nm">Memoria USB 3.0 o superior</td>
+                                    <td>Las memorias y pendrives de toda la vida.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/usb_memory_2.png" alt=""></td>
+                                    <td class="nm">Memoria USB 2.0</td>
+                                    <td>Las memorias y pendrives de toda la vida.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/usb_memory_fail.png" alt=""></td>
+                                    <td class="nm">Memoria mal conectada</td>
+                                    <td>La memoria no est&aacute; bien conectada en el puerto o est&aacute; conectada a
+                                        un puerto de
+                                        menor velocidad.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/external_disk.png" alt=""></td>
+                                    <td class="nm">Disco externo USB 3.0 o superior</td>
+                                    <td>Discos duros port&aacute;tiles conectados por USB 3.0 o superior</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/external_disk_2.png" alt=""></td>
+                                    <td class="nm">Disco externo USB 2.0</td>
+                                    <td>Discos duros port&aacute;tiles USB 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/external_disk_fail.png" alt="">
+                                    </td>
+                                    <td class="nm">Disco externo mal conectado</td>
+                                    <td>Disco no est&aacute; bien conectado o est&aacute; conectado a un puerto de menor
+                                        velocidad.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/hard_disk.png" alt=""></td>
+                                    <td class="nm">Disco interno</td>
+                                    <td>Discos que est&aacute;n dentro de la propia computadora.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/boot_disk.png" alt=""></td>
+                                    <td class="nm">Disco de arranque</td>
+                                    <td>El disco donde est&aacute; instalado Windows. Se marca aparte para que no lo
+                                        toques por error.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/cell.png" alt=""></td>
+                                    <td class="nm">Celular o tablet</td>
+                                    <td>Tel&eacute;fonos conectados por cable. Tienen su propia configuraci&oacute;n
+                                        porque trabajan de manera diferente.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/network_disk.png" alt=""></td>
+                                    <td class="nm">Unidad de red</td>
+                                    <td>Carpetas compartidas de otra computadora de la red.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/reader.png" alt=""></td>
+                                    <td class="nm">Lector</td>
+                                    <td>El dispositivo del que se <b>lee</b> el contenido para copiarlo a los
+                                        dem&aacute;s.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/writer.png" alt=""></td>
+                                    <td class="nm">Escritor</td>
+                                    <td>El dispositivo en el que se <b>escribe</b>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/ejecting.png" alt=""></td>
+                                    <td class="nm">Expulsando</td>
+                                    <td>Est&aacute; terminando de vaciar lo pendiente. No lo desconectes todav&iacute;a.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/unavailable.png" alt=""></td>
+                                    <td class="nm">No disponible</td>
+                                    <td>El dispositivo dej&oacute; de responder o fue desconectado de golpe.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>La tarjeta de cada dispositivo</h3>
+                    <p>En cada tarjeta puedes ver, de un vistazo:</p>
+                    <ul>
+                        <li>La <b>barra de progreso</b> de lo que se est&aacute; copiando.</li>
+                        <li>La <b>letra</b> de unidad, el <b>puerto</b> USB al que est&aacute; conectado y el <b>espacio
+                                final</b> que le quedar&aacute; libre.</li>
+                        <li>La <b>prioridad</b> que tiene asignada.</li>
+                        <li>El <span class="ui">Total a pagar</span> y si ya est&aacute; <span
+                                class="ui">Cobrado</span>.</li>
+                        <li>El estado, cuando est&aacute; ocupado: <span class="ui">Expulsando</span>, <span
+                                class="ui">Formateando</span>, <span class="ui">Reparando</span> o <span
+                                class="ui">Desconectado</span>.</li>
+                    </ul>
+                    <p>
+                        Qu&eacute; datos se muestran exactamente lo decides t&uacute; en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Informaci&oacute;n de Procesos</span>.
+                    </p>
+
+                    <h3>Las cuatro formas de ver los dispositivos</h3>
+                    <p>
+                        Con el clic derecho sobre la lista, en <span class="ui">Mostrar Dispositivos en</span>,
+                        eliges cu&aacute;nta informaci&oacute;n quieres ver por dispositivo:
+                    </p>
+                    <div class="term-list">
+                        <dt>Normal</dt>
+                        <dd>La vista completa, con todos los datos. Recomendada si tienes pocos dispositivos y pantalla
+                            grande.</dd>
+                        <dt>Cl&aacute;sico</dt>
+                        <dd>La presentaci&oacute;n de las versiones anteriores del programa.</dd>
+                        <dt>Compacto V1 y Compacto V2</dt>
+                        <dd>Tarjetas peque&ntilde;as, para cuando trabajas con muchas memorias a la vez y necesitas
+                            verlas todas en pantalla. Son dos dise&ntilde;os distintos; usa el que te resulte m&aacute;s
+                            claro.</dd>
+                    </div>
+
+                    <h3>Valores por dispositivo</h3>
+                    <p>
+                        Cada dispositivo lleva seis interruptores que deciden qu&eacute; se hace con &eacute;l
+                        al terminar. Puedes cambiarlos uno por uno, o fijar los valores de f&aacute;brica en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Dispositivos</span>.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Interruptor</th>
+                                    <th>Qu&eacute; hace cuando est&aacute; activo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/hidden.png" alt=""></td>
+                                    <td class="nm">Ocultar<small>O</small></td>
+                                    <td>Esconde el dispositivo de la lista. &Uacute;til para los discos internos, que
+                                        siempre est&aacute;n ah&iacute; y estorban.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/eraser.png" alt=""></td>
+                                    <td class="nm">Formatear<small>F</small></td>
+                                    <td>Formatea el dispositivo <b>antes</b> de empezar a copiar, para que quede limpio.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/eject.png" alt=""></td>
+                                    <td class="nm">Expulsar<small>E</small></td>
+                                    <td>Expulsa el dispositivo con seguridad al terminar la copia, sin que tengas que
+                                        hacerlo t&uacute;.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/payment.png" alt=""></td>
+                                    <td class="nm">Cobrar<small>C</small></td>
+                                    <td>Calcula el importe de ese dispositivo. Si lo apagas, ese dispositivo no genera
+                                        cobro.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/delete_move.png" alt="">
+                                    </td>
+                                    <td class="nm">Eliminar y mover<small>EM</small></td>
+                                    <td>Permite borrar y mover archivos desde el explorador del dispositivo. Si lo
+                                        apagas, el explorador queda solo de lectura &mdash; protege contra borrados
+                                        accidentales.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/publicity.png" alt="">
+                                    </td>
+                                    <td class="nm">Copiar Publicidad<small>CP</small></td>
+                                    <td>Permite copiar la publicidad al terminar la copia de manera automática.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout warn">
+                        <h4>Formatear y expulsar necesitan los registros del sistema</h4>
+                        <p>
+                            Para que <span class="ui">Formatear</span> y <span class="ui">Expulsar</span>
+                            funcionen sin que Windows te pida permiso a cada rato, tiene que estar instalado
+                            el registro <span class="ui">Habilitar formateo y expulsi&oacute;n en el
+                            copiador</span>. Se instala y se <b>comprueba desde el Lanzador</b>, en
+                            <span class="path">Configuraci&oacute;n &rsaquo; Sistema &rsaquo; Registros del
+                            Sistema</span>, donde cada entrada tiene su sem&aacute;foro. Si ese ajuste falta,
+                            al formatear ver&aacute;s el aviso <span class="ui">NO SE PUEDE FORMATEAR</span>.
+                            El procedimiento completo est&aacute; en
+                            <a href="primeros-pasos.html#registros">Primeros pasos</a>.
+                        </p>
+                    </div>
+
+                    <h3>El men&uacute; de cada dispositivo</h3>
+                    <p>Con el clic derecho sobre una tarjeta se abre su men&uacute; propio:</p>
+                    <ul>
+                        <li><span class="ui">Explorar dispositivo</span> &mdash; abre su <a
+                                href="#explorador">explorador</a>.</li>
+                        <li><span class="ui">Copiar Publicidad</span> &mdash; Copia la publicidad al dispositivo.
+                        </li>
+                        <li><span class="ui">Lista de ficheros</span> <span class="kbd">Enter</span> &mdash; desde la
+                            tarjeta. Desde el Mini-Explorer con <span class="kbd">Ctrl</span>+<span class="kbd">L</span>
+                            &mdash; muestra la lista de archivos que se van a copiar, con su
+                            tama&ntilde;o y la ruta de origen. Ver <a href="#cola">La cola de archivos</a>.
+                        </li>
+                        <li><span class="ui">Cobrar dispositivo</span> &mdash; tambi&eacute;n con la <b>rueda central
+                                del mouse</b>.</li>
+                        <li><span class="ui">Pagos</span> &mdash; cambia la forma de cobro solo de ese dispositivo. Ver
+                            <a href="#cobros">Cobros</a>.
+                        </li>
+                        <li><span class="ui">Cancelar fichero</span> y <span class="ui">Copiar ficheros con
+                                errores</span>.</li>
+                        <li><span class="ui">Reparar</span> <span class="kbd">F1</span>, <span
+                                class="ui">Formatear</span> <span class="kbd">F4</span> y <span
+                                class="ui">Expulsar</span>.</li>
+                        <li><span class="ui">Actualizar Alias</span> <span class="kbd">F2</span> &mdash; ponle un nombre
+                            reconocible, como &laquo;Memoria de Juan&raquo;.</li>
+                        <li><span class="ui">Actualizar Puerto</span> <span class="kbd">F3</span> &mdash; nombra el
+                            puerto USB f&iacute;sico, por ejemplo &laquo;Puerto 1 delantero&raquo;, para saber siempre
+                            d&oacute;nde est&aacute; conectado.</li>
+                        <li><span class="ui">Cargar Sesi&oacute;n</span> y <span class="ui">Cargar Sesi&oacute;n (Nueva
+                                Tirada)</span>.</li>
+                        <li><span class="ui">Historial</span> &mdash; todo lo que se ha copiado a ese dispositivo. Ver
+                            <a href="#historial">Historial</a>.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- ══════════ BUSCADOR ══════════ -->
+                <section id="buscador" class="doc-section reveal">
+                    <h2>El Buscador</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Es el panel de la izquierda y la forma m&aacute;s r&aacute;pida de encontrar algo.
+                        Escribes en <span class="ui">Buscar elementos</span> y la lista de resultados se
+                        actualiza mientras tecleas &mdash; no hace falta saber en qu&eacute; carpeta
+                        est&aacute; el archivo.
+                    </p>
+
+                    <div class="callout warn">
+                        <h4>Necesita Everything instalado y en marcha</h4>
+                        <p>
+                            Para buscar al instante, el Buscador usa el programa gratuito
+                            <b>Everything</b> (indexa el contenido de los dispositivos conectados al
+                            momento). Si no tienes
+                            <b>Everything</b> instalado y corriendo en segundo plano, los resultados no se
+                            mostrar&aacute;n. Inst&aacute;lalo y d&eacute;jalo iniciado con Windows para que
+                            el Buscador funcione siempre.
+                        </p>
+                    </div>
+
+                    <p>
+                        Debajo tienes siempre a la vista
+                        <span class="ui">Ficheros (Seleccionados/Totales)</span> y
+                        <span class="ui">Tama&ntilde;o seleccionado</span>, para saber cu&aacute;nto ocupa
+                        lo que llevas marcado antes de soltarlo en una memoria.
+                    </p>
+                    <div class="term-list">
+                        <dt>Abrirlo en ventana aparte</dt>
+                        <dd>Con <span class="kbd">Ctrl</span>+<span class="kbd">F</span>. As&iacute; puedes
+                            usarlo tambi&eacute;n en Modo Compacto.</dd>
+                        <dt>Seleccionar varios</dt>
+                        <dd><span class="kbd">Ctrl</span>+<span class="kbd">A</span> selecciona todo. Las
+                            teclas <span class="kbd">+</span> o <span class="kbd">F5</span> y <span class="kbd">-</span> a&ntilde;aden o
+                            quitan archivos de la lista de copia.
+                        </dd>
+                        <dt>Esconder rutas</dt>
+                        <dd>Si hay carpetas que no quieres que aparezcan nunca en los resultados, las
+                            indicas en <span class="path">Configuraci&oacute;n &rsaquo; Buscador</span>.</dd>
+                    </div>
+                </section>
+
+                <!-- ══════════ ARRASTRAR ══════════ -->
+                <section id="arrastrar" class="doc-section reveal">
+                    <h2>Pasar archivos a los dispositivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Todo el trabajo del Copier empieza aqu&iacute;: arrastrar lo que hay que copiar y
+                        soltarlo encima de los dispositivos. Merece la pena leer esta secci&oacute;n
+                        completa, porque <strong>d&oacute;nde sueltas</strong> y <strong>con qu&eacute;
+                            bot&oacute;n arrastras</strong> cambian el resultado.
+                    </p>
+
+                    <h3>De d&oacute;nde puedes sacar los archivos</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><img src="assets/img/copier/mainmenu/finder.png" alt=""> Desde el Buscador</h5>
+                            <p>Buscas, marcas los archivos en la lista de resultados y los arrastras al
+                                dispositivo. Es la forma m&aacute;s r&aacute;pida.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/explorer/opened_folder.png" alt=""> Desde una ventana de
+                                Windows</h5>
+                            <p>Arrastras archivos o carpetas enteras desde el explorador de Windows
+                                directamente a la ventana del Copier.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/mainactions/clone.png" alt=""> Desde otro dispositivo</h5>
+                            <p>Con <span class="ui">Clonar lista</span> repites en otros dispositivos la
+                                misma cola, sin volver a buscar nada.</p>
+                        </div>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Sumar y restar desde el Buscador</h4>
+                        <p>
+                            En el Buscador, <span class="kbd">Ctrl</span>+<span class="kbd">A</span>
+                            selecciona todo. Con <span class="kbd">+</span> o <span class="kbd">F5</span> mandas lo marcado al
+                            dispositivo como una copia normal, respetando el &aacute;rbol de carpetas.
+                            Con <span class="kbd">Ctrl</span>+<span class="kbd">+</span> o <span class="kbd">Ctrl</span>+<span class="kbd">F5</span> copia solo los ficheros sueltos, sin recrear ninguna carpeta. Y con <span class="kbd">-</span>
+                            quitas esos archivos de la lista, si ya estaban en ella. Abajo ves siempre el
+                            <span class="ui">Tama&ntilde;o seleccionado</span>, para comprobar que cabe
+                            en la memoria antes de soltarlo.
+                        </p>
+                    </div>
+
+                    <h3>Los dos sitios donde puedes soltar</h3>
+                    <p>Esta es la diferencia m&aacute;s importante, y la que m&aacute;s confunde al principio:</p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>D&oacute;nde sueltas</th>
+                                    <th>Qu&eacute; pasa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Sobre la lista o la tarjeta de un dispositivo</td>
+                                    <td>
+                                        Los archivos van a la <b>ra&iacute;z del dispositivo</b>, organizados
+                                        seg&uacute;n
+                                        la <a href="#estructuras">estructura</a> que tengas elegida para ese
+                                        tipo de dispositivo (Discos, Memorias o Celulares). Es la forma normal
+                                        de trabajar.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Dentro del explorador de un dispositivo</td>
+                                    <td>
+                                        Los archivos van a <b>la carpeta exacta en la que est&eacute;s situado</b>
+                                        dentro de ese dispositivo, no a la ra&iacute;z. Sirve para colocar algo
+                                        en un sitio concreto sin desordenar el resto.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Al soltar dentro del explorador cambia la estructura</h4>
+                        <p>
+                            Cuando sueltas dentro del explorador de un dispositivo, el Copier
+                            <b>ignora la estructura elegida y usa siempre &laquo;Carpetas&raquo;</b>. Es lo
+                            l&oacute;gico: ya elegiste t&uacute; la carpeta de destino, no tiene sentido que
+                            encima te recree todo el &aacute;rbol del disco de origen.
+                        </p>
+                        <p>
+                            Si prefieres que respete la estructura que tengas puesta tambi&eacute;n en este
+                            caso, activa <span class="ui">Mantener estructura en Mini-Explorer</span> en
+                            <span class="path">Configuraci&oacute;n &rsaquo; General</span>.
+                        </p>
+                    </div>
+
+                    <h3>Soltar sobre varios dispositivos a la vez</h3>
+                    <p>
+                        Si tienes <b>varios dispositivos seleccionados</b>, lo que sueltes se a&ntilde;ade a
+                        <b>todos</b> de una vez. Esa es la base del trabajo del Copier: preparas quince
+                        memorias iguales en un solo arrastre. Si no hay ninguno seleccionado, se a&ntilde;ade
+                        solo al dispositivo sobre el que soltaste.
+                    </p>
+
+                    <h3>Arrastrar con el bot&oacute;n derecho o con Ctrl</h3>
+                    <p>
+                        Adem&aacute;s del arrastre normal, hay dos variantes que cambian por completo lo que
+                        ocurre:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>C&oacute;mo arrastras</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Bot&oacute;n izquierdo<small>lo normal</small></td>
+                                    <td>A&ntilde;ade los archivos a la cola, organizados seg&uacute;n la estructura
+                                        elegida.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Bot&oacute;n <b>derecho</b><br>o <span class="kbd">Alt</span> +
+                                        bot&oacute;n izquierdo</td>
+                                    <td>A&ntilde;ade los archivos <b>todos sueltos</b>, sin ninguna carpeta, sea cual
+                                        sea la estructura elegida. La &uacute;nica excepci&oacute;n es <b>Carpeta
+                                            personalizada</b>, que se sigue respetando.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> mientras sueltas</td>
+                                    <td>Hace lo contrario: en vez de a&ntilde;adir, <b>quita del dispositivo</b> los
+                                        archivos que arrastraste. Es la forma r&aacute;pida de retirar algo que se
+                                        col&oacute; por error.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout">
+                        <h4>El modo se reinicia despu&eacute;s de cada arrastre</h4>
+                        <p>
+                            En cuanto sueltas, el <a href="#modos">modo de copia</a> vuelve solo a
+                            <b>Normal</b>. Si vas a hacer varios espejos seguidos, tienes que volver a
+                            elegir <b>Espejo</b> cada vez. Es una protecci&oacute;n para que no borres por
+                            error el contenido de la siguiente memoria.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ EXPLORADOR ══════════ -->
+                <section id="explorador" class="doc-section reveal">
+                    <h2>El explorador del dispositivo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Cada dispositivo trae su propio explorador integrado, para que no tengas que abrir
+                        el de Windows. Se abre con <span class="ui">Explorar dispositivo</span> desde el
+                        men&uacute; de la tarjeta.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Herramienta</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/back.png" alt=""></td>
+                                    <td class="nm">Salir</td>
+                                    <td>Sale del explorador del dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/Left.png" alt=""></td>
+                                    <td class="nm">Regresar</td>
+                                    <td>Sube a la carpeta anterior.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/add_folder.png" alt=""></td>
+                                    <td class="nm">Crear carpeta<small>F7 &nbsp;|&nbsp; Ctrl + N</small></td>
+                                    <td>Crea una carpeta nueva donde est&eacute;s parado.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/txt.png" alt=""></td>
+                                    <td class="nm">Crear txt<small>rueda central</small></td>
+                                    <td>Con la opci&oacute;n <span class="ui">Crear (.txt) solo del &uacute;ltimo
+                                            fichero</span> activa, crea un archivo de texto del &uacute;ltimo archivo
+                                        seleccionado. Si est&aacute; apagada, crea un archivo de texto por cada
+                                        fichero seleccionado.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/clipboard.png" alt=""></td>
+                                    <td class="nm">Copiar al Portapapeles<small>clic derecho</small></td>
+                                    <td>Copia el nombre del fichero o carpeta como texto, para pegarlo en un mensaje o
+                                        en caso de tener el buscador abierto pega eso en el campo de b&uacute;squeda.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/delete.png" alt=""></td>
+                                    <td class="nm">Eliminar seleccionados<small>Supr</small></td>
+                                    <td>Borra del dispositivo lo que tengas marcado. Solo funciona si el interruptor
+                                        <span class="ui">Eliminar y mover</span> est&aacute; activo.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/explorer/file_list.png" alt=""></td>
+                                    <td class="nm">Lista de ficheros<small>Ctrl + L</small></td>
+                                    <td>Abre la <a href="#cola">cola de archivos</a> pendientes de ese dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/cancel_file.png" alt=""></td>
+                                    <td class="nm">Cancelar fichero</td>
+                                    <td>Salta el archivo que se est&aacute; copiando en ese momento y pasa al siguiente.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Abajo, siempre visibles:
+                        <span class="ui">Ficheros (Seleccionados/Totales)</span>,
+                        <span class="ui">Tama&ntilde;o seleccionado</span>,
+                        <span class="ui">Espacio Final</span>,
+                        <span class="ui">Total a pagar</span> y el interruptor
+                        <span class="ui">Expulsar al finalizar</span>.
+                    </p>
+                    <div class="callout tip">
+                        <h4>Renombrar sobre la marcha</h4>
+                        <p>
+                            Con <span class="kbd">F2</span> sobre un archivo o carpeta lo renombras sin
+                            salir del programa. Y con <span class="kbd">Enter</span> abres lo que tengas
+                            seleccionado.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ MODOS ══════════ -->
+                <section id="modos" class="doc-section reveal">
+                    <h2>Modos de copia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El modo decide <strong>qu&eacute; pasa con lo que ya estaba</strong> en el
+                        dispositivo. Se cambia con el bot&oacute;n de modo de la barra de acciones:
+                        <b>clic izquierdo</b> pasa al siguiente, <b>clic derecho</b> vuelve al anterior.
+                        El bot&oacute;n muestra siempre <span class="ui">Modo: &hellip;</span> con el
+                        que est&aacute; activo.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Modo</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/modes/normal.png" alt=""></td>
+                                    <td class="nm">Normal<small>el de siempre</small></td>
+                                    <td>Copia lo que sueltas y <b>no toca nada</b> de lo que ya hab&iacute;a en el
+                                        dispositivo. Es el que usar&aacute;s casi siempre.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/modes/differences.png" alt=""></td>
+                                    <td class="nm">Eliminar Diferencias</td>
+                                    <td><b>No copia nada.</b> Al rev&eacute;s: borra del dispositivo todo lo que no
+                                        est&eacute; en el origen que le sueltas, y quita adem&aacute;s las carpetas que
+                                        queden vac&iacute;as. Sirve para limpiar y dejar el dispositivo solo con lo que
+                                        debe tener.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/modes/mirror.png" alt=""></td>
+                                    <td class="nm">Espejo</td>
+                                    <td>Primero borra lo que sobra y despu&eacute;s copia lo que falta. El dispositivo
+                                        queda <b>id&eacute;ntico al origen</b>, ni un archivo m&aacute;s ni uno menos.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/modes/synchro.png" alt=""></td>
+                                    <td class="nm">Sincronizaci&oacute;n</td>
+                                    <td>Igual que Espejo pero m&aacute;s inteligente: si un archivo ya est&aacute; en el
+                                        dispositivo pero en otra carpeta, lo <b>mueve</b> a su sitio en vez de borrarlo
+                                        y volver a copiarlo. Solo borra lo que de verdad sobra. Es much&iacute;simo
+                                        m&aacute;s r&aacute;pido cuando se reorganizan carpetas.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout warn">
+                        <h4>El modo vuelve solo a Normal</h4>
+                        <p>
+                            Despu&eacute;s de cada arrastre, el modo regresa autom&aacute;ticamente a
+                            <b>Normal</b>. Es una protecci&oacute;n: as&iacute; no borras el contenido de la
+                            siguiente memoria por haber olvidado que dejaste puesto Espejo.
+                        </p>
+                    </div>
+                    <div class="callout danger">
+                        <h4>Espejo y Eliminar Diferencias borran archivos</h4>
+                        <p>
+                            Los tres modos que no son Normal <b>borran cosas del dispositivo del cliente</b>.
+                            Aseg&uacute;rate de que el origen que est&aacute;s arrastrando es el correcto
+                            antes de soltarlo. Lo borrado no va a la papelera.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ESTRUCTURAS ══════════ -->
+                <section id="estructuras" class="doc-section reveal">
+                    <h2>Estructura de carpetas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        La estructura decide <strong>en qu&eacute; carpetas se van a guardar</strong> los
+                        archivos dentro del dispositivo. Hay <b>tres selectores independientes</b> en la
+                        barra de acciones, porque no se organiza igual un disco que una memoria:
+                    </p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/hard_disk.png" alt=""> Estructura Discos</h5>
+                            <p>De f&aacute;brica: <b>Estructura</b>. Un disco tiene espacio de sobra, as&iacute; que se
+                                respeta el orden original.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/usb_memory.png" alt=""> Estructura Memorias</h5>
+                            <p>De f&aacute;brica: <b>Carpetas</b>. En una memoria interesa que todo est&eacute; a mano,
+                                no enterrado en diez niveles.</p>
+                        </div>
+                        <div class="card">
+                            <h5><img src="assets/img/copier/drives/cell.png" alt=""> Estructura Celulares</h5>
+                            <p>De f&aacute;brica: <b>Carpeta personalizada</b>. As&iacute; todo lo del cliente queda
+                                junto en una sola carpeta del tel&eacute;fono.</p>
+                        </div>
+                    </div>
+                    <p>Como con el modo: <b>clic izquierdo</b> avanza, <b>clic derecho</b> retrocede.</p>
+
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Estructura</th>
+                                    <th>D&oacute;nde quedan los archivos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/structure.png" alt=""></td>
+                                    <td class="nm">Estructura</td>
+                                    <td>Reproduce el &aacute;rbol de carpetas <b>completo, desde la ra&iacute;z del
+                                            disco de origen</b>. Se recrean tambi&eacute;n las carpetas que hay por
+                                        encima de lo que arrastraste.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/folder.png" alt=""></td>
+                                    <td class="nm">Carpetas</td>
+                                    <td>Copia <b>la carpeta que arrastraste, con todo su contenido y su
+                                            organizaci&oacute;n dentro</b>, pero sin las carpetas que hab&iacute;a por
+                                        encima. Si arrastras archivos sueltos, conserva solo la carpeta en la que
+                                        estaban. Es la opci&oacute;n m&aacute;s pr&aacute;ctica para memorias.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/file.png" alt=""></td>
+                                    <td class="nm">Ficheros</td>
+                                    <td>Todo suelto en la ra&iacute;z, sin ninguna carpeta. Para clientes que solo
+                                        quieren ver la lista de pel&iacute;culas al conectar la memoria al televisor.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/custom.png" alt=""></td>
+                                    <td class="nm">Carpeta personalizada</td>
+                                    <td>Te pregunta un nombre y mete todo dentro de una carpeta con ese nombre. Por
+                                        dentro se organiza igual que con <b>Carpetas</b>. Ideal para poner la fecha o el
+                                        nombre del cliente.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/no_structure.png" alt=""></td>
+                                    <td class="nm">Sin estructura</td>
+                                    <td>Depende de lo que arrastres: si arrastras una <b>carpeta</b>, se comporta igual
+                                        que <b>Carpetas</b>; si arrastras <b>archivos sueltos</b>, quedan sueltos en la
+                                        ra&iacute;z.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/top_folder.png" alt=""></td>
+                                    <td class="nm">Carpeta Superior</td>
+                                    <td>Como <b>Carpetas</b>, pero a&ntilde;adiendo por encima <b>una carpeta
+                                            m&aacute;s</b>: la que conten&iacute;a a la que arrastraste. Sirve para
+                                        agrupar por g&eacute;nero, por temporada o por a&ntilde;o sin arrastrar toda la
+                                        ruta.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/only_dir.png" alt=""></td>
+                                    <td class="nm">Directorios vac&iacute;os</td>
+                                    <td><b>No copia archivos.</b> Solo crea el &aacute;rbol de carpetas vac&iacute;o.
+                                        Para preparar la organizaci&oacute;n de un disco antes de llenarlo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/structures/structure_file_0.png" alt="">
+                                    </td>
+                                    <td class="nm">Estructura con ficheros de 0&nbsp;KB</td>
+                                    <td>Crea las carpetas y dentro los archivos con el mismo nombre pero
+                                        <b>vac&iacute;os</b>. Sirve como cat&aacute;logo: el cliente ve qu&eacute;
+                                        tienes sin llevarse el contenido.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Ejemplo 1: arrastras una carpeta</h3>
+                    <p>
+                        Este es el caso normal. Tienes en el disco <b>D:</b> esta organizaci&oacute;n y
+                        arrastras la carpeta <b>Series</b> completa hacia una memoria <b>E:</b>
+                    </p>
+                    <div class="tree-pair">
+                        <figure>
+                            <figcaption>Origen &mdash; arrastras <i>Series</i></figcaption>
+                            <pre class="tree">D:\
+└── Peliculas\
+    └── <b>Series</b>\          &larr; arrastras esta
+        └── Breaking Bad\
+            └── T1\
+                └── cap01.mp4</pre>
+                        </figure>
+                        <figure>
+                            <figcaption>Con &laquo;Estructura&raquo;</figcaption>
+                            <pre class="tree">E:\
+└── <b>Peliculas</b>\          &larr; tambi&eacute;n la crea
+    └── Series\
+        └── Breaking Bad\
+            └── T1\
+                └── cap01.mp4</pre>
+                        </figure>
+                    </div>
+                    <div class="tree-pair">
+                        <figure>
+                            <figcaption>Con &laquo;Carpetas&raquo;</figcaption>
+                            <pre class="tree">E:\
+└── <b>Series</b>\
+    └── Breaking Bad\
+        └── T1\
+            └── cap01.mp4</pre>
+                        </figure>
+                        <figure>
+                            <figcaption>Con &laquo;Carpeta Superior&raquo;</figcaption>
+                            <pre class="tree">E:\
+└── <b>Peliculas</b>\
+    └── Series\
+        └── Breaking Bad\
+            └── T1\
+                └── cap01.mp4</pre>
+                        </figure>
+                    </div>
+                    <div class="tree-pair">
+                        <figure>
+                            <figcaption>Con &laquo;Carpeta personalizada&raquo; = <i>Juan 12-08</i></figcaption>
+                            <pre class="tree">E:\
+└── <b>Juan 12-08</b>\
+    └── Series\
+        └── Breaking Bad\
+            └── T1\
+                └── cap01.mp4</pre>
+                        </figure>
+                        <figure>
+                            <figcaption>Con &laquo;Ficheros&raquo;</figcaption>
+                            <pre class="tree">E:\
+└── cap01.mp4</pre>
+                        </figure>
+                    </div>
+                    <div class="callout">
+                        <h4>La diferencia clave</h4>
+                        <p>
+                            <b>Estructura</b> arrastra tambi&eacute;n las carpetas que estaban
+                            <i>por encima</i> de lo que soltaste &mdash; en el ejemplo,
+                            <b>Peliculas</b>. <b>Carpetas</b> empieza justo en la carpeta que
+                            arrastraste. Por eso, para memorias de clientes, casi siempre conviene
+                            <b>Carpetas</b>: se llevan la serie, no la organizaci&oacute;n de tu disco.
+                        </p>
+                    </div>
+
+                    <h3>Ejemplo 2: arrastras archivos sueltos</h3>
+                    <p>
+                        Cuando en vez de la carpeta arrastras directamente el archivo
+                        <b>cap01.mp4</b>, algunas estructuras cambian de comportamiento:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Estructura</th>
+                                    <th>Resultado en la memoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Estructura</td>
+                                    <td><code>E:\Peliculas\Series\Breaking Bad\T1\cap01.mp4</code> &mdash; igual que
+                                        antes.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Carpetas</td>
+                                    <td><code>E:\T1\cap01.mp4</code> &mdash; solo la carpeta que conten&iacute;a el
+                                        archivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Carpeta Superior</td>
+                                    <td><code>E:\Breaking Bad\T1\cap01.mp4</code> &mdash; una carpeta m&aacute;s por
+                                        encima.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Carpeta personalizada</td>
+                                    <td><code>E:\Juan 12-08\T1\cap01.mp4</code></td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Sin estructura</td>
+                                    <td><code>E:\cap01.mp4</code> &mdash; aqu&iacute; s&iacute; aplana, a diferencia de
+                                        cuando arrastras una carpeta.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Ficheros</td>
+                                    <td><code>E:\cap01.mp4</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout warn">
+                        <h4>Tres detalles que conviene saber</h4>
+                        <ul>
+                            <li>En <b>Memorias</b> y <b>Celulares</b> no aparecen las opciones &laquo;Directorios
+                                vac&iacute;os&raquo; ni &laquo;Estructura con ficheros de 0&nbsp;KB&raquo;: no tienen
+                                sentido ah&iacute; y se saltan solas.</li>
+                            <li>Si arrastras con el <b>bot&oacute;n derecho</b> (o con <span class="kbd">Alt</span> +
+                                bot&oacute;n izquierdo), todo se guarda suelto, salvo si eliges &laquo;Carpeta
+                                personalizada&raquo;. Ver <a href="#arrastrar">Pasar archivos a los dispositivos</a>.
+                            </li>
+                            <li>Si sueltas los archivos <b>dentro del explorador</b> de un dispositivo, se guardan en la
+                                carpeta en la que est&eacute;s situado y se usa siempre &laquo;Carpetas&raquo;, salvo
+                                que actives <span class="ui">Mantener estructura en Mini-Explorer</span>.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ══════════ COBROS ══════════ -->
+                <section id="cobros" class="doc-section reveal">
+                    <h2>Cobros y tarifas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier calcula solo lo que hay que cobrar por cada dispositivo. T&uacute; decides
+                        <strong>con qu&eacute; criterio</strong> se cobra, y el programa hace las cuentas.
+                    </p>
+                    <p>
+                        La forma de cobro se elige a dos niveles: la <b>general</b>, en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Pagos</span> (y ah&iacute; se puede
+                        distinguir por tipo de dispositivo y por video o audio), y la <b>de un dispositivo
+                            concreto</b>, desde su men&uacute; de clic derecho &rsaquo;
+                        <span class="ui">Pagos</span>, cuando un cliente tiene un trato especial.
+                    </p>
+
+                    <h3>Las formas de cobro</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Forma de cobro</th>
+                                    <th>C&oacute;mo se calcula</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/gb.png" alt=""></td>
+                                    <td class="nm">Por GB</td>
+                                    <td>Un precio por cada gigabyte copiado. La forma m&aacute;s sencilla y la
+                                        m&aacute;s usada.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/file.png" alt=""></td>
+                                    <td class="nm">Por fichero</td>
+                                    <td>Un precio por cada archivo, seg&uacute;n su tama&ntilde;o. Se define una tabla:
+                                        hasta tantos GB, tanto por archivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/device.png" alt=""></td>
+                                    <td class="nm">Por dispositivo</td>
+                                    <td>Un precio &uacute;nico por toda la memoria, seg&uacute;n el total copiado.
+                                        &laquo;Te lleno la memoria de 32 GB por tanto&raquo;.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/directories.png" alt=""></td>
+                                    <td class="nm">Por directorios</td>
+                                    <td>Un precio fijo asociado a cada carpeta. As&iacute; puedes cobrar distinto los
+                                        estrenos que el cat&aacute;logo viejo, solo por la carpeta en la que
+                                        est&eacute;n.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/file_duration.png" alt=""></td>
+                                    <td class="nm">Por duraci&oacute;n</td>
+                                    <td>Un precio seg&uacute;n cu&aacute;nto dura <b>cada</b> video o audio. Una
+                                        pel&iacute;cula de dos horas cuesta m&aacute;s que un cap&iacute;tulo de veinte
+                                        minutos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/duration.png" alt=""></td>
+                                    <td class="nm">Por duraci&oacute;n total</td>
+                                    <td>Un precio seg&uacute;n la <b>suma</b> de las duraciones de todo lo copiado.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/hand.png" alt=""></td>
+                                    <td class="nm">Manual</td>
+                                    <td>T&uacute; escribes el importe a mano. Para acuerdos puntuales o descuentos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/no_pay.png" alt=""></td>
+                                    <td class="nm">No cobrar</td>
+                                    <td>Ese dispositivo no genera cobro. Para tus propias memorias o para un regalo.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/none.png" alt=""></td>
+                                    <td class="nm">No calcular pagos</td>
+                                    <td>Ese dispositivo no tiene tarifa propia: se aplica lo que est&eacute; puesto en
+                                        la configuraci&oacute;n general para su tipo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Marcar como cobrado</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Acci&oacute;n</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/cashed.png" alt=""></td>
+                                    <td class="nm">Cobrado<small>rueda central del mouse</small></td>
+                                    <td>Marca ese dispositivo como ya pagado. Queda se&ntilde;alado en la tarjeta y se
+                                        suma al total del d&iacute;a.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/payments/restart.png" alt=""></td>
+                                    <td class="nm">Restablecer pago</td>
+                                    <td>Deshace el cobro de ese dispositivo y vuelve a calcularlo desde cero. Para
+                                        cuando te equivocaste.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        Con <span class="kbd">Ctrl</span>+<span class="kbd">C</span> calculas el
+                        <span class="ui">Total a pagar</span> de lo que tengas seleccionado, y con
+                        <span class="kbd">Ctrl</span>+<span class="kbd">S</span> muestras u ocultas el
+                        <span class="ui">Total diario</span> acumulado.
+                    </p>
+
+                    <h3>Configurar las tarifas</h3>
+                    <p>
+                        Cada forma de cobro tiene su propia tabla de precios en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Pagos</span>. Se rellenan una vez
+                        y quedan guardadas:
+                    </p>
+                    <div class="term-list">
+                        <dt>Por GB / Por dispositivo / Por fichero</dt>
+                        <dd>Tablas de <b>tama&ntilde;o en GB &rarr; precio</b>. Se van a&ntilde;adiendo tramos
+                            con el bot&oacute;n <span class="ui">AGREGAR</span>.</dd>
+                        <dt>Por directorios</dt>
+                        <dd>Tabla de <b>carpeta + extensi&oacute;n &rarr; precio</b>. Se pueden
+                            <b>arrastrar carpetas</b> directamente sobre la lista para a&ntilde;adirlas.
+                            <br><b>Sin configurar nada:</b> si no tienes directorios en la tabla, el precio
+                            se saca solo del <b>nombre de la ruta</b>. El Copier busca el &uacute;ltimo
+                            patr&oacute;n con <code>$</code> del camino completo del archivo &mdash;
+                            <code>($10)</code>, <code>[$50]</code> o un <code>$40</code> suelto&mdash; y usa
+                            ese importe. Se cobra <b>una sola vez por carpeta</b>, aunque tenga varios
+                            ficheros dentro. As&iacute; puedes marcar el precio en el propio nombre de la
+                            carpeta y olvidarte de la tabla.
+                        </dd>
+                        <dt>Por duraci&oacute;n y duraci&oacute;n total</dt>
+                        <dd>Tablas de <b>duraci&oacute;n &rarr; precio</b>, en d&iacute;as, horas, minutos y
+                            segundos.</dd>
+                        <dt>Video y audio por separado</dt>
+                        <dd>Puedes fijar una tarifa distinta para el video y otra para el audio, y decidir
+                            qu&eacute; extensiones cuentan como cada cosa. El importe del audio siempre se
+                            <b>suma</b> al total.
+                        </dd>
+                        <dt>Redondear pagos en base a m&uacute;ltiplo</dt>
+                        <dd>Redondea el resultado al m&uacute;ltiplo que indiques, para no acabar cobrando
+                            cifras raras y poder dar cambio con comodidad.</dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>La duraci&oacute;n se calcula sola</h4>
+                        <p>
+                            Para las tarifas por duraci&oacute;n no hay que preparar nada: el Copier lee
+                            cu&aacute;nto dura cada video o audio <b>directamente del propio archivo</b>,
+                            en el momento. Funciona igual con material nuevo que acabas de recibir.
+                        </p>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Protege tus tarifas</h4>
+                        <p>
+                            Si trabajas con empleados, pon una
+                            <a href="primeros-pasos.html#password">contrase&ntilde;a maestra</a>: as&iacute;
+                            nadie podr&aacute; entrar a la Configuraci&oacute;n a cambiar los precios.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ ACCIONES ══════════ -->
+                <section id="acciones" class="doc-section reveal">
+                    <h2>Acciones sobre los dispositivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Estos botones act&uacute;an sobre <b>todos los dispositivos seleccionados a la vez</b>.
+                        Es la diferencia entre expulsar quince memorias una por una o expulsarlas de un clic.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Acci&oacute;n</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/all.png" alt=""></td>
+                                    <td class="nm">Filtro de dispositivos</td>
+                                    <td>Muestra solo un tipo: todos, discos de arranque, internos, externos, red,
+                                        memorias, celulares, lectores o escritores. Clic izquierdo avanza, clic derecho
+                                        retrocede.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/default.png" alt=""></td>
+                                    <td class="nm">Orden</td>
+                                    <td>Cambia c&oacute;mo se ordenan en pantalla. Ver <a href="#orden">Orden y
+                                            prioridad</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/divide.png" alt=""></td>
+                                    <td class="nm">Dos paneles<small>Ctrl + D</small></td>
+                                    <td>Divide la ventana en dos paneles para ver y manejar dos dispositivos a la vez.
+                                        Con <b>clic</b> lo enciendes o apagas; con <b>clic derecho</b> intercambias los
+                                        paneles de lugar. Ver <a href="#panel-doble">El modo doble</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/important.png" alt=""></td>
+                                    <td class="nm">Dar prioridad</td>
+                                    <td>Manda m&aacute;s recursos a los dispositivos seleccionados para que terminen
+                                        antes. &Uacute;til cuando un cliente est&aacute; esperando.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/pause.png" alt=""></td>
+                                    <td class="nm">Pausar y continuar</td>
+                                    <td>Detiene o reanuda la copia de todos los dispositivos, sin perder lo ya copiado.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/resume.png" alt=""></td>
+                                    <td class="nm">Pausar y continuar solo los seleccionados</td>
+                                    <td>Lo mismo, pero afectando &uacute;nicamente a los que tengas marcados.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/swap.png" alt=""></td>
+                                    <td class="nm">Cambiar Lector</td>
+                                    <td>Cambia cu&aacute;l es el dispositivo del que se lee para copiar a los
+                                        dem&aacute;s.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/clone.png" alt=""></td>
+                                    <td class="nm">Clonar lista</td>
+                                    <td>Copia la cola de un dispositivo a los otros, para hacer varias memorias
+                                        exactamente iguales sin volver a buscar los archivos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/eraser.png" alt=""></td>
+                                    <td class="nm">Formatear<small>F4</small></td>
+                                    <td>Formatea los dispositivos seleccionados. Pide confirmaci&oacute;n.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/eject.png" alt=""></td>
+                                    <td class="nm">Expulsar</td>
+                                    <td>Expulsa con seguridad. Espera a que termine lo pendiente antes de soltar el
+                                        dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/update.png" alt=""></td>
+                                    <td class="nm">Reparar<small>F1</small></td>
+                                    <td>Intenta arreglar una memoria que da errores de lectura o escritura.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/close.png" alt=""></td>
+                                    <td class="nm">Cancelar seleccionados</td>
+                                    <td>Detiene y descarta la cola de los dispositivos marcados.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/visible.png" alt=""></td>
+                                    <td class="nm">Mostrar y ocultar</td>
+                                    <td>Esconde de la lista los dispositivos que no quieres ver, como los discos
+                                        internos.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Acciones secundarias</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Acci&oacute;n</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainmenu/settings.png" alt=""></td>
+                                    <td class="nm">Configuraci&oacute;n</td>
+                                    <td>Abre todos los ajustes. Si hay contrase&ntilde;a maestra, la pide aqu&iacute;.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainmenu/finder.png" alt=""></td>
+                                    <td class="nm">Buscador<small>Ctrl + F</small></td>
+                                    <td>Abre el Buscador en ventana aparte.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/secondactions/upload.png" alt=""></td>
+                                    <td class="nm">Cargar sesi&oacute;n</td>
+                                    <td>Recupera un trabajo guardado. Con <b>clic derecho</b> puedes elegir a mano
+                                        cu&aacute;l cargar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/secondactions/load_drop.png" alt=""></td>
+                                    <td class="nm">Cargar sesi&oacute;n (nueva tirada)</td>
+                                    <td>Carga la misma lista pero como un trabajo nuevo, para repetir el mismo pedido
+                                        con otras memorias.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/secondactions/tools.png" alt=""></td>
+                                    <td class="nm">Herramientas</td>
+                                    <td>Reparar y formatear desde un solo sitio.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/secondactions/matriz.png" alt=""></td>
+                                    <td class="nm">Matrices<small>F6</small></td>
+                                    <td>Con <b>clic</b> reparte las matrices guardadas sobre los dispositivos
+                                        seleccionados; con <b>clic derecho</b> abre el editor. Ver
+                                        <a href="#matrices">Matrices</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/secondactions/matriz.png" alt=""></td>
+                                    <td class="nm">Vista matriz</td>
+                                    <td>Presenta los dispositivos en cuadr&iacute;cula, pensada para cuando tienes
+                                        muchos conectados.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ ORDEN Y PRIORIDAD ══════════ -->
+                <section id="orden" class="doc-section reveal">
+                    <h2>Orden y prioridad</h2>
+                    <div class="doc-rule"></div>
+
+                    <h3>Orden &mdash; c&oacute;mo se ven en pantalla</h3>
+                    <p>Solo cambia la presentaci&oacute;n; no afecta a la velocidad de copia.</p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Orden</th>
+                                    <th>Cu&aacute;ndo conviene</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/default.png" alt=""></td>
+                                    <td class="nm">Normal</td>
+                                    <td>El orden que decide el sistema. El de f&aacute;brica.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/letter.png" alt=""></td>
+                                    <td class="nm">Letra</td>
+                                    <td>Por letra de unidad (E:, F:, G:&hellip;). Siempre en el mismo sitio,
+                                        f&aacute;cil de memorizar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/arrived.png" alt=""></td>
+                                    <td class="nm">Llegada</td>
+                                    <td>Por orden de conexi&oacute;n: el primero que se conect&oacute;, primero en la
+                                        lista. El m&aacute;s natural si atiendes por turnos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/reader.png" alt=""></td>
+                                    <td class="nm">Lectores</td>
+                                    <td>Pone arriba los dispositivos que act&uacute;an de origen.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/orders/hand.png" alt=""></td>
+                                    <td class="nm">Manual</td>
+                                    <td>T&uacute; los colocas donde quieras y ah&iacute; se quedan.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Prioridad autom&aacute;tica &mdash; qui&eacute;n copia m&aacute;s r&aacute;pido</h3>
+                    <p>
+                        Cuando hay varios dispositivos copiando a la vez, el programa reparte los recursos.
+                        En <span class="path">Configuraci&oacute;n &rsaquo; Discos y Red</span> eliges con
+                        qu&eacute; criterio:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Criterio</th>
+                                    <th>Qu&eacute; consigue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/priorities/subtract.png" alt=""></td>
+                                    <td class="nm">Menos por copiar<small>el de f&aacute;brica</small></td>
+                                    <td>Atiende primero al que menos le falta. As&iacute; los clientes van saliendo
+                                        r&aacute;pido, uno tras otro, en vez de que todos terminen a la vez al final.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/priorities/percentage.png" alt=""></td>
+                                    <td class="nm">Porcentaje</td>
+                                    <td>Reparte seg&uacute;n el porcentaje de avance, para que todos progresen parejo.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/priorities/plus.png" alt=""></td>
+                                    <td class="nm">Velocidad promedio</td>
+                                    <td>Da m&aacute;s a los dispositivos m&aacute;s r&aacute;pidos, para aprovecharlos
+                                        al m&aacute;ximo. Bueno si mezclas dispositivos de alta velocidad con otros de
+                                        menor velocidad.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ COLA ══════════ -->
+                <section id="cola" class="doc-section reveal">
+                    <h2>La cola de archivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Cada dispositivo tiene su lista de archivos pendientes. Se abre con
+                        <span class="kbd">Ctrl</span>+<span class="kbd">L</span> o desde
+                        <span class="ui">Lista de ficheros</span>.
+                    </p>
+
+                    <h3>Filtrar por estado</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Filtro</th>
+                                    <th>Qu&eacute; muestra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/file_filters/all.png" alt=""></td>
+                                    <td class="nm">Todos</td>
+                                    <td>La lista completa.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/file_filters/none.png" alt=""></td>
+                                    <td class="nm">En espera</td>
+                                    <td>Todav&iacute;a no les toc&oacute; el turno.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/file_filters/progress.png" alt=""></td>
+                                    <td class="nm">En progreso</td>
+                                    <td>Los que se est&aacute;n copiando ahora mismo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/file_filters/done.png" alt=""></td>
+                                    <td class="nm">Completados</td>
+                                    <td>Los que ya est&aacute;n en el dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/file_filters/error.png" alt=""></td>
+                                    <td class="nm">Con error</td>
+                                    <td>Los que fallaron. <b>Rev&iacute;salo siempre antes de entregar</b> una memoria.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Reordenar la cola</h3>
+                    <p>Si un archivo corre prisa, no hace falta esperar su turno:</p>
+                    <ul>
+                        <li><span class="kbd">Inicio</span> lo manda al principio de la cola.</li>
+                        <li><span class="kbd">Re P&aacute;g</span> lo sube una posici&oacute;n.</li>
+                        <li><span class="kbd">Av P&aacute;g</span> lo baja una posici&oacute;n.</li>
+                        <li><span class="kbd">Fin</span> lo manda al final.</li>
+                    </ul>
+
+                    <h3>C&oacute;mo termin&oacute; el trabajo</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Resultado</th>
+                                    <th>Qu&eacute; significa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/process/ok.png" alt=""></td>
+                                    <td class="nm">Finalizado</td>
+                                    <td>Todo copiado sin un solo fallo. Puedes entregar tranquilo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/process/ok_errors.png" alt=""></td>
+                                    <td class="nm">Finalizado con errores</td>
+                                    <td>Termin&oacute;, pero algunos archivos no se copiaron. Filtra por <b>Con
+                                            error</b> para ver cu&aacute;les y usa <span class="ui">Copiar ficheros con
+                                            errores</span> para reintentarlos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/process/canceled.png" alt=""></td>
+                                    <td class="nm">Cancelado</td>
+                                    <td>Se detuvo antes de acabar, a mano o porque se desconect&oacute; el dispositivo.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/process/recopy.png" alt=""></td>
+                                    <td class="nm">Recopia</td>
+                                    <td>Se est&aacute;n volviendo a copiar archivos que hab&iacute;an fallado.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Los iconos de cada archivo</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Tipo</th>
+                                    <th></th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/video.png" alt=""></td>
+                                    <td class="nm">Video</td>
+                                    <td class="ic"><img src="assets/img/copier/files/wait.png" alt=""></td>
+                                    <td class="nm">En espera</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/audio.png" alt=""></td>
+                                    <td class="nm">Audio</td>
+                                    <td class="ic"><img src="assets/img/copier/files/progress.png" alt=""></td>
+                                    <td class="nm">Copi&aacute;ndose</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/image.png" alt=""></td>
+                                    <td class="nm">Imagen</td>
+                                    <td class="ic"><img src="assets/img/copier/files/completed.png" alt=""></td>
+                                    <td class="nm">Completado</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/document.png" alt=""></td>
+                                    <td class="nm">Documento</td>
+                                    <td class="ic"><img src="assets/img/copier/files/error.png" alt=""></td>
+                                    <td class="nm">Con error</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/compress.png" alt=""></td>
+                                    <td class="nm">Comprimido</td>
+                                    <td class="ic"><img src="assets/img/copier/files/folder.png" alt=""></td>
+                                    <td class="nm">Carpeta</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/files/txt.png" alt=""></td>
+                                    <td class="nm">Texto</td>
+                                    <td class="ic"><img src="assets/img/copier/files/file.png" alt=""></td>
+                                    <td class="nm">Otro archivo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ MATRICES ══════════ -->
+                <section id="matrices" class="doc-section reveal">
+                    <h2>Matrices</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Una <strong>matriz</strong> es un grupo de carpetas y/o archivos que copias a
+                        menudo a varios dispositivos, guardado con un nombre para reutilizarlo con un
+                        solo clic. En vez de volver a buscar y arrastrar lo mismo cada vez, preparas la
+                        matriz una vez y la repartes cuando la necesites.
+                    </p>
+
+                    <h3>El bot&oacute;n de Matrices</h3>
+                    <p>
+                        En la <a href="#acciones">barra de acciones secundarias</a> hay un bot&oacute;n con
+                        el icono de una matriz que re&uacute;ne todo lo relacionado con ellas:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>C&oacute;mo lo usas</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Clic</span> o <span class="kbd">F6</span></td>
+                                    <td>Reparte las matrices guardadas sobre los dispositivos seleccionados.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Clic derecho</span></td>
+                                    <td>Abre el <b>editor de matrices</b> para crear, modificar o borrar matrices.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout tip">
+                        <h4>El atajo F6</h4>
+                        <p>
+                            La tecla <span class="kbd">F6</span> hace lo mismo que el <b>clic</b> sobre el
+                            bot&oacute;n de matrices: reparte las matrices guardadas sobre los dispositivos
+                            seleccionados, desde cualquier parte de la ventana principal.
+                        </p>
+                    </div>
+
+                    <h3>Crear una matriz</h3>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Abre el editor</strong>
+                            Con el <b>clic derecho</b> sobre el bot&oacute;n de matrices.
+                        </li>
+                        <li>
+                            <strong>Define su contenido</strong>
+                            Arrastra carpetas o archivos dentro de la matriz. Los puedes quitar luego con la
+                            tecla <span class="kbd">Supr</span> sobre el elemento seleccionado.
+                        </li>
+                        <li>
+                            <strong>Ponle nombre</strong>
+                            Ver&aacute;s el <span class="ui">total de archivos</span> y el
+                            <span class="ui">tama&ntilde;o total</span> de la matriz para comprobar que cabe
+                            en los dispositivos.
+                        </li>
+                        <li>
+                            <strong>Guarda</strong>
+                            Con <span class="ui">Guardar</span> queda lista para repartirla cuando quieras.
+                            Para abandonar sin cambios, usa <span class="ui">Cancelar</span>.
+                        </li>
+                    </ol>
+                    <p>
+                        Las matrices guardadas aparecen en la lista de la izquierda del editor, ordenadas por
+                        nombre, con un buscador para encontrarlas r&aacute;pidamente. Cada ruta muestra su
+                        icono seg&uacute;n sea carpeta o tipo de archivo (texto, video, comprimido, imagen,
+                        audio o documento).
+                    </p>
+
+                    <h3>Repartir una matriz</h3>
+                    <p>
+                        Al repartir, el comportamiento depende de cu&aacute;ntas matrices tengas guardadas:
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Matrices guardadas</th>
+                                    <th>Qu&eacute; pasa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">Ninguna</td>
+                                    <td>No se hace nada: primero tienes que crear al menos una matriz.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Una sola</td>
+                                    <td>Se env&iacute;a directo a los dispositivos seleccionados, sin abrir ninguna
+                                        ventana.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Varias</td>
+                                    <td>Se abre una ventana para que elijas cu&aacute;les enviar, con el bot&oacute;n
+                                        <span class="ui">Enviar</span> o la tecla <span class="kbd">Enter</span>.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Como si lo arrastraras a mano</h4>
+                        <p>
+                            Repartir una matriz pasa por el <b>flujo normal de copia</b>: se aplica la
+                            <a href="#estructuras">estructura de carpetas</a> elegida, se deduplican los
+                            archivos ya copiados y se <a href="#cobros">cobra</a> seg&uacute;n la tarifa del
+                            dispositivo. Si no hay ning&uacute;n dispositivo seleccionado, la copia no
+                            arranca (suena el aviso de error), igual que al soltar archivos sin dispositivos
+                            marcados.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONTINUAR ══════════ -->
+                <section id="continuar" class="doc-section reveal">
+                    <h2>Continuar entregas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Es una de las funciones que m&aacute;s tiempo ahorra. Un cliente vuelve con la
+                        memoria y quiere <b>los cap&iacute;tulos siguientes</b> de lo que se llev&oacute;.
+                        En vez de buscarlos a mano, el Copier los encuentra solo.
+                    </p>
+                    <p>
+                        Funciona con <b>cualquier contenido que vaya por cap&iacute;tulos o entregas</b>:
+                        series, novelas, concursos, programas de televisi&oacute;n, documentales por
+                        entregas&hellip; No est&aacute; limitado a las series.
+                    </p>
+                    <p>
+                        Se puede continuar <b>por cantidad</b> (las pr&oacute;ximas diez entregas) o
+                        <b>por tama&ntilde;o</b> (las que quepan en el espacio libre de la memoria).
+                    </p>
+
+                    <div class="callout warn">
+                        <h4>Necesita Everything instalado y en marcha</h4>
+                        <p>
+                            Para encontrar los cap&iacute;tulos siguientes, esta funci&oacute;n
+                            usa el mismo buscador que el <a href="#buscador">Buscador</a>, apoyado en el
+                            programa gratuito <b>Everything</b> (indexa el contenido de los dispositivos
+                            conectados al instante). Si no tienes <b>Everything</b> instalado y corriendo en segundo plano,
+                            la b&uacute;squeda autom&aacute;tica de continuaciones no podr&aacute; funcionar.
+                            Inst&aacute;lalo y d&eacute;jalo iniciado con Windows para que el Copier pueda
+                            usarlo siempre que lo necesite.
+                        </p>
+                    </div>
+
+                    <h3>Vista previa antes de copiar</h3>
+                    <p>
+                        Si tienes activada la opci&oacute;n <span class="ui">Mostrar vista previa al
+                            continuar</span>, antes de copiar nada aparece una ventana con la lista de lo que
+                        se va a a&ntilde;adir y el importe que costar&aacute;. Desde ah&iacute; puedes
+                        <span class="ui">Agregar m&aacute;s archivos</span> o
+                        <span class="ui">Quitar &uacute;ltimo archivo</span> hasta ajustar el pedido, y
+                        luego confirmar. As&iacute; le dices el precio al cliente <b>antes</b> de empezar.
+                    </p>
+
+                    <h3>Cuando no lo encuentra solo</h3>
+                    <p>
+                        Si el nombre del archivo es raro y el programa no acierta, existe la
+                        <span class="ui">B&uacute;squeda Manual de Continuaci&oacute;n</span>: buscas t&uacute;
+                        los archivos, los marcas con <span class="ui">Seleccionar todo</span> o uno a uno,
+                        y pulsas <span class="ui">Continuar</span>.
+                    </p>
+
+                    <h3>Ajustes que afectan a la continuaci&oacute;n</h3>
+                    <p>Todos est&aacute;n en <span class="path">Configuraci&oacute;n &rsaquo; Continuado</span>:</p>
+                    <div class="term-list">
+                        <dt>Continuar solo en la misma carpeta</dt>
+                        <dd>Busca las entregas siguientes &uacute;nicamente dentro de la carpeta del
+                            &uacute;ltimo archivo, en vez de buscar por todo el disco. Mucho m&aacute;s preciso
+                            cuando tienes varias versiones del mismo t&iacute;tulo.</dd>
+                        <dt>Respetar extensiones en la carpeta</dt>
+                        <dd>Si lo que se llev&oacute; estaba en <b>.mp4</b>, sigue con .mp4 y no le
+                            mete un .mkv que el televisor del cliente quiz&aacute; no lea.</dd>
+                        <dt>Crear pr&oacute;ximas carpetas al continuar</dt>
+                        <dd>Crea sola la carpeta de la temporada o el bloque siguiente cuando el contenido cambia de
+                            tanda.</dd>
+                        <dt>Crear (txt) al continuar</dt>
+                        <dd>Crea un txt del último archivo a continuar.</dd>
+                        <dt>Patrones de filtrado</dt>
+                        <dd>Son las reglas con las que el programa reconoce, dentro del nombre de un archivo,
+                            de qu&eacute; t&iacute;tulo se trata y qu&eacute; n&uacute;mero de cap&iacute;tulo es.
+                            Vienen unas cuantas de f&aacute;brica y puedes crear las tuyas con el
+                            <a href="patrones.html">Constructor de Patrones</a>.
+                        </dd>
+                        <dt>Al continuar eliminar</dt>
+                        <dd>Borra autom&aacute;ticamente del dispositivo lo que ya se entreg&oacute; antes,
+                            para hacer sitio a lo nuevo.</dd>
+                    </div>
+                </section>
+
+                <!-- ══════════ HISTORIAL ══════════ -->
+                <section id="historial" class="doc-section reveal">
+                    <h2>Historial del dispositivo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier recuerda <b>todo lo que ha pasado por cada dispositivo</b>. Se abre con
+                        <span class="ui">Historial</span> desde el men&uacute; de la tarjeta.
+                    </p>
+                    <p>A la izquierda est&aacute; la lista de <span class="ui">Sesiones</span> &mdash; cada
+                        vez que ese dispositivo se conect&oacute; y se le copi&oacute; algo &mdash; y a la
+                        derecha el <span class="ui">Detalle de la Sesi&oacute;n</span>, con los archivos, lo
+                        copiado y el total cobrado. Hay un buscador para encontrar un archivo concreto dentro
+                        del historial.</p>
+                    <div class="callout tip">
+                        <h4>Para qu&eacute; sirve en el d&iacute;a a d&iacute;a</h4>
+                        <ul>
+                            <li>Saber qu&eacute; se le entreg&oacute; a un cliente y no repetirle lo mismo.</li>
+                            <li>Resolver una reclamaci&oacute;n: qu&eacute; se copi&oacute;, cu&aacute;ndo y
+                                cu&aacute;nto se cobr&oacute;.</li>
+                            <li>Continuar una serie desde donde qued&oacute;.</li>
+                        </ul>
+                    </div>
+                    <p>
+                        Para las cuentas del negocio &mdash; totales por d&iacute;a, por periodo o por
+                        trabajador &mdash; usa <a href="controlstats.html">ControlStats</a>.
+                    </p>
+                </section>
+
+                <!-- ══════════ AL TERMINAR ══════════ -->
+                <section id="al-terminar" class="doc-section reveal">
+                    <h2>Al terminar el trabajo</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Puedes dejar copias largas corriendo y que la computadora se ocupe sola de lo que
+                        venga despu&eacute;s. El bot&oacute;n muestra
+                        <span class="ui">Al terminar: &hellip;</span>; clic izquierdo avanza, clic derecho
+                        retrocede.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Opci&oacute;n</th>
+                                    <th>Qu&eacute; pasa al acabar todas las copias</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/afterwork/nothing.png" alt=""></td>
+                                    <td class="nm">Nada<small>de f&aacute;brica</small></td>
+                                    <td>No hace nada. Todo queda como est&aacute;.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/afterwork/exit.png" alt=""></td>
+                                    <td class="nm">Salir</td>
+                                    <td>Cierra la aplicaci&oacute;n, pero deja la computadora encendida.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/afterwork/sleep.png" alt=""></td>
+                                    <td class="nm">Suspender</td>
+                                    <td>Pone la computadora en reposo. Arranca r&aacute;pido al volver.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/afterwork/shutdown.png" alt=""></td>
+                                    <td class="nm">Apagar</td>
+                                    <td>Apaga la computadora del todo. Para dejar un disco copiando de noche.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Antes de irte, expulsa</h4>
+                        <p>
+                            Si eliges Apagar o Suspender, activa tambi&eacute;n el interruptor
+                            <span class="ui">Expulsar</span> en los dispositivos. As&iacute; se cierran con
+                            seguridad y no se corrompe nada.
+                        </p>
+                    </div>
+
+                    <h3>Publicidad autom&aacute;tica en cada dispositivo</h3>
+                    <p>
+                        Cuando termina la copia de un dispositivo, el Copier a&ntilde;ade solo el contenido
+                        de la carpeta <span class="path">Data\publicity</span> a la <b>ra&iacute;z</b> de ese
+                        dispositivo. As&iacute; cada memoria o disco que entregas lleva tu publicidad sin que
+                        tengas que copiarla a mano. Basta con dejar dentro de
+                        <span class="path">Data\publicity</span> lo que quieras repartir.
+                    </p>
+                    <div class="term-list">
+                        <dt>Si dentro hay archivos sueltos</dt>
+                        <dd>Se copia la carpeta <span class="path">publicity</span> completa, tal cual, a la
+                            ra&iacute;z del dispositivo.</dd>
+                        <dt>Si dentro solo hay subcarpetas</dt>
+                        <dd>Se copia <b>cada subcarpeta suelta</b> a la ra&iacute;z, sin la carpeta
+                            <span class="path">publicity</span> envolviendo. &Uacute;til para dejar varias
+                            carpetas de contenido directamente en el dispositivo.</dd>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONFIGURACIÓN ══════════ -->
+                <section id="configuracion" class="doc-section reveal">
+                    <h2>Configuraci&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Se abre con el bot&oacute;n del engranaje. Si hay
+                        <a href="primeros-pasos.html#password">contrase&ntilde;a maestra</a>, la pide antes.
+                    </p>
+                    <div class="callout danger">
+                        <h4>No olvides guardar</h4>
+                        <p>
+                            Los cambios <b>no se aplican</b> hasta que pulsas
+                            <span class="ui">Salvar Configuraci&oacute;n</span>, abajo. Cuando funciona,
+                            aparece el aviso <span class="ui">CONFIGURACI&Oacute;N GUARDADA</span>.
+                        </p>
+                    </div>
+
+                    <h4>General</h4>
+                    <div class="term-list">
+                        <dt>Agregar Fecha</dt>
+                        <dd>A&ntilde;ade la fecha a lo que se copia, para saber cu&aacute;ndo se entreg&oacute;.</dd>
+                        <dt>Agregar Factura de Copia</dt>
+                        <dd>Deja dentro del dispositivo un comprobante de lo entregado.</dd>
+                        <dt>Crear (.txt) solo del &uacute;ltimo fichero</dt>
+                        <dd>Al usar <span class="ui">Crear txt</span> en el explorador, deja solo la referencia del
+                            &uacute;ltimo archivo seleccionado. &Uacute;til para saber por d&oacute;nde continuar una
+                            serie. Si la apagas, se crea un (.txt) por cada fichero seleccionado.</dd>
+                        <dt>Mantener estructura en el explorador</dt>
+                        <dd>El explorador del dispositivo respeta el &aacute;rbol de carpetas.</dd>
+                        <dt>Mostrar puertos y Detectar velocidad de puertos</dt>
+                        <dd>Ense&ntilde;a a qu&eacute; puerto USB est&aacute; conectado cada dispositivo y a qu&eacute;
+                            velocidad. Ayuda a descubrir qu&eacute; puerto de la computadora va lento.</dd>
+                        <dt>Autoindexar al iniciar</dt>
+                        <dd>Actualiza solo el &iacute;ndice del Buscador cada vez que abres la aplicaci&oacute;n.</dd>
+                        <dt>Voz</dt>
+                        <dd>Locuta en voz alta los avisos importantes. Muy pr&aacute;ctico cuando est&aacute;s de
+                            espaldas atendiendo a un cliente.</dd>
+                        <dt>Minimizar a la bandeja del sistema</dt>
+                        <dd>
+                            Cuando est&aacute; activo, al <b>minimizar</b> el Copier se va a la
+                            <b>bandeja del sistema</b> (el &aacute;rea de iconos junto al reloj, abajo a la
+                            derecha) en vez de quedarse en la barra de tareas. Es c&oacute;modo para dejarlo
+                            trabajando sin que estorbe. Para <b>volver a abrirlo</b>, haz doble clic en su
+                            icono de la bandeja, o clic derecho sobre &eacute;l para abrir su men&uacute;, con
+                            <span class="ui">Abrir</span>, <span class="ui">Mostrar/ocultar widget</span>
+                            (ver m&aacute;s abajo) y <span class="ui">Salir</span>. Si lo apagas,
+                            minimizar funciona como siempre (se queda en la barra de tareas).
+                        </dd>
+                        <dt>Arrancar con Windows</dt>
+                        <dd>
+                            Cuando est&aacute; activo, el Copier se <b>abre solo al encender la
+                            computadora</b> (en cuanto inicias sesi&oacute;n en Windows), sin que tengas que
+                            buscarlo. C&oacute;modo para dejarlo siempre listo en el puesto de trabajo. No
+                            pide permisos de administrador y se aplica solo para tu usuario. Si lo apagas,
+                            deja de arrancar solo. <b>Truco:</b> combinado con
+                            <span class="ui">Minimizar a la bandeja del sistema</span>, puede quedarse
+                            esperando en la bandeja desde el arranque, sin ventana estorbando.
+                        </dd>
+                        <dt>Carpeta Personalizada</dt>
+                        <dd>La lista de nombres que aparecer&aacute;n como sugerencia al usar la estructura <b>Carpeta
+                                personalizada</b>. Se escriben y se pulsa <span class="ui">AGREGAR</span>.</dd>
+                        <dt>Excluir</dt>
+                        <dd>Lo que nunca debe aparecer en el Buscador ni en el explorador.</dd>
+                        <dt>No Copiar</dt>
+                        <dd>Lo que nunca debe copiarse, aunque quede seleccionado por error. Ideal para archivos de
+                            sistema o basura.</dd>
+                    </div>
+
+                    <h4>Widget</h4>
+                    <p>
+                        Esta pesta&ntilde;a re&uacute;ne lo relacionado con el <b>widget de dispositivos en
+                        el escritorio</b> &mdash; el peque&ntilde;o panel que se queda en pantalla mientras
+                        el Copier est&aacute; minimizado.
+                    </p>
+                    <div class="term-list">
+                        <dt>Widget de dispositivos en el escritorio</dt>
+                        <dd>
+                            Un panel peque&ntilde;o y elegante que se queda en el escritorio y muestra
+                            <b>solo los dispositivos que est&aacute;n copiando</b> en ese momento, cada uno
+                            con su <b>icono seg&uacute;n el tipo</b> (memoria, disco o celular), su
+                            <b>nombre</b>, la <b>velocidad</b>, el <b>precio</b> y una <b>barra de progreso</b>.
+                            Pensado para tenerlo a la vista mientras el Copier est&aacute; minimizado en la
+                            <a href="#shell">bandeja</a>. Se comporta as&iacute;:
+                            <ul>
+                                <li><b>Se oculta solo</b> cuando no hay ninguna copia, y reaparece al empezar una.</li>
+                                <li>Se puede <b>arrastrar</b> y <b>recuerda d&oacute;nde lo dejaste</b>.</li>
+                                <li><b>Doble clic</b> sobre &eacute;l abre el Copier (lo restaura de la bandeja).</li>
+                                <li>Se muestra u oculta desde la opci&oacute;n <span class="ui">Mostrar/ocultar widget</span>
+                                    del men&uacute; de la bandeja, o con este interruptor.</li>
+                            </ul>
+                            Se ajusta al <b>tema, transparencia y desenfoque</b> igual que la ventana principal.
+
+                            <style>
+                                .wt-demo{max-width:320px;margin:16px 0 6px;background:linear-gradient(180deg,#12141e,#0c0d14);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px;box-shadow:0 18px 44px -16px rgba(0,0,0,.6)}
+                                .wt-head{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px;margin-bottom:6px;color:var(--text-primary,#e0e0f0)}
+                                .wt-live{width:7px;height:7px;border-radius:50%;background:var(--neon-green,#00ff88);box-shadow:0 0 10px rgba(0,255,136,.7);animation:wt-blink 1.6s ease-in-out infinite}
+                                @keyframes wt-blink{0%,100%{opacity:1}50%{opacity:.35}}
+                                .wt-count{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-muted,#6b6b80)}
+                                .wt-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:6px 9px 0;margin-top:6px}
+                                .wt-row{display:flex;align-items:center;gap:8px}
+                                .wt-ic{width:18px;height:18px;object-fit:contain;flex-shrink:0}
+                                .wt-nm{font-weight:600;font-size:12.5px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-soft,#b0b0c8)}
+                                .wt-spd{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-soft,#b0b0c8);opacity:.85}
+                                .wt-pay{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--neon-green,#00ff88)}
+                                .wt-pct{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-soft,#b0b0c8);width:32px;text-align:right}
+                                .wt-bar{height:3px;border-radius:3px;background:rgba(255,255,255,.08);margin:5px 0 6px;overflow:hidden}
+                                .wt-bar>span{display:block;height:100%;border-radius:3px}
+                                .wt-b1>span{background:var(--neon-blue,#00b4ff);box-shadow:0 0 8px rgba(0,180,255,.5)}
+                                .wt-b2>span{background:var(--neon-green,#00ff88);box-shadow:0 0 8px rgba(0,255,136,.5)}
+                                .wt-b3>span{background:var(--neon-orange,#ff8800);box-shadow:0 0 8px rgba(255,136,0,.5)}
+                                .wt-cap{font-size:11.5px;color:var(--text-muted,#6b6b80);margin:4px 0 0}
+                            </style>
+                            <div class="wt-demo">
+                                <div class="wt-head"><span class="wt-live"></span> Copiando <span class="wt-count">3</span></div>
+                                <div class="wt-card">
+                                    <div class="wt-row"><img class="wt-ic" src="assets/img/copier/drives/usb_memory.png" alt=""><span class="wt-nm">SanDisk 64GB</span><span class="wt-spd">42 MB/s</span><span class="wt-pay">$50</span><span class="wt-pct">87%</span></div>
+                                    <div class="wt-bar wt-b1"><span style="width:87%"></span></div>
+                                </div>
+                                <div class="wt-card">
+                                    <div class="wt-row"><img class="wt-ic" src="assets/img/copier/drives/external_disk.png" alt=""><span class="wt-nm">WD Elements</span><span class="wt-spd">31 MB/s</span><span class="wt-pay">$80</span><span class="wt-pct">45%</span></div>
+                                    <div class="wt-bar wt-b2"><span style="width:45%"></span></div>
+                                </div>
+                                <div class="wt-card">
+                                    <div class="wt-row"><img class="wt-ic" src="assets/img/copier/drives/cell.png" alt=""><span class="wt-nm">Redmi Note 12</span><span class="wt-spd">18 MB/s</span><span class="wt-pay">$30</span><span class="wt-pct">62%</span></div>
+                                    <div class="wt-bar wt-b3"><span style="width:62%"></span></div>
+                                </div>
+                            </div>
+                            <p class="wt-cap">As&iacute; se ver&iacute;a: 3 dispositivos copiando, cada uno con su <b>icono de tipo</b> (memoria, disco, celular), velocidad, precio y barra de progreso.</p>
+                        </dd>
+                        <dt>Widget intocable (click through)</dt>
+                        <dd>
+                            Cuando est&aacute; activo, el <b>mouse atraviesa</b> el widget: los clics pasan
+                            de largo a lo que hay debajo de &eacute;l, en vez de hacer clic sobre el panel.
+                            Pensado para dejarlo en pantalla, por encima de otras ventanas, sin que estorbe a
+                            la hora de hacer clic. El cambio se aplica al instante.
+                        </dd>
+                    </div>
+
+                    <h4>Dispositivos</h4>
+                    <p>
+                        Fija los <a href="#dispositivos">seis interruptores</a> (Ocultar, Formatear,
+                        Expulsar, Cobrar, Eliminar y mover, y Copiar Publicidad) que tendr&aacute;n por
+                        defecto los dispositivos nuevos y los seleccionados. Aqu&iacute; est&aacute;
+                        tambi&eacute;n la lista de
+                        <span class="ui">Recursos de Red</span>: se arrastran las rutas de red compartidas
+                        para a&ntilde;adirlas.
+                    </p>
+
+                    <h4>Informaci&oacute;n de Procesos</h4>
+                    <p>
+                        Elige qu&eacute; se ve en la tarjeta de cada dispositivo: letra, sistema de archivos,
+                        RAM, procesado, total a procesar, ficheros completados y total de ficheros. Si
+                        trabajas en Modo Compacto conviene dejar solo lo imprescindible.
+                    </p>
+
+                    <h4>Discos y Red</h4>
+                    <p>
+                        <span class="ui">Prioridad Autom&aacute;tica</span> (ver
+                        <a href="#orden">Orden y prioridad</a>) y <span class="ui">Forzar Copia</span>,
+                        que insiste en copiar aunque el dispositivo est&eacute; dando problemas.
+                    </p>
+
+                    <h4>Memorias</h4>
+                    <div class="term-list">
+                        <dt>Crear ficheros 0KB</dt>
+                        <dd>Deja archivos vac&iacute;os con el nombre de lo copiado. Sirve de listado dentro de la
+                            propia memoria.</dd>
+                        <dt>Crear registro inicial</dt>
+                        <dd>Guarda una foto de lo que hab&iacute;a en la memoria antes de empezar.</dd>
+                    </div>
+
+                    <h4>Celulares</h4>
+                    <div class="term-list">
+                        <dt>Iniciar Pausado</dt>
+                        <dd>
+                            Los celulares empiezan <b>en pausa</b>: puedes ir a&ntilde;adiendo archivos a la cola
+                            y la copia no arranca hasta que le das a <b>reproducir</b>.
+                            <p>
+                                Sirve para poder <b>trastear con el tel&eacute;fono mientras preparas el
+                                trabajo</b>: arrastrar cosas, mirar carpetas, borrar lo que sobre. Mientras el
+                                Copier est&aacute; copiando, el <b>explorador del dispositivo se bloquea</b>
+                                &mdash; es una limitaci&oacute;n del propio MTP, el protocolo por el que Windows
+                                habla con los celulares, que no admite hacer dos cosas a la vez.
+                            </p>
+                            <p>
+                                As&iacute; que el orden natural es: dejarlo en pausa, montar la cola con calma y
+                                dar a reproducir cuando ya no necesites tocar nada m&aacute;s en el
+                                tel&eacute;fono.
+                            </p>
+                        </dd>
+                    </div>
+
+                    <h4>Ram (Discos, Red)</h4>
+                    <p>
+                        Aqu&iacute; se controla <b>cu&aacute;nta memoria RAM puede retener cada proceso de
+                        copia</b> mientras trabaja. La RAM act&uacute;a de intermediaria entre el origen y el
+                        dispositivo.
+                    </p>
+                    <div class="callout warn">
+                        <h4>M&aacute;s RAM no significa m&aacute;s velocidad</h4>
+                        <p>
+                            Subir este valor <b>no acelera las copias</b>. Lo &uacute;nico que hace es permitir
+                            que los procesos retengan m&aacute;s informaci&oacute;n en memoria. La velocidad
+                            real la marca <b>cada dispositivo</b>: lo que aguante ese disco, esa memoria o ese
+                            celular, y por ah&iacute; no se puede correr m&aacute;s.
+                        </p>
+                        <p>
+                            Y pasarse s&iacute; tiene coste: si la computadora se queda sin memoria,
+                            <b>todo va m&aacute;s lento</b>, incluida la propia copia. Sube de poco en poco y
+                            comprueba el indicador de RAM de la pantalla principal. La opci&oacute;n
+                            <span class="ui">Limitar uso de la RAM por proceso</span> pone un techo de
+                            seguridad.
+                        </p>
+                    </div>
+
+                    <h4>Visual</h4>
+                    <p>
+                        Tema <b>Claro</b>, <b>Oscuro</b> o el del <b>Sistema</b>; transparencia y desenfoque
+                        de la ventana; imagen de fondo; tipo y tama&ntilde;o de letra; tama&ntilde;o de los
+                        iconos; c&oacute;mo se muestran los dispositivos; l&iacute;neas de ayuda al
+                        seleccionar; y mostrar el tiempo estimado de finalizaci&oacute;n.
+                    </p>
+
+                    <h4>Buscador</h4>
+                    <p>Las rutas que quieres esconder de los resultados de b&uacute;squeda.</p>
+
+                    <h4>Continuado</h4>
+                    <p>Todo lo relacionado con <a href="#continuar">continuar entregas</a>.</p>
+
+                    <h4>Pagos</h4>
+                    <p>Las tarifas y la forma de cobro. Ver <a href="#cobros">Cobros y tarifas</a>.</p>
+
+                    <h4 id="shell">Shell &mdash; copiar desde el Explorador de Windows</h4>
+                    <p>
+                        Esta pesta&ntilde;a re&uacute;ne la <b>integraci&oacute;n con los gestores de
+                        archivos</b> &mdash; el <b>Explorador de Windows</b> y <b>Directory Opus</b> &mdash;:
+                        permite que, al copiar archivos, se encargue el Copier (con su cola, su velocidad y su
+                        progreso) en vez del copiador del gestor. Todo lo de aqu&iacute; es opcional; si no
+                        tocas nada, cada gestor copia como siempre.
+                    </p>
+                    <div class="term-list">
+                        <dt>Extensi&oacute;n de clic derecho <span class="ui">(ON/OFF)</span></dt>
+                        <dd>
+                            Interruptor que <b>registra o quita</b> la opci&oacute;n
+                            <b>&laquo;Copiar aqu&iacute; con Xpress Copier&raquo;</b> del men&uacute; del clic
+                            derecho del Explorador. Al cambiarlo, el Explorador se reinicia solo para que
+                            tenga efecto. El interruptor muestra en todo momento si est&aacute; activa o no
+                            (antes era un bot&oacute;n; ahora es un interruptor con estado visible).
+                        </dd>
+                        <dt>Copia Shell <span class="ui">(Explorer + Dopus)</span></dt>
+                        <dd>
+                            Un <b>&uacute;nico interruptor</b> que hace que las copias que arrancas en el
+                            <b>Explorador de Windows</b> y en <b>Directory Opus</b> las tome el Copier.
+                            Antes hab&iacute;a que activarlos por separado; ahora van juntos.
+                            <p>
+                                Funciona <b>mientras el Copier est&aacute; abierto</b>. Si lo cierras, cada
+                                gestor vuelve a copiar por su cuenta &mdash; nunca te quedas sin la copia.
+                            </p>
+                            <div class="callout tip">
+                                <b>Ya no hay modo GENERAL ni tarea programada.</b> Antes exist&iacute;a una
+                                segunda opci&oacute;n que dejaba la integraci&oacute;n activa aunque el Copier
+                                estuviera cerrado, apoy&aacute;ndose en una tarea programada de Windows. Se
+                                retir&oacute;: ahora la integraci&oacute;n es siempre <b>local</b> y va ligada al
+                                Copier. Es m&aacute;s simple y m&aacute;s predecible &mdash; si el Copier no
+                                est&aacute; abierto, copia Windows.
+                            </div>
+                            <p><b>Qu&eacute; puede hacer cada gestor</b></p>
+                            <table class="icon-table doc-table">
+                                <thead>
+                                    <tr>
+                                        <th>C&oacute;mo copias</th>
+                                        <th>Qu&eacute; pasa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="nm">Arrastrar con el bot&oacute;n <b>derecho</b></td>
+                                        <td>
+                                            Al soltar aparece el men&uacute; con
+                                            <b>&laquo;Copiar aqu&iacute; con Xpress Copier&raquo;</b>. Funciona
+                                            en los <b>dos gestores</b>, y es la forma <b>m&aacute;s precisa</b>:
+                                            copia <b>dentro de la carpeta</b> sobre la que sueltas, sea cual
+                                            sea. Si quieres afinar el destino, usa esta.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="nm">Arrastrar con el bot&oacute;n <b>izquierdo</b></td>
+                                        <td>
+                                            Lo toma el Copier en los <b>dos gestores</b>, sin men&uacute;s de
+                                            por medio. Es tambi&eacute;n la forma de mandar cosas a un
+                                            <b>celular</b>. Ojo con d&oacute;nde sueltas: ver el aviso de
+                                            debajo.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="nm"><b>Ctrl+C</b> / <b>Ctrl+V</b></td>
+                                        <td>
+                                            Solo en el <b>Explorador de Windows</b>, y solo hacia
+                                            <b>discos y memorias</b>. En Directory Opus el pegado no pasa por
+                                            el Copier.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="nm">Mover <span class="ui">(Shift + arrastrar)</span></td>
+                                        <td>
+                                            Lo hace el gestor de archivos, <b>nunca el Copier</b>. Es a
+                                            prop&oacute;sito: el Copier copia, no borra el origen, as&iacute;
+                                            que si interceptara un movimiento pedir&iacute;as mover y
+                                            obtendr&iacute;as copiar.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="callout tip">
+                                <b>Para copiar dentro de una carpeta concreta, arrastra con el bot&oacute;n
+                                derecho.</b> Con el bot&oacute;n izquierdo, soltar justo <b>encima del icono</b>
+                                de una carpeta funciona bien en el Explorador, pero en <b>Directory Opus</b> la
+                                copia va a la carpeta que tiene abierta el panel, no a esa subcarpeta. Con el
+                                bot&oacute;n derecho no hay ambig&uuml;edad en ninguno de los dos.
+                            </div>
+                            <div class="callout tip">
+                                <b>A los celulares se llega arrastrando.</b> Pegar con <b>Ctrl+V</b> dentro de un
+                                tel&eacute;fono no pasa por el Copier en ning&uacute;n gestor: Windows no permite
+                                interceptar esa operaci&oacute;n. Para mandarle archivos, arr&aacute;stralos.
+                            </div>
+                        </dd>
+                        <dt>Mantener estructura en Discos</dt>
+                        <dt>Mantener estructura en Memorias</dt>
+                        <dt>Mantener estructura en Celulares</dt>
+                        <dd>
+                            Tres interruptores (uno por tipo de dispositivo) que deciden si las copias hechas
+                            <b>desde el Explorador</b> hacia <b>discos</b>, <b>memorias</b> o <b>celulares</b>
+                            respetan la <a href="#estructuras">estructura de carpetas</a> configurada en el
+                            Copier para ese tipo, en vez de copiar todo tal cual. As&iacute; puedes seguir
+                            usando las estructuras del Copier tambi&eacute;n cuando copias por el men&uacute;
+                            del clic derecho o con Ctrl+V, cada tipo por separado (por ejemplo, mantener
+                            estructura en discos pero no en memorias). Si un interruptor est&aacute; apagado,
+                            en ese tipo de dispositivo la copia por Shell va sin aplicar estructura.
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Aunque est&eacute; siempre activa, manda el Copier</h4>
+                        <p>
+                            La copia desde el Explorador solo se desv&iacute;a al Copier cuando el Copier
+                            <b>puede atenderla</b>. Si algo falla o el Copier no est&aacute; disponible,
+                            Windows hace la copia como siempre &mdash; nunca te quedas sin ella.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>La licencia ya no est&aacute; aqu&iacute;</h4>
+                        <p>
+                            La antigua pesta&ntilde;a <span class="ui">Licencia</span> se retir&oacute; de la
+                            Configuraci&oacute;n del Copier. Tiene ahora su propio apartado m&aacute;s abajo:
+                            ver <a href="#licencia">Licencia</a>.
+                        </p>
+                    </div>
+
+                    <h4 id="total-commander">Total Commander</h4>
+                    <p>
+                        Algunos clientes no usan el Explorador de Windows sino <b>Total Commander</b>, un
+                        gestor de archivos alternativo. El Copier tambi&eacute;n se integra con &eacute;l para
+                        que las copias pasen por su cola, aunque de una forma un poco distinta a la del
+                        Explorador (Total Commander tiene su propio motor de copia interno).
+                    </p>
+                    <div class="term-list">
+                        <dt>Pegar con <span class="kbd">Ctrl+V</span></dt>
+                        <dd>
+                            Copias unos archivos en Total Commander (<span class="kbd">Ctrl+C</span>), entras en
+                            la carpeta o dispositivo destino y pulsas <span class="kbd">Ctrl+V</span>: el Copier
+                            toma esa copia y la encola con su <a href="#estructuras">estructura</a>, igual que
+                            una copia por Shell del Explorador.
+                        </dd>
+                        <dt>Bot&oacute;n <span class="ui">&laquo;Copiar con Xpress&raquo;</span></dt>
+                        <dd>
+                            Un bot&oacute;n en la barra de Total Commander que copia lo seleccionado hacia la
+                            carpeta del panel de enfrente, tambi&eacute;n a trav&eacute;s del Copier.
+                        </dd>
+                        <dt>Copiar con <span class="kbd">F5</span></dt>
+                        <dd>
+                            <span class="kbd">F5</span> es la tecla de copiar de toda la vida en Total
+                            Commander. Se puede hacer que esa copia la tome el Copier, con lo que sigues
+                            trabajando igual que siempre pero con la cola y la velocidad del Copier.
+                            <p>
+                                Va <b>desactivado por defecto</b> y se activa en el instalador con una casilla
+                                aparte: es una tecla demasiado central como para cambi&aacute;rtela sin que la
+                                pidas.
+                            </p>
+                            <div class="callout tip">
+                                <b>Nunca te quedas sin la copia.</b> Si el Copier est&aacute; cerrado o no puede
+                                atender la copia, <span class="kbd">F5</span> hace lo de siempre: copia el propio
+                                Total Commander. No se queda sin respuesta.
+                            </div>
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Se configura al instalar (opcional)</h4>
+                        <p>
+                            Si al instalar la suite ya tienes Total Commander, el instalador te ofrece una
+                            <b>casilla</b> <span class="ui">&laquo;Integrar con Total Commander&raquo;</span>. Si
+                            la marcas, deja lista la integraci&oacute;n sin que tengas que tocar nada: asigna el
+                            <span class="kbd">Ctrl+V</span> y a&ntilde;ade el bot&oacute;n
+                            <span class="ui">&laquo;Copiar con Xpress&raquo;</span> a la barra de botones (tambi&eacute;n
+                            a la vertical si la usas). Si ya ten&iacute;as <span class="kbd">Ctrl+V</span> asignado a
+                            otra cosa, <b>no se cambia</b>: se respeta tu configuraci&oacute;n.
+                        </p>
+                        <p>
+                            Hay una <b>segunda casilla, aparte y desmarcada</b>:
+                            <span class="ui">&laquo;Total Commander: usar Xpress Copier tambi&eacute;n con
+                            F5&raquo;</span>. Solo se activa si la marcas t&uacute;. Y es reversible: si vuelves a
+                            pasar el instalador y la desmarcas, <span class="kbd">F5</span> recupera su
+                            comportamiento normal. Si t&uacute; ten&iacute;as <span class="kbd">F5</span> asignado a
+                            otra cosa, tampoco se toca.
+                        </p>
+                    </div>
+                    <div class="callout">
+                        <h4>Qu&eacute; funciona y qu&eacute; no</h4>
+                        <p>
+                            Funcionan el <span class="kbd">Ctrl+V</span> y el bot&oacute;n, con el <b>Copier
+                            abierto</b> (si est&aacute; cerrado, Total Commander copia como siempre). Lo que
+                            <b>no</b> se desv&iacute;a al Copier es <b>arrastrar</b> con el bot&oacute;n izquierdo
+                            entre los dos paneles: eso lo sigue haciendo Total Commander por su cuenta.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ AVISOS ══════════ -->
+                <section id="avisos" class="doc-section reveal">
+                    <h2>Avisos y sonidos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier avisa con mensajes flotantes en una esquina, acompa&ntilde;ados de un
+                        sonido. Hay tres tipos: informaci&oacute;n, correcto y error. Si activas la
+                        opci&oacute;n <span class="ui">Voz</span> en la pesta&ntilde;a General, adem&aacute;s
+                        los dice en voz alta.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Aviso</th>
+                                    <th>Qu&eacute; significa y qu&eacute; hacer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm">SIN ESPACIO EN&hellip;</td>
+                                    <td>Ese dispositivo se llen&oacute;. Quita archivos de su cola o usa uno de
+                                        m&aacute;s capacidad.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">DESCONECTADO&hellip;</td>
+                                    <td>Se retir&oacute; un dispositivo sin expulsarlo. Si estaba copiando, la copia
+                                        qued&oacute; incompleta.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">EXPULSADO&hellip;</td>
+                                    <td>Ya se puede retirar con seguridad.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">FORMATO INICIADO / COMPLETADO / CON ERROR</td>
+                                    <td>El estado del formateo. Si da error, prueba a repararlo con <span
+                                            class="kbd">F1</span>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">NO SE PUEDE FORMATEAR</td>
+                                    <td>Windows no deja. Suele faltar el ajuste <span class="ui">Habilitar formateo y
+                                            expulsi&oacute;n</span> &mdash; ver <a
+                                            href="primeros-pasos.html#registros">Primeros pasos</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">LIMITE DE DISPOSITIVOS ALCANZADO</td>
+                                    <td>Tu licencia permite trabajar con un n&uacute;mero m&aacute;ximo de dispositivos
+                                        a la vez.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">SIN LICENCIA</td>
+                                    <td>Falta el archivo de licencia o venci&oacute;. Ver <a
+                                            href="primeros-pasos.html#licencia">Primeros pasos</a>.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">ESCRITURA / LECTURA / CARGA INICIADA</td>
+                                    <td>Confirma que ese dispositivo empez&oacute; a trabajar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">TRABAJO FINALIZADO</td>
+                                    <td>Acabaron todas las copias. Es el momento en que se ejecuta la acci&oacute;n de
+                                        <a href="#al-terminar">Al terminar</a>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">NADA QUE CARGAR</td>
+                                    <td>Intentaste cargar una sesi&oacute;n guardada y no hay ninguna.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">APP YA ESTA ABIERTA</td>
+                                    <td>El Copier ya se estaba ejecutando. B&uacute;scalo en la barra de tareas.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ ATAJOS ══════════ -->
+                <section id="atajos" class="doc-section reveal">
+                    <h2>Atajos de teclado</h2>
+                    <div class="doc-rule"></div>
+                    <p>Con estos atajos el trabajo diario va mucho m&aacute;s r&aacute;pido.</p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead>
+                                <tr>
+                                    <th>Atajo</th>
+                                    <th>Qu&eacute; hace</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">F</span></td>
+                                    <td>Abre el Buscador en ventana aparte.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">M</span></td>
+                                    <td>Entra o sale del Modo Compacto.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">S</span></td>
+                                    <td>Muestra u oculta el total diario.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">C</span></td>
+                                    <td>Calcula el total a pagar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">L</span></td>
+                                    <td>Abre la lista de ficheros del dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">A</span></td>
+                                    <td>Selecciona todo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">N</span>
+                                        &nbsp;o&nbsp; <span class="kbd">F7</span></td>
+                                    <td>Crea una carpeta.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Ctrl</span> + <span class="kbd">V</span> / <span
+                                            class="kbd">X</span></td>
+                                    <td>Pegar y cortar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F1</span> &nbsp;o&nbsp; <span
+                                            class="kbd">Ctrl</span> + <span class="kbd">R</span></td>
+                                    <td>Reparar el dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F2</span></td>
+                                    <td>Renombrar el archivo, o cambiar el alias del dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F3</span></td>
+                                    <td>Nombrar el puerto USB.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F4</span></td>
+                                    <td>Formatear.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">F6</span></td>
+                                    <td>Reparte las matrices guardadas sobre los dispositivos seleccionados.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Supr</span></td>
+                                    <td>Eliminar lo seleccionado.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Enter</span></td>
+                                    <td>Abrir lo seleccionado.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Esc</span></td>
+                                    <td>Volver al modo normal.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Tab</span></td>
+                                    <td>Saltar de una columna a otra.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">+</span> / <span class="kbd">-</span></td>
+                                    <td>A&ntilde;adir o quitar ficheros de la selecci&oacute;n.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Alt</span> + <span class="kbd">+</span> / <span
+                                            class="kbd">-</span></td>
+                                    <td>Ajustar el margen de la lista.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm"><span class="kbd">Inicio</span> <span class="kbd">Re
+                                            P&aacute;g</span> <span class="kbd">Av P&aacute;g</span> <span
+                                            class="kbd">Fin</span></td>
+                                    <td>Reordenar la cola de archivos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Rueda central del mouse</td>
+                                    <td>Sobre una tarjeta: cobrar el dispositivo. Dentro del explorador: crear el
+                                        archivo de texto.</td>
+                                </tr>
+                                <tr>
+                                    <td class="nm">Clic derecho en los selectores</td>
+                                    <td>Retrocede al valor anterior (modo, estructura, orden, filtro&hellip;).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ LICENCIA ══════════ -->
+                <section id="licencia" class="doc-section reveal">
+                    <h2>Licencia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Copier <b>ya no tiene una pesta&ntilde;a de Licencia</b> en su
+                        Configuraci&oacute;n: ahora la licencia se gestiona en un solo sitio, el
+                        <a href="primeros-pasos.html#licencia">Lanzador</a>, que muestra el propietario, tu
+                        <span class="ui">IDENTIFICADOR</span>, las fechas y el estado. La comprobaci&oacute;n
+                        de licencia del Copier <b>sigue funcionando en segundo plano</b> igual que antes.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Sin licencia v&aacute;lida</h4>
+                        <p>
+                            El Copier <b>sigue funcionando y puedes hacerlo todo</b>, pero con una
+                            limitaci&oacute;n: solo puede haber <b>3 dispositivos copiando a la vez</b>, no
+                            m&aacute;s. Con la licencia activa no hay tope. Todo el procedimiento para
+                            conseguir o renovar la licencia est&aacute; en
+                            <a href="primeros-pasos.html#licencia">Primeros pasos</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>El Copier en funcionamiento, explicado paso a paso.</p>
+                    <div data-videos="copier"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="primeros-pasos.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Instalaci&oacute;n y primeros pasos</span>
+                    </a>
+                    <a href="converter.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual del Converter</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro
+                            Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span>
+                    </div>
+                    <div class="info-item"><span class="label">Canal</span><span
+                            class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+
+</html>

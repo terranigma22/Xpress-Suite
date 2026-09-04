@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xpress Suite &mdash; Documentaci&oacute;n</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+    <style>
+        /* ─── Estilos propios de la portada ─── */
+        .hero {
+            text-align: center;
+            padding: 92px 56px 36px;
+            margin: 0 -56px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .container { position: relative; z-index: 1; }
+        .hero-bg-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 600px; height: 600px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0,180,255,.08), rgba(160,100,255,.06), rgba(255,136,0,.04), transparent 70%);
+            border-radius: 50%;
+            animation: pulse-glow 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.03);
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+        .hero-badge-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 8px rgba(0,255,136,.4);
+            animation: float-dot 2.5s ease-in-out infinite;
+        }
+        .hero h1 {
+            font-size: 68px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--neon-blue);
+            animation: cycle-color 10s ease-in-out infinite;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+        .hero h1 .glow-char { display: inline-block; text-shadow: 0 0 40px currentColor; }
+        .hero-sub {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+        .hero-sub strong { color: #c0c0d8; font-weight: 500; }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+        .hero-stat-value { font-size: 28px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+        .hero-stat-value.blue   { color: var(--neon-blue);   text-shadow: 0 0 20px rgba(0,180,255,.2); }
+        .hero-stat-value.violet { color: var(--neon-violet); text-shadow: 0 0 20px rgba(160,100,255,.2); }
+        .hero-stat-value.orange { color: var(--neon-orange); text-shadow: 0 0 20px rgba(255,136,0,.2); }
+        .hero-stat-value.green  { color: var(--neon-green);  text-shadow: 0 0 20px rgba(0,255,136,.2); }
+        .hero-stat-value.cyan   { color: var(--neon-cyan);   text-shadow: 0 0 20px rgba(0,200,200,.2); }
+        .hero-stat-label {
+            font-size: 11px;
+            color: #555;
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            margin-top: 4px;
+        }
+        .hero-cta { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+
+        /* ─── Banner del Programa de Testers ─── */
+        .hero-tester {
+            display: inline-flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 40px;
+            padding: 11px 14px;
+            border-radius: 40px;
+            text-decoration: none;
+            position: relative;
+            background-image:
+                linear-gradient(rgba(9,9,15,.9), rgba(9,9,15,.9)),
+                linear-gradient(120deg, var(--neon-cyan), var(--neon-violet), var(--neon-pink));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            border: 1.5px solid transparent;
+            animation: tester-glow 3.6s ease-in-out infinite;
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        @keyframes tester-glow {
+            0%, 100% { box-shadow: 0 0 26px -10px rgba(0,200,200,.45); }
+            50%      { box-shadow: 0 0 40px -6px rgba(255,45,149,.5); }
+        }
+        .hero-tester:hover { transform: translateY(-2px); box-shadow: 0 0 48px -6px rgba(160,100,255,.6); }
+        .ht-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: #0a0a12;
+            background: linear-gradient(120deg, var(--neon-cyan), var(--neon-pink));
+            padding: 4px 10px; border-radius: 20px;
+            flex-shrink: 0;
+        }
+        .ht-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0,255,136,.7);
+            animation: float-dot 2.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        .ht-text { font-size: 14px; color: var(--text-soft); white-space: nowrap; }
+        .ht-text b { color: #fff; font-weight: 700; }
+        .ht-arrow {
+            font-size: 16px; color: var(--neon-pink);
+            padding-right: 6px;
+            transition: transform .3s ease;
+        }
+        .hero-tester:hover .ht-arrow { transform: translateX(5px); }
+        @media (max-width: 560px) {
+            .hero-tester { gap: 9px; padding: 10px 12px; }
+            .ht-text { white-space: normal; font-size: 12.5px; text-align: left; }
+        }
+
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding-bottom: 24px;
+        }
+        .hero-divider-line { width: 52px; height: 1px; border-radius: 1px; }
+        .hero-divider-dot { width: 4px; height: 4px; border-radius: 50%; }
+        .hero-divider-line.blue   { background: rgba(0,180,255,.3); }
+        .hero-divider-line.violet { background: rgba(160,100,255,.3); }
+        .hero-divider-line.orange { background: rgba(255,136,0,.3); }
+        .hero-divider-line.green  { background: rgba(0,255,136,.3); }
+        .hero-divider-line.cyan   { background: rgba(0,200,200,.3); }
+        .hero-divider-dot.blue   { background: var(--neon-blue);   box-shadow: 0 0 6px rgba(0,180,255,.3); }
+        .hero-divider-dot.violet { background: var(--neon-violet); box-shadow: 0 0 6px rgba(160,100,255,.3); }
+        .hero-divider-dot.orange { background: var(--neon-orange); box-shadow: 0 0 6px rgba(255,136,0,.3); }
+        .hero-divider-dot.green  { background: var(--neon-green);  box-shadow: 0 0 6px rgba(0,255,136,.3); }
+        .hero-divider-dot.cyan   { background: var(--neon-cyan);   box-shadow: 0 0 6px rgba(0,200,200,.3); }
+
+        /* ─── Secciones de aplicación ─── */
+        .app-section {
+            padding: 68px 56px;
+            margin: 0 -56px;
+            border-top: 2px solid transparent;
+            position: relative;
+            scroll-margin-top: 64px;
+        }
+        .app-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            opacity: .3;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path .8s cubic-bezier(.16,1,.3,1) .3s;
+        }
+        .app-section::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: 0; right: 0;
+            height: 2px;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path .8s cubic-bezier(.16,1,.3,1);
+        }
+        .reveal.visible::before, .reveal.visible::after { clip-path: inset(0 0 0 0); }
+
+        .app-section.inicio       { background: linear-gradient(160deg, rgba(0,200,200,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(0,200,200,.12); }
+        .app-section.copier       { background: linear-gradient(160deg, rgba(0,180,255,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(0,180,255,.12); }
+        .app-section.converter    { background: linear-gradient(160deg, rgba(160,100,255,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(160,100,255,.12); }
+        .app-section.controlstats { background: linear-gradient(160deg, rgba(255,136,0,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(255,136,0,.12); }
+        .app-section.observer     { background: linear-gradient(160deg, rgba(0,255,136,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(0,255,136,.12); }
+        .app-section.patrones     { background: linear-gradient(160deg, rgba(255,45,149,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(255,45,149,.12); }
+        .app-section.videos       { background: linear-gradient(160deg, rgba(255,215,0,.06), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(255,215,0,.1); }
+        .app-section.pricing      { background: linear-gradient(160deg, rgba(255,215,0,.08), transparent 55%); box-shadow: inset 0 4px 40px -20px rgba(255,215,0,.12); }
+
+        .app-section.inicio::after       { background: var(--neon-cyan); }
+        .app-section.copier::after       { background: var(--neon-blue); }
+        .app-section.converter::after    { background: var(--neon-violet); }
+        .app-section.controlstats::after { background: var(--neon-orange); }
+        .app-section.observer::after     { background: var(--neon-green); }
+        .app-section.patrones::after     { background: var(--neon-pink); }
+        .app-section.videos::after,
+        .app-section.pricing::after      { background: var(--neon-gold); }
+
+        .app-section.inicio::before       { background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); }
+        .app-section.copier::before       { background: linear-gradient(90deg, transparent, var(--neon-blue), transparent); }
+        .app-section.converter::before    { background: linear-gradient(90deg, transparent, var(--neon-violet), transparent); }
+        .app-section.controlstats::before { background: linear-gradient(90deg, transparent, var(--neon-orange), transparent); }
+        .app-section.observer::before     { background: linear-gradient(90deg, transparent, var(--neon-green), transparent); }
+        .app-section.patrones::before     { background: linear-gradient(90deg, transparent, var(--neon-pink), transparent); }
+        .app-section.videos::before,
+        .app-section.pricing::before      { background: linear-gradient(90deg, transparent, var(--neon-gold), transparent); }
+
+        .app-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .app-section-header img {
+            width: 46px; height: 46px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .app-name { font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
+        .app-section.inicio       .app-name { color: var(--neon-cyan); }
+        .app-section.copier       .app-name { color: var(--neon-blue); }
+        .app-section.converter    .app-name { color: var(--neon-violet); }
+        .app-section.controlstats .app-name { color: var(--neon-orange); }
+        .app-section.observer     .app-name { color: var(--neon-green); }
+        .app-section.patrones     .app-name { color: var(--neon-pink); }
+        .app-section.videos       .app-name,
+        .app-section.pricing      .app-name { color: var(--neon-gold); }
+
+        .app-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            padding: 5px 12px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+        .app-badge.inicio       { color: var(--neon-cyan);   border: 1px solid rgba(0,200,200,.25);   background: rgba(0,200,200,.08); }
+        .app-badge.copier       { color: var(--neon-blue);   border: 1px solid rgba(0,180,255,.25);   background: rgba(0,180,255,.08); }
+        .app-badge.converter    { color: var(--neon-violet); border: 1px solid rgba(160,100,255,.25); background: rgba(160,100,255,.08); }
+        .app-badge.controlstats { color: var(--neon-orange); border: 1px solid rgba(255,136,0,.25);   background: rgba(255,136,0,.08); }
+        .app-badge.observer     { color: var(--neon-green);  border: 1px solid rgba(0,255,136,.25);   background: rgba(0,255,136,.08); }
+        .app-badge.patrones     { color: var(--neon-pink);   border: 1px solid rgba(255,45,149,.25); background: rgba(255,45,149,.08); }
+        .app-badge.videos,
+        .app-badge.pricing      { color: var(--neon-gold);   border: 1px solid rgba(255,215,0,.25);   background: rgba(255,215,0,.08); }
+
+        .anim-line { width: 0; height: 2px; border-radius: 2px; margin-bottom: 26px; }
+        .reveal.visible .anim-line { animation: expand-right .5s cubic-bezier(.22,1,.36,1) forwards; animation-delay: .35s; }
+        .app-section.inicio       .anim-line { background: var(--neon-cyan);   box-shadow: var(--glow-cyan); }
+        .app-section.copier       .anim-line { background: var(--neon-blue);   box-shadow: var(--glow-blue); }
+        .app-section.converter    .anim-line { background: var(--neon-violet); box-shadow: var(--glow-violet); }
+        .app-section.controlstats .anim-line { background: var(--neon-orange); box-shadow: var(--glow-orange); }
+        .app-section.observer     .anim-line { background: var(--neon-green);  box-shadow: var(--glow-green); }
+        .app-section.patrones     .anim-line { background: var(--neon-pink);   box-shadow: 0 0 20px rgba(255,45,149,.15); }
+        .app-section.videos       .anim-line,
+        .app-section.pricing      .anim-line { background: var(--neon-gold);   box-shadow: 0 0 20px rgba(255,215,0,.15); }
+
+        .desc-highlight { border-left: 3px solid; padding: 8px 0 8px 24px; margin-bottom: 28px; }
+        .app-section.inicio       .desc-highlight { border-left-color: rgba(0,200,200,.25); }
+        .app-section.copier       .desc-highlight { border-left-color: rgba(0,180,255,.25); }
+        .app-section.converter    .desc-highlight { border-left-color: rgba(160,100,255,.25); }
+        .app-section.controlstats .desc-highlight { border-left-color: rgba(255,136,0,.25); }
+        .app-section.observer     .desc-highlight { border-left-color: rgba(0,255,136,.25); }
+        .app-section.patrones     .desc-highlight { border-left-color: rgba(255,45,149,.25); }
+        .app-section.videos       .desc-highlight,
+        .app-section.pricing      .desc-highlight { border-left-color: rgba(255,215,0,.25); }
+
+        .app-desc { font-size: 15px; color: #b0b0c8; line-height: 1.8; max-width: 700px; }
+        .app-desc strong { color: #d0d0e0; font-weight: 600; }
+
+        .app-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 28px;
+            margin-bottom: 30px;
+        }
+        .anim-features {
+            opacity: 0;
+            transform: scale(.94);
+            transition: opacity .5s cubic-bezier(.16,1,.3,1) .3s, transform .5s cubic-bezier(.16,1,.3,1) .3s;
+        }
+        .reveal.visible .anim-features { opacity: 1; transform: scale(1); }
+        .app-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: 14px;
+            color: #9090aa;
+            line-height: 1.5;
+            padding: 7px 12px;
+            border-radius: 8px;
+            transition: background .3s, color .3s;
+        }
+        .app-feature:hover { background: rgba(255,255,255,.03); color: #b0b0c8; }
+        .app-feature::before {
+            content: '';
+            flex-shrink: 0;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            margin-top: 6px;
+            transition: transform .3s;
+        }
+        .app-feature:hover::before { transform: scale(1.4); }
+        .app-section.inicio       .app-feature::before { background: var(--neon-cyan);   box-shadow: 0 0 8px rgba(0,200,200,.4); }
+        .app-section.copier       .app-feature::before { background: var(--neon-blue);   box-shadow: 0 0 8px rgba(0,180,255,.4); }
+        .app-section.converter    .app-feature::before { background: var(--neon-violet); box-shadow: 0 0 8px rgba(160,100,255,.4); }
+        .app-section.controlstats .app-feature::before { background: var(--neon-orange); box-shadow: 0 0 8px rgba(255,136,0,.4); }
+        .app-section.observer     .app-feature::before { background: var(--neon-green);  box-shadow: 0 0 8px rgba(0,255,136,.4); }
+        .app-section.patrones     .app-feature::before { background: var(--neon-pink);   box-shadow: 0 0 8px rgba(255,45,149,.4); }
+
+        /* ─── Precios ─── */
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 30px; }
+        .pricing-card {
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            padding: 30px 26px;
+            transition: border-color .3s, transform .3s;
+        }
+        .pricing-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.15); }
+        .pricing-card.featured { border-color: var(--neon-gold); box-shadow: 0 0 30px -8px rgba(255,215,0,.15); }
+        .pricing-card.unavailable { opacity: .5; filter: grayscale(.6); pointer-events: none; }
+        .badge-na {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            padding: 3px 10px;
+            border-radius: 10px;
+            background: rgba(255,68,68,.12);
+            color: #ff6b6b;
+            border: 1px solid rgba(255,68,68,.2);
+            margin-bottom: 12px;
+        }
+        .icon-cross { color: #ff4444; }
+        .strike { text-decoration: line-through; opacity: .6; }
+        .pricing-card-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .pricing-card-price { font-size: 36px; font-weight: 700; color: var(--neon-gold); line-height: 1; margin-bottom: 4px; }
+        .pricing-card-currency { font-size: 14px; color: var(--text-muted); margin-bottom: 4px; }
+        .pricing-card-period {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-bottom: 20px;
+        }
+        .pricing-card-items { list-style: none; padding: 0; margin: 0; }
+        .pricing-card-items li {
+            padding: 7px 0;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pricing-card-items li .icon-check { color: var(--neon-gold); }
+
+        .pricing-info {
+            background: rgba(255,255,255,.02);
+            border: 1px solid rgba(255,255,255,.06);
+            border-left: 3px solid var(--neon-gold);
+            border-radius: 12px;
+            padding: 22px 24px;
+            margin-top: 22px;
+        }
+        .pricing-info h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            color: var(--neon-gold);
+            margin-bottom: 14px;
+        }
+        .pricing-info p, .pricing-info li { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .pricing-info ul { list-style: none; padding: 0; margin: 0; }
+        /* Sin flex: si no, cada <strong> se convierte en una columna aparte
+           y parte por la mitad cosas como el número de teléfono. */
+        .pricing-info ul li { padding: 4px 0 4px 20px; position: relative; }
+        .pricing-info ul li::before {
+            content: '\25B8';
+            position: absolute;
+            left: 0; top: 4px;
+            color: var(--neon-gold);
+        }
+        .nowrap { white-space: nowrap; }
+        .pricing-info.danger { border-left-color: #ff4444; }
+        .pricing-info.danger h3 { color: #ff6b6b; }
+        .pricing-info.danger ul li::before { color: #ff6b6b; }
+
+        footer { margin: 0 -56px; }
+
+        @media (max-width: 768px) {
+            .hero { margin: 0; padding: 56px 20px 18px; }
+            .hero h1 { font-size: 38px; }
+            .hero-sub { font-size: 14px; }
+            .hero-stats { gap: 22px; margin-bottom: 28px; }
+            .hero-stat-value { font-size: 21px; }
+            .hero-bg-glow { width: 300px; height: 300px; }
+            .app-section { padding: 44px 24px; margin: 0 -20px; }
+            .app-name { font-size: 26px; }
+            .app-features { grid-template-columns: 1fr; }
+            .app-feature:hover { background: transparent; color: #9090aa; }
+            .desc-highlight { padding-left: 16px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            footer { margin: 0 -20px; padding: 40px 24px; }
+        }
+        @media (max-width: 480px) {
+            .hero { padding: 44px 14px 14px; }
+            .hero h1 { font-size: 28px; }
+            .app-section { padding: 34px 16px; margin: 0 -14px; }
+            .app-name { font-size: 22px; }
+            .pricing-card { padding: 22px 18px; }
+        }
+
+        /* ─── Tarjetas de plan (idénticas a licencias.html) ─── */
+        .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
+        .plan {
+            background: #0d0d16; border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px; padding: 24px 20px;
+            transition: transform .25s, border-color .25s;
+            display: flex; flex-direction: column;
+        }
+        .plan:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.16); }
+        .plan.featured { border-color: var(--neon-gold); box-shadow: 0 0 34px -10px rgba(255,215,0,.28); }
+        .plan-name {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase;
+            letter-spacing: .12em; color: var(--text-muted); margin-bottom: 10px;
+        }
+        .plan-price { font-size: 34px; font-weight: 800; color: var(--neon-gold); line-height: 1; }
+        .plan-cur { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+        .plan-period {
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase;
+            letter-spacing: .06em; color: var(--text-muted); margin: 4px 0 16px;
+        }
+        .plan-items { list-style: none; margin-top: auto; display: grid; gap: 8px; padding: 0; }
+        .plan-items li { font-size: 13px; color: var(--text-soft); display: flex; align-items: center; gap: 9px; }
+        .plan-items .chk { color: var(--neon-green); font-weight: 700; }
+
+        .price-note {
+            display: flex; align-items: center; gap: 14px;
+            margin: 22px 0 0;
+            padding: 15px 22px; border-radius: 14px;
+            background: rgba(255,215,0,.06); border: 1px solid rgba(255,215,0,.22);
+            color: var(--text-soft); font-size: 14.5px; line-height: 1.55;
+        }
+        .price-note-ic {
+            flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: rgba(255,215,0,.15); color: var(--neon-gold);
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px;
+        }
+        .price-note b { color: var(--neon-gold); font-weight: 600; }
+
+        @media (max-width: 860px) { .plans { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 460px) { .plans { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body data-accent="inicio">
+
+    <nav id="main-nav">
+        <div class="container">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="#top" class="active" data-section="top" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-section="inicio" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-section="copier" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-section="patrones" data-color="patrones">Patrones</a>
+                    <a href="converter.html" data-section="converter" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-section="controlstats" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-section="observer" data-color="observer">Observer</a>
+                    <a href="videos.html" data-section="videos" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-section="pricing" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- ══════════════ PORTADA ══════════════ -->
+        <section id="top" class="hero reveal">
+            <div class="hero-bg-glow"></div>
+            <div class="hero-bg-grid"></div>
+            <div class="container">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Manual de usuario &middot; Un instalador, toda la suite
+                </div>
+
+                <h1><span class="glow-char">X</span>press <span class="glow-char">S</span>uite</h1>
+
+                <p class="hero-sub">
+                    <strong>Copia</strong> &middot; <strong>Convierte</strong> &middot;
+                    <strong>Controla</strong> &middot; <strong>Vigila</strong>
+                    <br>
+                    Cuatro aplicaciones que trabajan juntas para tu negocio de copia, explicadas
+                    paso a paso y sin tecnicismos. Se instalan de una vez y se abren desde el
+                    <b style="color:#c0c0d8">Lanzador</b>.
+                    <br>
+                    <span style="font-size:13px;color:#555">Tienes esta documentaci&oacute;n siempre a mano desde el bot&oacute;n <b style="color:#7a7a92">Documentaci&oacute;n</b> del Lanzador.</span>
+                </p>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value cyan">Setup</div>
+                        <div class="hero-stat-label">Un instalador</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value blue">RAM</div>
+                        <div class="hero-stat-label">Copier</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value violet">Video</div>
+                        <div class="hero-stat-label">Converter</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value orange">HTML</div>
+                        <div class="hero-stat-label">ControlStats</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value green">Live</div>
+                        <div class="hero-stat-label">Observer</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <a class="btn inicio" href="primeros-pasos.html#instalar">
+                        Instalar y empezar <span class="arrow">&rarr;</span>
+                    </a>
+                    <a class="btn copier" href="copier.html">
+                        Manual del Copier <span class="arrow">&rarr;</span>
+                    </a>
+                </div>
+
+                <a class="hero-tester" href="beta-testers.html">
+                    <span class="ht-tag">Nuevo</span>
+                    <span class="ht-dot"></span>
+                    <span class="ht-text">Programa de <b>Testers</b> &middot; prueba las versiones antes que nadie</span>
+                    <span class="ht-arrow">&rarr;</span>
+                </a>
+
+                <div class="hero-divider">
+                    <div class="hero-divider-line cyan"></div>
+                    <div class="hero-divider-dot cyan"></div>
+                    <div class="hero-divider-line blue"></div>
+                    <div class="hero-divider-dot blue"></div>
+                    <div class="hero-divider-line violet"></div>
+                    <div class="hero-divider-dot violet"></div>
+                    <div class="hero-divider-line orange"></div>
+                    <div class="hero-divider-dot orange"></div>
+                    <div class="hero-divider-line green"></div>
+                    <div class="hero-divider-dot green"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ PRIMEROS PASOS ══════════════ -->
+        <section id="inicio" class="app-section inicio reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/launcher.png" alt="">
+                <span class="app-badge inicio">Empieza aqu&iacute;</span>
+                <h2 class="app-name">Instalaci&oacute;n y primeros pasos</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Si acabas de recibir Xpress Suite, este es tu punto de partida. Aqu&iacute; se
+                    explica el <strong>Lanzador</strong>: la ventana desde la que se abren todas las
+                    aplicaciones, se comprueba el estado de tu <strong>licencia</strong>, se instala el
+                    <strong>servicio de monitoreo</strong> y se dejan listos los ajustes de Windows que
+                    la suite necesita para formatear y expulsar dispositivos sin pedirte permiso a cada rato.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Colocar el archivo de licencia</span>
+                <span class="app-feature">Copiar tu identificador de equipo</span>
+                <span class="app-feature">Abrir las aplicaciones</span>
+                <span class="app-feature">Instalar los registros de Windows</span>
+                <span class="app-feature">Contrase&ntilde;a maestra</span>
+                <span class="app-feature">Instalar el servicio de monitoreo</span>
+                <span class="app-feature">Actualizar la suite</span>
+                <span class="app-feature">Abrir esta documentaci&oacute;n</span>
+            </div>
+            <a class="btn inicio" href="primeros-pasos.html">Ver gu&iacute;a <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ COPIER ══════════════ -->
+        <section id="copier" class="app-section copier reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/copier.png" alt="">
+                <span class="app-badge copier">App</span>
+                <h2 class="app-name">Copier</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Copia archivos <strong>hacia</strong> y <strong>desde</strong> dispositivos externos
+                    como memorias USB, discos duros, celulares y m&aacute;s, con un sistema de copia
+                    simult&aacute;nea que acelera el proceso usando la RAM como intermediaria, sin
+                    sacrificar estabilidad. Incluye un explorador por dispositivo con b&uacute;squeda
+                    r&aacute;pida, clonaci&oacute;n de listas para repetir copias id&eacute;nticas, y
+                    herramientas de administraci&oacute;n como formateo y expulsi&oacute;n segura.
+                    Ofrece control total sobre la prioridad de cada dispositivo, filtros, orden
+                    personalizado e historial por dispositivo. Adem&aacute;s gestiona el
+                    <strong>cobro</strong> en m&uacute;ltiples variantes, adapt&aacute;ndose a las
+                    necesidades del negocio.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Copia simult&aacute;nea acelerada por RAM</span>
+                <span class="app-feature">Explorador integrado por dispositivo</span>
+                <span class="app-feature">B&uacute;squeda de archivos</span>
+                <span class="app-feature">Clonaci&oacute;n de listas de archivos</span>
+                <span class="app-feature">Formateo y expulsi&oacute;n segura</span>
+                <span class="app-feature">Priorizaci&oacute;n y filtrado de dispositivos</span>
+                <span class="app-feature">Historial completo por dispositivo</span>
+                <span class="app-feature">Cobro en m&uacute;ltiples variantes</span>
+                <span class="app-feature">Cuatro modos de copia y ocho estructuras</span>
+                <span class="app-feature">Continuaci&oacute;n autom&aacute;tica de entregas</span>
+            </div>
+            <a class="btn copier" href="copier.html">Ver manual completo <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ CONSTRUCTOR DE PATRONES ══════════════ -->
+        <section id="patrones" class="app-section patrones reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/patterns.png" alt="">
+                <span class="app-badge patrones">Herramienta del Copier</span>
+                <h2 class="app-name">Constructor de Patrones</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Le ense&ntilde;a al Copier a <strong>leer los nombres de tus archivos</strong>. Cada
+                    proveedor nombra las cosas a su manera &mdash; <strong>XX 001 Titulo</strong>,
+                    <strong>XX=001 Titulo</strong>, <strong>S01E01 Titulo</strong> &mdash; y si el Copier no
+                    reconoce el formato, no puede encontrar solo los cap&iacute;tulos siguientes. Con esta
+                    herramienta armas la regla como un <strong>rompecabezas de piezas de colores</strong>:
+                    arrastras, la pruebas en vivo con un nombre real y la exportas. Sin escribir una sola
+                    l&iacute;nea de c&oacute;digo. Trae adem&aacute;s 26 formatos ya preparados para partir
+                    de uno parecido.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Se arma arrastrando piezas</span>
+                <span class="app-feature">26 formatos ya preparados</span>
+                <span class="app-feature">Prueba en vivo con nombres reales</span>
+                <span class="app-feature">Series, novelas, concursos y m&aacute;s</span>
+                <span class="app-feature">Reconoce temporada y cap&iacute;tulo</span>
+                <span class="app-feature">Se exporta e instala en un paso</span>
+            </div>
+            <a class="btn patrones" href="patrones.html">Ver manual completo <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ CONVERTER ══════════════ -->
+        <section id="converter" class="app-section converter reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/converter.png" alt="">
+                <span class="app-badge converter">App</span>
+                <h2 class="app-name">Converter</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Convierte videos y audios a los formatos que tus clientes necesitan, con varios
+                    archivos proces&aacute;ndose a la vez. Creas tus propios <strong>perfiles</strong>
+                    de conversi&oacute;n, eliges pistas de audio y subt&iacute;tulos, pegas subt&iacute;tulos
+                    con el estilo que quieras, a&ntilde;ades marca de agua y ves el
+                    <strong>tama&ntilde;o estimado</strong> antes de convertir. Adem&aacute;s limpia y
+                    ordena autom&aacute;ticamente los nombres de los archivos de salida.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Conversi&oacute;n por lotes simult&aacute;nea</span>
+                <span class="app-feature">Perfiles propios reutilizables</span>
+                <span class="app-feature">Selecci&oacute;n de audio y subt&iacute;tulos</span>
+                <span class="app-feature">Subt&iacute;tulos pegados con estilo propio</span>
+                <span class="app-feature">Marca de agua con efectos</span>
+                <span class="app-feature">Estimaci&oacute;n de tama&ntilde;o final</span>
+                <span class="app-feature">Limpieza autom&aacute;tica de nombres</span>
+                <span class="app-feature">Aceleraci&oacute;n por tarjeta de video</span>
+            </div>
+            <a class="btn converter" href="converter.html">Ver manual completo <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ CONTROLSTATS ══════════════ -->
+        <section id="controlstats" class="app-section controlstats reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/controlstats.png" alt="">
+                <span class="app-badge controlstats">App</span>
+                <h2 class="app-name">ControlStats</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Muestra cu&aacute;nto se trabaj&oacute; y cu&aacute;nto se cobr&oacute;. Entra con
+                    <strong>usuario y contrase&ntilde;a</strong>, con cuentas de administrador y de
+                    trabajador, y controla los <strong>turnos</strong> de cada quien. Consulta el d&iacute;a,
+                    el ranking de dispositivos, el historial de cada sesi&oacute;n, compara dos periodos
+                    y genera <strong>reportes en HTML</strong> listos para imprimir o enviar.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Usuarios, roles y turnos</span>
+                <span class="app-feature">Resumen del d&iacute;a en vivo</span>
+                <span class="app-feature">Ranking de dispositivos</span>
+                <span class="app-feature">Historial de cada sesi&oacute;n</span>
+                <span class="app-feature">Comparaci&oacute;n de dos periodos</span>
+                <span class="app-feature">Reportes HTML exportables</span>
+                <span class="app-feature">Desglose por trabajador</span>
+                <span class="app-feature">Cuatro estilos y diez paletas de reporte</span>
+            </div>
+            <a class="btn controlstats" href="controlstats.html">Ver manual completo <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ OBSERVER ══════════════ -->
+        <section id="observer" class="app-section observer reveal">
+            <div class="app-section-header anim-header">
+                <img src="assets/img/logos/observer.png" alt="">
+                <span class="app-badge observer">Servicio</span>
+                <h2 class="app-name">Observer</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Es el vigilante silencioso del sistema. Corre solo, en segundo plano, y anota
+                    <strong>todo lo que entra y sale</strong> de las memorias, discos externos y
+                    celulares conectados al equipo &mdash; incluso cuando nadie us&oacute; el Copier.
+                    No tiene ventana propia: sus datos se consultan en la secci&oacute;n
+                    <strong>Monitoreo</strong> de ControlStats.
+                </p>
+            </div>
+            <div class="app-features anim-features">
+                <span class="app-feature">Vigilancia autom&aacute;tica en segundo plano</span>
+                <span class="app-feature">Memorias, discos externos y celulares</span>
+                <span class="app-feature">Registro de archivos por sesi&oacute;n</span>
+                <span class="app-feature">Arranca solo con Windows</span>
+                <span class="app-feature">Se reinicia solo ante fallos</span>
+                <span class="app-feature">Datos visibles en ControlStats</span>
+            </div>
+            <a class="btn observer" href="observer.html">Ver manual completo <span class="arrow">&rarr;</span></a>
+        </section>
+
+        <!-- ══════════════ VIDEOS ══════════════ -->
+        <section id="videos" class="app-section videos reveal">
+            <div class="app-section-header anim-header">
+                <span class="app-badge videos">Aprende viendo</span>
+                <h2 class="app-name">Videos</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Si prefieres ver antes que leer, aqu&iacute; est&aacute;n los videos de las
+                    aplicaciones funcionando de verdad. Se reproducen dentro de la misma p&aacute;gina
+                    y est&aacute;n agrupados por aplicaci&oacute;n.
+                </p>
+            </div>
+            <a class="btn" style="--accent:var(--neon-gold);--accent-rgb:255,215,0" href="videos.html">
+                Ver todos los videos <span class="arrow">&rarr;</span>
+            </a>
+        </section>
+
+        <!-- ══════════════ PRECIOS ══════════════ -->
+        <section id="pricing" class="app-section pricing reveal">
+            <div class="app-section-header anim-header">
+                <span class="app-badge pricing">Licencia</span>
+                <h2 class="app-name">Precios</h2>
+            </div>
+            <div class="anim-line"></div>
+            <div class="desc-highlight anim-desc">
+                <p class="app-desc">
+                    Precios en <strong>CUP</strong>, mensual o anual seg&uacute;n el plan. La licencia se
+                    solicita y se activa desde el <strong>Lanzador</strong>. Todo el detalle
+                    &mdash; datos para solicitarla, cuentas bancarias y condiciones &mdash; est&aacute;
+                    en la <a href="licencias.html" style="color:var(--neon-gold);text-decoration:none;border-bottom:1px solid rgba(255,215,0,.3)">p&aacute;gina de Licencias</a>.
+                </p>
+            </div>
+
+            <div class="plans">
+                <div class="plan">
+                    <div class="plan-name">B&aacute;sico</div>
+                    <div class="plan-price">1 000</div>
+                    <div class="plan-cur">CUP</div>
+                    <div class="plan-period">por mes</div>
+                    <ul class="plan-items">
+                        <li><span class="chk">&#10003;</span> Copier</li>
+                        <li><span class="chk">&#10003;</span> Converter</li>
+                        <li><span class="chk">&#10003;</span> ControlStats</li>
+                        <li><span class="chk">&#10003;</span> Observer</li>
+                    </ul>
+                </div>
+
+                <div class="plan featured">
+                    <div class="plan-name">Est&aacute;ndar</div>
+                    <div class="plan-price">6 000</div>
+                    <div class="plan-cur">CUP</div>
+                    <div class="plan-period">por a&ntilde;o</div>
+                    <ul class="plan-items">
+                        <li><span class="chk">&#10003;</span> Copier</li>
+                        <li><span class="chk">&#10003;</span> Converter</li>
+                        <li><span class="chk">&#10003;</span> ControlStats</li>
+                    </ul>
+                </div>
+
+                <div class="plan">
+                    <div class="plan-name">Observer</div>
+                    <div class="plan-price">4 000</div>
+                    <div class="plan-cur">CUP</div>
+                    <div class="plan-period">por a&ntilde;o</div>
+                    <ul class="plan-items">
+                        <li><span class="chk">&#10003;</span> Observer</li>
+                        <li><span class="chk">&#10003;</span> ControlStats</li>
+                    </ul>
+                </div>
+
+                <div class="plan">
+                    <div class="plan-name">Profesional</div>
+                    <div class="plan-price">10 000</div>
+                    <div class="plan-cur">CUP</div>
+                    <div class="plan-period">por a&ntilde;o</div>
+                    <ul class="plan-items">
+                        <li><span class="chk">&#10003;</span> Copier</li>
+                        <li><span class="chk">&#10003;</span> Converter</li>
+                        <li><span class="chk">&#10003;</span> ControlStats</li>
+                        <li><span class="chk">&#10003;</span> Observer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="price-note">
+                <span class="price-note-ic">i</span>
+                <span>Los precios pueden <b>ajustarse</b> por la inflaci&oacute;n en Cuba. El
+                    <b>precio vigente</b> es siempre el publicado en el <b>canal oficial</b>
+                    (t.me/XpresSuite_Updates).</span>
+            </div>
+            <div style="text-align:center;margin-top:22px">
+                <a class="btn" style="--accent:var(--neon-gold);--accent-rgb:255,215,0" href="licencias.html">
+                    Ver todo y solicitar licencia <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-item"><span class="label">BPA</span><span class="value">9205-1299-7923-8343</span></div>
+                    <div class="info-item"><span class="label">BANDEC</span><span class="value">9205-0699-9380-5059</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>

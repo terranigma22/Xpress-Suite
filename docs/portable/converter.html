@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+/* ══════════════════════════════════════════════════════════════════
+   Xpress Suite — Documentación
+   Estilos compartidos por todas las páginas de docs/
+   ══════════════════════════════════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+    --bg: #07070c;
+    --surface: #12121a;
+    --border: #1e1e2e;
+    --text-primary: #e0e0f0;
+    --text-soft: #b0b0c8;
+    --text-muted: #6b6b80;
+
+    --neon-blue: #00b4ff;
+    --neon-violet: #a064ff;
+    --neon-orange: #ff8800;
+    --neon-green: #00ff88;
+    --neon-cyan: #00c8c8;
+    --neon-pink: #ff2d95;
+    --neon-gold: #ffd700;
+    --neon-red: #ff4444;
+
+    --glow-blue: 0 0 20px rgba(0,180,255,.15);
+    --glow-violet: 0 0 20px rgba(160,100,255,.15);
+    --glow-orange: 0 0 20px rgba(255,136,0,.15);
+    --glow-green: 0 0 20px rgba(0,255,136,.15);
+    --glow-cyan: 0 0 20px rgba(0,200,200,.15);
+
+    /* Color de acento de la página actual (lo fija cada página) */
+    --accent: var(--neon-blue);
+    --accent-rgb: 0,180,255;
+}
+
+/* Acento por página — se aplica con <body data-accent="..."> */
+body[data-accent="copier"]       { --accent: var(--neon-blue);   --accent-rgb: 0,180,255; }
+body[data-accent="converter"]    { --accent: var(--neon-violet); --accent-rgb: 160,100,255; }
+body[data-accent="controlstats"] { --accent: var(--neon-orange); --accent-rgb: 255,136,0; }
+body[data-accent="observer"]     { --accent: var(--neon-green);  --accent-rgb: 0,255,136; }
+body[data-accent="patrones"]     { --accent: var(--neon-pink);   --accent-rgb: 255,45,149; }
+body[data-accent="inicio"]       { --accent: var(--neon-cyan);   --accent-rgb: 0,200,200; }
+body[data-accent="videos"]       { --accent: var(--neon-gold);   --accent-rgb: 255,215,0; }
+
+/* ─── Animaciones ─── */
+@keyframes cycle-color {
+    0%   { color: var(--neon-blue); }
+    25%  { color: var(--neon-violet); }
+    50%  { color: var(--neon-orange); }
+    75%  { color: var(--neon-green); }
+    100% { color: var(--neon-blue); }
+}
+@keyframes pulse-glow {
+    0%, 100% { opacity: .15; transform: scale(1); }
+    50%      { opacity: .25; transform: scale(1.05); }
+}
+@keyframes float-dot {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+}
+@keyframes slide-up {
+    0%   { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes expand-right {
+    0%   { width: 0; }
+    100% { width: 48px; }
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .5; transform: scale(.8); }
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    padding-top: 64px;
+    overflow-x: hidden;
+}
+
+/* ─── Revelado al hacer scroll ─── */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.anim-header { opacity: 0; transform: translateY(20px); }
+.reveal.visible .anim-header {
+    animation: slide-up .6s cubic-bezier(.16,1,.3,1) forwards;
+    animation-delay: .1s;
+}
+.anim-desc { opacity: 0; transform: translateY(16px); }
+.reveal.visible .anim-desc {
+    animation: slide-up .6s cubic-bezier(.16,1,.3,1) forwards;
+    animation-delay: .25s;
+}
+
+/* ─── Navegación superior ─── */
+#main-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(7,7,12,.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(30,30,46,.4);
+    z-index: 100;
+    transition: background .4s, border-color .4s;
+}
+#main-nav.scrolled {
+    background: rgba(7,7,12,.96);
+    border-color: rgba(30,30,46,.7);
+}
+#main-nav .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    flex-shrink: 0;
+    color: var(--neon-blue);
+    animation: cycle-color 10s ease-in-out infinite;
+    opacity: .85;
+    transition: opacity .3s;
+    margin-right: 24px;
+}
+.nav-brand:hover { opacity: 1; }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow-x: auto;
+    flex: 1;
+    justify-content: flex-end;
+}
+.nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: color .3s, background .3s;
+    letter-spacing: .02em;
+    position: relative;
+}
+.nav-links a:hover { color: var(--text-primary); background: rgba(255,255,255,.05); }
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    width: 20px; height: 2px;
+    border-radius: 2px;
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+.nav-links a[data-color="copier"]::after       { background: var(--neon-blue);   box-shadow: 0 0 10px rgba(0,180,255,.4); }
+.nav-links a[data-color="converter"]::after    { background: var(--neon-violet); box-shadow: 0 0 10px rgba(160,100,255,.4); }
+.nav-links a[data-color="controlstats"]::after { background: var(--neon-orange); box-shadow: 0 0 10px rgba(255,136,0,.4); }
+.nav-links a[data-color="observer"]::after     { background: var(--neon-green);  box-shadow: 0 0 10px rgba(0,255,136,.4); }
+.nav-links a[data-color="patrones"]::after     { background: var(--neon-pink);   box-shadow: 0 0 10px rgba(255,45,149,.4); }
+.nav-links a[data-color="home"]::after         { background: var(--text-primary); box-shadow: 0 0 10px rgba(255,255,255,.35); }
+.nav-links a[data-color="inicio"]::after       { background: var(--neon-cyan);   box-shadow: 0 0 10px rgba(0,200,200,.4); }
+.nav-links a[data-color="videos"]::after,
+.nav-links a[data-color="pricing"]::after      { background: var(--neon-gold);   box-shadow: 0 0 10px rgba(255,215,0,.4); }
+
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: translateX(-50%) scaleX(1); }
+.nav-links a.active { color: var(--text-primary); }
+
+/* ─── Menú móvil ─── */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px; height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 110;
+    margin-left: auto;
+}
+.nav-toggle span {
+    display: block;
+    width: 100%; height: 2px;
+    border-radius: 2px;
+    background: var(--text-primary);
+    transition: transform .3s, opacity .3s;
+}
+#main-nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+#main-nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+#main-nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-popover { display: flex; flex: 1; align-items: center; }
+
+@media (max-width: 900px) {
+    .nav-toggle { display: flex; touch-action: manipulation; }
+    .nav-popover {
+        position: fixed;
+        top: 64px; left: 0; right: 0;
+        height: calc(100vh - 64px);
+        background: rgba(7,7,12,.97);
+        backdrop-filter: blur(14px);
+        transform: translateX(100%);
+        transition: transform .35s cubic-bezier(.22,1,.36,1);
+        z-index: 99;
+        justify-content: center;
+    }
+    #main-nav.nav-open .nav-popover { transform: translateX(0); }
+    .nav-popover .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        justify-content: center;
+        flex: unset;
+        overflow: visible;
+    }
+    .nav-popover .nav-links a { font-size: 16px; padding: 12px 24px; }
+    .nav-popover .nav-links a::after { display: none; }
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+.container-wide { max-width: 1180px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   CABECERA DE PÁGINA DE MANUAL
+   ══════════════════════════════════════════════════════════════════ */
+
+.doc-hero {
+    padding: 56px 0 32px;
+    position: relative;
+    overflow: hidden;
+}
+.doc-hero::before {
+    content: '';
+    position: absolute;
+    top: -140px; left: 50%;
+    width: 620px; height: 420px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(var(--accent-rgb),.10), transparent 70%);
+    border-radius: 50%;
+    animation: pulse-glow 5s ease-in-out infinite;
+    pointer-events: none;
+}
+.doc-crumb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    position: relative;
+}
+.doc-crumb a { color: var(--text-muted); text-decoration: none; transition: color .3s; }
+.doc-crumb a:hover { color: var(--accent); }
+.doc-crumb span { margin: 0 8px; opacity: .5; }
+
+.doc-title-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+    position: relative;
+    flex-wrap: wrap;
+}
+.doc-title-row img {
+    width: 56px; height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 14px rgba(var(--accent-rgb),.35));
+}
+.doc-title-row h1 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--accent);
+    line-height: 1.1;
+}
+.doc-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb),.25);
+    background: rgba(var(--accent-rgb),.08);
+    flex-shrink: 0;
+}
+.doc-lead {
+    font-size: 16px;
+    color: var(--text-soft);
+    line-height: 1.8;
+    max-width: 720px;
+    border-left: 3px solid rgba(var(--accent-rgb),.3);
+    padding: 6px 0 6px 22px;
+    position: relative;
+}
+.doc-lead strong { color: #d0d0e0; font-weight: 600; }
+
+/* ══════════════════════════════════════════════════════════════════
+   LAYOUT DE 2 COLUMNAS (índice + contenido)
+   ══════════════════════════════════════════════════════════════════ */
+
+.doc-layout {
+    display: grid;
+    grid-template-columns: 236px 1fr;
+    gap: 48px;
+    align-items: start;
+    padding-bottom: 40px;
+}
+
+/* ─── Índice lateral ─── */
+.doc-toc-wrap { position: sticky; top: 84px; }
+.doc-toc-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--text-muted);
+    padding: 0 0 12px 12px;
+}
+.doc-toc {
+    list-style: none;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    border-left: 1px solid rgba(255,255,255,.06);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.12) transparent;
+}
+.doc-toc::-webkit-scrollbar { width: 4px; }
+.doc-toc::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 4px; }
+.doc-toc a {
+    display: block;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 7px 10px 7px 14px;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    transition: color .25s, border-color .25s, background .25s;
+}
+.doc-toc a:hover { color: var(--text-primary); background: rgba(255,255,255,.03); }
+.doc-toc a.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: rgba(var(--accent-rgb),.06);
+}
+
+/* Contenedor plegable del índice: sin adornos en escritorio,
+   se convierte en desplegable en pantallas pequeñas */
+.doc-toc-box { background: none; border: none; }
+.doc-toc-box > summary { display: none; }
+
+/* ─── Secciones de contenido ─── */
+.doc-content { min-width: 0; }
+
+.doc-section {
+    padding-top: 28px;
+    margin-bottom: 44px;
+    scroll-margin-top: 84px;
+}
+.doc-section > h2 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+.doc-section > h2::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(var(--accent-rgb),.5);
+}
+.doc-section > h2 + .doc-rule {
+    width: 0; height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb),.3);
+    margin: 0 0 22px 20px;
+}
+.reveal.visible > h2 + .doc-rule {
+    animation: expand-right .5s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay: .2s;
+}
+
+.doc-section h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 30px 0 12px;
+}
+.doc-section h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--accent);
+    margin: 24px 0 10px;
+}
+.doc-section p {
+    font-size: 14.5px;
+    line-height: 1.85;
+    color: var(--text-soft);
+    margin-bottom: 14px;
+    max-width: 760px;
+}
+.doc-section p strong,
+.doc-section li strong { color: #d8d8e8; font-weight: 600; }
+.doc-section a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(var(--accent-rgb),.3); }
+.doc-section a:hover { border-bottom-color: var(--accent); }
+
+.doc-section ul, .doc-section ol { margin: 0 0 16px 0; padding-left: 0; list-style: none; max-width: 760px; }
+.doc-section ul > li {
+    position: relative;
+    padding: 5px 0 5px 20px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-soft);
+}
+.doc-section ul > li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 15px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(var(--accent-rgb),.55);
+}
+
+/* Término + definición (usado para listas de opciones) */
+.term-list { margin-bottom: 18px; max-width: 760px; }
+.term-list dt {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #d8d8e8;
+    margin-top: 14px;
+}
+.term-list dt:first-child { margin-top: 0; }
+.term-list dd {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin: 3px 0 0 0;
+    padding-left: 14px;
+    border-left: 2px solid rgba(var(--accent-rgb),.18);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TABLA DE ICONOS — componente central de la documentación
+   ══════════════════════════════════════════════════════════════════ */
+
+.table-scroll { overflow-x: auto; margin-bottom: 20px; -webkit-overflow-scrolling: touch; }
+
+.icon-table {
+    width: 100%;
+    min-width: 520px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 14px;
+}
+.icon-table thead th {
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    padding: 12px 16px;
+    background: rgba(255,255,255,.025);
+    border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.icon-table tbody tr { transition: background .25s; }
+.icon-table tbody tr:hover { background: rgba(var(--accent-rgb),.045); }
+.icon-table tbody tr + tr td { border-top: 1px solid rgba(255,255,255,.05); }
+.icon-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.65;
+    color: var(--text-soft);
+}
+.icon-table td.ic {
+    width: 56px;
+    text-align: center;
+    padding: 12px 8px 12px 16px;
+}
+.icon-table td.ic img {
+    width: 30px; height: 30px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+.icon-table td.nm {
+    width: 210px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: normal;
+}
+.icon-table td.nm small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    margin-top: 3px;
+    text-transform: none;
+}
+
+/* Tabla simple sin iconos */
+.doc-table { min-width: 420px; }
+.doc-table td.nm { width: 260px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   AVISOS
+   ══════════════════════════════════════════════════════════════════ */
+
+.callout {
+    background: rgba(255,255,255,.022);
+    border: 1px solid rgba(255,255,255,.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    max-width: 780px;
+}
+.callout h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--accent);
+    margin: 0 0 10px;
+}
+.callout p, .callout li { font-size: 13.5px; line-height: 1.75; color: var(--text-muted); }
+.callout p:last-child, .callout ul:last-child { margin-bottom: 0; }
+.callout ul { margin: 0; max-width: none; }
+.callout ul > li::before { background: rgba(var(--accent-rgb),.6); }
+
+.callout.warn { border-left-color: var(--neon-gold); }
+.callout.warn h4 { color: var(--neon-gold); }
+.callout.warn ul > li::before { background: rgba(255,215,0,.6); }
+
+.callout.danger { border-left-color: var(--neon-red); }
+.callout.danger h4 { color: #ff6b6b; }
+.callout.danger ul > li::before { background: rgba(255,68,68,.6); }
+
+.callout.tip { border-left-color: var(--neon-green); }
+.callout.tip h4 { color: var(--neon-green); }
+.callout.tip ul > li::before { background: rgba(0,255,136,.6); }
+
+/* ══════════════════════════════════════════════════════════════════
+   PASOS NUMERADOS
+   ══════════════════════════════════════════════════════════════════ */
+
+.step-list {
+    counter-reset: step;
+    list-style: none;
+    margin: 18px 0 22px;
+    padding: 0;
+    max-width: 780px;
+}
+.step-list > li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 22px 44px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-soft);
+}
+.step-list > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: -1px;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb),.1);
+    border: 1px solid rgba(var(--accent-rgb),.3);
+}
+.step-list > li::after {
+    content: '';
+    position: absolute;
+    left: 13.5px; top: 30px; bottom: 6px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(var(--accent-rgb),.25), transparent);
+}
+.step-list > li:last-child { padding-bottom: 0; }
+.step-list > li:last-child::after { display: none; }
+.step-list > li strong { display: block; color: var(--text-primary); font-weight: 600; margin-bottom: 2px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   TECLAS Y RUTAS DE MENÚ
+   ══════════════════════════════════════════════════════════════════ */
+
+.kbd {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-primary);
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    padding: 2px 7px;
+    white-space: nowrap;
+}
+.path {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb),.08);
+    border: 1px solid rgba(var(--accent-rgb),.18);
+    border-radius: 5px;
+    padding: 2px 8px;
+    white-space: nowrap;
+}
+.ui {
+    color: #d8d8e8;
+    font-weight: 600;
+}
+/* Evita que se parta a mitad un teléfono o un número de cuenta */
+.nowrap { white-space: nowrap; }
+.doc-section code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #c8c8dc;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 4px;
+    padding: 1px 6px;
+    white-space: nowrap;
+}
+
+/* ─── Ejemplo de árbol de carpetas ─── */
+.tree {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    background: rgba(0,0,0,.28);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 10px;
+    padding: 14px 18px;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+}
+.tree b { color: var(--accent); font-weight: 500; }
+.tree-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0 20px;
+}
+.tree-pair figure { margin: 0; min-width: 0; }
+.tree-pair figcaption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    margin-bottom: 7px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TARJETAS
+   ══════════════════════════════════════════════════════════════════ */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 18px 0 22px;
+}
+.card {
+    background: rgba(255,255,255,.028);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 18px 20px;
+    transition: border-color .3s, transform .3s;
+}
+.card:hover { border-color: rgba(var(--accent-rgb),.3); transform: translateY(-3px); }
+.card h5 {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.card h5 img { width: 22px; height: 22px; object-fit: contain; }
+.card p { font-size: 13px; line-height: 1.65; color: var(--text-muted); margin: 0; }
+
+/* ══════════════════════════════════════════════════════════════════
+   SECCIÓN DE VIDEOS
+   ══════════════════════════════════════════════════════════════════ */
+
+.video-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 24px;
+}
+.video-filter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 20px;
+    padding: 7px 15px;
+    cursor: pointer;
+    transition: color .25s, border-color .25s, background .25s;
+}
+.video-filter:hover { color: var(--text-primary); background: rgba(255,255,255,.06); }
+.video-filter.active {
+    color: var(--vf, var(--accent));
+    border-color: rgba(255,255,255,.22);
+    background: rgba(255,255,255,.07);
+}
+.video-filter .n {
+    display: inline-block;
+    margin-left: 7px;
+    opacity: .55;
+    font-size: 10px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    gap: 20px;
+    margin-bottom: 8px;
+}
+.video-card {
+    background: rgba(255,255,255,.028);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+}
+.video-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--vc-rgb, var(--accent-rgb)),.4);
+    box-shadow: 0 12px 30px -18px rgba(var(--vc-rgb, var(--accent-rgb)),.5);
+}
+.video-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #0b0b13 center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    overflow: hidden;
+}
+.video-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 55%, rgba(var(--vc-rgb, var(--accent-rgb)),.14), transparent 65%);
+    pointer-events: none;
+}
+.video-play {
+    position: relative;
+    z-index: 1;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(7,7,12,.68);
+    border: 1px solid rgba(var(--vc-rgb, var(--accent-rgb)),.45);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--vc-rgb, var(--accent-rgb)));
+    font-size: 17px;
+    padding-left: 4px;
+    transition: transform .3s, background .3s;
+}
+.video-card:hover .video-play { transform: scale(1.12); background: rgba(7,7,12,.85); }
+.video-dur {
+    position: absolute;
+    right: 9px; bottom: 9px;
+    z-index: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: #e0e0f0;
+    background: rgba(7,7,12,.8);
+    border-radius: 5px;
+    padding: 2px 7px;
+}
+.video-meta { padding: 15px 17px 17px; flex: 1; }
+.video-app {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgb(var(--vc-rgb, var(--accent-rgb)));
+    border: 1px solid rgba(var(--vc-rgb, var(--accent-rgb)),.28);
+    background: rgba(var(--vc-rgb, var(--accent-rgb)),.08);
+    border-radius: 10px;
+    padding: 3px 9px;
+    margin-bottom: 10px;
+}
+.video-meta h5 {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+.video-meta p { font-size: 12.5px; line-height: 1.6; color: var(--text-muted); margin: 0; }
+
+/* Estado vacío */
+.video-empty {
+    border: 1px dashed rgba(255,255,255,.12);
+    border-radius: 14px;
+    padding: 40px 28px;
+    text-align: center;
+    background: rgba(255,255,255,.015);
+}
+.video-empty .ve-icon { font-size: 30px; opacity: .3; margin-bottom: 12px; }
+.video-empty h5 { font-size: 15px; color: var(--text-soft); margin-bottom: 8px; font-weight: 600; }
+.video-empty p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin: 0 auto; max-width: 520px; }
+
+/* ─── Reproductor modal ─── */
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(4,4,8,.92);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+}
+.video-modal.open { opacity: 1; visibility: visible; }
+.video-modal-inner {
+    width: min(1080px, 100%);
+    transform: scale(.96);
+    transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+.video-modal.open .video-modal-inner { transform: scale(1); }
+.video-modal video {
+    width: 100%;
+    max-height: calc(100vh - 170px);
+    display: block;
+    background: #000;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.1);
+    outline: none;
+}
+.video-modal-bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+.video-modal-bar h4 { font-size: 17px; font-weight: 600; color: var(--text-primary); line-height: 1.4; }
+.video-modal-bar p { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.6; }
+.video-close {
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--text-primary);
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+}
+.video-close:hover { background: rgba(255,68,68,.18); transform: rotate(90deg); }
+
+/* ══════════════════════════════════════════════════════════════════
+   BOTONES
+   ══════════════════════════════════════════════════════════════════ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 24px;
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb),.3);
+    background: rgba(var(--accent-rgb),.07);
+    transition: background .3s, border-color .3s, transform .3s;
+    cursor: pointer;
+}
+.btn:hover {
+    background: rgba(var(--accent-rgb),.14);
+    border-color: rgba(var(--accent-rgb),.55);
+    transform: translateY(-2px);
+}
+.btn .arrow { transition: transform .3s; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+.btn.copier       { color: var(--neon-blue);   border-color: rgba(0,180,255,.3);   background: rgba(0,180,255,.07); }
+.btn.copier:hover { background: rgba(0,180,255,.14); border-color: rgba(0,180,255,.55); }
+.btn.converter       { color: var(--neon-violet); border-color: rgba(160,100,255,.3); background: rgba(160,100,255,.07); }
+.btn.converter:hover { background: rgba(160,100,255,.14); border-color: rgba(160,100,255,.55); }
+.btn.controlstats       { color: var(--neon-orange); border-color: rgba(255,136,0,.3); background: rgba(255,136,0,.07); }
+.btn.controlstats:hover { background: rgba(255,136,0,.14); border-color: rgba(255,136,0,.55); }
+.btn.observer       { color: var(--neon-green); border-color: rgba(0,255,136,.3); background: rgba(0,255,136,.07); }
+.btn.observer:hover { background: rgba(0,255,136,.14); border-color: rgba(0,255,136,.55); }
+.btn.inicio       { color: var(--neon-cyan); border-color: rgba(0,200,200,.3); background: rgba(0,200,200,.07); }
+.btn.inicio:hover { background: rgba(0,200,200,.14); border-color: rgba(0,200,200,.55); }
+.btn.patrones       { color: var(--neon-pink); border-color: rgba(255,45,149,.3); background: rgba(255,45,149,.07); }
+.btn.patrones:hover { background: rgba(255,45,149,.14); border-color: rgba(255,45,149,.55); }
+
+/* ─── Navegación anterior/siguiente al pie ─── */
+.doc-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 28px;
+    margin-top: 12px;
+}
+.doc-nav a {
+    flex: 1 1 240px;
+    display: block;
+    text-decoration: none;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 15px 20px;
+    transition: border-color .3s, transform .3s;
+}
+.doc-nav a:hover { border-color: rgba(255,255,255,.18); transform: translateY(-3px); }
+.doc-nav a.next { text-align: right; }
+.doc-nav .lbl {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+.doc-nav .ttl { display: block; font-size: 15px; font-weight: 600; color: var(--text-primary); }
+
+/* ══════════════════════════════════════════════════════════════════
+   PIE DE PÁGINA
+   ══════════════════════════════════════════════════════════════════ */
+
+footer {
+    padding: 56px 0 44px;
+    text-align: center;
+    border-top: 1px solid rgba(30,30,46,.3);
+}
+footer .brand {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--neon-blue);
+    animation: cycle-color 10s ease-in-out infinite;
+    margin-bottom: 24px;
+}
+footer .info-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+footer .info-row { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+footer .info-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+footer .info-item .label {
+    color: #484860;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 500;
+}
+footer .info-item .value { color: #999; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+footer .copy { margin-top: 24px; font-size: 11px; color: #383848; font-family: 'JetBrains Mono', monospace; }
+
+/* ══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+    .doc-layout { grid-template-columns: 1fr; gap: 0; }
+    .doc-toc-wrap { position: static; margin-bottom: 26px; }
+    .doc-toc-title { display: none; }
+    .doc-toc-box {
+        background: rgba(255,255,255,.028);
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .doc-toc-box > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px 18px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        user-select: none;
+    }
+    .doc-toc-box > summary::-webkit-details-marker { display: none; }
+    .doc-toc-box > summary::after { content: '\25B8'; margin-left: auto; transition: transform .25s; }
+    .doc-toc-box[open] > summary::after { transform: rotate(90deg); }
+    .doc-toc {
+        border-left: none;
+        max-height: 52vh;
+        padding: 0 10px 12px;
+    }
+    .doc-toc a { border-left: 2px solid transparent; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .doc-hero { padding: 36px 0 24px; }
+    .doc-title-row h1 { font-size: 30px; }
+    .doc-title-row img { width: 44px; height: 44px; }
+    .doc-lead { font-size: 14.5px; padding-left: 16px; }
+    .doc-section > h2 { font-size: 21px; }
+    .doc-section p, .doc-section ul > li { font-size: 14px; }
+    .tree-pair { grid-template-columns: 1fr; }
+    .video-modal { padding: 16px; }
+    footer .info-row { flex-direction: column; align-items: center; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 14px; }
+    .doc-title-row h1 { font-size: 25px; }
+    .doc-section > h2 { font-size: 19px; }
+    .callout { padding: 15px 17px; }
+    .icon-table td.nm { width: 160px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .step-list > li { padding-left: 38px; }
+}
+
+</style>
+<style>
+/* â”€â”€ Contenido SIEMPRE visible â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   docs.css oculta las secciones con opacity:0 y docs.js las revela al hacer
+   scroll. Donde el JavaScript no corre, la pagina se queda en negro. Estas
+   tres reglas son las unicas que esconden contenido (.video-modal se deja
+   oculto a proposito: es un modal, no contenido). */
+.reveal, .anim-header, .anim-desc {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* â”€â”€ Sin barra de navegacion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   En la copia portable la barra superior se QUITA entera.
+   Motivo: no navega. En el movil los enlaces entre paginas no llegan a
+   funcionar, asi que era un control muerto ocupando la parte de arriba de cada
+   pagina. Ademas, si se comparte un archivo suelto esos enlaces apuntan a
+   archivos que ni siquiera estan.
+   Se quita tambien el hueco de 64px que reservaba el body para la barra fija.
+   El indice lateral SI se conserva: sus enlaces saltan dentro de la misma
+   pagina y siguen teniendo sentido. */
+#main-nav { display: none !important; }
+body { padding-top: 0 !important; }
+</style>
+</head>
+<body data-accent="converter">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" class="active" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb"><a href="index.html">Inicio</a><span>&rsaquo;</span>Converter</div>
+            <div class="doc-title-row">
+                <img src="data:image/png;base64,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" alt="">
+                <span class="doc-badge">Manual de usuario</span>
+                <h1>Converter</h1>
+            </div>
+            <p class="doc-lead">
+                Convierte videos y audios al formato que necesite cada cliente, con varios archivos
+                proces&aacute;ndose <strong>a la vez</strong>. Creas tus propios perfiles una sola vez y
+                los reutilizas siempre; eliges pistas de audio y subt&iacute;tulos, pegas los
+                subt&iacute;tulos con tu estilo, pones marca de agua y ves cu&aacute;nto va a pesar el
+                resultado <strong>antes</strong> de empezar.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#primera">Tu primera conversi&oacute;n</a></li>
+                        <li><a href="#listado">La pantalla Listado</a></li>
+                        <li><a href="#fila">La fila de cada archivo</a></li>
+                        <li><a href="#agregar">La ventana Agregar Archivos</a></li>
+                        <li><a href="#perfiles">Perfiles de conversi&oacute;n</a></li>
+                        <li><a href="#verde-rojo">Verde y rojo: el tama&ntilde;o final</a></li>
+                        <li><a href="#subtitulos">Subt&iacute;tulos</a></li>
+                        <li><a href="#marca">Marca de agua</a></li>
+                        <li><a href="#nombres">Nombre del archivo de salida</a></li>
+                        <li><a href="#carpetas">Carpetas admitidas</a></li>
+                        <li><a href="#config">Configuraci&oacute;n</a></li>
+                        <li><a href="#formatos">Formatos admitidos</a></li>
+                        <li><a href="#licencia">Licencia</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ PRIMERA CONVERSIÓN ══════════ -->
+                <section id="primera" class="doc-section reveal">
+                    <h2>Tu primera conversi&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Arrastra los archivos a la ventana</strong>
+                            Puedes soltar archivos sueltos o carpetas enteras. Aparecen en la lista de la
+                            pantalla <span class="ui">Listado</span>.
+                        </li>
+                        <li>
+                            <strong>Elige el perfil</strong>
+                            El perfil es la &laquo;receta&raquo;: decide el formato, la calidad y el
+                            tama&ntilde;o del resultado. Se selecciona arriba a la izquierda y se aplica a
+                            todo lo que a&ntilde;adas. Ver <a href="#perfiles">Perfiles</a>.
+                        </li>
+                        <li>
+                            <strong>Comprueba el color de cada archivo</strong>
+                            Al lado de cada uno ver&aacute;s el tama&ntilde;o estimado en verde o en rojo.
+                            <b>Los rojos no se convierten.</b> Ver <a href="#verde-rojo">Verde y rojo</a>.
+                        </li>
+                        <li>
+                            <strong>Elige la carpeta de salida</strong>
+                            Con el selector <span class="ui">Directorio de Salida</span> de la barra
+                            inferior.
+                        </li>
+                        <li>
+                            <strong>Pulsa Convertir</strong>
+                            Se procesan varios archivos a la vez, seg&uacute;n las
+                            <span class="ui">Tareas paralelas</span> que tengas puestas. Mientras tanto
+                            puedes seguir a&ntilde;adiendo m&aacute;s.
+                        </li>
+                    </ol>
+                    <div class="callout tip">
+                        <h4>Cu&aacute;ntas tareas paralelas poner</h4>
+                        <p>
+                            Convertir video exige mucho de la computadora. Si pones demasiadas tareas a la
+                            vez, cada una va m&aacute;s lenta y el total no mejora. Empieza con dos o tres
+                            y sube solo si ves que la computadora aguanta bien.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ LISTADO ══════════ -->
+                <section id="listado" class="doc-section reveal">
+                    <h2>La pantalla Listado</h2>
+                    <div class="doc-rule"></div>
+                    <p>Es la pantalla de trabajo. Todo lo importante ocurre aqu&iacute;.</p>
+
+                    <h3>Arriba</h3>
+                    <ul>
+                        <li>El selector de <b>perfil</b> que se aplicar&aacute; a los archivos nuevos.</li>
+                        <li>El selector de <span class="ui">Tareas paralelas</span>: cu&aacute;ntos archivos se convierten a la vez.</li>
+                        <li>Un <b>cron&oacute;metro de sesi&oacute;n</b> a la derecha, que se reinicia pulsando encima. Sirve para saber cu&aacute;nto llevas trabajando.</li>
+                    </ul>
+
+                    <h3>Los contadores &mdash; que son tambi&eacute;n filtros</h3>
+                    <p>
+                        La fila de n&uacute;meros no es solo informativa: <b>pulsando cada uno se filtra la
+                        lista</b> para ver solo esos archivos.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Contador</th><th>Qu&eacute; agrupa</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Total</td><td>Todos los archivos de la lista.</td></tr>
+                                <tr><td class="nm">En espera</td><td>A&ntilde;adidos pero todav&iacute;a sin procesar.</td></tr>
+                                <tr><td class="nm">Convirtiendo</td><td>Los que se est&aacute;n procesando ahora mismo.</td></tr>
+                                <tr><td class="nm">Esperando</td><td>Est&aacute;n en cola, esperando que quede libre una tarea.</td></tr>
+                                <tr><td class="nm">Pausados</td><td>Detenidos a mano.</td></tr>
+                                <tr><td class="nm">Completados</td><td>Ya convertidos y guardados.</td></tr>
+                                <tr><td class="nm">Errores</td><td>Fallaron. <b>Rev&iacute;salos siempre antes de entregar.</b></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Al lado se ve el <span class="ui">Espacio Completado / Espacio Total</span>.</p>
+
+                    <h3>La barra inferior</h3>
+                    <div class="term-list">
+                        <dt>Convertir</dt><dd>Arranca la conversi&oacute;n de todo lo pendiente.</dd>
+                        <dt>Cargar</dt><dd>A&ntilde;ade archivos con un cuadro de selecci&oacute;n, sin arrastrar.</dd>
+                        <dt>Pausar / Continuar</dt><dd>Detiene o reanuda sin perder lo avanzado.</dd>
+                        <dt>Restablecer archivos cancelados</dt><dd>Devuelve a la cola los que se hab&iacute;an cancelado, para reintentarlos.</dd>
+                        <dt>Limpiar todo</dt><dd>Vac&iacute;a la lista. No borra archivos del disco, solo los quita de la pantalla.</dd>
+                        <dt>Cancelar</dt><dd>Detiene todo lo que est&eacute; en marcha.</dd>
+                        <dt>Directorio de Salida</dt><dd>D&oacute;nde se guardan los archivos convertidos. La lista de carpetas disponibles se administra en <span class="path">Configuraci&oacute;n &rsaquo; Salidas</span>.</dd>
+                    </div>
+                    <div class="callout">
+                        <h4>Si das Convertir con archivos en pausa</h4>
+                        <p>
+                            La aplicaci&oacute;n te preguntar&aacute; si quieres quitarles la pausa y
+                            convertirlos tambi&eacute;n. Si aceptas, los reanuda todos y contin&uacute;a.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ FILA ══════════ -->
+                <section id="fila" class="doc-section reveal">
+                    <h2>La fila de cada archivo</h2>
+                    <div class="doc-rule"></div>
+                    <p>Cada archivo de la lista muestra, de izquierda a derecha:</p>
+                    <ul>
+                        <li>Su <b>estado</b> (en espera, convirtiendo, completado, error&hellip;).</li>
+                        <li>El <b>porcentaje y el tama&ntilde;o estimado</b> del resultado, en verde o rojo.</li>
+                        <li>La <b>estructura de carpetas</b> con que se guardar&aacute;.</li>
+                        <li>Una <b>estrella</b> si est&aacute; marcado <span class="ui">Con Prioridad</span>: se convierte antes que los dem&aacute;s.</li>
+                        <li>El distintivo <b>HDR</b>, si el video original lo es.</li>
+                        <li>El <b>nombre</b> del archivo y el <b>perfil</b> que tiene asignado.</li>
+                        <li>Los selectores de <b>pista de audio</b> y de <b>subt&iacute;tulo</b>, si el archivo trae varios.</li>
+                        <li>Mientras convierte: <span class="ui">Velocidad</span>, <span class="ui">Tiempo</span>, el <b>%</b> y la barra de progreso.</li>
+                    </ul>
+
+                    <div class="callout tip">
+                        <h4>Qu&eacute; es el distintivo HDR</h4>
+                        <p>
+                            Algunos videos modernos vienen en HDR, con un rango de color que la mayor&iacute;a
+                            de los televisores y celulares antiguos no entiende: se ven <b>lavados o muy
+                            oscuros</b>. El Converter lo detecta y corrige el color solo durante la
+                            conversi&oacute;n, para que el resultado se vea bien en cualquier pantalla.
+                            No tienes que hacer nada.
+                        </p>
+                    </div>
+
+                    <h3>El men&uacute; del clic derecho</h3>
+                    <div class="term-list">
+                        <dt>Abrir Carpeta de Entrada / de Salida</dt><dd>Abre en Windows la carpeta de origen o la de destino de ese archivo.</dd>
+                        <dt>Usar / No Usar Nombre de carpeta</dt><dd>Decide si el archivo de salida toma el nombre de su carpeta en lugar del suyo propio. Muy &uacute;til cuando los archivos se llaman &laquo;video1.mp4&raquo; pero la carpeta tiene el t&iacute;tulo bueno.</dd>
+                        <dt>Extraer subt&iacute;tulos</dt><dd>Saca los subt&iacute;tulos incrustados en el video y los guarda como archivo aparte.</dd>
+                        <dt>Cancelar</dt><dd>Detiene ese archivo en concreto.</dd>
+                    </div>
+
+                    <h3>Atajos sobre la lista</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Tecla</th><th>Qu&eacute; hace sobre el archivo seleccionado</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="kbd">N</span></td><td>Estructura <b>Ninguna</b>: el resultado va suelto en la carpeta de salida.</td></tr>
+                                <tr><td class="nm"><span class="kbd">F</span></td><td>Estructura <b>Mantener carpeta</b>: conserva la carpeta que lo conten&iacute;a.</td></tr>
+                                <tr><td class="nm"><span class="kbd">S</span></td><td>Estructura <b>Mantener estructura</b>: reproduce el &aacute;rbol de carpetas completo.</td></tr>
+                                <tr><td class="nm"><span class="kbd">Supr</span></td><td>Lo quita de la lista.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ AGREGAR ══════════ -->
+                <section id="agregar" class="doc-section reveal">
+                    <h2>La ventana Agregar Archivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Si activas <span class="ui">Agregar Ficheros usando Ventana</span> en la
+                        configuraci&oacute;n, cada vez que sueltes archivos aparecer&aacute; un cuadro para
+                        decidir sus datos antes de a&ntilde;adirlos:
+                    </p>
+                    <div class="term-list">
+                        <dt>Perfil</dt><dd>Con qu&eacute; receta se convertir&aacute;n esos archivos en concreto.</dd>
+                        <dt>Estructura</dt><dd>C&oacute;mo se organizar&aacute;n las carpetas de salida.</dd>
+                        <dt>Salida</dt><dd>En qu&eacute; carpeta se guardar&aacute;n.</dd>
+                        <dt>Cliente</dt><dd>El nombre del cliente, para no mezclar pedidos de personas distintas.</dd>
+                    </div>
+                    <p>Se confirma con <span class="ui">AGREGAR</span>.</p>
+                    <div class="callout tip">
+                        <h4>Cu&aacute;ndo conviene activarla</h4>
+                        <p>
+                            Si siempre conviertes igual, d&eacute;jala apagada y ganas velocidad. Si
+                            atiendes pedidos distintos de varios clientes al mismo tiempo, act&iacute;vala:
+                            evita que se te mezclen.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PERFILES ══════════ -->
+                <section id="perfiles" class="doc-section reveal">
+                    <h2>Perfiles de conversi&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Un perfil es una receta guardada. Lo configuras una vez &mdash; formato, calidad,
+                        audio, subt&iacute;tulos &mdash; y a partir de ah&iacute; solo tienes que elegirlo
+                        de la lista. Lo normal es tener tres o cuatro: uno para televisores viejos, uno para
+                        celulares y uno de calidad alta.
+                    </p>
+
+                    <h3>Crear un perfil paso a paso</h3>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Entra en Perfiles &rsaquo; Crear Perfiles</strong>
+                            Es la primera pesta&ntilde;a.
+                        </li>
+                        <li>
+                            <strong>Elige el formato del archivo</strong>
+                            <b>MP4</b> para celulares y televisores modernos (lo m&aacute;s compatible hoy),
+                            <b>MKV</b> si quieres conservar varias pistas de audio y subt&iacute;tulos,
+                            <b>AVI</b> o <b>MPG</b> para reproductores y televisores antiguos.
+                        </li>
+                        <li>
+                            <strong>Ponle nombre</strong>
+                            Uno que reconozcas de un vistazo: &laquo;TV vieja&raquo;, &laquo;Celular&raquo;,
+                            &laquo;Calidad alta&raquo;.
+                        </li>
+                        <li>
+                            <strong>Ajusta los par&aacute;metros de video</strong>
+                            Se explican abajo. Si dudas, deja <b>AUTO</b> en todo: el programa decide
+                            seg&uacute;n el video original.
+                        </li>
+                        <li>
+                            <strong>Ajusta los par&aacute;metros de audio</strong>
+                            Igual: <b>AUTO</b> funciona bien en casi todos los casos.
+                        </li>
+                        <li>
+                            <strong>Pulsa CREAR PERFIL</strong>
+                            Queda guardado y disponible en la lista de la pantalla Listado.
+                        </li>
+                    </ol>
+
+                    <h4>Par&aacute;metros de video</h4>
+                    <div class="term-list">
+                        <dt>Codificador</dt>
+                        <dd>La forma de comprimir el video. <b>H264</b> es la opci&oacute;n moderna y la que
+                        mejor relaci&oacute;n calidad/tama&ntilde;o da. Las opciones que dicen
+                        <b>COPIA</b> no reconvierten el video: lo pasan tal cual, as&iacute; que es
+                        instant&aacute;neo y sin p&eacute;rdida, pero no reduce el tama&ntilde;o.</dd>
+                        <dt>Resoluci&oacute;n</dt>
+                        <dd>El tama&ntilde;o de la imagen. Bajarla es lo que m&aacute;s reduce el peso del
+                        archivo. Referencias: 1920&times;1080 es Full HD, 1280&times;720 es HD,
+                        640&times;480 es lo cl&aacute;sico de televisor antiguo.</dd>
+                        <dt>Bitrate</dt>
+                        <dd>Cu&aacute;nta informaci&oacute;n por segundo se guarda. M&aacute;s bitrate =
+                        mejor calidad y m&aacute;s peso. Es la palanca principal para controlar
+                        cu&aacute;nto va a ocupar el resultado.</dd>
+                        <dt>FPS</dt>
+                        <dd>Cuadros por segundo. Bajarlo reduce el peso, pero si lo bajas demasiado el
+                        movimiento se ve a saltos.</dd>
+                        <dt>Aspecto</dt>
+                        <dd><b>16:9</b> es pantalla panor&aacute;mica (lo normal hoy); <b>4:3</b> es el
+                        formato cuadrado de los televisores antiguos.</dd>
+                        <dt>Preajuste</dt>
+                        <dd>Cu&aacute;nto se esfuerza el programa en comprimir bien. De
+                        <b>ultrafast</b> (r&aacute;pido pero pesa m&aacute;s) a <b>veryslow</b> (lento pero
+                        queda m&aacute;s peque&ntilde;o con la misma calidad). <b>medium</b> es el
+                        equilibrio.</dd>
+                        <dt>Perfil y Calidad</dt>
+                        <dd>Ajustes finos de compatibilidad y nitidez. Si no sabes qu&eacute; poner,
+                        d&eacute;jalos en AUTO.</dd>
+                        <dt>Acelerador de Hardware Manual</dt>
+                        <dd>Usa la tarjeta de video para convertir m&aacute;s r&aacute;pido. Opciones:
+                        <b>AUTOM&Aacute;TICO</b> (recomendada), <b>NATIVO</b> (solo procesador),
+                        <b>INTEL QSV</b>, <b>AMD AMF</b> o <b>NVIDIA NVENC</b> seg&uacute;n la tarjeta que
+                        tenga la computadora. Si eliges una que tu equipo no tiene, la conversi&oacute;n
+                        fallar&aacute;.</dd>
+                    </div>
+
+                    <h4>Par&aacute;metros de audio</h4>
+                    <div class="term-list">
+                        <dt>Codificador</dt>
+                        <dd><b>AAC</b> es lo est&aacute;ndar hoy; <b>MP3</b> y <b>AC3</b> para equipos
+                        antiguos; <b>COPIA</b> deja el audio original sin tocar.</dd>
+                        <dt>Canales</dt>
+                        <dd><b>2</b> es est&eacute;reo (lo normal); <b>1</b> es mono; <b>6</b> es sonido
+                        envolvente. Pasar de 6 a 2 canales ahorra espacio y evita problemas en equipos que
+                        no tienen sonido envolvente.</dd>
+                        <dt>Bitrate y frecuencia</dt>
+                        <dd>La calidad del sonido. 128 es m&aacute;s que suficiente para voz y m&uacute;sica
+                        normal.</dd>
+                        <dt>Idioma</dt>
+                        <dd>Si el video trae varias pistas, cu&aacute;l se elige por defecto.</dd>
+                        <dt>Volumen (db)</dt>
+                        <dd>Sube o baja el volumen del resultado. Para arreglar videos que se oyen muy bajo.</dd>
+                        <dt>Mantener pistas</dt>
+                        <dd>Conserva <b>todas</b> las pistas de audio, no solo una. Solo tiene sentido con
+                        MKV.</dd>
+                        <dt>Normalizar</dt>
+                        <dd>Iguala el volumen para que todos los archivos suenen parecido. Muy recomendable
+                        cuando entregas una recopilaci&oacute;n de videos de fuentes distintas.</dd>
+                    </div>
+
+                    <h4>Otros par&aacute;metros</h4>
+                    <div class="term-list">
+                        <dt>Usar % para convertir</dt>
+                        <dd>Activa el control de tama&ntilde;o por porcentaje: solo se convierten los
+                        archivos cuyo resultado quede dentro del rango que definas. Ver
+                        <a href="#verde-rojo">Verde y rojo</a>.</dd>
+                        <dt>Priorizar calidad</dt>
+                        <dd>Usa un m&eacute;todo de reescalado m&aacute;s cuidadoso. Tarda algo m&aacute;s
+                        pero la imagen queda m&aacute;s n&iacute;tida.</dd>
+                        <dt>Idioma de subt&iacute;tulos</dt>
+                        <dd>Cu&aacute;l se elige por defecto cuando hay varios.</dd>
+                        <dt>Pegar subt&iacute;tulos / Mantener subt&iacute;tulos</dt>
+                        <dd><b>Pegar</b> los graba encima de la imagen: se ven siempre, en cualquier
+                        reproductor, pero ya no se pueden quitar. <b>Mantener</b> los deja como pista
+                        aparte: se pueden activar o desactivar, pero solo si el reproductor del cliente lo
+                        soporta. Para memorias que van a televisores, casi siempre conviene
+                        <b>pegar</b>.</dd>
+                    </div>
+
+                    <h3>Valores Generales</h3>
+                    <p>La segunda pesta&ntilde;a tiene dos opciones que se aplican a todos los perfiles:</p>
+                    <div class="term-list">
+                        <dt>Usar bitrate inteligente</dt>
+                        <dt>Usar FPS inteligente</dt>
+                        <dd>
+                            Con estas casillas marcadas, el bitrate y los FPS del perfil se aplican
+                            <b>solo si el video original los tiene m&aacute;s altos</b>. Si el original ya
+                            es m&aacute;s peque&ntilde;o, se respeta el original. Evita el error
+                            cl&aacute;sico de &laquo;mejorar&raquo; un video malo y que acabe pesando el
+                            doble sin verse mejor.
+                        </dd>
+                    </div>
+
+                    <h3>Gestionar los perfiles</h3>
+                    <p>
+                        En la tercera pesta&ntilde;a est&aacute; la lista. Cada perfil tiene una casilla para
+                        activarlo o desactivarlo (los desactivados no aparecen al elegir), y con
+                        <span class="kbd">Supr</span> se borra el seleccionado.
+                    </p>
+                </section>
+
+                <!-- ══════════ VERDE Y ROJO ══════════ -->
+                <section id="verde-rojo" class="doc-section reveal">
+                    <h2>Verde y rojo: el tama&ntilde;o final</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Antes de convertir nada, el Converter <b>calcula cu&aacute;nto va a pesar</b> cada
+                        archivo con el perfil elegido, y lo compara con el tama&ntilde;o original. Seg&uacute;n
+                        el resultado, lo pinta de un color:
+                    </p>
+                    <div class="card-grid">
+                        <div class="card" style="border-left:3px solid #14b311">
+                            <h5 style="color:#14b311">Verde</h5>
+                            <p>El resultado queda dentro del rango que t&uacute; aceptas.
+                            <b>Este archivo s&iacute; se convierte.</b></p>
+                        </div>
+                        <div class="card" style="border-left:3px solid #fd2a32">
+                            <h5 style="color:#fd2a32">Rojo</h5>
+                            <p>El resultado se sale del rango: encoger&iacute;a demasiado (perder&iacute;a
+                            calidad) o crecer&iacute;a demasiado (ocupar&iacute;a m&aacute;s que el original).
+                            <b>Este archivo no se convierte.</b></p>
+                        </div>
+                    </div>
+                    <p>
+                        El rango lo defines t&uacute; con los dos deslizadores de
+                        <span class="path">Configuraci&oacute;n &rsaquo; General &rsaquo; Otras opciones</span>:
+                    </p>
+                    <div class="term-list">
+                        <dt>Decrecimiento aceptado</dt>
+                        <dd>Cu&aacute;nto puede <b>encoger</b> como m&aacute;ximo. Si un video de 1&nbsp;GB
+                        quedar&iacute;a en 50&nbsp;MB, algo va mal: seguramente perder&iacute;a demasiada
+                        calidad.</dd>
+                        <dt>Crecimiento aceptado</dt>
+                        <dd>Cu&aacute;nto puede <b>crecer</b> como m&aacute;ximo. Convertir para que ocupe
+                        m&aacute;s casi nunca tiene sentido.</dd>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Si todo te sale en rojo</h4>
+                        <p>
+                            No es un fallo: significa que el perfil elegido no encaja con esos videos.
+                            Prueba con otro perfil, o abre los deslizadores para aceptar un rango
+                            m&aacute;s amplio. Tambi&eacute;n puedes desactivar
+                            <span class="ui">Usar % para convertir</span> en el perfil, y entonces se
+                            convertir&aacute; todo sin comprobar el tama&ntilde;o.
+                        </p>
+                    </div>
+                    <p>
+                        Hay adem&aacute;s una excepci&oacute;n autom&aacute;tica: si el archivo iba a quedar
+                        pr&aacute;cticamente <b>igual</b> que el original, tampoco se convierte &mdash;
+                        ser&iacute;a perder tiempo para nada.
+                    </p>
+                </section>
+
+                <!-- ══════════ SUBTÍTULOS ══════════ -->
+                <section id="subtitulos" class="doc-section reveal">
+                    <h2>Subt&iacute;tulos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        En <span class="path">Configuraci&oacute;n &rsaquo; Subt&iacute;tulos</span> defines
+                        c&oacute;mo se ver&aacute;n los subt&iacute;tulos que se peguen sobre la imagen.
+                        Hay una <b>vista previa en vivo</b>: cada cambio se ve al momento, sin tener que
+                        convertir nada.
+                    </p>
+                    <div class="term-list">
+                        <dt>Tipo y tama&ntilde;o de fuente</dt>
+                        <dd>Piensa en la distancia: si el video se ver&aacute; en un televisor desde el
+                        sof&aacute;, conviene una letra grande.</dd>
+                        <dt>Margen de abajo</dt>
+                        <dd>A qu&eacute; altura se colocan. S&uacute;belo si el reproductor del cliente
+                        tapa la parte inferior con sus controles.</dd>
+                        <dt>Color de fuente y color de fondo</dt>
+                        <dd>El cl&aacute;sico es letra blanca o amarilla. El fondo ayuda a leer sobre
+                        escenas claras.</dd>
+                        <dt>En negrita</dt><dd>M&aacute;s grueso, m&aacute;s legible de lejos.</dd>
+                        <dt>Fondo transparente</dt><dd>Quita el recuadro y deja solo la letra.</dd>
+                        <dt>Sombra</dt><dd>Un borde oscuro alrededor de la letra. Es la mejor opci&oacute;n
+                        para que se lea sobre cualquier fondo sin tapar la imagen.</dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>La combinaci&oacute;n que casi nunca falla</h4>
+                        <p>
+                            Letra blanca, en negrita, con <b>sombra</b> y sin fondo. Se lee bien sobre
+                            escenas claras y oscuras, y no molesta la imagen.
+                        </p>
+                    </div>
+                    <p>
+                        El Converter admite los archivos de subt&iacute;tulos habituales
+                        (<b>.srt</b>, <b>.ass</b>, <b>.ssa</b>, <b>.vtt</b>, <b>.sub</b> y <b>.txt</b>).
+                        Recuerda que el estilo que configuras aqu&iacute; solo se aplica cuando el perfil
+                        est&aacute; en <span class="ui">PEGAR SUBTITULOS</span>.
+                    </p>
+                </section>
+
+                <!-- ══════════ MARCA ══════════ -->
+                <section id="marca" class="doc-section reveal">
+                    <h2>Marca de agua</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Puedes poner tu logo sobre los videos que entregas. Se configura en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Marca</span>.
+                    </p>
+                    <div class="term-list">
+                        <dt>Usar Marca</dt><dd>Activa o desactiva la marca de agua.</dd>
+                        <dt>Posici&oacute;n</dt>
+                        <dd>Nueve posiciones: arriba, arriba a la izquierda, arriba a la derecha, centro,
+                        centro a la izquierda, centro a la derecha, abajo, abajo a la izquierda y abajo a la
+                        derecha. Las esquinas superiores son las que menos molestan.</dd>
+                        <dt>Duraci&oacute;n total (seg)</dt>
+                        <dd>Cu&aacute;ntos segundos se ve la marca, de 0 a 120. Con unos pocos segundos al
+                        principio suele bastar.</dd>
+                        <dt>Efecto</dt>
+                        <dd>C&oacute;mo entra en pantalla: <b>ninguno</b>, <b>aparecer</b>, <b>rebote</b>, o
+                        entrando desde la <b>izquierda</b>, <b>derecha</b>, <b>arriba</b> o <b>abajo</b>.</dd>
+                        <dt>Duraci&oacute;n del efecto (seg)</dt><dd>Lo que dura la animaci&oacute;n de entrada, de 0 a 5 segundos.</dd>
+                        <dt>Margen en pixeles</dt><dd>La separaci&oacute;n respecto al borde, de 0 a 20.</dd>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Menos es m&aacute;s</h4>
+                        <p>
+                            Una marca permanente en el centro de la pantalla molesta al cliente y te puede
+                            costar el pedido. Lo habitual es ponerla unos segundos al principio, en una
+                            esquina.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ NOMBRES ══════════ -->
+                <section id="nombres" class="doc-section reveal">
+                    <h2>Nombre del archivo de salida</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Los videos descargados suelen venir con nombres larguísimos y llenos de basura. El
+                        Converter puede limpiarlos solo. Todo est&aacute; en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Fichero de salida</span>.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Opci&oacute;n</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Remover caracteres especiales</td><td>Cambia acentos y e&ntilde;es por letras simples: <code>Canci&oacute;n espa&ntilde;ola</code> &rarr; <code>Cancion espanola</code>. Evita problemas en reproductores viejos. Se puede aplicar al archivo, a la carpeta o a ambos.</td></tr>
+                                <tr><td class="nm">Remover fecha</td><td><code>VideoName [00-00-0000]</code> &rarr; <code>VideoName</code></td></tr>
+                                <tr><td class="nm">Usar Title Case</td><td><code>video name</code> &rarr; <code>Video Name</code></td></tr>
+                                <tr><td class="nm">Usar nombre del perfil</td><td><code>VideoName</code> &rarr; <code>VideoName - PERFIL</code>. As&iacute; sabes de un vistazo con qu&eacute; calidad se convirti&oacute;.</td></tr>
+                                <tr><td class="nm">Usar nombre de carpeta</td><td><code>video1.mp4</code> &rarr; toma el nombre de la carpeta que lo contiene. Salva los archivos que vienen sin nombre &uacute;til.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Series y novelas</h3>
+                    <p>
+                        Dentro de <span class="ui">Personalizar</span> hay dos bloques especiales para
+                        renombrar cap&iacute;tulos en masa: uno para <b>SERIES</b> y otro para
+                        <b>NOVELAS</b>. Funcionan con &laquo;m&aacute;scaras&raquo;: t&uacute; escribes
+                        c&oacute;mo quieres que quede el nombre y el programa rellena los huecos.
+                    </p>
+                    <div class="term-list">
+                        <dt>Remover match</dt>
+                        <dd>El texto que sobra y hay que quitar del nombre original.</dd>
+                        <dt>M&aacute;scara #</dt>
+                        <dd>Con cu&aacute;ntos d&iacute;gitos se escribe el n&uacute;mero de cap&iacute;tulo
+                        (de 1 a 5). Con 2 d&iacute;gitos, el cap&iacute;tulo 3 se escribe
+                        <code>03</code> &mdash; as&iacute; se ordenan bien en el reproductor.</dd>
+                        <dt>Usar @season</dt>
+                        <dd>Escribe la temporada en forma ordinal: <code>1</code> &rarr; <code>1ra</code>,
+                        <code>2</code> &rarr; <code>2da</code>, <code>10</code> &rarr; <code>10ma</code>.</dd>
+                        <dt>M&aacute;scara final</dt>
+                        <dd>
+                            El nombre que quedar&aacute;. Se construye con estas piezas:
+                            <br><code>@season</code> = la temporada &nbsp;·&nbsp;
+                            <code>@chapter</code> = el n&uacute;mero de cap&iacute;tulo &nbsp;·&nbsp;
+                            <code>@filename</code> = el nombre del archivo.
+                            <br>Las novelas solo usan <code>@chapter</code> y <code>@filename</code>,
+                            porque no tienen temporadas.
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Prueba con pocos archivos primero</h4>
+                        <p>
+                            Antes de lanzar una serie completa, convierte dos o tres cap&iacute;tulos y
+                            comprueba que los nombres quedan como esperabas. Ajustar la m&aacute;scara
+                            despu&eacute;s obliga a repetirlo todo.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CARPETAS ══════════ -->
+                <section id="carpetas" class="doc-section reveal">
+                    <h2>Carpetas admitidas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        La pantalla <span class="ui">Carpetas</span> guarda una lista de nombres de carpeta.
+                        Para a&ntilde;adir, solo hay que <b>arrastrar las carpetas a la ventana</b>.
+                    </p>
+                    <p>
+                        Sirve como filtro: cuando sueltas contenido en el Converter con el
+                        <b>clic derecho</b>, el programa compara sus carpetas con esta lista y
+                        <b>solo a&ntilde;ade lo que est&eacute; en ella</b>. Lo dem&aacute;s lo ignora.
+                    </p>
+                    <div class="callout">
+                        <h4>Para qu&eacute; sirve en la pr&aacute;ctica</h4>
+                        <p>
+                            Si sueltas un disco entero, sin filtro entrar&iacute;a todo: pel&iacute;culas,
+                            m&uacute;sica, respaldos, basura. Con la lista de carpetas puestas &mdash; por
+                            ejemplo &laquo;Estrenos&raquo; y &laquo;Series&raquo; &mdash; solo entra lo que
+                            de verdad hay que convertir.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONFIGURACIÓN ══════════ -->
+                <section id="config" class="doc-section reveal">
+                    <h2>Configuraci&oacute;n</h2>
+                    <div class="doc-rule"></div>
+
+                    <h4>General</h4>
+                    <div class="term-list">
+                        <dt>Agregar ficheros usando ventana</dt><dd>Muestra la ventana <a href="#agregar">Agregar Archivos</a> al soltar.</dd>
+                        <dt>Ocultar de la lista archivos finalizados</dt><dd>Los completados desaparecen de la vista. La lista se mantiene limpia en trabajos largos.</dd>
+                        <dt>Convertir archivos ya convertidos</dt><dd>Permite volver a convertir algo que ya se hab&iacute;a procesado antes.</dd>
+                        <dt>Copiar p&oacute;sters</dt><dd>Lleva tambi&eacute;n las im&aacute;genes de portada junto al video convertido.</dd>
+                        <dt>Estructura de carpetas</dt><dd>La estructura por defecto: <b>Ninguna</b>, <b>Mantener estructura</b> o <b>Mantener carpeta</b>.</dd>
+                        <dt>Usar aceleraci&oacute;n por hardware</dt><dd>Aprovecha la tarjeta de video. Hay un interruptor aparte para los formatos MPG y AVI.</dd>
+                        <dt>Hilos por proceso</dt><dd>Cu&aacute;nta potencia del procesador dedica cada conversi&oacute;n, de 0 a 4. Con 0 lo decide el programa.</dd>
+                        <dt>Respetar extensiones de archivo</dt><dd>Mantiene la extensi&oacute;n original cuando es posible.</dd>
+                    </div>
+
+                    <h4>Tema visual</h4>
+                    <p>
+                        Tema <b>Claro</b>, <b>Oscuro</b> o el del <b>Sistema</b>, y el tipo de fondo de la
+                        ventana.
+                    </p>
+
+                    <h4>Salidas</h4>
+                    <p>
+                        La lista de carpetas de destino disponibles en el selector
+                        <span class="ui">Directorio de Salida</span>. Con <span class="kbd">Supr</span> se
+                        quita la seleccionada.
+                    </p>
+
+                    <h4>Al terminar</h4>
+                    <p>
+                        En la barra de t&iacute;tulo hay un bot&oacute;n que decide qu&eacute; hacer cuando
+                        acaben todas las conversiones: <b>APAGAR</b>, <b>SUSPENDER</b>, <b>CERRAR</b> la
+                        aplicaci&oacute;n, o nada. Clic izquierdo avanza, clic derecho retrocede. Muy
+                        &uacute;til para dejar conversiones largas de noche.
+                    </p>
+                </section>
+
+                <!-- ══════════ FORMATOS ══════════ -->
+                <section id="formatos" class="doc-section reveal">
+                    <h2>Formatos admitidos</h2>
+                    <div class="doc-rule"></div>
+                    <p>Estos son los archivos que el Converter puede leer:</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Video</h5>
+                            <p>mpg &middot; mpeg &middot; avi &middot; mp4 &middot; mkv &middot; wmv &middot;
+                            ts &middot; m4v &middot; flv &middot; mov &middot; divx &middot; xvid &middot;
+                            vob &middot; dat &middot; rmvb &middot; rm &middot; 3gp &middot; webm &middot;
+                            m2ts &middot; mts</p>
+                        </div>
+                        <div class="card">
+                            <h5>Audio</h5>
+                            <p>mp3 &middot; m4a &middot; wma &middot; ac3 &middot; aac &middot; wav &middot;
+                            flac &middot; ogg &middot; opus &middot; aiff &middot; aif &middot; alac &middot;
+                            ape &middot; mka &middot; dts &middot; mp2 &middot; mp1 &middot; ra &middot;
+                            au &middot; pcm</p>
+                        </div>
+                        <div class="card">
+                            <h5>Subt&iacute;tulos</h5>
+                            <p>srt &middot; ass &middot; ssa &middot; vtt &middot; sub &middot; txt</p>
+                        </div>
+                        <div class="card">
+                            <h5>Salida</h5>
+                            <p>MP4 &middot; MKV &middot; AVI &middot; MPG para video, y MP3 para audio.</p>
+                        </div>
+                    </div>
+                    <div class="callout">
+                        <h4>Cu&aacute;l elegir para cada cliente</h4>
+                        <ul>
+                            <li><b>MP4</b> &mdash; celulares, televisores modernos, computadoras. La apuesta segura.</li>
+                            <li><b>MKV</b> &mdash; cuando hay que conservar varios audios y subt&iacute;tulos seleccionables.</li>
+                            <li><b>AVI</b> y <b>MPG</b> &mdash; reproductores de DVD y televisores antiguos.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ══════════ LICENCIA ══════════ -->
+                <section id="licencia" class="doc-section reveal">
+                    <h2>Licencia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Converter <b>ya no tiene una p&aacute;gina de Licencia</b> en el men&uacute;
+                        lateral: ahora la licencia se gestiona en un solo sitio, el
+                        <a href="primeros-pasos.html#licencia">Lanzador</a>, que muestra el propietario, tu
+                        <span class="ui">IDENTIFICADOR</span>, las fechas y el estado. La comprobaci&oacute;n
+                        de licencia del Converter <b>sigue funcionando en segundo plano</b> igual que antes.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Sin licencia v&aacute;lida</h4>
+                        <p>
+                            La opci&oacute;n <span class="ui">Tareas paralelas</span> queda bloqueada, as&iacute;
+                            que solo podr&aacute;s convertir de uno en uno. Todo el procedimiento para
+                            conseguir o renovar la licencia est&aacute; en
+                            <a href="primeros-pasos.html#licencia">Primeros pasos</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>El Converter en funcionamiento, explicado paso a paso.</p>
+                    <div data-videos="converter"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="copier.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Manual del Copier</span>
+                    </a>
+                    <a href="controlstats.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual de ControlStats</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script>
+/* ══════════════════════════════════════════════════════════════════════════
+   XPRESS SUITE — CATÁLOGO DE VIDEOS
+
+   Este es el ÚNICO archivo que hay que editar para publicar videos nuevos.
+
+   ── CÓMO AÑADIR UN VIDEO ──────────────────────────────────────────────────
+
+   1. Copia el archivo de video dentro de esta misma carpeta:
+          docs/assets/videos/
+
+   2. Añade una línea en la lista de abajo con sus datos.
+
+   3. Guarda y recarga la web. El video aparecerá solo, tanto en la página
+      "Videos" como en la sección de videos del manual de esa aplicación.
+
+   ── CAMPOS ────────────────────────────────────────────────────────────────
+
+   file    (OBLIGATORIO) Nombre exacto del archivo, con su extensión.
+           Formatos recomendados: .mp4 (H.264) o .webm — son los que
+           reproducen todos los navegadores.
+
+   title   (OBLIGATORIO) Título que se ve en la tarjeta.
+
+   app     (OBLIGATORIO) A qué aplicación pertenece. Valores válidos:
+              'copier'        → Copier
+              'converter'     → Converter
+              'controlstats'  → ControlStats
+              'observer'      → Observer
+              'inicio'        → Instalación y primeros pasos
+
+   desc    (opcional) Una frase corta explicando qué se enseña en el video.
+
+   thumb   (opcional) Imagen de portada. Si no se pone, la web toma sola
+           el primer fotograma del video como portada.
+
+   ── EJEMPLO COMPLETO ──────────────────────────────────────────────────────
+
+   window.XS_VIDEOS = [
+       {
+           file:  'copier-primera-copia.mp4',
+           title: 'Tu primera copia',
+           app:   'copier',
+           desc:  'Buscar archivos, soltarlos en varias memorias y cobrar.'
+       },
+       {
+           file:  'converter-crear-perfil.mp4',
+           title: 'Crear un perfil de conversión',
+           app:   'converter',
+           desc:  'Perfil MP4 para celulares, paso a paso.',
+           thumb: 'converter-crear-perfil.jpg'
+       }
+   ];
+
+   ══════════════════════════════════════════════════════════════════════════ */
+
+window.XS_VIDEOS = [
+
+    /* Añade aquí tus videos, uno por línea, separados por comas.
+       Cuando la lista está vacía la web muestra un aviso explicando
+       cómo agregarlos — no da error. */
+
+];
+
+</script>
+    <script>
+/* ══════════════════════════════════════════════════════════════════
+   Xpress Suite — Documentación
+   Carga y reproducción de los videos del catálogo
+
+   Lee la lista de  assets/videos/catalog.js  y rellena solo cualquier
+   contenedor que tenga el atributo  data-videos.
+
+       <div data-videos="all"></div>       → todos los videos
+       <div data-videos="copier"></div>    → solo los del Copier
+
+   Si el contenedor lleva además  data-video-filters, se dibujan los
+   botones para filtrar por aplicación.
+   ══════════════════════════════════════════════════════════════════ */
+
+(function () {
+    'use strict';
+
+    var APPS = {
+        copier:       { name: 'Copier',        rgb: '0,180,255',   page: 'copier.html' },
+        converter:    { name: 'Converter',     rgb: '160,100,255', page: 'converter.html' },
+        controlstats: { name: 'ControlStats',  rgb: '255,136,0',   page: 'controlstats.html' },
+        observer:     { name: 'Observer',      rgb: '0,255,136',   page: 'observer.html' },
+        inicio:       { name: 'Primeros pasos', rgb: '0,200,200',  page: 'primeros-pasos.html' }
+    };
+
+    var BASE = 'assets/videos/';
+
+    /* ─── Normaliza el catálogo y descarta entradas incompletas ─── */
+    function readCatalog() {
+        var raw = window.XS_VIDEOS;
+        if (!Array.isArray(raw)) return [];
+
+        return raw.filter(function (v) {
+            return v && typeof v.file === 'string' && v.file.trim() !== '';
+        }).map(function (v, i) {
+            var app = (v.app || '').toLowerCase();
+            if (!APPS[app]) app = 'copier';
+            return {
+                id: 'v' + i,
+                file: BASE + v.file.trim(),
+                title: (v.title || v.file).trim(),
+                desc: (v.desc || '').trim(),
+                app: app,
+                thumb: v.thumb ? BASE + v.thumb.trim() : null
+            };
+        });
+    }
+
+    var catalog = readCatalog();
+
+    /* ─── Reproductor modal (uno solo, compartido) ─── */
+    var modal, modalVideo, modalTitle, modalDesc;
+
+    function buildModal() {
+        if (modal) return;
+
+        modal = document.createElement('div');
+        modal.className = 'video-modal';
+        modal.innerHTML =
+            '<div class="video-modal-inner">' +
+              '<div class="video-modal-bar">' +
+                '<div>' +
+                  '<h4></h4>' +
+                  '<p></p>' +
+                '</div>' +
+                '<button class="video-close" aria-label="Cerrar video">&#10005;</button>' +
+              '</div>' +
+              '<video controls playsinline preload="metadata"></video>' +
+            '</div>';
+        document.body.appendChild(modal);
+
+        modalVideo = modal.querySelector('video');
+        modalTitle = modal.querySelector('h4');
+        modalDesc = modal.querySelector('.video-modal-bar p');
+
+        modal.querySelector('.video-close').addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+    }
+
+    function openModal(v) {
+        buildModal();
+        modal.style.setProperty('--vc-rgb', APPS[v.app].rgb);
+        modalTitle.textContent = v.title;
+        modalDesc.textContent = v.desc;
+        modalDesc.style.display = v.desc ? '' : 'none';
+        modalVideo.src = v.file;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalVideo.play().catch(function () { /* el navegador pedirá pulsar play */ });
+    }
+
+    function closeModal() {
+        if (!modal) return;
+        modalVideo.pause();
+        modalVideo.removeAttribute('src');
+        modalVideo.load();
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    /* ─── Tarjeta de un video ─── */
+    function buildCard(v) {
+        var card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'video-card';
+        card.style.setProperty('--vc-rgb', APPS[v.app].rgb);
+        card.dataset.app = v.app;
+
+        var thumb = document.createElement('div');
+        thumb.className = 'video-thumb';
+
+        if (v.thumb) {
+            thumb.style.backgroundImage = 'url("' + v.thumb + '")';
+        } else {
+            // Sin portada: se usa el primer fotograma del propio video
+            var preview = document.createElement('video');
+            preview.muted = true;
+            preview.playsInline = true;
+            preview.preload = 'metadata';
+            preview.src = v.file + '#t=0.5';
+            preview.style.cssText =
+                'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;';
+            preview.addEventListener('error', function () { preview.remove(); });
+            preview.addEventListener('loadedmetadata', function () {
+                if (isFinite(preview.duration) && preview.duration > 0) {
+                    dur.textContent = formatTime(preview.duration);
+                    dur.style.display = '';
+                }
+            });
+            thumb.appendChild(preview);
+        }
+
+        var play = document.createElement('div');
+        play.className = 'video-play';
+        play.innerHTML = '&#9654;';
+        thumb.appendChild(play);
+
+        var dur = document.createElement('span');
+        dur.className = 'video-dur';
+        dur.style.display = 'none';
+        thumb.appendChild(dur);
+
+        var meta = document.createElement('div');
+        meta.className = 'video-meta';
+
+        var tag = document.createElement('span');
+        tag.className = 'video-app';
+        tag.textContent = APPS[v.app].name;
+
+        var h5 = document.createElement('h5');
+        h5.textContent = v.title;
+
+        meta.appendChild(tag);
+        meta.appendChild(h5);
+
+        if (v.desc) {
+            var p = document.createElement('p');
+            p.textContent = v.desc;
+            meta.appendChild(p);
+        }
+
+        card.appendChild(thumb);
+        card.appendChild(meta);
+        card.addEventListener('click', function () { openModal(v); });
+
+        return card;
+    }
+
+    function formatTime(sec) {
+        var m = Math.floor(sec / 60), s = Math.floor(sec % 60);
+        return m + ':' + (s < 10 ? '0' : '') + s;
+    }
+
+    /* ─── Aviso cuando todavía no hay videos ─── */
+    function buildEmpty(scope) {
+        var box = document.createElement('div');
+        box.className = 'video-empty';
+
+        var texto = scope === 'all'
+            ? 'Todav&iacute;a no hay videos publicados.'
+            : 'Todav&iacute;a no hay videos de esta aplicaci&oacute;n.';
+
+        box.innerHTML =
+            '<div class="ve-icon">&#9654;</div>' +
+            '<h5>' + texto + '</h5>' +
+            '<p>Los videos se colocan en la carpeta <b>assets/videos/</b> y se anotan en el ' +
+            'archivo <b>assets/videos/catalog.js</b>. Ese archivo trae dentro las instrucciones ' +
+            'y un ejemplo. Al recargar la p&aacute;gina aparecen aqu&iacute; autom&aacute;ticamente.</p>';
+
+        return box;
+    }
+
+    /* ─── Botones de filtro (solo en la página de Videos) ─── */
+    function buildFilters(host, grid, items) {
+        var counts = { all: items.length };
+        items.forEach(function (v) { counts[v.app] = (counts[v.app] || 0) + 1; });
+
+        var bar = document.createElement('div');
+        bar.className = 'video-filters';
+
+        var opts = [{ key: 'all', name: 'Todos', rgb: '255,215,0' }];
+        Object.keys(APPS).forEach(function (k) {
+            if (counts[k]) opts.push({ key: k, name: APPS[k].name, rgb: APPS[k].rgb });
+        });
+
+        opts.forEach(function (o, i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'video-filter' + (i === 0 ? ' active' : '');
+            b.style.setProperty('--vf', 'rgb(' + o.rgb + ')');
+            b.innerHTML = o.name + '<span class="n">' + (counts[o.key] || 0) + '</span>';
+            b.addEventListener('click', function () {
+                bar.querySelectorAll('.video-filter').forEach(function (x) { x.classList.remove('active'); });
+                b.classList.add('active');
+                grid.querySelectorAll('.video-card').forEach(function (c) {
+                    c.style.display = (o.key === 'all' || c.dataset.app === o.key) ? '' : 'none';
+                });
+            });
+            bar.appendChild(b);
+        });
+
+        host.appendChild(bar);
+    }
+
+    /* ─── Rellenar cada contenedor ─── */
+    function render() {
+        document.querySelectorAll('[data-videos]').forEach(function (host) {
+            var scope = (host.dataset.videos || 'all').toLowerCase();
+            var items = scope === 'all'
+                ? catalog
+                : catalog.filter(function (v) { return v.app === scope; });
+
+            host.innerHTML = '';
+
+            if (!items.length) {
+                host.appendChild(buildEmpty(scope));
+                return;
+            }
+
+            var grid = document.createElement('div');
+            grid.className = 'video-grid';
+            items.forEach(function (v) { grid.appendChild(buildCard(v)); });
+
+            if (host.hasAttribute('data-video-filters') && items.length > 1) {
+                buildFilters(host, grid, items);
+            }
+            host.appendChild(grid);
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', render);
+    } else {
+        render();
+    }
+})();
+
+</script>
+    <script>
+/* ══════════════════════════════════════════════════════════════════
+   Xpress Suite — Documentación
+   Navegación, índice lateral y revelado al hacer scroll
+   ══════════════════════════════════════════════════════════════════ */
+
+(function () {
+    'use strict';
+
+    /* ─── Menú móvil ─── */
+    var nav = document.getElementById('main-nav');
+    if (nav) {
+        var toggle = nav.querySelector('.nav-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                nav.classList.toggle('nav-open');
+            });
+        }
+        nav.querySelectorAll('.nav-popover a').forEach(function (a) {
+            a.addEventListener('click', function () { nav.classList.remove('nav-open'); });
+        });
+
+        window.addEventListener('scroll', function () {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+    }
+
+    /* ─── Revelado de secciones al entrar en pantalla ─── */
+    var revealables = document.querySelectorAll('.reveal');
+    if (revealables.length) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.06, rootMargin: '0px 0px -8% 0px' });
+        revealables.forEach(function (el) { revealObserver.observe(el); });
+    }
+
+    /* ─── El índice va siempre abierto en escritorio y plegable en móvil ─── */
+    var tocBoxes = document.querySelectorAll('.doc-toc-box');
+    if (tocBoxes.length) {
+        var wasWide = null;
+        var syncToc = function () {
+            var wide = window.innerWidth > 900;
+            if (wide === wasWide) return;
+            wasWide = wide;
+            tocBoxes.forEach(function (d) {
+                if (wide) d.setAttribute('open', '');
+                else d.removeAttribute('open');
+            });
+        };
+        syncToc();
+        window.addEventListener('resize', syncToc);
+    }
+
+    /* ─── Índice lateral: marcar la sección visible ─── */
+    var tocLinks = document.querySelectorAll('.doc-toc a');
+    var sections = document.querySelectorAll('.doc-section[id]');
+
+    if (tocLinks.length && sections.length) {
+        var linkFor = {};
+        tocLinks.forEach(function (a) {
+            var id = a.getAttribute('href');
+            if (id && id.charAt(0) === '#') linkFor[id.slice(1)] = a;
+        });
+
+        var visible = {};
+
+        var tocObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0;
+            });
+
+            var bestId = null, best = -1;
+            Object.keys(visible).forEach(function (id) {
+                if (visible[id] > best) { best = visible[id]; bestId = id; }
+            });
+
+            if (bestId && best > 0) {
+                tocLinks.forEach(function (a) { a.classList.remove('active'); });
+                if (linkFor[bestId]) {
+                    linkFor[bestId].classList.add('active');
+                    scrollTocIntoView(linkFor[bestId]);
+                }
+            }
+        }, { threshold: [0, .05, .25, .5, .75, 1], rootMargin: '-80px 0px -55% 0px' });
+
+        sections.forEach(function (s) { tocObserver.observe(s); });
+
+        // Mantiene visible el enlace activo dentro del índice con scroll propio
+        var tocBox = document.querySelector('.doc-toc');
+        function scrollTocIntoView(link) {
+            if (!tocBox || window.innerWidth <= 900) return;
+            if (tocBox.scrollHeight <= tocBox.clientHeight) return;
+            var top = link.offsetTop, h = link.offsetHeight;
+            if (top < tocBox.scrollTop) tocBox.scrollTop = top - 8;
+            else if (top + h > tocBox.scrollTop + tocBox.clientHeight) {
+                tocBox.scrollTop = top + h - tocBox.clientHeight + 8;
+            }
+        }
+
+        // En móvil, al pulsar una entrada se cierra el desplegable del índice
+        var tocBox2 = document.querySelector('.doc-toc-box');
+        if (tocBox2) {
+            tocLinks.forEach(function (a) {
+                a.addEventListener('click', function () {
+                    if (window.innerWidth <= 900) tocBox2.removeAttribute('open');
+                });
+            });
+        }
+    }
+
+    /* ─── Portada: la nav marca la sección por la que vas pasando ─── */
+    var navSectionLinks = document.querySelectorAll('.nav-links a[data-section]');
+    var appSections = document.querySelectorAll('.app-section[id], .hero[id]');
+    if (navSectionLinks.length && appSections.length) {
+        var ratios = {};
+        var homeObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { ratios[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+            var bestId = null, best = 0;
+            Object.keys(ratios).forEach(function (id) {
+                if (ratios[id] > best) { best = ratios[id]; bestId = id; }
+            });
+            navSectionLinks.forEach(function (l) {
+                l.classList.toggle('active', l.dataset.section === bestId);
+            });
+        }, { threshold: [0, .1, .2, .3, .4, .5] });
+        appSections.forEach(function (s) { homeObserver.observe(s); });
+    }
+})();
+
+</script>
+</body>
+</html>

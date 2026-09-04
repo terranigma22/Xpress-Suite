@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter &mdash; Xpress Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body data-accent="converter">
+
+    <nav id="main-nav">
+        <div class="container container-wide">
+            <a class="nav-brand" href="index.html">XS</a>
+            <button class="nav-toggle" aria-label="Abrir men&uacute;"><span></span><span></span><span></span></button>
+            <div class="nav-popover">
+                <div class="nav-links">
+                    <a href="index.html" data-color="home">Inicio</a>
+                    <a href="primeros-pasos.html" data-color="inicio">Primeros pasos</a>
+                    <a href="copier.html" data-color="copier">Copier</a>
+                    <a href="patrones.html" data-color="patrones">Patrones</a>
+                    <a href="converter.html" class="active" data-color="converter">Converter</a>
+                    <a href="controlstats.html" data-color="controlstats">ControlStats</a>
+                    <a href="observer.html" data-color="observer">Observer</a>
+                    <a href="videos.html" data-color="videos">Videos</a>
+                    <a href="licencias.html" data-color="pricing">Precios</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container container-wide">
+
+        <header class="doc-hero">
+            <div class="doc-crumb"><a href="index.html">Inicio</a><span>&rsaquo;</span>Converter</div>
+            <div class="doc-title-row">
+                <img src="assets/img/converter/xpress_converter.png" alt="">
+                <span class="doc-badge">Manual de usuario</span>
+                <h1>Converter</h1>
+            </div>
+            <p class="doc-lead">
+                Convierte videos y audios al formato que necesite cada cliente, con varios archivos
+                proces&aacute;ndose <strong>a la vez</strong>. Creas tus propios perfiles una sola vez y
+                los reutilizas siempre; eliges pistas de audio y subt&iacute;tulos, pegas los
+                subt&iacute;tulos con tu estilo, pones marca de agua y ves cu&aacute;nto va a pesar el
+                resultado <strong>antes</strong> de empezar.
+            </p>
+        </header>
+
+        <div class="doc-layout">
+
+            <aside class="doc-toc-wrap">
+                <div class="doc-toc-title">En esta p&aacute;gina</div>
+                <details class="doc-toc-box">
+                    <summary>&Iacute;ndice del manual</summary>
+                    <ul class="doc-toc">
+                        <li><a href="#primera">Tu primera conversi&oacute;n</a></li>
+                        <li><a href="#listado">La pantalla Listado</a></li>
+                        <li><a href="#fila">La fila de cada archivo</a></li>
+                        <li><a href="#agregar">La ventana Agregar Archivos</a></li>
+                        <li><a href="#perfiles">Perfiles de conversi&oacute;n</a></li>
+                        <li><a href="#verde-rojo">Verde y rojo: el tama&ntilde;o final</a></li>
+                        <li><a href="#subtitulos">Subt&iacute;tulos</a></li>
+                        <li><a href="#marca">Marca de agua</a></li>
+                        <li><a href="#nombres">Nombre del archivo de salida</a></li>
+                        <li><a href="#carpetas">Carpetas admitidas</a></li>
+                        <li><a href="#config">Configuraci&oacute;n</a></li>
+                        <li><a href="#formatos">Formatos admitidos</a></li>
+                        <li><a href="#licencia">Licencia</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                    </ul>
+                </details>
+            </aside>
+
+            <main class="doc-content">
+
+                <!-- ══════════ PRIMERA CONVERSIÓN ══════════ -->
+                <section id="primera" class="doc-section reveal">
+                    <h2>Tu primera conversi&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Arrastra los archivos a la ventana</strong>
+                            Puedes soltar archivos sueltos o carpetas enteras. Aparecen en la lista de la
+                            pantalla <span class="ui">Listado</span>.
+                        </li>
+                        <li>
+                            <strong>Elige el perfil</strong>
+                            El perfil es la &laquo;receta&raquo;: decide el formato, la calidad y el
+                            tama&ntilde;o del resultado. Se selecciona arriba a la izquierda y se aplica a
+                            todo lo que a&ntilde;adas. Ver <a href="#perfiles">Perfiles</a>.
+                        </li>
+                        <li>
+                            <strong>Comprueba el color de cada archivo</strong>
+                            Al lado de cada uno ver&aacute;s el tama&ntilde;o estimado en verde o en rojo.
+                            <b>Los rojos no se convierten.</b> Ver <a href="#verde-rojo">Verde y rojo</a>.
+                        </li>
+                        <li>
+                            <strong>Elige la carpeta de salida</strong>
+                            Con el selector <span class="ui">Directorio de Salida</span> de la barra
+                            inferior.
+                        </li>
+                        <li>
+                            <strong>Pulsa Convertir</strong>
+                            Se procesan varios archivos a la vez, seg&uacute;n las
+                            <span class="ui">Tareas paralelas</span> que tengas puestas. Mientras tanto
+                            puedes seguir a&ntilde;adiendo m&aacute;s.
+                        </li>
+                    </ol>
+                    <div class="callout tip">
+                        <h4>Cu&aacute;ntas tareas paralelas poner</h4>
+                        <p>
+                            Convertir video exige mucho de la computadora. Si pones demasiadas tareas a la
+                            vez, cada una va m&aacute;s lenta y el total no mejora. Empieza con dos o tres
+                            y sube solo si ves que la computadora aguanta bien.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ LISTADO ══════════ -->
+                <section id="listado" class="doc-section reveal">
+                    <h2>La pantalla Listado</h2>
+                    <div class="doc-rule"></div>
+                    <p>Es la pantalla de trabajo. Todo lo importante ocurre aqu&iacute;.</p>
+
+                    <h3>Arriba</h3>
+                    <ul>
+                        <li>El selector de <b>perfil</b> que se aplicar&aacute; a los archivos nuevos.</li>
+                        <li>El selector de <span class="ui">Tareas paralelas</span>: cu&aacute;ntos archivos se convierten a la vez.</li>
+                        <li>Un <b>cron&oacute;metro de sesi&oacute;n</b> a la derecha, que se reinicia pulsando encima. Sirve para saber cu&aacute;nto llevas trabajando.</li>
+                    </ul>
+
+                    <h3>Los contadores &mdash; que son tambi&eacute;n filtros</h3>
+                    <p>
+                        La fila de n&uacute;meros no es solo informativa: <b>pulsando cada uno se filtra la
+                        lista</b> para ver solo esos archivos.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Contador</th><th>Qu&eacute; agrupa</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Total</td><td>Todos los archivos de la lista.</td></tr>
+                                <tr><td class="nm">En espera</td><td>A&ntilde;adidos pero todav&iacute;a sin procesar.</td></tr>
+                                <tr><td class="nm">Convirtiendo</td><td>Los que se est&aacute;n procesando ahora mismo.</td></tr>
+                                <tr><td class="nm">Esperando</td><td>Est&aacute;n en cola, esperando que quede libre una tarea.</td></tr>
+                                <tr><td class="nm">Pausados</td><td>Detenidos a mano.</td></tr>
+                                <tr><td class="nm">Completados</td><td>Ya convertidos y guardados.</td></tr>
+                                <tr><td class="nm">Errores</td><td>Fallaron. <b>Rev&iacute;salos siempre antes de entregar.</b></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Al lado se ve el <span class="ui">Espacio Completado / Espacio Total</span>.</p>
+
+                    <h3>La barra inferior</h3>
+                    <div class="term-list">
+                        <dt>Convertir</dt><dd>Arranca la conversi&oacute;n de todo lo pendiente.</dd>
+                        <dt>Cargar</dt><dd>A&ntilde;ade archivos con un cuadro de selecci&oacute;n, sin arrastrar.</dd>
+                        <dt>Pausar / Continuar</dt><dd>Detiene o reanuda sin perder lo avanzado.</dd>
+                        <dt>Restablecer archivos cancelados</dt><dd>Devuelve a la cola los que se hab&iacute;an cancelado, para reintentarlos.</dd>
+                        <dt>Limpiar todo</dt><dd>Vac&iacute;a la lista. No borra archivos del disco, solo los quita de la pantalla.</dd>
+                        <dt>Cancelar</dt><dd>Detiene todo lo que est&eacute; en marcha.</dd>
+                        <dt>Directorio de Salida</dt><dd>D&oacute;nde se guardan los archivos convertidos. La lista de carpetas disponibles se administra en <span class="path">Configuraci&oacute;n &rsaquo; Salidas</span>.</dd>
+                    </div>
+                    <div class="callout">
+                        <h4>Si das Convertir con archivos en pausa</h4>
+                        <p>
+                            La aplicaci&oacute;n te preguntar&aacute; si quieres quitarles la pausa y
+                            convertirlos tambi&eacute;n. Si aceptas, los reanuda todos y contin&uacute;a.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ FILA ══════════ -->
+                <section id="fila" class="doc-section reveal">
+                    <h2>La fila de cada archivo</h2>
+                    <div class="doc-rule"></div>
+                    <p>Cada archivo de la lista muestra, de izquierda a derecha:</p>
+                    <ul>
+                        <li>Su <b>estado</b> (en espera, convirtiendo, completado, error&hellip;).</li>
+                        <li>El <b>porcentaje y el tama&ntilde;o estimado</b> del resultado, en verde o rojo.</li>
+                        <li>La <b>estructura de carpetas</b> con que se guardar&aacute;.</li>
+                        <li>Una <b>estrella</b> si est&aacute; marcado <span class="ui">Con Prioridad</span>: se convierte antes que los dem&aacute;s.</li>
+                        <li>El distintivo <b>HDR</b>, si el video original lo es.</li>
+                        <li>El <b>nombre</b> del archivo y el <b>perfil</b> que tiene asignado.</li>
+                        <li>Los selectores de <b>pista de audio</b> y de <b>subt&iacute;tulo</b>, si el archivo trae varios.</li>
+                        <li>Mientras convierte: <span class="ui">Velocidad</span>, <span class="ui">Tiempo</span>, el <b>%</b> y la barra de progreso.</li>
+                    </ul>
+
+                    <div class="callout tip">
+                        <h4>Qu&eacute; es el distintivo HDR</h4>
+                        <p>
+                            Algunos videos modernos vienen en HDR, con un rango de color que la mayor&iacute;a
+                            de los televisores y celulares antiguos no entiende: se ven <b>lavados o muy
+                            oscuros</b>. El Converter lo detecta y corrige el color solo durante la
+                            conversi&oacute;n, para que el resultado se vea bien en cualquier pantalla.
+                            No tienes que hacer nada.
+                        </p>
+                    </div>
+
+                    <h3>El men&uacute; del clic derecho</h3>
+                    <div class="term-list">
+                        <dt>Abrir Carpeta de Entrada / de Salida</dt><dd>Abre en Windows la carpeta de origen o la de destino de ese archivo.</dd>
+                        <dt>Usar / No Usar Nombre de carpeta</dt><dd>Decide si el archivo de salida toma el nombre de su carpeta en lugar del suyo propio. Muy &uacute;til cuando los archivos se llaman &laquo;video1.mp4&raquo; pero la carpeta tiene el t&iacute;tulo bueno.</dd>
+                        <dt>Extraer subt&iacute;tulos</dt><dd>Saca los subt&iacute;tulos incrustados en el video y los guarda como archivo aparte.</dd>
+                        <dt>Cancelar</dt><dd>Detiene ese archivo en concreto.</dd>
+                    </div>
+
+                    <h3>Atajos sobre la lista</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Tecla</th><th>Qu&eacute; hace sobre el archivo seleccionado</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm"><span class="kbd">N</span></td><td>Estructura <b>Ninguna</b>: el resultado va suelto en la carpeta de salida.</td></tr>
+                                <tr><td class="nm"><span class="kbd">F</span></td><td>Estructura <b>Mantener carpeta</b>: conserva la carpeta que lo conten&iacute;a.</td></tr>
+                                <tr><td class="nm"><span class="kbd">S</span></td><td>Estructura <b>Mantener estructura</b>: reproduce el &aacute;rbol de carpetas completo.</td></tr>
+                                <tr><td class="nm"><span class="kbd">Supr</span></td><td>Lo quita de la lista.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ AGREGAR ══════════ -->
+                <section id="agregar" class="doc-section reveal">
+                    <h2>La ventana Agregar Archivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Si activas <span class="ui">Agregar Ficheros usando Ventana</span> en la
+                        configuraci&oacute;n, cada vez que sueltes archivos aparecer&aacute; un cuadro para
+                        decidir sus datos antes de a&ntilde;adirlos:
+                    </p>
+                    <div class="term-list">
+                        <dt>Perfil</dt><dd>Con qu&eacute; receta se convertir&aacute;n esos archivos en concreto.</dd>
+                        <dt>Estructura</dt><dd>C&oacute;mo se organizar&aacute;n las carpetas de salida.</dd>
+                        <dt>Salida</dt><dd>En qu&eacute; carpeta se guardar&aacute;n.</dd>
+                        <dt>Cliente</dt><dd>El nombre del cliente, para no mezclar pedidos de personas distintas.</dd>
+                    </div>
+                    <p>Se confirma con <span class="ui">AGREGAR</span>.</p>
+                    <div class="callout tip">
+                        <h4>Cu&aacute;ndo conviene activarla</h4>
+                        <p>
+                            Si siempre conviertes igual, d&eacute;jala apagada y ganas velocidad. Si
+                            atiendes pedidos distintos de varios clientes al mismo tiempo, act&iacute;vala:
+                            evita que se te mezclen.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ PERFILES ══════════ -->
+                <section id="perfiles" class="doc-section reveal">
+                    <h2>Perfiles de conversi&oacute;n</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Un perfil es una receta guardada. Lo configuras una vez &mdash; formato, calidad,
+                        audio, subt&iacute;tulos &mdash; y a partir de ah&iacute; solo tienes que elegirlo
+                        de la lista. Lo normal es tener tres o cuatro: uno para televisores viejos, uno para
+                        celulares y uno de calidad alta.
+                    </p>
+
+                    <h3>Crear un perfil paso a paso</h3>
+                    <ol class="step-list">
+                        <li>
+                            <strong>Entra en Perfiles &rsaquo; Crear Perfiles</strong>
+                            Es la primera pesta&ntilde;a.
+                        </li>
+                        <li>
+                            <strong>Elige el formato del archivo</strong>
+                            <b>MP4</b> para celulares y televisores modernos (lo m&aacute;s compatible hoy),
+                            <b>MKV</b> si quieres conservar varias pistas de audio y subt&iacute;tulos,
+                            <b>AVI</b> o <b>MPG</b> para reproductores y televisores antiguos.
+                        </li>
+                        <li>
+                            <strong>Ponle nombre</strong>
+                            Uno que reconozcas de un vistazo: &laquo;TV vieja&raquo;, &laquo;Celular&raquo;,
+                            &laquo;Calidad alta&raquo;.
+                        </li>
+                        <li>
+                            <strong>Ajusta los par&aacute;metros de video</strong>
+                            Se explican abajo. Si dudas, deja <b>AUTO</b> en todo: el programa decide
+                            seg&uacute;n el video original.
+                        </li>
+                        <li>
+                            <strong>Ajusta los par&aacute;metros de audio</strong>
+                            Igual: <b>AUTO</b> funciona bien en casi todos los casos.
+                        </li>
+                        <li>
+                            <strong>Pulsa CREAR PERFIL</strong>
+                            Queda guardado y disponible en la lista de la pantalla Listado.
+                        </li>
+                    </ol>
+
+                    <h4>Par&aacute;metros de video</h4>
+                    <div class="term-list">
+                        <dt>Codificador</dt>
+                        <dd>La forma de comprimir el video. <b>H264</b> es la opci&oacute;n moderna y la que
+                        mejor relaci&oacute;n calidad/tama&ntilde;o da. Las opciones que dicen
+                        <b>COPIA</b> no reconvierten el video: lo pasan tal cual, as&iacute; que es
+                        instant&aacute;neo y sin p&eacute;rdida, pero no reduce el tama&ntilde;o.</dd>
+                        <dt>Resoluci&oacute;n</dt>
+                        <dd>El tama&ntilde;o de la imagen. Bajarla es lo que m&aacute;s reduce el peso del
+                        archivo. Referencias: 1920&times;1080 es Full HD, 1280&times;720 es HD,
+                        640&times;480 es lo cl&aacute;sico de televisor antiguo.</dd>
+                        <dt>Bitrate</dt>
+                        <dd>Cu&aacute;nta informaci&oacute;n por segundo se guarda. M&aacute;s bitrate =
+                        mejor calidad y m&aacute;s peso. Es la palanca principal para controlar
+                        cu&aacute;nto va a ocupar el resultado.</dd>
+                        <dt>FPS</dt>
+                        <dd>Cuadros por segundo. Bajarlo reduce el peso, pero si lo bajas demasiado el
+                        movimiento se ve a saltos.</dd>
+                        <dt>Aspecto</dt>
+                        <dd><b>16:9</b> es pantalla panor&aacute;mica (lo normal hoy); <b>4:3</b> es el
+                        formato cuadrado de los televisores antiguos.</dd>
+                        <dt>Preajuste</dt>
+                        <dd>Cu&aacute;nto se esfuerza el programa en comprimir bien. De
+                        <b>ultrafast</b> (r&aacute;pido pero pesa m&aacute;s) a <b>veryslow</b> (lento pero
+                        queda m&aacute;s peque&ntilde;o con la misma calidad). <b>medium</b> es el
+                        equilibrio.</dd>
+                        <dt>Perfil y Calidad</dt>
+                        <dd>Ajustes finos de compatibilidad y nitidez. Si no sabes qu&eacute; poner,
+                        d&eacute;jalos en AUTO.</dd>
+                        <dt>Acelerador de Hardware Manual</dt>
+                        <dd>Usa la tarjeta de video para convertir m&aacute;s r&aacute;pido. Opciones:
+                        <b>AUTOM&Aacute;TICO</b> (recomendada), <b>NATIVO</b> (solo procesador),
+                        <b>INTEL QSV</b>, <b>AMD AMF</b> o <b>NVIDIA NVENC</b> seg&uacute;n la tarjeta que
+                        tenga la computadora. Si eliges una que tu equipo no tiene, la conversi&oacute;n
+                        fallar&aacute;.</dd>
+                    </div>
+
+                    <h4>Par&aacute;metros de audio</h4>
+                    <div class="term-list">
+                        <dt>Codificador</dt>
+                        <dd><b>AAC</b> es lo est&aacute;ndar hoy; <b>MP3</b> y <b>AC3</b> para equipos
+                        antiguos; <b>COPIA</b> deja el audio original sin tocar.</dd>
+                        <dt>Canales</dt>
+                        <dd><b>2</b> es est&eacute;reo (lo normal); <b>1</b> es mono; <b>6</b> es sonido
+                        envolvente. Pasar de 6 a 2 canales ahorra espacio y evita problemas en equipos que
+                        no tienen sonido envolvente.</dd>
+                        <dt>Bitrate y frecuencia</dt>
+                        <dd>La calidad del sonido. 128 es m&aacute;s que suficiente para voz y m&uacute;sica
+                        normal.</dd>
+                        <dt>Idioma</dt>
+                        <dd>Si el video trae varias pistas, cu&aacute;l se elige por defecto.</dd>
+                        <dt>Volumen (db)</dt>
+                        <dd>Sube o baja el volumen del resultado. Para arreglar videos que se oyen muy bajo.</dd>
+                        <dt>Mantener pistas</dt>
+                        <dd>Conserva <b>todas</b> las pistas de audio, no solo una. Solo tiene sentido con
+                        MKV.</dd>
+                        <dt>Normalizar</dt>
+                        <dd>Iguala el volumen para que todos los archivos suenen parecido. Muy recomendable
+                        cuando entregas una recopilaci&oacute;n de videos de fuentes distintas.</dd>
+                    </div>
+
+                    <h4>Otros par&aacute;metros</h4>
+                    <div class="term-list">
+                        <dt>Usar % para convertir</dt>
+                        <dd>Activa el control de tama&ntilde;o por porcentaje: solo se convierten los
+                        archivos cuyo resultado quede dentro del rango que definas. Ver
+                        <a href="#verde-rojo">Verde y rojo</a>.</dd>
+                        <dt>Priorizar calidad</dt>
+                        <dd>Usa un m&eacute;todo de reescalado m&aacute;s cuidadoso. Tarda algo m&aacute;s
+                        pero la imagen queda m&aacute;s n&iacute;tida.</dd>
+                        <dt>Idioma de subt&iacute;tulos</dt>
+                        <dd>Cu&aacute;l se elige por defecto cuando hay varios.</dd>
+                        <dt>Pegar subt&iacute;tulos / Mantener subt&iacute;tulos</dt>
+                        <dd><b>Pegar</b> los graba encima de la imagen: se ven siempre, en cualquier
+                        reproductor, pero ya no se pueden quitar. <b>Mantener</b> los deja como pista
+                        aparte: se pueden activar o desactivar, pero solo si el reproductor del cliente lo
+                        soporta. Para memorias que van a televisores, casi siempre conviene
+                        <b>pegar</b>.</dd>
+                    </div>
+
+                    <h3>Valores Generales</h3>
+                    <p>La segunda pesta&ntilde;a tiene dos opciones que se aplican a todos los perfiles:</p>
+                    <div class="term-list">
+                        <dt>Usar bitrate inteligente</dt>
+                        <dt>Usar FPS inteligente</dt>
+                        <dd>
+                            Con estas casillas marcadas, el bitrate y los FPS del perfil se aplican
+                            <b>solo si el video original los tiene m&aacute;s altos</b>. Si el original ya
+                            es m&aacute;s peque&ntilde;o, se respeta el original. Evita el error
+                            cl&aacute;sico de &laquo;mejorar&raquo; un video malo y que acabe pesando el
+                            doble sin verse mejor.
+                        </dd>
+                    </div>
+
+                    <h3>Gestionar los perfiles</h3>
+                    <p>
+                        En la tercera pesta&ntilde;a est&aacute; la lista. Cada perfil tiene una casilla para
+                        activarlo o desactivarlo (los desactivados no aparecen al elegir), y con
+                        <span class="kbd">Supr</span> se borra el seleccionado.
+                    </p>
+                </section>
+
+                <!-- ══════════ VERDE Y ROJO ══════════ -->
+                <section id="verde-rojo" class="doc-section reveal">
+                    <h2>Verde y rojo: el tama&ntilde;o final</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Antes de convertir nada, el Converter <b>calcula cu&aacute;nto va a pesar</b> cada
+                        archivo con el perfil elegido, y lo compara con el tama&ntilde;o original. Seg&uacute;n
+                        el resultado, lo pinta de un color:
+                    </p>
+                    <div class="card-grid">
+                        <div class="card" style="border-left:3px solid #14b311">
+                            <h5 style="color:#14b311">Verde</h5>
+                            <p>El resultado queda dentro del rango que t&uacute; aceptas.
+                            <b>Este archivo s&iacute; se convierte.</b></p>
+                        </div>
+                        <div class="card" style="border-left:3px solid #fd2a32">
+                            <h5 style="color:#fd2a32">Rojo</h5>
+                            <p>El resultado se sale del rango: encoger&iacute;a demasiado (perder&iacute;a
+                            calidad) o crecer&iacute;a demasiado (ocupar&iacute;a m&aacute;s que el original).
+                            <b>Este archivo no se convierte.</b></p>
+                        </div>
+                    </div>
+                    <p>
+                        El rango lo defines t&uacute; con los dos deslizadores de
+                        <span class="path">Configuraci&oacute;n &rsaquo; General &rsaquo; Otras opciones</span>:
+                    </p>
+                    <div class="term-list">
+                        <dt>Decrecimiento aceptado</dt>
+                        <dd>Cu&aacute;nto puede <b>encoger</b> como m&aacute;ximo. Si un video de 1&nbsp;GB
+                        quedar&iacute;a en 50&nbsp;MB, algo va mal: seguramente perder&iacute;a demasiada
+                        calidad.</dd>
+                        <dt>Crecimiento aceptado</dt>
+                        <dd>Cu&aacute;nto puede <b>crecer</b> como m&aacute;ximo. Convertir para que ocupe
+                        m&aacute;s casi nunca tiene sentido.</dd>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Si todo te sale en rojo</h4>
+                        <p>
+                            No es un fallo: significa que el perfil elegido no encaja con esos videos.
+                            Prueba con otro perfil, o abre los deslizadores para aceptar un rango
+                            m&aacute;s amplio. Tambi&eacute;n puedes desactivar
+                            <span class="ui">Usar % para convertir</span> en el perfil, y entonces se
+                            convertir&aacute; todo sin comprobar el tama&ntilde;o.
+                        </p>
+                    </div>
+                    <p>
+                        Hay adem&aacute;s una excepci&oacute;n autom&aacute;tica: si el archivo iba a quedar
+                        pr&aacute;cticamente <b>igual</b> que el original, tampoco se convierte &mdash;
+                        ser&iacute;a perder tiempo para nada.
+                    </p>
+                </section>
+
+                <!-- ══════════ SUBTÍTULOS ══════════ -->
+                <section id="subtitulos" class="doc-section reveal">
+                    <h2>Subt&iacute;tulos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        En <span class="path">Configuraci&oacute;n &rsaquo; Subt&iacute;tulos</span> defines
+                        c&oacute;mo se ver&aacute;n los subt&iacute;tulos que se peguen sobre la imagen.
+                        Hay una <b>vista previa en vivo</b>: cada cambio se ve al momento, sin tener que
+                        convertir nada.
+                    </p>
+                    <div class="term-list">
+                        <dt>Tipo y tama&ntilde;o de fuente</dt>
+                        <dd>Piensa en la distancia: si el video se ver&aacute; en un televisor desde el
+                        sof&aacute;, conviene una letra grande.</dd>
+                        <dt>Margen de abajo</dt>
+                        <dd>A qu&eacute; altura se colocan. S&uacute;belo si el reproductor del cliente
+                        tapa la parte inferior con sus controles.</dd>
+                        <dt>Color de fuente y color de fondo</dt>
+                        <dd>El cl&aacute;sico es letra blanca o amarilla. El fondo ayuda a leer sobre
+                        escenas claras.</dd>
+                        <dt>En negrita</dt><dd>M&aacute;s grueso, m&aacute;s legible de lejos.</dd>
+                        <dt>Fondo transparente</dt><dd>Quita el recuadro y deja solo la letra.</dd>
+                        <dt>Sombra</dt><dd>Un borde oscuro alrededor de la letra. Es la mejor opci&oacute;n
+                        para que se lea sobre cualquier fondo sin tapar la imagen.</dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>La combinaci&oacute;n que casi nunca falla</h4>
+                        <p>
+                            Letra blanca, en negrita, con <b>sombra</b> y sin fondo. Se lee bien sobre
+                            escenas claras y oscuras, y no molesta la imagen.
+                        </p>
+                    </div>
+                    <p>
+                        El Converter admite los archivos de subt&iacute;tulos habituales
+                        (<b>.srt</b>, <b>.ass</b>, <b>.ssa</b>, <b>.vtt</b>, <b>.sub</b> y <b>.txt</b>).
+                        Recuerda que el estilo que configuras aqu&iacute; solo se aplica cuando el perfil
+                        est&aacute; en <span class="ui">PEGAR SUBTITULOS</span>.
+                    </p>
+                </section>
+
+                <!-- ══════════ MARCA ══════════ -->
+                <section id="marca" class="doc-section reveal">
+                    <h2>Marca de agua</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Puedes poner tu logo sobre los videos que entregas. Se configura en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Marca</span>.
+                    </p>
+                    <div class="term-list">
+                        <dt>Usar Marca</dt><dd>Activa o desactiva la marca de agua.</dd>
+                        <dt>Posici&oacute;n</dt>
+                        <dd>Nueve posiciones: arriba, arriba a la izquierda, arriba a la derecha, centro,
+                        centro a la izquierda, centro a la derecha, abajo, abajo a la izquierda y abajo a la
+                        derecha. Las esquinas superiores son las que menos molestan.</dd>
+                        <dt>Duraci&oacute;n total (seg)</dt>
+                        <dd>Cu&aacute;ntos segundos se ve la marca, de 0 a 120. Con unos pocos segundos al
+                        principio suele bastar.</dd>
+                        <dt>Efecto</dt>
+                        <dd>C&oacute;mo entra en pantalla: <b>ninguno</b>, <b>aparecer</b>, <b>rebote</b>, o
+                        entrando desde la <b>izquierda</b>, <b>derecha</b>, <b>arriba</b> o <b>abajo</b>.</dd>
+                        <dt>Duraci&oacute;n del efecto (seg)</dt><dd>Lo que dura la animaci&oacute;n de entrada, de 0 a 5 segundos.</dd>
+                        <dt>Margen en pixeles</dt><dd>La separaci&oacute;n respecto al borde, de 0 a 20.</dd>
+                    </div>
+                    <div class="callout warn">
+                        <h4>Menos es m&aacute;s</h4>
+                        <p>
+                            Una marca permanente en el centro de la pantalla molesta al cliente y te puede
+                            costar el pedido. Lo habitual es ponerla unos segundos al principio, en una
+                            esquina.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ NOMBRES ══════════ -->
+                <section id="nombres" class="doc-section reveal">
+                    <h2>Nombre del archivo de salida</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        Los videos descargados suelen venir con nombres larguísimos y llenos de basura. El
+                        Converter puede limpiarlos solo. Todo est&aacute; en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Fichero de salida</span>.
+                    </p>
+                    <div class="table-scroll">
+                        <table class="icon-table doc-table">
+                            <thead><tr><th>Opci&oacute;n</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td class="nm">Remover caracteres especiales</td><td>Cambia acentos y e&ntilde;es por letras simples: <code>Canci&oacute;n espa&ntilde;ola</code> &rarr; <code>Cancion espanola</code>. Evita problemas en reproductores viejos. Se puede aplicar al archivo, a la carpeta o a ambos.</td></tr>
+                                <tr><td class="nm">Remover fecha</td><td><code>VideoName [00-00-0000]</code> &rarr; <code>VideoName</code></td></tr>
+                                <tr><td class="nm">Usar Title Case</td><td><code>video name</code> &rarr; <code>Video Name</code></td></tr>
+                                <tr><td class="nm">Usar nombre del perfil</td><td><code>VideoName</code> &rarr; <code>VideoName - PERFIL</code>. As&iacute; sabes de un vistazo con qu&eacute; calidad se convirti&oacute;.</td></tr>
+                                <tr><td class="nm">Usar nombre de carpeta</td><td><code>video1.mp4</code> &rarr; toma el nombre de la carpeta que lo contiene. Salva los archivos que vienen sin nombre &uacute;til.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Series y novelas</h3>
+                    <p>
+                        Dentro de <span class="ui">Personalizar</span> hay dos bloques especiales para
+                        renombrar cap&iacute;tulos en masa: uno para <b>SERIES</b> y otro para
+                        <b>NOVELAS</b>. Funcionan con &laquo;m&aacute;scaras&raquo;: t&uacute; escribes
+                        c&oacute;mo quieres que quede el nombre y el programa rellena los huecos.
+                    </p>
+                    <div class="term-list">
+                        <dt>Remover match</dt>
+                        <dd>El texto que sobra y hay que quitar del nombre original.</dd>
+                        <dt>M&aacute;scara #</dt>
+                        <dd>Con cu&aacute;ntos d&iacute;gitos se escribe el n&uacute;mero de cap&iacute;tulo
+                        (de 1 a 5). Con 2 d&iacute;gitos, el cap&iacute;tulo 3 se escribe
+                        <code>03</code> &mdash; as&iacute; se ordenan bien en el reproductor.</dd>
+                        <dt>Usar @season</dt>
+                        <dd>Escribe la temporada en forma ordinal: <code>1</code> &rarr; <code>1ra</code>,
+                        <code>2</code> &rarr; <code>2da</code>, <code>10</code> &rarr; <code>10ma</code>.</dd>
+                        <dt>M&aacute;scara final</dt>
+                        <dd>
+                            El nombre que quedar&aacute;. Se construye con estas piezas:
+                            <br><code>@season</code> = la temporada &nbsp;·&nbsp;
+                            <code>@chapter</code> = el n&uacute;mero de cap&iacute;tulo &nbsp;·&nbsp;
+                            <code>@filename</code> = el nombre del archivo.
+                            <br>Las novelas solo usan <code>@chapter</code> y <code>@filename</code>,
+                            porque no tienen temporadas.
+                        </dd>
+                    </div>
+                    <div class="callout tip">
+                        <h4>Prueba con pocos archivos primero</h4>
+                        <p>
+                            Antes de lanzar una serie completa, convierte dos o tres cap&iacute;tulos y
+                            comprueba que los nombres quedan como esperabas. Ajustar la m&aacute;scara
+                            despu&eacute;s obliga a repetirlo todo.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CARPETAS ══════════ -->
+                <section id="carpetas" class="doc-section reveal">
+                    <h2>Carpetas admitidas</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        La pantalla <span class="ui">Carpetas</span> guarda una lista de nombres de carpeta.
+                        Para a&ntilde;adir, solo hay que <b>arrastrar las carpetas a la ventana</b>.
+                    </p>
+                    <p>
+                        Sirve como filtro: cuando sueltas contenido en el Converter con el
+                        <b>clic derecho</b>, el programa compara sus carpetas con esta lista y
+                        <b>solo a&ntilde;ade lo que est&eacute; en ella</b>. Lo dem&aacute;s lo ignora.
+                    </p>
+                    <div class="callout">
+                        <h4>Para qu&eacute; sirve en la pr&aacute;ctica</h4>
+                        <p>
+                            Si sueltas un disco entero, sin filtro entrar&iacute;a todo: pel&iacute;culas,
+                            m&uacute;sica, respaldos, basura. Con la lista de carpetas puestas &mdash; por
+                            ejemplo &laquo;Estrenos&raquo; y &laquo;Series&raquo; &mdash; solo entra lo que
+                            de verdad hay que convertir.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ CONFIGURACIÓN ══════════ -->
+                <section id="config" class="doc-section reveal">
+                    <h2>Configuraci&oacute;n</h2>
+                    <div class="doc-rule"></div>
+
+                    <h4>General</h4>
+                    <div class="term-list">
+                        <dt>Agregar ficheros usando ventana</dt><dd>Muestra la ventana <a href="#agregar">Agregar Archivos</a> al soltar.</dd>
+                        <dt>Ocultar de la lista archivos finalizados</dt><dd>Los completados desaparecen de la vista. La lista se mantiene limpia en trabajos largos.</dd>
+                        <dt>Convertir archivos ya convertidos</dt><dd>Permite volver a convertir algo que ya se hab&iacute;a procesado antes.</dd>
+                        <dt>Copiar p&oacute;sters</dt><dd>Lleva tambi&eacute;n las im&aacute;genes de portada junto al video convertido.</dd>
+                        <dt>Estructura de carpetas</dt><dd>La estructura por defecto: <b>Ninguna</b>, <b>Mantener estructura</b> o <b>Mantener carpeta</b>.</dd>
+                        <dt>Usar aceleraci&oacute;n por hardware</dt><dd>Aprovecha la tarjeta de video. Hay un interruptor aparte para los formatos MPG y AVI.</dd>
+                        <dt>Hilos por proceso</dt><dd>Cu&aacute;nta potencia del procesador dedica cada conversi&oacute;n, de 0 a 4. Con 0 lo decide el programa.</dd>
+                        <dt>Respetar extensiones de archivo</dt><dd>Mantiene la extensi&oacute;n original cuando es posible.</dd>
+                    </div>
+
+                    <h4>Tema visual</h4>
+                    <p>
+                        Tema <b>Claro</b>, <b>Oscuro</b> o el del <b>Sistema</b>, y el tipo de fondo de la
+                        ventana.
+                    </p>
+
+                    <h4>Salidas</h4>
+                    <p>
+                        La lista de carpetas de destino disponibles en el selector
+                        <span class="ui">Directorio de Salida</span>. Con <span class="kbd">Supr</span> se
+                        quita la seleccionada.
+                    </p>
+
+                    <h4>Al terminar</h4>
+                    <p>
+                        En la barra de t&iacute;tulo hay un bot&oacute;n que decide qu&eacute; hacer cuando
+                        acaben todas las conversiones: <b>APAGAR</b>, <b>SUSPENDER</b>, <b>CERRAR</b> la
+                        aplicaci&oacute;n, o nada. Clic izquierdo avanza, clic derecho retrocede. Muy
+                        &uacute;til para dejar conversiones largas de noche.
+                    </p>
+                </section>
+
+                <!-- ══════════ FORMATOS ══════════ -->
+                <section id="formatos" class="doc-section reveal">
+                    <h2>Formatos admitidos</h2>
+                    <div class="doc-rule"></div>
+                    <p>Estos son los archivos que el Converter puede leer:</p>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h5>Video</h5>
+                            <p>mpg &middot; mpeg &middot; avi &middot; mp4 &middot; mkv &middot; wmv &middot;
+                            ts &middot; m4v &middot; flv &middot; mov &middot; divx &middot; xvid &middot;
+                            vob &middot; dat &middot; rmvb &middot; rm &middot; 3gp &middot; webm &middot;
+                            m2ts &middot; mts</p>
+                        </div>
+                        <div class="card">
+                            <h5>Audio</h5>
+                            <p>mp3 &middot; m4a &middot; wma &middot; ac3 &middot; aac &middot; wav &middot;
+                            flac &middot; ogg &middot; opus &middot; aiff &middot; aif &middot; alac &middot;
+                            ape &middot; mka &middot; dts &middot; mp2 &middot; mp1 &middot; ra &middot;
+                            au &middot; pcm</p>
+                        </div>
+                        <div class="card">
+                            <h5>Subt&iacute;tulos</h5>
+                            <p>srt &middot; ass &middot; ssa &middot; vtt &middot; sub &middot; txt</p>
+                        </div>
+                        <div class="card">
+                            <h5>Salida</h5>
+                            <p>MP4 &middot; MKV &middot; AVI &middot; MPG para video, y MP3 para audio.</p>
+                        </div>
+                    </div>
+                    <div class="callout">
+                        <h4>Cu&aacute;l elegir para cada cliente</h4>
+                        <ul>
+                            <li><b>MP4</b> &mdash; celulares, televisores modernos, computadoras. La apuesta segura.</li>
+                            <li><b>MKV</b> &mdash; cuando hay que conservar varios audios y subt&iacute;tulos seleccionables.</li>
+                            <li><b>AVI</b> y <b>MPG</b> &mdash; reproductores de DVD y televisores antiguos.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- ══════════ LICENCIA ══════════ -->
+                <section id="licencia" class="doc-section reveal">
+                    <h2>Licencia</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El Converter <b>ya no tiene una p&aacute;gina de Licencia</b> en el men&uacute;
+                        lateral: ahora la licencia se gestiona en un solo sitio, el
+                        <a href="primeros-pasos.html#licencia">Lanzador</a>, que muestra el propietario, tu
+                        <span class="ui">IDENTIFICADOR</span>, las fechas y el estado. La comprobaci&oacute;n
+                        de licencia del Converter <b>sigue funcionando en segundo plano</b> igual que antes.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Sin licencia v&aacute;lida</h4>
+                        <p>
+                            La opci&oacute;n <span class="ui">Tareas paralelas</span> queda bloqueada, as&iacute;
+                            que solo podr&aacute;s convertir de uno en uno. Todo el procedimiento para
+                            conseguir o renovar la licencia est&aacute; en
+                            <a href="primeros-pasos.html#licencia">Primeros pasos</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- ══════════ VIDEOS ══════════ -->
+                <section id="videos" class="doc-section reveal">
+                    <h2>Videos</h2>
+                    <div class="doc-rule"></div>
+                    <p>El Converter en funcionamiento, explicado paso a paso.</p>
+                    <div data-videos="converter"></div>
+                </section>
+
+                <nav class="doc-nav">
+                    <a href="copier.html" class="prev">
+                        <span class="lbl">&larr; Anterior</span>
+                        <span class="ttl">Manual del Copier</span>
+                    </a>
+                    <a href="controlstats.html" class="next">
+                        <span class="lbl">Siguiente &rarr;</span>
+                        <span class="ttl">Manual de ControlStats</span>
+                    </a>
+                </nav>
+
+            </main>
+        </div>
+
+        <footer>
+            <div class="brand">Xpress Suite</div>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-item"><span class="label">Autor</span><span class="value">Ing. Alexis Amaro Placeres</span></div>
+                    <div class="info-item"><span class="label">Celular</span><span class="value">+53 58201391</span></div>
+                    <div class="info-item"><span class="label">Canal</span><span class="value">t.me/XpresSuite_Updates</span></div>
+                </div>
+            </div>
+            <div class="copy">Todos los derechos reservados &copy; Xpress Suite &mdash; Creado por Alexis Amaro Placeres</div>
+        </footer>
+
+    </div>
+
+    <script src="assets/videos/catalog.js"></script>
+    <script src="assets/js/videos.js"></script>
+    <script src="assets/js/docs.js"></script>
+</body>
+</html>
