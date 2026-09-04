@@ -8,11 +8,11 @@ Estas aplicaciones trabajan juntas para tu negocio de copia. Se instalan de una 
 
 | App | Descripción |
 |-----|-------------|
-| ![Copier](docs/assets/img/logos/copier.png) **Copier** | Copia archivos hacia y desde dispositivos externos (memorias USB, discos, celulares) con copia simultánea acelerada por RAM, explorador por dispositivo, clonación de listas, historial y cobro en múltiples variantes. |
-| ![Converter](docs/assets/img/logos/converter.png) **Converter** | Convierte videos y audios por lotes con perfiles propios, selección de pistas y subtítulos, marca de agua y estimación de tamaño. |
-| ![ControlStats](docs/assets/img/logos/controlstats.png) **ControlStats** | Muestra cuánto se trabajó y se cobró: usuarios, roles, turnos, historial de sesiones, comparación de periodos y reportes en HTML. |
-| ![Observer](docs/assets/img/logos/observer.png) **Observer** | Vigilante en segundo plano que anota todo lo que entra y sale de los dispositivos conectados, incluso cuando nadie usó Copier. |
-| ![Patrones](docs/assets/img/logos/patterns.png) **Constructor de Patrones** | Herramienta del Copier para enseñarle a leer los nombres de tus archivos arrancando piezas como un rompecabezas. |
+| <img src="docs/assets/img/logos/copier.png" width="64"> **Copier** | Copia archivos hacia y desde dispositivos externos (memorias USB, discos, celulares) con copia simultánea acelerada por RAM, explorador por dispositivo, clonación de listas, historial y cobro en múltiples variantes. |
+| <img src="docs/assets/img/logos/converter.png" width="64"> **Converter** | Convierte videos y audios por lotes con perfiles propios, selección de pistas y subtítulos, marca de agua y estimación de tamaño. |
+| <img src="docs/assets/img/logos/controlstats.png" width="64"> **ControlStats** | Muestra cuánto se trabajó y se cobró: usuarios, roles, turnos, historial de sesiones, comparación de periodos y reportes en HTML. |
+| <img src="docs/assets/img/logos/observer.png" width="64"> **Observer** | Vigilante en segundo plano que anota todo lo que entra y sale de los dispositivos conectados, incluso cuando nadie usó Copier. |
+| <img src="docs/assets/img/logos/patterns.png" width="64"> **Constructor de Patrones** | Herramienta del Copier para enseñarle a leer los nombres de tus archivos arrancando piezas como un rompecabezas. |
 
 ## Documentación
 
