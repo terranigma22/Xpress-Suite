@@ -8,23 +8,23 @@ Estas aplicaciones trabajan juntas para tu negocio de copia. Se instalan de una 
 
 ### <img src="docs/assets/img/logos/copier.png" width="32"> Copier
 
-Copia archivos hacia y desde dispositivos externos (memorias USB, discos, celulares) con copia simultánea acelerada por RAM, explorador por dispositivo, clonación de listas, historial y cobro en múltiples variantes.
+Copia archivos hacia y desde dispositivos externos como memorias USB, discos duros, celulares y más, con un sistema de copia simultánea que acelera el proceso usando la RAM como intermediaria, sin sacrificar estabilidad. Incluye un explorador por dispositivo con búsqueda rápida, clonación de listas para repetir copias idénticas, y herramientas de administración como formateo y expulsión segura. Ofrece control total sobre la prioridad de cada dispositivo, filtros, orden personalizado e historial por dispositivo. Además gestiona el cobro en múltiples variantes, adaptándose a las necesidades del negocio.
 
 ### <img src="docs/assets/img/logos/converter.png" width="32"> Converter
 
-Convierte videos y audios por lotes con perfiles propios, selección de pistas y subtítulos, marca de agua y estimación de tamaño.
+Convierte videos y audios a los formatos que tus clientes necesitan, con varios archivos procesándose a la vez. Creas tus propios perfiles de conversión, eliges pistas de audio y subtítulos, pegas subtítulos con el estilo que quieras, añades marca de agua y ves el tamaño estimado antes de convertir. Además limpia y ordena automáticamente los nombres de los archivos de salida.
 
 ### <img src="docs/assets/img/logos/controlstats.png" width="32"> ControlStats
 
-Muestra cuánto se trabajó y se cobró: usuarios, roles, turnos, historial de sesiones, comparación de periodos y reportes en HTML.
+Muestra cuánto se trabajó y cuánto se cobró. Entra con usuario y contraseña, con cuentas de administrador y de trabajador, y controla los turnos de cada quien. Consulta el día, el ranking de dispositivos, el historial de cada sesión, compara dos periodos y genera reportes en HTML listos para imprimir o enviar.
 
 ### <img src="docs/assets/img/logos/observer.png" width="32"> Observer
 
-Vigilante en segundo plano que anota todo lo que entra y sale de los dispositivos conectados, incluso cuando nadie usó Copier.
+Es el vigilante silencioso del sistema. Corre solo, en segundo plano, y anota todo lo que entra y sale de las memorias, discos externos y celulares conectados al equipo — incluso cuando nadie usó el Copier. No tiene ventana propia: sus datos se consultan en la sección Monitoreo de ControlStats.
 
 ### <img src="docs/assets/img/logos/patterns.png" width="32"> Constructor de Patrones
 
-Herramienta del Copier para enseñarle a leer los nombres de tus archivos arrancando piezas como un rompecabezas.
+Le enseña al Copier a leer los nombres de tus archivos. Cada proveedor nombra las cosas a su manera — XX 001 Titulo, XX=001 Titulo, S01E01 Titulo — y si el Copier no reconoce el formato, no puede encontrar solo los capítulos siguientes. Con esta herramienta armas la regla como un rompecabezas de piezas de colores: arrastras, la pruebas en vivo con un nombre real y la exportas. Sin escribir una sola línea de código. Trae además 26 formatos ya preparados para partir de uno parecido.
 
 ## Documentación
 
