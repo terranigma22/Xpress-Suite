@@ -36,7 +36,17 @@ Este repositorio aloja la documentación oficial de Xpress Suite en español:
 
 ## Releases
 
-Todas las versiones de Xpress Suite se publican en la [**página de releases**](https://github.com/terranigma22/Xpress-Suite/releases) de este repositorio.
+| Archivo | Descarga |
+|---------|----------|
+| **XpressSuiteSetup.v2.0.0.zip** | [**Descargar instalador completo**](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteSetup.v2.0.0.zip) (~146 MB) |
+| XpressSuiteUpdate.v2.3.2.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.3.2.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.3.1.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.3.1.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.3.0.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.3.0.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.2.0.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.2.0.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.1.1.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.1.1.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.1.0.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.1.0.zip) (~4 MB) |
+
+> El Setup es la versión completa. Las actualizaciones se aplican sobre una instalación existente.
 
 ## Licencia
 
