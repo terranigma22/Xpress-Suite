@@ -70,6 +70,7 @@
                         <li><a href="#estructuras">Estructura de carpetas</a></li>
                         <li><a href="#cobros">Cobros y tarifas</a></li>
                         <li><a href="#acciones">Acciones sobre los dispositivos</a></li>
+                        <li><a href="#filtros">Filtros de dispositivos</a></li>
                         <li><a href="#orden">Orden y prioridad</a></li>
                         <li><a href="#cola">La cola de archivos</a></li>
                         <li><a href="#matrices">Matrices</a></li>
@@ -178,6 +179,22 @@
                                         cuando trabajas arrastrando archivos desde el explorador de Windows.</td>
                                 </tr>
                                 <tr>
+                                    <td class="ic"><img src="assets/img/copier/panel/divide.png" alt=""></td>
+                                    <td class="nm">Dos paneles<small>Ctrl + D</small></td>
+                                    <td>Divide la ventana en <a href="#panel-doble">dos paneles</a> independientes.
+                                        Un clic lo enciende o apaga, y con <b>clic derecho</b> intercambias los
+                                        paneles de lugar.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/panel/swapped.png" alt=""></td>
+                                    <td class="nm">Paneles intercambiados</td>
+                                    <td>Este icono aparece cuando usas <span class="kbd">Ctrl</span>+<span
+                                        class="kbd">Tab</span>: los paneles se intercambian y cada panel trabaja
+                                        con el dispositivo del otro lado. Otra vez <span class="kbd">Ctrl</span>+<span
+                                        class="kbd">Tab</span> (o clic derecho sobre el bot&oacute;n) los vuelve
+                                        a su lugar.</td>
+                                </tr>
+                                <tr>
                                     <td class="ic"><img src="assets/img/copier/windows/camera.png" alt=""></td>
                                     <td class="nm">Capturar ventana</td>
                                     <td>Toma una foto de la ventana tal cual est&aacute;. &Uacute;til para dejar
@@ -199,9 +216,21 @@
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/windows/minimize_window.png" alt=""></td>
-                                    <td class="nm">Minimizar, Maximizar y Cerrar</td>
-                                    <td>Los de siempre. Al cerrar, si hay copias en marcha, la aplicaci&oacute;n te pide
-                                        confirmaci&oacute;n.</td>
+                                    <td class="nm">Minimizar</td>
+                                    <td>Oculta la ventana a la barra de tareas. Las copias siguen trabajando en
+                                        segundo plano y puedes verlas desde la ventana de trabajo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/windows/maximize_window.png" alt=""></td>
+                                    <td class="nm">Maximizar / Restaurar</td>
+                                    <td>Alterna entre ventana normal y pantalla completa. Tambi&eacute;n funciona
+                                        con <b>doble clic</b> sobre la barra de t&iacute;tulo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/windows/close_window.png" alt=""></td>
+                                    <td class="nm">Cerrar</td>
+                                    <td>Cierra el Copier. La aplicaci&oacute;n pide confirmaci&oacute;n y, si hay
+                                        copias en marcha, las detiene y guarda el estado antes de salir.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -465,9 +494,9 @@
                             claro.</dd>
                     </div>
 
-                    <h3>Valores por dispositivo</h3>
+                    <h3 id="valores">Valores por dispositivo</h3>
                     <p>
-                        Cada dispositivo lleva seis interruptores que deciden qu&eacute; se hace con &eacute;l
+                        Cada dispositivo lleva siete interruptores que deciden qu&eacute; se hace con &eacute;l
                         al terminar. Puedes cambiarlos uno por uno, o fijar los valores de f&aacute;brica en
                         <span class="path">Configuraci&oacute;n &rsaquo; Dispositivos</span>.
                     </p>
@@ -481,6 +510,13 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/permanent_hidden.png" alt=""></td>
+                                    <td class="nm">Ocultar permanentemente</td>
+                                    <td>El dispositivo <b>nunca</b> aparece en la lista, ni siquiera cuando usas
+                                        la opci&oacute;n de mostrar los ocultos. Activa autom&aacute;ticamente el
+                                        interruptor Ocultar y no se puede revelar desde la lista.</td>
+                                </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/drive_values/hidden.png" alt=""></td>
                                     <td class="nm">Ocultar<small>O</small></td>
@@ -541,8 +577,10 @@
                     <h3>El men&uacute; de cada dispositivo</h3>
                     <p>Con el clic derecho sobre una tarjeta se abre su men&uacute; propio:</p>
                     <ul>
-                        <li><span class="ui">Explorar dispositivo</span> &mdash; abre su <a
-                                href="#explorador">explorador</a>.</li>
+                        <li><span class="ui">Explorar dispositivo</span> &mdash; abre el dispositivo en el <b>explorador de
+                                Windows</b>, fuera de la aplicaci&oacute;n. El explorador integrado del Copier (el
+                            Mini-Explorer) se abre con <b>doble clic</b> sobre la tarjeta. Ver
+                            <a href="#explorador">El explorador del dispositivo</a>.</li>
                         <li><span class="ui">Copiar Publicidad</span> &mdash; Copia la publicidad al dispositivo.
                         </li>
                         <li><span class="ui">Lista de ficheros</span> <span class="kbd">Enter</span> &mdash; desde la
@@ -565,8 +603,10 @@
                         <li><span class="ui">Actualizar Puerto</span> <span class="kbd">F3</span> &mdash; nombra el
                             puerto USB f&iacute;sico, por ejemplo &laquo;Puerto 1 delantero&raquo;, para saber siempre
                             d&oacute;nde est&aacute; conectado.</li>
-                        <li><span class="ui">Cargar Sesi&oacute;n</span> y <span class="ui">Cargar Sesi&oacute;n (Nueva
-                                Tirada)</span>.</li>
+                        <li><span class="ui">Cargar Sesi&oacute;n</span> &mdash; recupera un trabajo guardado; con clic derecho
+                                puedes elegir a mano cu&aacute;l cargar. <span class="ui">Cargar Sesi&oacute;n (Nueva
+                                    Tirada)</span> &mdash; carga la misma lista pero como un trabajo nuevo, para
+                                repetir el mismo pedido con otras memorias.</li>
                         <li><span class="ui">Historial</span> &mdash; todo lo que se ha copiado a ese dispositivo. Ver
                             <a href="#historial">Historial</a>.
                         </li>
@@ -709,11 +749,18 @@
 
                     <h3>Soltar sobre varios dispositivos a la vez</h3>
                     <p>
-                        Si tienes <b>varios dispositivos seleccionados</b>, lo que sueltes se a&ntilde;ade a
-                        <b>todos</b> de una vez. Esa es la base del trabajo del Copier: preparas quince
-                        memorias iguales en un solo arrastre. Si no hay ninguno seleccionado, se a&ntilde;ade
-                        solo al dispositivo sobre el que soltaste.
+                        Los dispositivos <b>seleccionados</b> son los destinos del arrastre: si tienes varios
+                        seleccionados, lo que sueltes se a&ntilde;ade a <b>todos</b> de una vez. Esa es la
+                        base del trabajo del Copier: preparas quince memorias iguales en un solo arrastre.
                     </p>
+                    <div class="callout warn">
+                        <h4>Sin selecci&oacute;n no se agrega nada</h4>
+                        <p>
+                            Si no hay <b>ning&uacute;n dispositivo seleccionado</b>, al soltar el Copier suena
+                            un aviso y los archivos <b>no se agregan</b>: primero debes seleccionar los
+                            dispositivos de destino con clic.
+                        </p>
+                    </div>
 
                     <h3>Arrastrar con el bot&oacute;n derecho o con Ctrl</h3>
                     <p>
@@ -766,9 +813,15 @@
                     <h2>El explorador del dispositivo</h2>
                     <div class="doc-rule"></div>
                     <p>
-                        Cada dispositivo trae su propio explorador integrado, para que no tengas que abrir
-                        el de Windows. Se abre con <span class="ui">Explorar dispositivo</span> desde el
-                        men&uacute; de la tarjeta.
+                        Cada dispositivo trae su propio explorador integrado (el <b>Mini-Explorer</b>),
+                        para que no tengas que abrir el de Windows. Se abre con <b>doble clic</b> sobre la
+                        tarjeta del dispositivo; en el <a href="#panel-doble">modo doble</a>, se abre en el
+                        panel en el que est&aacute; el dispositivo.
+                    </p>
+                    <p>
+                        La opci&oacute;n <span class="ui">Explorar dispositivo</span> del men&uacute; de la
+                        tarjeta, en cambio, abre el dispositivo en el <b>explorador de Windows</b>, fuera de
+                        la aplicaci&oacute;n.
                     </p>
                     <div class="table-scroll">
                         <table class="icon-table">
@@ -1331,6 +1384,12 @@
                     <p>
                         Estos botones act&uacute;an sobre <b>todos los dispositivos seleccionados a la vez</b>.
                         Es la diferencia entre expulsar quince memorias una por una o expulsarlas de un clic.
+                        En el <a href="#panel-doble">modo doble</a> cada panel tiene su propio filtro y su
+                        propio orden (a la izquierda los del panel izquierdo, a la derecha los del panel
+                        derecho). Las acciones del centro act&uacute;an con <b>clic izquierdo</b> sobre el
+                        <b>panel izquierdo</b> y con <b>clic derecho</b> sobre el <b>panel derecho</b>. La
+                        &uacute;nica acci&oacute;n que es general y afecta a ambos paneles es
+                        <b>Pausar y continuar</b>.
                     </p>
                     <div class="table-scroll">
                         <table class="icon-table">
@@ -1343,24 +1402,19 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="ic"><img src="assets/img/copier/drives/all.png" alt=""></td>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/filter.png" alt=""></td>
                                     <td class="nm">Filtro de dispositivos</td>
-                                    <td>Muestra solo un tipo: todos, discos de arranque, internos, externos, red,
-                                        memorias, celulares, lectores o escritores. Clic izquierdo avanza, clic derecho
-                                        retrocede.</td>
+                                    <td>Abre una lista y marcas qu&eacute; tipos quieres ver; puedes combinar varios a
+                                        la vez y con ninguno marcado se muestran todos. En el
+                                        <a href="#panel-doble">modo doble</a> cada panel recuerda su propio filtro.
+                                        Ver <a href="#filtros">Filtros de dispositivos</a>.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/orders/default.png" alt=""></td>
                                     <td class="nm">Orden</td>
                                     <td>Cambia c&oacute;mo se ordenan en pantalla. Ver <a href="#orden">Orden y
-                                            prioridad</a>.</td>
-                                </tr>
-                                <tr>
-                                    <td class="ic"><img src="assets/img/copier/mainactions/divide.png" alt=""></td>
-                                    <td class="nm">Dos paneles<small>Ctrl + D</small></td>
-                                    <td>Divide la ventana en dos paneles para ver y manejar dos dispositivos a la vez.
-                                        Con <b>clic</b> lo enciendes o apagas; con <b>clic derecho</b> intercambias los
-                                        paneles de lugar. Ver <a href="#panel-doble">El modo doble</a>.</td>
+                                            prioridad</a>. En el modo doble cada panel recuerda su propio orden y
+                                        ordenar uno no afecta al otro.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/mainactions/important.png" alt=""></td>
@@ -1372,18 +1426,16 @@
                                     <td class="ic"><img src="assets/img/copier/mainactions/pause.png" alt=""></td>
                                     <td class="nm">Pausar y continuar</td>
                                     <td>Detiene o reanuda la copia de todos los dispositivos, sin perder lo ya copiado.
-                                    </td>
+                                        Es <b>general</b>: en el modo doble afecta a los dos paneles a la vez, a
+                                        diferencia de las dem&aacute;s acciones que solo trabajan con el panel en el
+                                        que est&aacute;s.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/mainactions/resume.png" alt=""></td>
                                     <td class="nm">Pausar y continuar solo los seleccionados</td>
-                                    <td>Lo mismo, pero afectando &uacute;nicamente a los que tengas marcados.</td>
-                                </tr>
-                                <tr>
-                                    <td class="ic"><img src="assets/img/copier/mainactions/swap.png" alt=""></td>
-                                    <td class="nm">Cambiar Lector</td>
-                                    <td>Cambia cu&aacute;l es el dispositivo del que se lee para copiar a los
-                                        dem&aacute;s.</td>
+                                    <td>Lo mismo, pero afectando &uacute;nicamente a los que tengas marcados. En el
+                                        modo doble act&uacute;a solo sobre los seleccionados del panel en el que
+                                        est&aacute;s.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/mainactions/clone.png" alt=""></td>
@@ -1401,11 +1453,6 @@
                                     <td class="nm">Expulsar</td>
                                     <td>Expulsa con seguridad. Espera a que termine lo pendiente antes de soltar el
                                         dispositivo.</td>
-                                </tr>
-                                <tr>
-                                    <td class="ic"><img src="assets/img/copier/mainactions/update.png" alt=""></td>
-                                    <td class="nm">Reparar<small>F1</small></td>
-                                    <td>Intenta arreglar una memoria que da errores de lectura o escritura.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/mainactions/close.png" alt=""></td>
@@ -1458,8 +1505,14 @@
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/secondactions/tools.png" alt=""></td>
-                                    <td class="nm">Herramientas</td>
-                                    <td>Reparar y formatear desde un solo sitio.</td>
+                                    <td class="nm">Reparar<small>F1</small></td>
+                                    <td>Intenta arreglar una memoria que da errores de lectura o escritura. Tambi&eacute;n
+                                        disponible desde el men&uacute; del dispositivo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/eraser.png" alt=""></td>
+                                    <td class="nm">Formatear<small>F4</small></td>
+                                    <td>Formatea los dispositivos seleccionados. Pide confirmaci&oacute;n.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/secondactions/matriz.png" alt=""></td>
@@ -1468,14 +1521,103 @@
                                         seleccionados; con <b>clic derecho</b> abre el editor. Ver
                                         <a href="#matrices">Matrices</a>.</td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ══════════ FILTROS DE DISPOSITIVOS ══════════ -->
+                <section id="filtros" class="doc-section reveal">
+                    <h2>Filtros de dispositivos</h2>
+                    <div class="doc-rule"></div>
+                    <p>
+                        El bot&oacute;n del filtro, junto al orden en la <a href="#acciones">barra de
+                        acciones</a>, abre una lista con casillas: marcas qu&eacute; tipos de dispositivos
+                        quieres ver y solo esos aparecen. El bot&oacute;n muestra el n&uacute;mero de filtros
+                        activos y, al pasar el cursor, el nombre de los marcados (o
+                        <span class="ui">Filtro: Todos</span> si no hay ninguno).
+                    </p>
+
+                    <h3>Las opciones del filtro</h3>
+                    <div class="table-scroll">
+                        <table class="icon-table">
+                            <thead>
                                 <tr>
-                                    <td class="ic"><img src="assets/img/copier/secondactions/matriz.png" alt=""></td>
-                                    <td class="nm">Vista matriz</td>
-                                    <td>Presenta los dispositivos en cuadr&iacute;cula, pensada para cuando tienes
-                                        muchos conectados.</td>
+                                    <th></th>
+                                    <th>Opci&oacute;n</th>
+                                    <th>Qu&eacute; muestra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/boot_disk.png" alt=""></td>
+                                    <td class="nm">Discos de arranque</td>
+                                    <td>Solo los dispositivos de arranque.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/hard_disk.png" alt=""></td>
+                                    <td class="nm">Discos internos</td>
+                                    <td>Los discos fijos de la m&aacute;quina.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/external_disk.png" alt=""></td>
+                                    <td class="nm">Discos externos</td>
+                                    <td>Los discos conectados por USB u otro puerto.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/network_disk.png" alt=""></td>
+                                    <td class="nm">Dispositivos de red</td>
+                                    <td>Los que est&aacute;n en la red.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/usb_memory.png" alt=""></td>
+                                    <td class="nm">Memorias</td>
+                                    <td>Las memorias USB.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/cell.png" alt=""></td>
+                                    <td class="nm">Cells</td>
+                                    <td>Los celulares y tablets.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/reader.png" alt=""></td>
+                                    <td class="nm">Lectores</td>
+                                    <td>Los dispositivos que act&uacute;an de origen.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drives/writer.png" alt=""></td>
+                                    <td class="nm">Escritores</td>
+                                    <td>Los dispositivos que reciben la copia.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/drive_values/hidden.png" alt=""></td>
+                                    <td class="nm">Ocultos</td>
+                                    <td>A&ntilde;ade los dispositivos que tienen el interruptor Ocultar activo, para
+                                        que tambi&eacute;n aparezcan. Ver <a href="#dispositivos">Los
+                                            dispositivos</a>.</td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <h3>C&oacute;mo se combinan</h3>
+                    <ul>
+                        <li>La combinaci&oacute;n es <b>OR</b>: un dispositivo aparece si coincide con
+                            <b>cualquiera</b> de las opciones marcadas.</li>
+                        <li>Con <b>ninguna</b> casilla marcada se muestran <b>todos</b>.</li>
+                        <li>La opci&oacute;n <span class="ui">Ocultos</span> se suma al resto: ver&aacute;s los
+                            ocultos de cualquier tipo adem&aacute;s de los tipos marcados.</li>
+                        <li>Los dispositivos con <a href="#valores">Ocultar permanentemente</a> nunca
+                            aparecen, ni siquiera marcando la opci&oacute;n Ocultos.</li>
+                    </ul>
+
+                    <div class="callout">
+                        <h4>Cada panel recuerda su filtro</h4>
+                        <p>
+                            En el <a href="#panel-doble">modo doble</a> cada panel tiene su propio filtro:
+                            marcar uno no afecta al otro, y cada panel guarda el suyo para la pr&oacute;xima
+                            vez que lo a&ntilde;adas.
+                        </p>
                     </div>
                 </section>
 
@@ -1553,8 +1695,8 @@
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/priorities/percentage.png" alt=""></td>
                                     <td class="nm">Porcentaje</td>
-                                    <td>Reparte seg&uacute;n el porcentaje de avance, para que todos progresen parejo.
-                                    </td>
+                                    <td>Da prioridad a los dispositivos que llevan <b>m&aacute;s porcentaje de
+                                        avance</b>, para que terminen antes los que van m&aacute;s adelantados.</td>
                                 </tr>
                                 <tr>
                                     <td class="ic"><img src="assets/img/copier/priorities/plus.png" alt=""></td>
@@ -2021,19 +2163,9 @@
                         Se abre con el bot&oacute;n del engranaje. Si hay
                         <a href="primeros-pasos.html#password">contrase&ntilde;a maestra</a>, la pide antes.
                     </p>
-                    <div class="callout danger">
-                        <h4>No olvides guardar</h4>
-                        <p>
-                            Los cambios <b>no se aplican</b> hasta que pulsas
-                            <span class="ui">Salvar Configuraci&oacute;n</span>, abajo. Cuando funciona,
-                            aparece el aviso <span class="ui">CONFIGURACI&Oacute;N GUARDADA</span>.
-                        </p>
-                    </div>
 
                     <h4>General</h4>
                     <div class="term-list">
-                        <dt>Agregar Fecha</dt>
-                        <dd>A&ntilde;ade la fecha a lo que se copia, para saber cu&aacute;ndo se entreg&oacute;.</dd>
                         <dt>Agregar Factura de Copia</dt>
                         <dd>Deja dentro del dispositivo un comprobante de lo entregado.</dd>
                         <dt>Crear (.txt) solo del &uacute;ltimo fichero</dt>
@@ -2041,12 +2173,10 @@
                             &uacute;ltimo archivo seleccionado. &Uacute;til para saber por d&oacute;nde continuar una
                             serie. Si la apagas, se crea un (.txt) por cada fichero seleccionado.</dd>
                         <dt>Mantener estructura en el explorador</dt>
-                        <dd>El explorador del dispositivo respeta el &aacute;rbol de carpetas.</dd>
+                        <dd>El explorador del dispositivo respeta la estructura configurada de los dispositivos.</dd>
                         <dt>Mostrar puertos y Detectar velocidad de puertos</dt>
                         <dd>Ense&ntilde;a a qu&eacute; puerto USB est&aacute; conectado cada dispositivo y a qu&eacute;
                             velocidad. Ayuda a descubrir qu&eacute; puerto de la computadora va lento.</dd>
-                        <dt>Autoindexar al iniciar</dt>
-                        <dd>Actualiza solo el &iacute;ndice del Buscador cada vez que abres la aplicaci&oacute;n.</dd>
                         <dt>Voz</dt>
                         <dd>Locuta en voz alta los avisos importantes. Muy pr&aacute;ctico cuando est&aacute;s de
                             espaldas atendiendo a un cliente.</dd>
@@ -2071,6 +2201,10 @@
                             <span class="ui">Minimizar a la bandeja del sistema</span>, puede quedarse
                             esperando en la bandeja desde el arranque, sin ventana estorbando.
                         </dd>
+                        <dt>Agregar Fecha</dt>
+                        <dd>Es parte de la <b>Carpeta Personalizada</b>: a&ntilde;ade autom&aacute;ticamente la fecha
+                            actual al nombre, con el formato <code>dd-MM-yyyy</code>. En lugar de &laquo;Juan&raquo;, la
+                            carpeta se llama &laquo;Juan (12-08-2026)&raquo;.</dd>
                         <dt>Carpeta Personalizada</dt>
                         <dd>La lista de nombres que aparecer&aacute;n como sugerencia al usar la estructura <b>Carpeta
                                 personalizada</b>. Se escriben y se pulsa <span class="ui">AGREGAR</span>.</dd>
@@ -2171,17 +2305,19 @@
                     <h4>Discos y Red</h4>
                     <p>
                         <span class="ui">Prioridad Autom&aacute;tica</span> (ver
-                        <a href="#orden">Orden y prioridad</a>) y <span class="ui">Forzar Copia</span>,
-                        que insiste en copiar aunque el dispositivo est&eacute; dando problemas.
+                        <a href="#orden">Orden y prioridad</a>) y <span class="ui">Forzar Copia</span>, que
+                        permite agregar a la lista de copia ficheros que pasen del espacio libre disponible en
+                        el dispositivo.
                     </p>
 
                     <h4>Memorias</h4>
                     <div class="term-list">
                         <dt>Crear ficheros 0KB</dt>
-                        <dd>Deja archivos vac&iacute;os con el nombre de lo copiado. Sirve de listado dentro de la
-                            propia memoria.</dd>
+                        <dd>En cuanto arrastras ficheros al dispositivo, crea un fichero vac&iacute;o (0KB) con el
+                            nombre de cada uno en su carpeta, <b>antes</b> de que se copien. As&iacute; ya los
+                            ves en la memoria al instante y sirve de listado del trabajo en marcha.</dd>
                         <dt>Crear registro inicial</dt>
-                        <dd>Guarda una foto de lo que hab&iacute;a en la memoria antes de empezar.</dd>
+                        <dd>Guarda un .txt de lo que hab&iacute;a en la memoria antes de empezar.</dd>
                     </div>
 
                     <h4>Celulares</h4>
