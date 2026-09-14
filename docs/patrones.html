@@ -387,7 +387,7 @@
                         <table class="icon-table doc-table">
                             <thead><tr><th>Pieza</th><th>Qu&eacute; guarda</th></tr></thead>
                             <tbody>
-                                <tr><td class="nm"><span class="blk g">abreviatura</span></td><td>Un c&oacute;digo corto de 2 o 3 letras o n&uacute;meros, normalmente al principio. Identifica al proveedor o al canal. Ejemplos: <code>XX</code>, <code>NV</code>, <code>SR</code>.</td></tr>
+                                <tr><td class="nm"><span class="blk g">abreviatura</span></td><td>Un c&oacute;digo corto de 1 a 3 letras o n&uacute;meros, normalmente al principio. Identifica al proveedor o al canal. Ejemplos: <code>XX</code>, <code>NV</code>, <code>SR</code>.</td></tr>
                                 <tr><td class="nm"><span class="blk g">titulo</span></td><td>El nombre de la serie, novela o programa. Es <b>lo que el Copier buscar&aacute;</b> para encontrar los siguientes cap&iacute;tulos.</td></tr>
                                 <tr><td class="nm"><span class="blk g">capitulo</span></td><td>El n&uacute;mero de cap&iacute;tulo, cuando aparece como n&uacute;mero suelto. Ejemplos: <code>001</code>, <code>5</code>, <code>12</code>.</td></tr>
                                 <tr><td class="nm"><span class="blk g">temporada</span></td><td>El n&uacute;mero de temporada, cuando aparece como n&uacute;mero suelto. T&iacute;pico del formato <code>1x02</code>.</td></tr>
@@ -540,6 +540,24 @@ search  = "Titulo"</pre>
                         <h5><span class="n" style="color:#ff6b6b;border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.09)">Sin coincidencia</span> No lo reconoci&oacute;</h5>
                         <p style="margin:0">La receta no encaja con ese nombre. Casi siempre es una uni&oacute;n
                         equivocada: revisa si entre dos datos hay un espacio o un s&iacute;mbolo.</p>
+                    </div>
+
+                    <h3>3. Generar la receta autom&aacute;ticamente</h3>
+                    <p>
+                        Debajo del campo <span class="ui">Test</span> hay un bot&oacute;n
+                        <span class="n">Generar Receta</span>. Escribe un nombre real y p&uacute;lsalo: la
+                        herramienta arma la receta por ti. Reconoce solos los formatos SxxExx, <code>1x02</code>,
+                        frases como <code>temporada 3</code> o <code>capitulo 12</code>, las etiquetas entre
+                        corchetes y agrupa los t&iacute;tulos de varias palabras en una sola pieza.
+                    </p>
+                    <div class="callout warn">
+                        <h4>Revisa siempre la receta generada</h4>
+                        <p>
+                            Si ya ten&iacute;as bloques en la receta, la herramienta te pide confirmaci&oacute;n
+                            antes de reemplazarlos. No te olvides de que el resultado sea una
+                            <b>abreviatura + t&iacute;tulo + n&uacute;mero</b> bien capturados: mira el
+                            resultado en el campo <span class="ui">Test</span> antes de guardar.
+                        </p>
                     </div>
 
                     <div class="callout tip">
