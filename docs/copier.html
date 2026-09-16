@@ -348,8 +348,9 @@
 
                     <h3>Acciones sobre cada panel</h3>
                     <p>
-                        Las acciones de la barra (Prioridad, Pausar/Continuar, Cancelar, Clonar, Formatear y
-                        Expulsar) act&uacute;an sobre el panel que elijas con el rat&oacute;n:
+                        Las acciones de la barra (Prioridad, Pausar/Continuar, Cancelar, Clonar, Cambiar Lector,
+                        Ayudar a Lector, Formatear y Expulsar) act&uacute;an sobre el panel que elijas con el
+                        rat&oacute;n:
                         <b>clic izquierdo</b> sobre el panel izquierdo y <b>clic derecho</b> sobre el derecho.
                     </p>
 
@@ -1444,6 +1445,25 @@
                                         exactamente iguales sin volver a buscar los archivos.</td>
                                 </tr>
                                 <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/swap.png" alt=""></td>
+                                    <td class="nm">Cambiar Lector</td>
+                                    <td>Convierte el dispositivo seleccionado (HDD o externo) en el <b>nuevo
+                                        lector</b>. Eliges cu&aacute;l de los lectores actuales vas a sustituir. Si
+                                        el nuevo lector est&aacute; escribiendo, el cambio queda marcado y se
+                                        ejecuta cuando termine de escribir: los ficheros pasan al nuevo lector y la
+                                        copia a los destinos contin&uacute;a sin detenerse.</td>
+                                </tr>
+                                <tr>
+                                    <td class="ic"><img src="assets/img/copier/mainactions/scale.png" alt=""></td>
+                                    <td class="nm">Ayudar a Lector</td>
+                                    <td>Reparte el trabajo pendiente del lector entre uno o m&aacute;s discos
+                                        (HDD o externos) seleccionados. Eliges el lector que se va a ayudar y sus
+                                        ficheros pendientes se reparten en partes iguales; cada disco copia los
+                                        suyos por su cuenta. Si un disco ayudante est&aacute; escribiendo, su
+                                        ayuda queda marcada y se aplica al terminar. Solo los discos pueden ayudar
+                                        y ser ayudados.</td>
+                                </tr>
+                                <tr>
                                     <td class="ic"><img src="assets/img/copier/mainactions/eraser.png" alt=""></td>
                                     <td class="nm">Formatear<small>F4</small></td>
                                     <td>Formatea los dispositivos seleccionados. Pide confirmaci&oacute;n.</td>
@@ -2302,6 +2322,26 @@
                         trabajas en Modo Compacto conviene dejar solo lo imprescindible.
                     </p>
 
+                    <h4>Notificaciones</h4>
+                    <p>
+                        Decide qu&eacute; <a href="#avisos">avisos</a> aparecen en pantalla. El interruptor
+                        <span class="ui">Mostrar notificaciones (toasts)</span> es el maestro: apagado, no
+                        aparece ning&uacute;n aviso, ni siquiera los de error. La selecci&oacute;n se guarda
+                        entre sesiones y se aplica al instante.
+                    </p>
+                    <div class="term-list">
+                        <dt>Errores</dt>
+                        <dd>Licencia o l&iacute;mite de dispositivos, falta de espacio y dispositivo
+                            desconectado.</dd>
+                        <dt>Acciones</dt>
+                        <dd>Cambiar Lector, Ayudar a Lector, imposible continuar o seleccionar fichero,
+                            formateo (iniciado o terminado), nada que cargar, carpeta personalizada actualizada
+                            y total a pagar.</dd>
+                        <dt>Procesos</dt>
+                        <dd>Escritura finalizada, lectura finalizada, trabajo finalizado y recopiar en destino.
+                            Los avisos de lectura y escritura finalizada se controlan por separado.</dd>
+                    </div>
+
                     <h4>Discos y Red</h4>
                     <p>
                         <span class="ui">Prioridad Autom&aacute;tica</span> (ver
@@ -2654,6 +2694,10 @@
                             </tbody>
                         </table>
                     </div>
+                    <p>
+                        Todos estos avisos pueden ocultarse uno a uno en
+                        <span class="path">Configuraci&oacute;n &rsaquo; Notificaciones</span>.
+                    </p>
                 </section>
 
                 <!-- ══════════ ATAJOS ══════════ -->
