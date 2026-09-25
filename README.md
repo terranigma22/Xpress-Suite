@@ -39,7 +39,7 @@ Este repositorio aloja la documentación oficial de Xpress Suite en español:
 | Archivo | Descarga |
 |---------|----------|
 | **XpressSuiteSetup.v2.0.0.zip** | [**Descargar instalador completo**](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteSetup.v2.0.0.zip) (~146 MB) |
-| XpressSuiteUpdate.v2.6.0.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.6.0.zip) (~4 MB) |
+| XpressSuiteUpdate.v2.6.1.zip | [Descargar](https://github.com/terranigma22/Xpress-Suite/releases/download/Xpress-Suite/XpressSuiteUpdate.v2.6.1.zip) (~4 MB) |
 
 > Solo necesitas el instalador completo y la última actualización. No hace falta instalar todas las actualizaciones en orden.
 
